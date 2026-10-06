@@ -65,6 +65,7 @@
     }, 0.6)
 
     gsap.from('.anim-svg-circles text', {
+      scale: 0.9,
       translateZ: 0,
       autoAlpha: 0,
       force3D: true,
