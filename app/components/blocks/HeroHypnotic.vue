@@ -7,10 +7,10 @@
         <source src="/videos/spiral_small.mp4" type="video/mp4">
       </video>
     </div>
-    <div ref="slotRef" class="relative z-10 flex justify-center items-center w-full h-full overflow-hidden text-9xl bg-black text-white mix-blend-difference">
+    <div ref="slotRef" class="relative z-10 flex justify-center items-center w-full h-full overflow-hidden bg-black text-white mix-blend-difference">
       <slot />
     </div>
-    <div ref="scrollDownRef" class="scroll-down fixed inset-0 w-full h-svh place-content-end text-4xl sm:text-5xl text-center text-white mix-blend-difference pointer-events-none">
+    <div ref="scrollDownRef" class="scroll-down fixed inset-0 w-full h-svh place-content-end text-4xl sm:text-5xl text-center text-white mix-blend-difference pointer-events-none pb-4">
       <Icon class="animate-bounce" name="ion:arrow-down-a" />
     </div>
   </div>

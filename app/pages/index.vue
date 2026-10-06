@@ -6,7 +6,26 @@
       <h1 class="sr-only">{{ $t('pages.home.title') }}</h1>
 
       <HeroHypnotic :play="isPageLoaded" class="hero">
-        <AppLogo class="logo w-full h-full fill-white" />
+        <div class="hero-content relative z-10 flex flex-col items-center justify-center w-full h-full px-5 sm:px-8 md:px-12 pointer-events-none select-none text-center">
+          <!-- Logo zen space con ancho optimizado para dispositivos móviles -->
+          <div class="flex items-center justify-center w-full">
+            <AppLogo class="logo w-[76%] sm:w-[84%] md:w-[90%] lg:w-full max-w-[85vw] lg:max-w-4xl xl:max-w-5xl h-auto fill-white" />
+          </div>
+
+          <!-- Textos debajo del logo -->
+          <div class="hero-text hero-text-bottom mt-5 sm:mt-7 md:mt-8 flex flex-col items-center justify-center text-center gap-2 sm:gap-2.5 max-w-[340px] sm:max-w-lg md:max-w-2xl">
+            <!-- Text 1 -->
+            <p class="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.16em] sm:tracking-[0.24em] uppercase text-white leading-tight">
+              {{ $t('pages.home.heroHeadline') }}
+            </p>
+            <!-- Text 2 -->
+            <p class="text-[10px] sm:text-xs md:text-sm tracking-[0.14em] sm:tracking-[0.2em] uppercase font-mono text-white/80 leading-normal flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
+              <span>{{ $t('pages.home.heroSubPart1') }}</span>
+              <span class="opacity-40 select-none">//</span>
+              <span>{{ $t('pages.home.heroSubPart2') }}</span>
+            </p>
+          </div>
+        </div>
       </HeroHypnotic>
 
       <h2 class="sr-only">{{ $t('pages.home.heading') }}</h2>
@@ -200,6 +219,12 @@
         }, {
           clipPath: 'circle(0% at 50% 50%)',
         })
+        .to('.hero .hero-text', {
+          autoAlpha: 0,
+          y: -15,
+          duration: 0.15,
+          ease: 'power2.out',
+        }, '<')
         .to('.hero .logo', {
           scale: 20,
           rotate: 45,
