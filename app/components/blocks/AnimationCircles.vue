@@ -29,7 +29,7 @@
     </g>
     <g class="circle sound text uppercase text-[18.5px] font-black" fill="black">
       <text>
-        <textPath href="#circlePath" startOffset="0">sound sound sound sound</textPath>
+        <textPath href="#circlePath" startOffset="0">zenspace zenspace zenspace</textPath>
       </text>
     </g>
     <!-- <g class="circle sound">
@@ -65,7 +65,6 @@
     }, 0.6)
 
     gsap.from('.anim-svg-circles text', {
-      scale: 0.9,
       translateZ: 0,
       autoAlpha: 0,
       force3D: true,

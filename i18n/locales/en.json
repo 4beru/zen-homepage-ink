@@ -1,22 +1,22 @@
 {
-  "siteName": "Skizophonic",
+  "siteName": "Zen Space",
   "languages": {
     "code": "en",
     "es": "Spanish",
     "en": "English"
   },
   "meta": {
-    "title": "Skizophonic",
-    "description": "Music band based in Benicasim and Castellón, Spain"
+    "title": "Zen Space",
+    "description": "Creative software studio crafting immersive websites and digital products"
   },
   "preloader": {
     "text": [
-      "Spiral of subliminal cadence",
-      "Mechanical ascent of noise",
-      "Synesthesia by hypermusic",
-      "Kaleidoscope of supersounds",
-      "Electric maze of waves",
-      "Tangent of a sonic citizen"
+      "Spiral of living interfaces",
+      "Mechanical ascent of pixels",
+      "Synesthesia by hypermotion",
+      "Kaleidoscope of supercode",
+      "Electric maze of ripples",
+      "Tangent of a digital citizen"
     ]
   },
   "pages": {
@@ -27,92 +27,92 @@
       "heroSubPart1": "Creative software studio",
       "heroSubPart2": "Digital product architecture",
       "heroSubheadline": "Creative software studio // Digital product architecture",
-      "heading": "What is Skizophonic?",
-      "block1": "The slowest band in history emerged in late 2003 between Benicàssim and Castellón, Spain, crafting an alternative rock sound shaped by classic rock influences.",
-      "block2": "However, in their restless pursuit of eclectic ideas, the members of Skizophonic gravitated toward garage, soul, and especially acid sounds, blending a mod spirit with subtle electronic touches.",
-      "block3": "Today, they survive as soldiers of fortune. If you have good taste and a discerning ear, you might appreciate them.",
-      "buttonHypnotic": "Listen to their music",
+      "heading": "What is Zen Space?",
+      "block1": "Zen Space is a creative software studio that designs and engineers websites and digital products where clean architecture meets bold visual ideas.",
+      "block2": "Obsessed with motion and detail, we combine GSAP animation, 3D, particles, and effects with solid engineering to build experiences that feel alive without sacrificing performance.",
+      "block3": "Whether you are launching a product or reinventing your brand online, if you value craft and a discerning eye, we should talk.",
+      "buttonHypnotic": "See our work",
       "meta": {
         "title": "Home",
-        "description": "Music band based in Benicasim and Castellón, Spain"
+        "description": "Creative software studio crafting immersive websites and digital products"
       },
       "preloader": {
-        "text1": "loading waves",
-        "text2": "syncing spiral"
+        "text1": "loading motion",
+        "text2": "syncing pixels"
       }
     },
     "band": {
-      "name": "Band",
-      "title": "Band",
+      "name": "Team",
+      "title": "Team",
       "copyrightText": "All images are copyright to their respective owners.",
       "labels": {
-        "vocals": "Vocals",
-        "guitar": "Guitar",
-        "keyboards": "Keyboards",
-        "bass": "Bass",
-        "trombone": "Trombone",
-        "drums": "Drums"
+        "vocals": "Creative direction",
+        "guitar": "Front-end engineering",
+        "keyboards": "Motion design",
+        "bass": "Back-end architecture",
+        "trombone": "3D & WebGL",
+        "drums": "Product strategy"
       },
       "meta": {
-        "title": "Band",
-        "description": "Who we are and what we look like"
+        "title": "Team",
+        "description": "Who we are and how we work"
       }
     },
     "music": {
-      "name": "Music",
-      "title": "Music",
+      "name": "Works",
+      "title": "Works",
       "labels": {
-        "back": "Back to music",
-        "music": "Music",
+        "back": "Back to works",
+        "music": "Works",
         "info": "Info",
-        "tracklist": "Tracklist",
-        "recordLabel": "Record label",
-        "socialLinks": "Listen on",
-        "expandArtwork": "Expand artwork",
-        "collapseArtwork": "Collapse artwork"
+        "tracklist": "Deliverables",
+        "recordLabel": "Client",
+        "socialLinks": "Visit project",
+        "expandArtwork": "Expand preview",
+        "collapseArtwork": "Collapse preview"
       },
       "meta": {
-        "title": "Music",
-        "description": "Listen to their music"
+        "title": "Works",
+        "description": "Selected projects and case studies"
       },
       "preloader": {
-        "text1": "loading music",
-        "text2": "syncing noise"
+        "text1": "loading works",
+        "text2": "syncing code"
       }
     },
     "merch": {
-      "name": "Merch",
-      "title": "Merch",
+      "name": "Services",
+      "title": "Services",
       "sections": {
         "tshirts": {
-          "title": "T-shirts"
+          "title": "Creative web development"
         },
         "buttonBadges": {
-          "title": "Button badges"
+          "title": "Digital product architecture"
         },
         "stickers": {
-          "title": "Stickers"
+          "title": "Motion & 3D experiences"
         },
         "posters": {
-          "title": "Posters"
+          "title": "Mobile & SaaS apps"
         }
       },
       "labels": {
-        "noStock": "Not available"
+        "noStock": "Currently unavailable"
       },
       "meta": {
-        "title": "Merch",
-        "description": "Skizophonic merchandise"
+        "title": "Services",
+        "description": "What we design and build"
       }
     },
     "privacy": {
       "name": "Privacy",
       "title": "Privacy policy & cookies",
       "p1": "We care about your (and our) privacy. That’s why we don’t use cookies on this website, and we’re not planning to. We’re not interested in tracking visitors or collecting data about you, that’s just not what we do.",
-      "p2": "Our only goal is to share our music with you. Nothing more, nothing less.",
+      "p2": "Our only goal is to share our work with you. Nothing more, nothing less.",
       "p3": "That said, our website is hosted by a third-party provider, and they might use their own cookies for things like security or basic site performance. That part is outside of our control, but from our side, we keep things as cookie-free as possible.",
-      "p4": "We don't sell food either, but our advice is to eat more vegetables to stay healthy. We also encourage you to support Spanish products; our Ibérico ham and olive oil are among the wonders of the world.",
-      "p5": "Today, save your weekend. Tomorrow, save your soul.",
+      "p4": "We don't sell food either, but our advice is to eat more vegetables to stay healthy. We also encourage you to support local producers; Argentine yerba mate and malbec are among the wonders of the world.",
+      "p5": "Today, imagine it. Tomorrow, ship it.",
       "meta": {
         "title": "Privacy policy & cookies",
         "description": "Privacy policy & cookies information"
@@ -126,10 +126,10 @@
       "zoom": "Zoom"
     },
     "bandcampEmbed": {
-      "noPlayer": "Discontinued album. Not available for download or streaming."
+      "noPlayer": "Preview not available for this project."
     },
     "albumArtwork": {
-      "moreInfo": "Tap the artwork or “+”"
+      "moreInfo": "Tap the preview or “+”"
     }
   },
   "footer": {
