@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Poppins", "sans-serif";
+
+  --color-primary: #ff0047;
+  --color-secondary: #00ffc7;
+
+  --color-gray: #9e9e9e;
+  --color-gray-50: #f9f9f9;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #eeeeee;
+  --color-gray-300: #e0e0e0;
+  --color-gray-400: #cfcfcf;
+  --color-gray-500: #9e9e9e;
+  --color-gray-600: #888888;
+  --color-gray-700: #616161;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+
+  --text-8xl: clamp(2rem, 5vw, 6rem);
+
+  --background-image-colibri-anim: url("/images/colibri_anim.png");
+}
+
+/* Touch-only devices: coarse pointer and no hover (primary input or any) */
+@custom-variant touch {
+  @media (any-hover: none) and (any-pointer: coarse) {
+    @slot;
+  }
+}
+/* Non-touch devices: fine pointer and hover capability */
+@custom-variant no-touch {
+  @media (hover: hover) and (pointer: fine) and (any-pointer: fine) {
+    @slot;
+  }
+}
+/* Hybrid devices: both coarse and fine pointers present */
+@custom-variant hybrid-device {
+  @media (any-hover: hover) and (any-pointer: coarse) and (any-pointer: fine) {
+    @slot;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.2rem;
+  padding-block: 1.2rem;
+
+  @variant sm {
+    padding-inline: 1.3rem;
+  }
+  @variant md {
+    padding-inline: 1.4rem;
+  }
+  @variant lg {
+    padding-inline: 1.6rem;
+  }
+  @variant xl {
+    padding-inline: 2.2rem;
+  }
+}
+
+@utility anim-underline {
+  @apply relative inline-block no-underline
+  before:content-[''] before:absolute before:left-0 before:bottom-[2px] before:w-full before:h-px
+  before:scale-x-0 before:transition-transform before:duration-250 before:ease-in-out
+   hover:before:scale-x-100 origin-left;
+}
+@utility anim-underline-gray {
+  @apply anim-underline text-gray-600 hover:text-black before:bg-gray-600 hover:before:bg-black;
+}
+@utility anim-underline-white {
+  @apply anim-underline text-white before:bg-white hover:before:bg-white;
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-color: #bbb black;
+  }
+  body {
+    @apply text-black bg-white font-bold scroll-smooth overflow-x-hidden;
+  }
+
+  a {
+    @apply transition-all;
+  }
+  main a {
+    @apply anim-underline-gray;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-extrabold uppercase;
+    font-kerning: none;
+
+    a {
+      @apply hover:no-underline before:h-0;
+    }
+  }
+  h1 {
+    @apply text-[clamp(3rem,_10vw,_4.6rem)] leading-none overflow-y-hidden;
+  }
+  h2 {
+    @apply text-[clamp(2.4rem,_10vw,_3.8rem)];
+  }
+  h3 {
+    @apply text-3xl;
+  }
+
+  p {
+    font-kerning: none;
+  }
+
+  iframe {
+    @apply border-none border-0;
+  }
+
+  button {
+    @apply cursor-pointer transition-all duration-500 ease-in-out;
+
+    &:disabled {
+      @apply opacity-50 pointer-events-none;
+    }
+  }
+}
+
+/* Firefox gets a weird scroll behaviour when setting position fixed and overflow hidden in html tag (bug?) */
+html.scroll-lock {
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+}
+body.scroll-lock {
+  position: fixed !important;
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+  width: 100% !important;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
+}

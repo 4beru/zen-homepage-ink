@@ -1,0 +1,135 @@
+{
+  "siteName": "Skizophonic",
+  "languages": {
+    "code": "en",
+    "es": "Spanish",
+    "en": "English"
+  },
+  "meta": {
+    "title": "Skizophonic",
+    "description": "Music band based in Benicasim and Castellón, Spain"
+  },
+  "preloader": {
+    "text": [
+      "Spiral of subliminal cadence",
+      "Mechanical ascent of noise",
+      "Synesthesia by hypermusic",
+      "Kaleidoscope of supersounds",
+      "Electric maze of waves",
+      "Tangent of a sonic citizen"
+    ]
+  },
+  "pages": {
+    "home": {
+      "name": "Home",
+      "title": "Home",
+      "heading": "What is Skizophonic?",
+      "block1": "The slowest band in history emerged in late 2003 between Benicàssim and Castellón, Spain, crafting an alternative rock sound shaped by classic rock influences.",
+      "block2": "However, in their restless pursuit of eclectic ideas, the members of Skizophonic gravitated toward garage, soul, and especially acid sounds, blending a mod spirit with subtle electronic touches.",
+      "block3": "Today, they survive as soldiers of fortune. If you have good taste and a discerning ear, you might appreciate them.",
+      "buttonHypnotic": "Listen to their music",
+      "meta": {
+        "title": "Home",
+        "description": "Music band based in Benicasim and Castellón, Spain"
+      },
+      "preloader": {
+        "text1": "loading waves",
+        "text2": "syncing spiral"
+      }
+    },
+    "band": {
+      "name": "Band",
+      "title": "Band",
+      "copyrightText": "All images are copyright to their respective owners.",
+      "labels": {
+        "vocals": "Vocals",
+        "guitar": "Guitar",
+        "keyboards": "Keyboards",
+        "bass": "Bass",
+        "trombone": "Trombone",
+        "drums": "Drums"
+      },
+      "meta": {
+        "title": "Band",
+        "description": "Who we are and what we look like"
+      }
+    },
+    "music": {
+      "name": "Music",
+      "title": "Music",
+      "labels": {
+        "back": "Back to music",
+        "music": "Music",
+        "info": "Info",
+        "tracklist": "Tracklist",
+        "recordLabel": "Record label",
+        "socialLinks": "Listen on",
+        "expandArtwork": "Expand artwork",
+        "collapseArtwork": "Collapse artwork"
+      },
+      "meta": {
+        "title": "Music",
+        "description": "Listen to their music"
+      },
+      "preloader": {
+        "text1": "loading music",
+        "text2": "syncing noise"
+      }
+    },
+    "merch": {
+      "name": "Merch",
+      "title": "Merch",
+      "sections": {
+        "tshirts": {
+          "title": "T-shirts"
+        },
+        "buttonBadges": {
+          "title": "Button badges"
+        },
+        "stickers": {
+          "title": "Stickers"
+        },
+        "posters": {
+          "title": "Posters"
+        }
+      },
+      "labels": {
+        "noStock": "Not available"
+      },
+      "meta": {
+        "title": "Merch",
+        "description": "Skizophonic merchandise"
+      }
+    },
+    "privacy": {
+      "name": "Privacy",
+      "title": "Privacy policy & cookies",
+      "p1": "We care about your (and our) privacy. That’s why we don’t use cookies on this website, and we’re not planning to. We’re not interested in tracking visitors or collecting data about you, that’s just not what we do.",
+      "p2": "Our only goal is to share our music with you. Nothing more, nothing less.",
+      "p3": "That said, our website is hosted by a third-party provider, and they might use their own cookies for things like security or basic site performance. That part is outside of our control, but from our side, we keep things as cookie-free as possible.",
+      "p4": "We don't sell food either, but our advice is to eat more vegetables to stay healthy. We also encourage you to support Spanish products; our Ibérico ham and olive oil are among the wonders of the world.",
+      "p5": "Today, save your weekend. Tomorrow, save your soul.",
+      "meta": {
+        "title": "Privacy policy & cookies",
+        "description": "Privacy policy & cookies information"
+      }
+    }
+  },
+  "components": {
+    "cursor": {
+      "scroll": "Scroll",
+      "flip": "Flip",
+      "zoom": "Zoom"
+    },
+    "bandcampEmbed": {
+      "noPlayer": "Discontinued album. Not available for download or streaming."
+    },
+    "albumArtwork": {
+      "moreInfo": "Tap the artwork or “+”"
+    }
+  },
+  "footer": {
+    "siteBy": "Site by",
+    "privacy": "Privacy policy"
+  }
+}

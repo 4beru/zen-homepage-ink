@@ -1,0 +1,135 @@
+{
+  "siteName": "Skizophonic",
+  "languages": {
+    "code": "es",
+    "es": "Español",
+    "en": "Inglés"
+  },
+  "meta": {
+    "title": "Skizophonic",
+    "description": "Banda de música formada entre Benicasim y Castellón, España"
+  },
+  "preloader": {
+    "text": [
+      "Espiral de subliminal cadencia",
+      "Ascenso mecánico del ruido",
+      "Sinestesia por hipermúsica",
+      "Caleidoscopio de supersonidos",
+      "Laberinto eléctrico de ondas",
+      "Tangente de un ciudadano sónico"
+    ]
+  },
+  "pages": {
+    "home": {
+      "name": "Home",
+      "title": "Home",
+      "heading": "¿Qué es Skizophonic?",
+      "block1": "La banda más lenta de la historia se formó en España entre Benicàssim y Castellón a finales del 2003 practicando una especie de rock alternativo con influencias de otros estilos del rock más clásico.",
+      "block2": "No obstante, en la búsqueda inquieta de ideas eclécticas, los miembros de Skizophonic dieron un giro a sonidos más garageros, soul y especialmente ácidos, con un toque de espíritu mod y pinceladas de electrónica.",
+      "block3": "Actualmente sobreviven como soldados de fortuna. Si tiene buen gusto y los escucha, quizá pueda apreciarlos.",
+      "buttonHypnotic": "Escucha su música",
+      "meta": {
+        "title": "Home",
+        "description": "Banda de música formada entre Benicasim y Castellón, España"
+      },
+      "preloader": {
+        "text1": "cargando ondas",
+        "text2": "sincroniza espiral"
+      }
+    },
+    "band": {
+      "name": "Banda",
+      "title": "Banda",
+      "copyrightText": "Todos los derechos de las imágenes pertenecen a sus respectivos autores.",
+      "labels": {
+        "vocals": "Voz",
+        "guitar": "Guitarra",
+        "keyboards": "Teclados",
+        "bass": "Bajo",
+        "trombone": "Trombón",
+        "drums": "Batería"
+      },
+      "meta": {
+        "title": "Banda",
+        "description": "Quiénes somos y cómo somos"
+      }
+    },
+    "music": {
+      "name": "Música",
+      "title": "Música",
+      "labels": {
+        "back": "Volver a música",
+        "music": "Música",
+        "info": "Info",
+        "tracklist": "Canciones",
+        "recordLabel": "Sello discográfico",
+        "socialLinks": "Escúchalo en",
+        "expandArtwork": "Expandir álbum",
+        "collapseArtwork": "Colapsar álbum"
+      },
+      "meta": {
+        "title": "Música",
+        "description": "Escucha su música"
+      },
+      "preloader": {
+        "text1": "cargando música",
+        "text2": "sincroniza ruido"
+      }
+    },
+    "merch": {
+      "name": "Merch",
+      "title": "Merch",
+      "sections": {
+        "tshirts": {
+          "title": "Camisetas"
+        },
+        "buttonBadges": {
+          "title": "Chapas"
+        },
+        "stickers": {
+          "title": "Pegatinas"
+        },
+        "posters": {
+          "title": "Pósters"
+        }
+      },
+      "labels": {
+        "noStock": "No disponible"
+      },
+      "meta": {
+        "title": "Merch",
+        "description": "Skizophonic merchandise"
+      }
+    },
+    "privacy": {
+      "name": "Privacidad",
+      "title": "Política de privacidad y cookies",
+      "p1": "Nos importa tu privacidad (y la nuestra). Por eso no utilizamos cookies en este sitio web, ni tenemos intención de hacerlo. No nos interesa rastrear a los visitantes ni recopilar datos sobre ti, simplemente no queremos hacerlo.",
+      "p2": "Nuestro único propósito es compartir nuestra música contigo. Nada más, nada menos.",
+      "p3": "Dicho esto, nuestro sitio web está alojado por un proveedor externo y puede que ellos utilicen sus propias cookies para cosas como la seguridad o el rendimiento básico del sitio. Esa parte está fuera de nuestro control pero por nuestra parte mantenemos todo lo más libre de cookies posible.",
+      "p4": "Tampoco vendemos comida pero nuestro consejo es que comas más verduras para mantenerte sano. También te animamos a que apoyes los productos españoles; nuestro jamón ibérico y aceite de oliva forman parte de las maravillas del mundo.",
+      "p5": "Hoy, salva tu fin de semana. Mañana, salva tu alma.",
+      "meta": {
+        "title": "Política de privacidad y cookies",
+        "description": "Política de privacidad e información sobre cookies"
+      }
+    }
+  },
+  "components": {
+    "cursor": {
+      "scroll": "Scroll",
+      "flip": "Girar",
+      "zoom": "Zoom"
+    },
+    "bandcampEmbed": {
+      "noPlayer": "Álbum descatalogado. No disponible para descarga o escucha."
+    },
+    "albumArtwork": {
+      "moreInfo": "Pulsa sobre el álbum o “+”"
+    }
+  },
+  "footer": {
+    "siteBy": "Sitio por",
+    "privacy": "Política privacidad"
+  }
+}
