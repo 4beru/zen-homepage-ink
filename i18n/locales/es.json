@@ -1,5 +1,5 @@
 {
-  "siteName": "Skizophonic",
+  "siteName": "Zen Space",
   "languages": {
     "code": "es",
     "es": "Español",
@@ -59,21 +59,22 @@
       }
     },
     "music": {
-      "name": "Música",
-      "title": "Música",
+      "name": "Trabajos",
+      "title": "Trabajos",
       "labels": {
-        "back": "Volver a música",
-        "music": "Música",
+        "back": "Volver a trabajos",
+        "music": "Trabajos",
         "info": "Info",
-        "tracklist": "Canciones",
-        "recordLabel": "Sello discográfico",
-        "socialLinks": "Escúchalo en",
+        "tracklist": "Entregables",
+        "recordLabel": "Cliente",
+        "socialLinks": "Abrir",
         "expandArtwork": "Expandir álbum",
-        "collapseArtwork": "Colapsar álbum"
+        "collapseArtwork": "Colapsar álbum",
+        "deliverables": "Entregables"
       },
       "meta": {
-        "title": "Música",
-        "description": "Escucha su música"
+        "title": "Trabajos",
+        "description": "Proyectos seleccionados y casos de estudio"
       },
       "preloader": {
         "text1": "cargando música",
