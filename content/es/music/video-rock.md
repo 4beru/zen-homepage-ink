@@ -1,25 +1,12 @@
 ---
-title: Video Rock
+title: Rythm
 ---
 
-Álbum cantado en español<br>
-Grabado y Mezclado en Álamo Shock Pool Recording Studio (Madrid, España) - Septiembre y Octubre, 2016<br>
-Masterizado en Álamo Shock Pool Recording Studio (Madrid, España) - Febrero, 2017
+Rythm conecta el descubrimiento musical y la escucha compartida en una experiencia integrada. Permite explorar recomendaciones personalizadas, gestionar playlists y escuchar música con amigos en tiempo real desde las plataformas compatibles.
 
-Productor: [Guille Mostaza](https://www.alamoshock.com)<br>
-Fotografía: [Elisabeth Gómez](https://www.flickr.com/photos/izzygr)<br>
-Diseño gráfico: [Dan Alcaide](https://www.danalcaide.com)<br>
+## Entregables
 
-Sintetizadores y efectos: Guille Mostaza<br>
-Coro en ‘Aaron Woodman’, 'Corneta!' y 'Aquí ya hemos estado': Koté Koteix<br>
-Coro en 'Lejos de ti': Sara Ledesma<br>
-Arreglos y clarinete en ‘Lejos de ti’: Eduard Soliva<br>
-Tuba en ‘Lejos de ti’: Jaume Tàrrega<br>
-Trompeta en ‘Lejos de ti’: Víctor Montoro<br>
-Bombardino en ‘Lejos de ti’: Guille de la Fuente<br>
-Saxo tenor en ‘Lejos de ti’: Lluís Bernal y Jordi Domenech<br>
-
-## Reconocimientos
-
-- Mejor directo 2016 - Benicassim.pop
-- Top 10 álbumes 2017 - NMPNU
+- **Bot de Discord** — Buscar música, gestionar la cola y controlar la reproducción desde un servidor.
+- **Discord Activity** — Escuchar música juntos directamente desde Discord.
+- **Aplicación de escritorio** — Una experiencia dedicada para Windows y macOS.
+- **Aplicación web** — Usar Rythm desde el navegador, sin instalar una aplicación.
