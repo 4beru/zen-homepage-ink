@@ -1,7 +1,7 @@
 <template>
   <NuxtRouteAnnouncer />
   <NuxtLoadingIndicator color="repeating-linear-gradient(to right,#ff0047 0%,#ffffff 50%,#00ffc7 100%)" />
-  <NuxtLayout :key="route => route.fullPath">
+  <NuxtLayout>
     <VueLenis ref="lenisRef" :auto-raf="false" root>
       <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" />
       <NuxtPage :page-key="route => route.fullPath" />
