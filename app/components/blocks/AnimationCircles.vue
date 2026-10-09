@@ -29,7 +29,7 @@
     </g>
     <g class="circle sound text uppercase text-[18.5px] font-black" fill="black">
       <text>
-        <textPath href="#circlePath" startOffset="0">zenspace zenspace zenspace</textPath>
+        <textPath href="#circlePath" startOffset="0">zenspace zen space zspace</textPath>
       </text>
     </g>
     <!-- <g class="circle sound">

@@ -2,11 +2,11 @@ export const albums = [
   {
     id: 1,
     slug: 'video-rock',
-    title: 'Video Rock',
+    title: 'Rythm',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
-      galleta: 'galleta.png',
+      cover: 'rythm-cover.png',
+      back: 'rythm-desktop.png',
+      galleta: 'rythm.png',
     },
     year: 2017,
     releaseDate: '2017-04-07',
