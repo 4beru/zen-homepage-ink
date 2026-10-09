@@ -1,25 +1,12 @@
 ---
-title: Video Rock
+title: Rythm
 ---
 
-This album is sung in Spanish<br>
-Recorded & mixed at Álamo Shock Pool Recording Studio (Madrid, Spain) - September & October, 2016<br>
-Mastered at Álamo Shock Pool Recording Studio (Madrid, Spain) - February, 2017
+Rythm brings music discovery and shared listening into one connected experience. Explore a personalized feed, manage playlists, and listen with friends in real time across supported platforms.
 
-Producer: [Guille Mostaza](https://www.alamoshock.com)<br>
-Photography: [Elisabeth Gómez](https://www.flickr.com/photos/izzygr)<br>
-Graphic design: [Dan Alcaide](https://www.danalcaide.com)<br>
+## Deliverables
 
-Synthesizers and effects: Guille Mostaza<br>
-Choir in ‘Aaron Woodman’, 'Corneta!' y 'Aquí ya hemos estado': Koté Koteix<br>
-Choir in 'Lejos de ti': Sara Ledesma<br>
-Arrangements and clarinet in ‘Lejos de ti’: Eduard Soliva<br>
-Tuba in ‘Lejos de ti’: Jaume Tàrrega<br>
-Trumpet in ‘Lejos de ti’: Víctor Montoro<br>
-Euphonium in ‘Lejos de ti’: Guille de la Fuente<br>
-Tenor saxophone in ‘Lejos de ti’: Lluís Bernal y Jordi Domenech<br>
-
-## Awards
-
-- Best live performance - 2016 Benicassim.pop
-- Top 10 albums 2017 - NMPNU (Spanish magazine)
+- **Discord bot** — Search for music, manage the queue, and control playback from a server.
+- **Discord Activity** — Listen together directly inside Discord.
+- **Desktop app** — A dedicated listening experience for Windows and macOS.
+- **Web app** — Open Rythm in a browser without installing an application.
