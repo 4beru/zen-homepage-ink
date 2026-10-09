@@ -1,7 +1,5 @@
 <template>
-  <Transition :name="pageTransitionFadeConfig.name" :mode="pageTransitionFadeConfig.mode" :css="pageTransitionFadeConfig.css" :appear="pageTransitionFadeConfig.appear" @enter="pageTransitionFadeConfig.onEnter" @leave="pageTransitionFadeConfig.onLeave">
-    <!-- Keep the route transition; only the internal tab-switching animation is removed. -->
-    <article class="container grid grid-cols-1 xl:grid-cols-2 gap-16 min-h-[calc(100dvh-100px)] mt-[100px]">
+  <article class="container grid grid-cols-1 xl:grid-cols-2 gap-16 min-h-[calc(100dvh-100px)] mt-[100px]">
       <aside>
         <AlbumArtwork :content="content" />
       </aside>
@@ -51,8 +49,7 @@
           </section>
         </div>
       </section>
-    </article>
-  </Transition>
+  </article>
 </template>
 
 <script setup>
