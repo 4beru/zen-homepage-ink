@@ -41,8 +41,8 @@
             </AnimationReveal>
 
             <AnimationReveal v-if="content.videos.youtube.length" class="w-full">
-              <div class="videos flex flex-col gap-8">
-                <div v-for="video in content.videos.youtube" :key="video.id">
+              <div class="videos flex flex-col gap-6">
+                <div v-for="video in content.videos.youtube" :key="video.id" class="flex flex-col gap-1">
                   <h2>{{ video.title }}</h2>
                   <YoutubeEmbed :video-id="video.id" :alt="video.title" />
                 </div>

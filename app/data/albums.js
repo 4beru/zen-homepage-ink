@@ -8,8 +8,8 @@ export const albums = [
       back: 'rythm-desktop.png',
       galleta: 'rythm.png',
     },
-    year: 2025,
-    recordLabel: 'Rythm',
+    year: 2017,
+    recordLabel: 'rythm.fm',
     meta: {
       description: 'A connected music streaming experience for discovery, playlists, and listening together.',
     },
@@ -23,29 +23,29 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        label: 'Web app',
         link: 'https://rythm.fm',
         icon: 'lucide:globe',
       },
       {
-        label: 'Web app',
-        link: 'https://app.rythm.fm',
+        label: 'Download app',
+        link: 'https://rythm.fm/download',
         icon: 'lucide:app-window',
       },
     ],
     videos: {
       youtube: [
         {
-          id: 'XWjLfY-i1AE',
-          title: 'Me aburrís todos con la misma mierda',
+          id: 'ZxYlp1WF0zc',
+          title: 'Finally, Good Music Is Back on Discord',
         },
         {
-          id: '-C71_XDxNwc',
-          title: '¿Quién será Aaron Woodman?',
+          id: '9IW5RNSBhIU',
+          title: 'Step-by-Step Setup Guide',
         },
         {
-          id: '6zND644fWAc',
-          title: 'Making of Video Rock',
+          id: 'LLnnkEvCTLA',
+          title: 'How to Invite and Configure It for Your Server',
         },
       ],
     },
