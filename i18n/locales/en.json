@@ -67,9 +67,10 @@
         "info": "Info",
         "tracklist": "Deliverables",
         "recordLabel": "Client",
-        "socialLinks": "Visit project",
+        "socialLinks": "Open",
         "expandArtwork": "Expand preview",
-        "collapseArtwork": "Collapse preview"
+        "collapseArtwork": "Collapse preview",
+        "deliverables": "Deliverables"
       },
       "meta": {
         "title": "Works",
