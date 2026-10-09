@@ -8,11 +8,10 @@ export const albums = [
       back: 'rythm-desktop.png',
       galleta: 'rythm.png',
     },
-    year: 2017,
-    releaseDate: '2017-04-07',
-    recordLabel: 'Ventilador Music',
+    year: 2025,
+    recordLabel: 'Rythm',
     meta: {
-      description: 'Video Rock is the fifth and latest album recorded by Skizophonic.',
+      description: 'A connected music streaming experience for discovery, playlists, and listening together.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -24,14 +23,14 @@ export const albums = [
     },
     social: [
       {
-        label: 'Spotify',
-        link: 'https://open.spotify.com/album/55dCAnS0nH77fJFehhlNiZ',
-        icon: 'simple-icons:spotify',
+        label: 'Website',
+        link: 'https://rythm.fm',
+        icon: 'lucide:globe',
       },
       {
-        label: 'Bandcamp',
-        link: 'https://skizophonic.bandcamp.com/album/video-rock',
-        icon: 'simple-icons:bandcamp',
+        label: 'Web app',
+        link: 'https://app.rythm.fm',
+        icon: 'lucide:app-window',
       },
     ],
     videos: {
