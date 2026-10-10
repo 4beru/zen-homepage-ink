@@ -32,7 +32,7 @@
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
+          <video class="w-full h-full object-cover brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
             <source :src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
             <source :src="`/videos/${video.small}`" type="video/mp4">
           </video>
@@ -89,12 +89,12 @@
 
   const videos = {
     0: {
-      'small': 'woman_dancing_480p.mp4',
-      'large': 'woman_dancing_720p.mp4',
+      'small': 'unimatic_540p.mp4',
+      'large': 'unimatic_720p.mp4',
     },
     1: {
-      'small': 'vhs_480p.mp4',
-      'large': 'vhs_720p.mp4',
+      'small': 'rythm_540p.mp4',
+      'large': 'rythm_720p.mp4',
     },
     2: {
       'small': 'subway_480p.mp4',
@@ -105,8 +105,8 @@
       'large': 'woman_finger_720p.mp4',
     },
     4: {
-      'small': 'factories_480p.mp4',
-      'large': 'factories_720p.mp4',
+      'small': 'subscrr_540p.mp4',
+      'large': 'subscrr_720p.mp4',
     },
   }
   const { t } = useI18n();

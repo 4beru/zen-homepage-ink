@@ -50,8 +50,8 @@ export const albums = [
       ],
     },
     bgVideo: {
-      fhd: 'vhs_1080p.mp4',
-      hd: 'vhs_720p.mp4',
+      fhd: 'rythm_1080p.mp4',
+      hd: 'rythm_720p.mp4',
     },
     tracklist: [
       'Me aburrís todos con la misma mierda',
@@ -67,15 +67,15 @@ export const albums = [
   {
     id: 2,
     slug: 'velodrome',
-    title: 'Velodrome',
+    title: 'Unimatic',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
-      galleta: 'galleta.png',
+      cover: 'unimatic-cover.jpg',
+      back: 'unimatic-desktop.jpg',
+      galleta: 'unimatic.png',
     },
-    year: 2013,
-    releaseDate: '2013-09-14',
-    recordLabel: 'Lemon Songs',
+    year: 2025,
+    releaseDate: '2025-09-14',
+    recordLabel: 'unimaticwatches.com',
     meta: {
       description: 'Velodrome is the fourth album recorded by Skizophonic.',
     },
@@ -94,30 +94,30 @@ export const albums = [
       //   icon: 'simple-icons:spotify',
       // },
       {
-        label: 'Bandcamp',
-        link: 'https://skizophonic.bandcamp.com/album/velodrome',
-        icon: 'simple-icons:bandcamp',
+        label: 'Website',
+        link: 'https://www.unimaticwatches.com',
+        icon: 'lucide:globe',
       },
     ],
     videos: {
       youtube: [
         {
-          id: 'gkLqopaEHpU',
-          title: 'Oh Oh Oh (Do Not Skip Any Detail)',
+          id: '6uWonLQeJ9k',
+          title: 'Field Watch Review & Hands-On',
         },
         {
-          id: '6SJUCnURxx0',
-          title: 'Queen of Photoshop',
+          id: '84QOEV89mhQ',
+          title: 'Minimalist Italian Design: Unimatic Dial & Details',
         },
         {
-          id: 'hWqCkjQP8G0',
-          title: 'Clockwork - Benicàssim.pop',
+          id: 'RQq4cGLNcbg',
+          title: 'Inside the World of Unimatic Toolwatches',
         },
       ],
     },
     bgVideo: {
-      fhd: 'woman_dancing_1080p.mp4',
-      hd: 'woman_dancing_720p.mp4',
+      fhd: 'unimatic_1080p.mp4',
+      hd: 'unimatic_720p.mp4',
     },
     tracklist: [
       'How Would You Say I Love You?',
@@ -135,15 +135,15 @@ export const albums = [
   {
     id: 3,
     slug: 'gossip',
-    title: 'Gossip',
+    title: 'Mira Life',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'miralife-cover.png',
+      back: 'miralife-desktop.png',
       galleta: 'galleta.png',
     },
-    year: 2011,
-    releaseDate: '2011-02-28',
-    recordLabel: '',
+    year: 2026,
+    releaseDate: '2026-02-28',
+    recordLabel: 'miralife.app',
     meta: {
       description: 'Gossip is the third album recorded by Skizophonic.',
     },
@@ -157,25 +157,24 @@ export const albums = [
     },
     social: [
       {
-        label: 'Spotify',
-        link: 'https://open.spotify.com/album/2hfB4iLT48MfxtPa55cLKN',
-        icon: 'simple-icons:spotify',
-      },
-      {
-        label: 'Bandcamp',
-        link: 'https://skizophonic.bandcamp.com/album/gossip',
-        icon: 'simple-icons:bandcamp',
+        label: 'Website',
+        link: 'https://miralife.app/en/',
+        icon: 'lucide:globe',
       },
     ],
     videos: {
       youtube: [
         {
-          id: 'EgaE34PJiFc',
-          title: 'I’m Gonna Get Rid Of You',
+          id: 'ispHUvvdXZQ',
+          title: 'Mira Life: Start From Within',
         },
         {
-          id: 'wi6xNiO0xZQ',
-          title: 'Annie - Conciertos de Radio 3 - TVE',
+          id: 'PBxiO7zCYQM',
+          title: 'Your Six Dimensions of Life Potential',
+        },
+        {
+          id: 'mZQpmY6fAcw',
+          title: 'The Art of Recovery and Body Signals',
         },
       ],
     },
@@ -198,15 +197,15 @@ export const albums = [
   {
     id: 4,
     slug: 'living-room',
-    title: 'Living room',
+    title: 'Subscrr',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'subscrr-cover.png',
+      back: 'subscrr-desktop.png',
       galleta: 'galleta.png',
     },
-    year: 2009,
-    releaseDate: '2009-09-19',
-    recordLabel: '',
+    year: 2026,
+    releaseDate: '2026-09-19',
+    recordLabel: 'subscrr.app',
     meta: {
       description: 'Living Room is the second album/EP recorded by Skizophonic.',
     },
@@ -220,31 +219,35 @@ export const albums = [
     },
     social: [
       {
-        label: 'Spotify',
-        link: 'https://open.spotify.com/album/2nzWHHLP7S2Go2It4pRo6d?si=fuZXu9eCQZm665EuRn4MVQ',
-        icon: 'simple-icons:spotify',
+        label: 'Website',
+        link: 'https://subscrr.app/',
+        icon: 'lucide:globe',
       },
       {
-        label: 'Bandcamp',
-        link: 'http://skizophonic.bandcamp.com/album/living-room',
-        icon: 'simple-icons:bandcamp',
+        label: 'in Appstore',
+        link: 'https://apps.apple.com/us/app/subscrr-subscription-tracker/id6757530448',
+        icon: 'simple-icons:appstore',
       },
     ],
     videos: {
       youtube: [
         {
-          id: 'Thhr_smM1YE',
-          title: 'Living Room - Conciertos de Radio 3 - TVE',
+          id: 'EbeH_yAOMQQ',
+          title: 'Track Every Subscription at a Glance',
         },
-        // {
-        //   id: 'pWc9u1KQ2ms',
-        //   title: 'Living Room',
-        // },
+        {
+          id: 'wLiOGDug7Is',
+          title: 'All Your Recurring Expenses in One Place',
+        },
+        {
+          id: 'dfNV_ios4HU',
+          title: 'Let AI Help You Save on Subscriptions',
+        },
       ],
     },
     bgVideo: {
-      fhd: 'factories_1080p.mp4',
-      hd: 'factories_720p.mp4',
+      fhd: 'subscrr_1080p.mp4',
+      hd: 'subscrr_720p.mp4',
     },
     tracklist: [
       'Shut Up',
