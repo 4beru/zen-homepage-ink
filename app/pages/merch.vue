@@ -1,7 +1,7 @@
 <template>
   <section ref="servicesPageRef" class="services-page">
     <div class="container services-layout grid grid-cols-1 lg:grid-cols-[clamp(4rem,7vw,7rem)_minmax(0,1fr)] lg:gap-x-8 2xl:gap-x-12">
-      <aside ref="filterRef" class="services-aside relative z-40">
+      <aside ref="filterRef" class="services-aside relative">
         <!-- The spacer reserves room for the fixed mobile glass navigation. -->
         <div class="services-mobile-nav-spacer lg:hidden" aria-hidden="true" />
 
@@ -86,7 +86,6 @@
 
   const { t } = useI18n();
   const servicesPageRef = useTemplateRef("servicesPageRef");
-  const filterRef = useTemplateRef("filterRef");
   const mobileFilterRef = useTemplateRef("mobileFilterRef");
   const desktopFilterRef = useTemplateRef("desktopFilterRef");
 
@@ -169,8 +168,8 @@
 
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const activeSize = isDesktop
-      ? gsap.utils.clamp(22, 34, window.innerWidth * 0.024)
-      : gsap.utils.clamp(13, 17, window.innerWidth * 0.012);
+      ? gsap.utils.clamp(20, 34, Math.min(window.innerWidth * 0.024, window.innerHeight / 26))
+      : gsap.utils.clamp(13, 17, Math.min(window.innerWidth * 0.012, window.innerHeight / 38));
     const inactiveSize = isDesktop ? 11 : 10;
     const duration = immediate || prefersReducedMotion.value ? 0 : 0.42;
     const stagger = immediate || prefersReducedMotion.value ? 0 : 0.012;
@@ -224,7 +223,7 @@
   .services-nav-mobile {
     position: fixed;
     inset: 0 0 auto;
-    z-index: 100;
+    z-index: 94;
     padding-top: env(safe-area-inset-top);
     background: rgb(255 255 255 / 78%);
     border-bottom: 1px solid rgb(0 0 0 / 8%);
@@ -267,7 +266,7 @@
     position: fixed;
     left: 1.5rem;
     bottom: 2rem;
-    z-index: 50;
+    z-index: 94;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
