@@ -8,7 +8,7 @@ export const albums = [
       back: 'rythm-desktop.png',
       galleta: 'rythm.png',
     },
-    year: 2017,
+    year: 2024,
     recordLabel: 'rythm.fm',
     meta: {
       description: 'A connected music streaming experience for discovery, playlists, and listening together.',
@@ -134,12 +134,74 @@ export const albums = [
   },
   {
     id: 3,
+    slug: 'one',
+    title: 'Penti AI',
+    images: {
+      cover: 'penti-cover.png',
+      back: 'penti-desktop.png',
+      galleta: 'penti.png',
+    },
+    year: 2025,
+    releaseDate: '2025-05-01',
+    recordLabel: 'penti.ai',
+    meta: {
+      description: 'One is the first album recorded by Skizophonic.',
+    },
+    player: {
+      spotify: '',
+      bandcamp: {
+        id: '',
+        width: '',
+        height: ''
+      }
+    },
+    social: [
+      {
+        label: 'Website',
+        link: 'https://penti.ai/',
+        icon: 'lucide:globe'
+      }
+    ],
+    videos: {
+      youtube: [
+        {
+          id: '2Z-9EOyb6HE',
+          title: 'The New Methodology for Hacking AI',
+        },
+        {
+          id: 'xOQW_qMZdlc',
+          title: 'Hacking AI Models: Think Series',
+        },
+        {
+          id: 'W-lgskJTXO8',
+          title: 'AI Security & Vulnerability Assessment',
+        },
+      ],
+    },
+    bgVideo: {
+      fhd: 'pentiai_1080p.mp4',
+      hd: 'pentiai_720p.mp4',
+    },
+    tracklist: [
+      'Exhibitionist',
+      'The Last Stupid Rock Project',
+      'Smiles & Clouds',
+      'The Wrong Way',
+      '1968',
+      'Disco Stinks',
+      'Lucky Boy',
+      'The Other Side Of Border Line',
+      'Sweating Blood',
+    ],
+  },
+  {
+    id: 4,
     slug: 'gossip',
     title: 'Mira Life',
     images: {
       cover: 'miralife-cover.png',
       back: 'miralife-desktop.png',
-      galleta: 'galleta.png',
+      galleta: 'miralife.png',
     },
     year: 2026,
     releaseDate: '2026-02-28',
@@ -195,13 +257,13 @@ export const albums = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     slug: 'living-room',
     title: 'Subscrr',
     images: {
       cover: 'subscrr-cover.png',
       back: 'subscrr-desktop.png',
-      galleta: 'galleta.png',
+      galleta: 'subscrr.png',
     },
     year: 2026,
     releaseDate: '2026-09-19',
@@ -256,58 +318,6 @@ export const albums = [
       'Still Forget',
       'Living Room',
       'Squaring The Circle',
-    ],
-  },
-  {
-    id: 5,
-    slug: 'one',
-    title: 'One',
-    images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
-      galleta: 'galleta.png',
-    },
-    year: 2008,
-    releaseDate: '2008-05-01',
-    recordLabel: '',
-    meta: {
-      description: 'One is the first album recorded by Skizophonic.',
-    },
-    player: {
-      spotify: '',
-      bandcamp: {
-        id: '',
-        width: '',
-        height: ''
-      }
-    },
-    social: [],
-    videos: {
-      youtube: [
-        {
-          id: 'srcpryXQHXo',
-          title: 'Sweating Blood',
-        },
-        // {
-        //   id: 'YmKeR4UfhOA',
-        //   title: 'Smiles & Clouds',
-        // },
-      ],
-    },
-    bgVideo: {
-      fhd: 'subway_1080p.mp4',
-      hd: 'subway_720p.mp4',
-    },
-    tracklist: [
-      'Exhibitionist',
-      'The Last Stupid Rock Project',
-      'Smiles & Clouds',
-      'The Wrong Way',
-      '1968',
-      'Disco Stinks',
-      'Lucky Boy',
-      'The Other Side Of Border Line',
-      'Sweating Blood',
     ],
   },
 ];

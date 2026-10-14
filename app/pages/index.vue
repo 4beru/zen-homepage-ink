@@ -45,9 +45,9 @@
       <section ref="block2Ref" class="block2 absolute z-20 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div class="absolute z-10 top-0 left-0 w-full h-full">
           <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-            <source src="/videos/showreel_skizophonic_720p.mp4" type="video/mp4" media="(min-width: 1280px)">
-            <source src="/videos/showreel_skizophonic_480p.mp4" type="video/mp4" media="(min-width: 640px)">
-            <source src="/videos/showreel_skizophonic_360p.mp4" type="video/mp4">
+            <!-- <source src="/videos/gsap-showreel.mp4" type="video/mp4" media="(min-width: 1280px)"> -->
+            <!-- <source src="/videos/gsap-showreel.mp4" type="video/mp4" media="(min-width: 640px)"> -->
+            <source src="/videos/gsap-showreel.mp4" type="video/mp4">
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
@@ -97,8 +97,8 @@
       'large': 'rythm_720p.mp4',
     },
     2: {
-      'small': 'subway_480p.mp4',
-      'large': 'subway_720p.mp4',
+      'small': 'pentiai_540p.mp4',
+      'large': 'pentiai_720p.mp4',
     },
     3: {
       'small': 'woman_finger_640p.mp4',

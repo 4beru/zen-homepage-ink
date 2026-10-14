@@ -1,25 +1,15 @@
 ---
-title: One
+title: Penti
 ---
 
-Recorded, mixed and mastered at Bubble Studios in Castellón (Spain) sometime in 2008 while we were having a pint.
+Penti is an agentic AI cybersecurity platform that provides continuous security validation. It simulates real-world attacks across your applications, APIs, and infrastructure to expose vulnerabilities and prove exactly what an attacker can reach.
 
-Producer: Nacho Fandós<br>
-Photography: Iván Dabón<br>
-Graphic design: [Dan Alcaide](https://www.danalcaide.com)<br>
+## Deliverables
 
-## Instruments
+- **Autonomous Pentesting** — AI agents continuously test your live systems to find and expose actual vulnerabilities before attackers do.
 
-- Guitar Fender Telecaster
-- Guitar Fender Stratocaster
-- Bass Peavey
-- Drums Pearl
+- **Non-Destructive Validation** — Safely run exploits with strict scope control; vulnerabilities are proven, not detonated.
 
-## Amps
+- **Evidence & Compliance** — Every finding includes a full replayable chain mapped to SOC 2, ISO 27001, and HIPAA standards.
 
-- Orange Rocker 30C
-- Soldano
-
-## Effects Pedals
-
-- Wah-Wah Cry Baby
+- **Human-Led Review** — Access certified pentesters on any plan to validate automated findings before you act on them.
