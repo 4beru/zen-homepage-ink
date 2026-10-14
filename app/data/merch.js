@@ -1,108 +1,30 @@
-export const tshirts = [
+export const services = [
   {
-    id: 1,
-    name: 'Skizophonic',
-    image: 'tshirt_skizophonic.png',
-    stock: 0,
+    id: "web-development",
+    image: "/albums/video-rock/rythm-desktop.png",
+    titleKey: "pages.merch.services.webDevelopment.title",
+    descriptionKey: "pages.merch.services.webDevelopment.description",
+    altKey: "pages.merch.services.webDevelopment.alt",
   },
   {
-    id: 2,
-    name: 'Sound',
-    image: 'tshirt_sound.png',
-    stock: 0,
+    id: "product-architecture",
+    image: "/albums/one/penti-desktop.png",
+    titleKey: "pages.merch.services.productArchitecture.title",
+    descriptionKey: "pages.merch.services.productArchitecture.description",
+    altKey: "pages.merch.services.productArchitecture.alt",
   },
   {
-    id: 3,
-    name: 'Flowers',
-    image: 'tshirt_flowers.png',
+    id: "motion-3d",
+    image: "/albums/velodrome/unimatic-desktop.jpg",
+    titleKey: "pages.merch.services.motion3d.title",
+    descriptionKey: "pages.merch.services.motion3d.description",
+    altKey: "pages.merch.services.motion3d.alt",
   },
   {
-    id: 4,
-    name: 'Retro',
-    image: 'tshirt_retro.png',
+    id: "mobile-saas",
+    image: "/albums/living-room/subscrr-desktop.png",
+    titleKey: "pages.merch.services.mobileSaas.title",
+    descriptionKey: "pages.merch.services.mobileSaas.description",
+    altKey: "pages.merch.services.mobileSaas.alt",
   },
-  {
-    id: 5,
-    name: 'Heads - blue',
-    image: 'tshirt_heads_blue.png',
-  },
-  {
-    id: 6,
-    name: 'Heads - pink',
-    image: 'tshirt_heads_pink.png',
-  },
-  // {
-  //   id: 7,
-  //   name: 'Sound colours',
-  //   image: 'tshirt_sound_colours.png',
-  // },
-]
-
-export const badges = [
-  {
-    id: 1,
-    name: 'Skizophonic',
-    image: 'badge_skizophonic.png',
-  }
-]
-
-export const stickers = [
-  {
-    id: 1,
-    name: 'Subliminal',
-    image: 'sticker_subliminal.jpg',
-  },
-  {
-    id: 2,
-    name: 'Retrogame',
-    image: 'sticker_retrogame.png',
-  },
-  {
-    id: 3,
-    name: 'Novio caballo',
-    image: 'sticker_novio_caballo.jpg',
-  },
-  {
-    id: 4,
-    name: 'Psychedelic',
-    image: 'sticker_psychedelic.jpg',
-  },
-  {
-    id: 5,
-    name: 'Velodrome',
-    image: 'sticker_velodrome.jpg',
-  },
-  {
-    id: 6,
-    name: 'No-light men',
-    image: 'sticker_nolightmen.jpg',
-  },
-  {
-    id: 7,
-    name: 'Star',
-    image: 'sticker_star.jpg',
-  },
-]
-
-export const posters = [
-  {
-    id: 1,
-    name: 'Black & white',
-    image: 'poster_skizophonic_black_white.jpg',
-  },
-  {
-    id: 2,
-    name: 'Velodrome',
-    image: 'poster_velodrome_disc.jpg',
-  },
-  // {
-  //   id: 3,
-  //   name: 'Shapes',
-  //   image: 'poster_shapes.jpg',
-  // },
-  // {
-  //   id: 4,
-  //   name: 'Benicàssim.pop',
-  //   image: 'poster_benicassim_pop_octubre2013.jpg',
-  // },
-]
+];
