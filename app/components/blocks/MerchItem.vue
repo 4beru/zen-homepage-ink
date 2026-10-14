@@ -1,9 +1,5 @@
 <template>
   <article :id="service.id" class="service-item w-full" :aria-labelledby="`service-title-${index}`">
-    <div class="mb-5 flex items-center justify-between gap-4 border-t border-black/20 pb-3 pt-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500 sm:mb-7 sm:text-xs">
-      <span>{{ String(index + 1).padStart(2, "0") }}</span>
-      <span>{{ $t("pages.merch.serviceLabel") }}</span>
-    </div>
 
     <AnimationReveal class="w-full">
       <h2
@@ -15,7 +11,7 @@
     </AnimationReveal>
 
     <AnimationReveal class="w-full">
-      <p class="mb-6 mt-4 max-w-3xl text-base font-normal leading-relaxed text-gray-700 sm:mb-9 sm:mt-5 sm:text-lg lg:text-xl">
+      <p class="mb-6 mt-4 max-w-3xl text-base font-normal leading-relaxed sm:mb-9 sm:mt-5 sm:text-lg lg:text-xl">
         {{ $t(service.descriptionKey) }}
       </p>
     </AnimationReveal>

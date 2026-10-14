@@ -1,6 +1,6 @@
 <template>
   <section ref="servicesPageRef" class="services-page">
-    <div class="container grid grid-cols-1 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[16rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[17rem_minmax(0,1fr)] 2xl:gap-x-12">
+    <div class="container grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[20rem_minmax(0,1fr)] 2xl:gap-x-12">
       <aside class="relative">
         <!-- Mobile: reserve space for the fixed translucent navigation. -->
         <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
@@ -34,7 +34,7 @@
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-[#111111] [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
+                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -46,24 +46,13 @@
       </aside>
 
       <div class="min-w-0">
-        <header class="pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-24 lg:pb-24">
+        <header class="pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-24 lg:pb-2">
           <AnimationReveal class="w-full">
             <p class="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gray-600 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
             </p>
           </AnimationReveal>
 
-          <AnimationReveal class="w-full">
-            <h1 class="max-w-5xl text-[clamp(3.2rem,8vw,7.5rem)] leading-[0.9]">
-              {{ $t('pages.merch.title') }}
-            </h1>
-          </AnimationReveal>
-
-          <AnimationReveal class="w-full">
-            <p class="mt-6 max-w-3xl text-base font-normal leading-relaxed text-gray-600 sm:mt-8 sm:text-lg lg:text-xl">
-              {{ $t('pages.merch.intro') }}
-            </p>
-          </AnimationReveal>
         </header>
 
         <div class="flex flex-col gap-24 pb-24 sm:gap-28 md:gap-36 md:pb-40">
@@ -135,7 +124,7 @@
 
       // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
       gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
-      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#111111" });
+      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#000" });
 
       if (prefersReducedMotion.value) {
         gsap.set(navChars, { autoAlpha: 1, clearProps: "transform" });
@@ -151,17 +140,22 @@
 
       setActiveSection(0, true);
 
+      // Desktop uses the original trigger point (25%), mobile keeps its own (35%).
+      const triggerOffset = () => (window.matchMedia("(min-width: 1024px)").matches ? "top+=25%" : "top+=35%");
+
       services.forEach((service, index) => {
         ScrollTrigger.create({
           trigger: `#${service.id}`,
-          start: "top top+=35%",
-          end: "bottom top+=35%",
-          invalidateOnRefresh: true,
+          start: () => `top ${triggerOffset()}`,
+          end: () => `bottom ${triggerOffset()}`,
+          endTrigger: `#${service.id}`,
+          invalidateOnRefresh: true, // Safari needs this.
           onEnter: () => setActiveSection(index),
           onEnterBack: () => setActiveSection(index),
         });
       });
 
+      // Safari needs this.
       ScrollTrigger.refresh();
     }, servicesPageRef.value);
   });
@@ -177,43 +171,65 @@
 
     const previousIndex = activeServiceIndex.value;
     activeServiceIndex.value = index;
-    const duration = immediate || prefersReducedMotion.value ? 0 : 0.42;
-    const stagger = immediate || prefersReducedMotion.value ? 0 : 0.012;
+    const instant = immediate || prefersReducedMotion.value;
 
-    // Desktop: inactive labels use the existing md:text-[1.8rem] scale.
-    // The active label grows slightly instead of using the original oversized horizontal treatment,
-    // which would be too tall for this vertical rail.
-    const desktopActiveSize = gsap.utils.clamp(28.8, 38.4, window.innerWidth * 0.025);
+    // ---------- Mobile (unchanged) ----------
     const mobileActiveSize = gsap.utils.clamp(13, 17, Math.min(window.innerWidth * 0.012, window.innerHeight / 38));
 
-    for (const { splits, isMobile } of [
-      { splits: mobileSplits, isMobile: true },
-      { splits: desktopSplits, isMobile: false },
-    ]) {
-      const inactiveSize = isMobile ? 10 : 28.8;
-      const activeSize = isMobile ? mobileActiveSize : desktopActiveSize;
+    if (previousIndex >= 0 && mobileSplits[previousIndex]) {
+      gsap.to(mobileSplits[previousIndex].chars, {
+        fontSize: 10,
+        color: "#111111",
+        duration: instant ? 0 : 0.42,
+        stagger: instant ? 0 : 0.012,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    }
 
-      if (previousIndex >= 0 && splits[previousIndex]) {
-        gsap.to(splits[previousIndex].chars, {
-          fontSize: inactiveSize,
-          color: "#111111",
-          duration,
-          stagger,
+    if (mobileSplits[index]) {
+      gsap.to(mobileSplits[index].chars, {
+        fontSize: mobileActiveSize,
+        color: "#616161",
+        duration: instant ? 0 : 0.42,
+        stagger: instant ? 0 : 0.012,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    }
+
+    // ---------- Desktop (same as the original merch page) ----------
+    // Matching: font-size: clamp(2.6rem, 10vw, 12rem);
+    const clamp = gsap.utils.clamp(41.6, 192); // min 2.6rem, max 12rem - in px.
+    const fontSizeNext = clamp(window.innerWidth * 0.1); // 10vw - result in px.
+    const tl = gsap.timeline();
+
+    if (previousIndex >= 0 && desktopSplits[previousIndex]) {
+      // Shrink previous.
+      tl.to(desktopSplits[previousIndex].chars, {
+        fontSize: "1.8rem",
+        color: "#000",
+        duration: instant ? 0 : 0.5,
+        stagger: instant ? 0 : 0.03,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    }
+
+    if (desktopSplits[index]) {
+      // Grow next.
+      tl.to(
+        desktopSplits[index].chars,
+        {
+          fontSize: `${fontSizeNext}px`,
+          color: "#cfcfcf",
+          duration: instant ? 0 : 0.4,
+          stagger: instant ? 0 : 0.03,
           ease: "power2.inOut",
           overwrite: "auto",
-        });
-      }
-
-      if (splits[index]) {
-        gsap.to(splits[index].chars, {
-          fontSize: activeSize,
-          color: "#616161",
-          duration,
-          stagger,
-          ease: "power2.inOut",
-          overwrite: "auto",
-        });
-      }
+        },
+        "<"
+      );
     }
   }
 
@@ -222,10 +238,12 @@
     if (!service) return;
 
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    const offsetY = isDesktop ? 48 : 84;
+    // Desktop: original values (1.5s, offset 60). Mobile: keeps the offset for the fixed top nav.
+    const offsetY = isDesktop ? 60 : 84;
+    const duration = isDesktop ? 1.5 : 1.15;
 
     gsap.to(window, {
-      duration: prefersReducedMotion.value ? 0 : 1.15,
+      duration: prefersReducedMotion.value ? 0 : duration,
       scrollTo: {
         y: `#${service.id}`,
         offsetY,
