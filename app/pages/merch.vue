@@ -26,10 +26,13 @@
           </ul>
         </nav>
 
-        <nav class="hidden lg:block" aria-label="Services navigation">
+        <nav
+          class="hidden lg:sticky lg:top-[1.2rem] lg:z-[94] lg:block lg:h-[calc(100dvh-1.2rem)]"
+          aria-label="Services navigation"
+        >
           <ul
             ref="desktopFilterRef"
-            class="fixed bottom-8 left-4 z-[94] m-0 flex list-none flex-row items-end gap-2 p-0 lg:left-20 xl:gap-3 2xl:bottom-12 2xl:left-24"
+            class="absolute bottom-8 left-0 m-0 flex list-none flex-row items-end gap-2 p-0 xl:gap-3 2xl:bottom-12"
           >
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
@@ -73,10 +76,9 @@
   import { pageTransitionConfig } from "~/helpers/transitionConfig";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { ScrollToPlugin } from "gsap/ScrollToPlugin";
   import { SplitText } from "gsap/SplitText";
 
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
+  gsap.registerPlugin(ScrollTrigger, SplitText);
 
   definePageMeta({
     pageTransition: pageTransitionConfig,
@@ -86,6 +88,7 @@
   const servicesPageRef = useTemplateRef("servicesPageRef");
   const mobileFilterRef = useTemplateRef("mobileFilterRef");
   const desktopFilterRef = useTemplateRef("desktopFilterRef");
+  const lenis = useLenis();
 
   const activeServiceIndex = ref(-1);
   const prefersReducedMotion = ref(false);
@@ -155,20 +158,9 @@
         });
       });
 
-      // Keep the desktop navigation visually fixed while Services scrolls,
-      // then move it with the section's bottom edge so it never overlaps the footer.
-      ScrollTrigger.create({
-        trigger: servicesPageRef.value,
-        start: "top top",
-        end: "bottom top",
-        invalidateOnRefresh: true,
-        onUpdate: updateDesktopAsidePosition,
-        onRefresh: updateDesktopAsidePosition,
-      });
-
-      // Safari needs this.
+      // Refresh section triggers after fonts, images and layout have settled.
+      // The desktop navigation's position is handled by CSS sticky.
       ScrollTrigger.refresh();
-      updateDesktopAsidePosition();
     }, servicesPageRef.value);
   });
 
@@ -177,23 +169,6 @@
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
-
-  function updateDesktopAsidePosition() {
-    const nav = desktopFilterRef.value;
-    const section = servicesPageRef.value;
-    if (!nav || !section) return;
-
-    // The mobile navigation remains in its top glass bar.
-    if (!window.matchMedia("(min-width: 1024px)").matches) {
-      gsap.set(nav, { y: 0 });
-      return;
-    }
-
-    // The section's bottom edge is the boundary: once it approaches the viewport,
-    // the desktop rail travels upward with it and is out of view before the footer starts.
-    const sectionBottom = section.getBoundingClientRect().bottom;
-    gsap.set(nav, { y: Math.min(0, sectionBottom - window.innerHeight) });
-  }
 
   function setActiveSection(index, immediate = false) {
     if (index < 0 || index >= services.length || index === activeServiceIndex.value) return;
@@ -264,21 +239,23 @@
 
   function handleClickFilterOption(index) {
     const service = services[index];
-    if (!service) return;
+    const instance = lenis.value;
+    if (!service || !instance) return;
 
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    // Desktop: original values (1.5s, offset 60). Mobile: keeps the offset for the fixed top nav.
+    // Account for the mobile top bar and keep desktop targets comfortably below the top.
     const offsetY = isDesktop ? 60 : 84;
     const duration = isDesktop ? 1.5 : 1.15;
+    const reducedMotion = prefersReducedMotion.value;
 
-    gsap.to(window, {
-      duration: prefersReducedMotion.value ? 0 : duration,
-      scrollTo: {
-        y: `#${service.id}`,
-        offsetY,
-        autoKill: true,
-      },
-      ease: prefersReducedMotion.value ? "none" : "power4.inOut",
+    instance.scrollTo(`#${service.id}`, {
+      offset: -offsetY,
+      duration: reducedMotion ? 0 : duration,
+      immediate: reducedMotion,
+      easing: (t) =>
+        t < 0.5
+          ? 8 * t ** 4
+          : 1 - Math.pow(-2 * t + 2, 4) / 2,
       onComplete: () => setActiveSection(index),
     });
   }
