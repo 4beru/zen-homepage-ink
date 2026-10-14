@@ -74,6 +74,7 @@
 <script setup>
   import { services } from "~/data/merch";
   import { pageTransitionConfig } from "~/helpers/transitionConfig";
+  import { useLenis } from "lenis/vue";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
