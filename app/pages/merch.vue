@@ -1,16 +1,22 @@
 <template>
   <section ref="servicesPageRef" class="services-page">
-    <div class="container services-layout grid grid-cols-1 lg:grid-cols-[clamp(4rem,7vw,7rem)_minmax(0,1fr)] lg:gap-x-8 2xl:gap-x-12">
-      <aside ref="filterRef" class="services-aside relative">
-        <!-- The spacer reserves room for the fixed mobile glass navigation. -->
-        <div class="services-mobile-nav-spacer lg:hidden" aria-hidden="true" />
+    <div class="container grid grid-cols-1 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[16rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[17rem_minmax(0,1fr)] 2xl:gap-x-12">
+      <aside class="relative">
+        <!-- Mobile: reserve space for the fixed translucent navigation. -->
+        <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
 
-        <nav class="services-nav-mobile lg:hidden" aria-label="Services navigation">
-          <ul ref="mobileFilterRef" class="services-filter-mobile">
-            <li v-for="(service, index) in services" :key="service.id">
+        <nav
+          class="fixed inset-x-0 top-0 z-[94] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
+          aria-label="Services navigation"
+        >
+          <ul
+            ref="mobileFilterRef"
+            class="m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
+          >
+            <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                :class="{ 'is-active': activeServiceIndex === index }"
+                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -21,11 +27,14 @@
         </nav>
 
         <nav class="hidden lg:block" aria-label="Services navigation">
-          <ul ref="desktopFilterRef" class="services-filter-desktop">
-            <li v-for="(service, index) in services" :key="service.id">
+          <ul
+            ref="desktopFilterRef"
+            class="fixed bottom-8 left-4 z-[94] m-0 flex list-none flex-row items-end gap-2 p-0 lg:left-20 xl:gap-3 2xl:bottom-12 2xl:left-24"
+          >
+            <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                :class="{ 'is-active': activeServiceIndex === index }"
+                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-[#111111] [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -57,7 +66,7 @@
           </AnimationReveal>
         </header>
 
-        <div class="services-items flex flex-col gap-24 pb-24 sm:gap-28 md:gap-36 md:pb-40">
+        <div class="flex flex-col gap-24 pb-24 sm:gap-28 md:gap-36 md:pb-40">
           <MerchItem
             v-for="(service, index) in services"
             :key="service.id"
@@ -120,16 +129,19 @@
         SplitText.create(button, { type: "chars", charsClass: "service-nav-char" })
       );
 
-      const navChars = [
-        ...mobileSplits.flatMap((split) => split.chars),
-        ...desktopSplits.flatMap((split) => split.chars),
-      ];
+      const mobileChars = mobileSplits.flatMap((split) => split.chars);
+      const desktopChars = desktopSplits.flatMap((split) => split.chars);
+      const navChars = [...mobileChars, ...desktopChars];
+
+      // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
+      gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
+      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#111111" });
 
       if (prefersReducedMotion.value) {
         gsap.set(navChars, { autoAlpha: 1, clearProps: "transform" });
       } else {
         gsap.from(navChars, {
-          y: 28,
+          y: 24,
           autoAlpha: 0,
           duration: 0.75,
           stagger: { each: 0.008, from: "start" },
@@ -165,16 +177,22 @@
 
     const previousIndex = activeServiceIndex.value;
     activeServiceIndex.value = index;
-
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    const activeSize = isDesktop
-      ? gsap.utils.clamp(20, 34, Math.min(window.innerWidth * 0.024, window.innerHeight / 26))
-      : gsap.utils.clamp(13, 17, Math.min(window.innerWidth * 0.012, window.innerHeight / 38));
-    const inactiveSize = isDesktop ? 11 : 10;
     const duration = immediate || prefersReducedMotion.value ? 0 : 0.42;
     const stagger = immediate || prefersReducedMotion.value ? 0 : 0.012;
 
-    for (const splits of [mobileSplits, desktopSplits]) {
+    // Desktop: inactive labels use the existing md:text-[1.8rem] scale.
+    // The active label grows slightly instead of using the original oversized horizontal treatment,
+    // which would be too tall for this vertical rail.
+    const desktopActiveSize = gsap.utils.clamp(28.8, 38.4, window.innerWidth * 0.025);
+    const mobileActiveSize = gsap.utils.clamp(13, 17, Math.min(window.innerWidth * 0.012, window.innerHeight / 38));
+
+    for (const { splits, isMobile } of [
+      { splits: mobileSplits, isMobile: true },
+      { splits: desktopSplits, isMobile: false },
+    ]) {
+      const inactiveSize = isMobile ? 10 : 28.8;
+      const activeSize = isMobile ? mobileActiveSize : desktopActiveSize;
+
       if (previousIndex >= 0 && splits[previousIndex]) {
         gsap.to(splits[previousIndex].chars, {
           fontSize: inactiveSize,
@@ -189,7 +207,7 @@
       if (splits[index]) {
         gsap.to(splits[index].chars, {
           fontSize: activeSize,
-          color: "#cfcfcf",
+          color: "#616161",
           duration,
           stagger,
           ease: "power2.inOut",
@@ -218,107 +236,3 @@
     });
   }
 </script>
-
-<style scoped>
-  .services-nav-mobile {
-    position: fixed;
-    inset: 0 0 auto;
-    z-index: 94;
-    padding-top: env(safe-area-inset-top);
-    background: rgb(255 255 255 / 78%);
-    border-bottom: 1px solid rgb(0 0 0 / 8%);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-  }
-
-  .services-mobile-nav-spacer {
-    height: calc(3.5rem + env(safe-area-inset-top));
-  }
-
-  .services-filter-mobile {
-    display: flex;
-    align-items: center;
-    gap: 1.15rem;
-    overflow-x: auto;
-    padding: 0.8rem 1rem;
-    margin: 0;
-    list-style: none;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .services-filter-mobile::-webkit-scrollbar {
-    display: none;
-  }
-
-  .services-filter-mobile button {
-    display: block;
-    white-space: nowrap;
-    text-transform: uppercase;
-    font-size: 0.625rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    line-height: 1.1;
-    color: #111111;
-  }
-
-  .services-filter-desktop {
-    position: fixed;
-    left: 1.5rem;
-    bottom: 2rem;
-    z-index: 94;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: clamp(0.45rem, 0.85vw, 0.9rem);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .services-filter-desktop button {
-    display: block;
-    inline-size: max-content;
-    block-size: max-content;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    white-space: nowrap;
-    text-transform: uppercase;
-    text-align: left;
-    font-size: 0.6875rem;
-    font-weight: 800;
-    letter-spacing: 0.055em;
-    line-height: 1;
-    color: #111111;
-    padding: 0.25rem 0.15rem;
-    transition: color 300ms ease;
-  }
-
-  .service-item {
-    scroll-margin-top: 3rem;
-  }
-
-  @media (min-width: 1280px) {
-    .services-filter-desktop {
-      left: 2.5rem;
-      bottom: 2.5rem;
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .services-filter-desktop {
-      left: 4rem;
-      bottom: 3rem;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .services-nav-mobile,
-    .services-filter-mobile button,
-    .services-filter-desktop button {
-      scroll-behavior: auto;
-      transition: none !important;
-    }
-  }
-</style>
