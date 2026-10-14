@@ -84,26 +84,34 @@
     "merch": {
       "name": "Services",
       "title": "Services",
-      "sections": {
-        "tshirts": {
-          "title": "Creative web development"
+      "eyebrow": "What we do",
+      "intro": "From the first idea to the final interaction, we bring creative direction, product thinking and engineering together to build digital experiences with purpose.",
+      "serviceLabel": "Service",
+      "services": {
+        "webDevelopment": {
+          "title": "Creative web development",
+          "description": "We design and build distinctive websites with clear art direction, considered interaction and dependable frontend engineering. Every detail serves the story and the experience.",
+          "alt": "Rythm project visual illustrating creative web development."
         },
-        "buttonBadges": {
-          "title": "Digital product architecture"
+        "productArchitecture": {
+          "title": "Digital product architecture",
+          "description": "We shape the foundations behind digital products—from user flows and system structure to frontend, backend and integrations—so the experience stays coherent as the product grows.",
+          "alt": "Penti AI project visual illustrating digital product architecture."
         },
-        "stickers": {
-          "title": "Motion & 3D experiences"
+        "motion3d": {
+          "title": "Motion & 3D experiences",
+          "description": "We bring interfaces to life with purposeful motion, 3D and immersive visual techniques, balancing a memorable feel with responsive interaction and performance.",
+          "alt": "Unimatic project visual from the studio's portfolio."
         },
-        "posters": {
-          "title": "Mobile & SaaS apps"
+        "mobileSaas": {
+          "title": "Mobile & SaaS apps",
+          "description": "We create focused mobile and SaaS experiences that turn complex workflows into intuitive products, with practical UX, maintainable architecture and room to evolve.",
+          "alt": "Subscrr project visual illustrating a digital product experience."
         }
-      },
-      "labels": {
-        "noStock": "Currently unavailable"
       },
       "meta": {
         "title": "Services",
-        "description": "What we design and build"
+        "description": "Creative web development, digital product architecture, motion and 3D experiences, and mobile and SaaS applications."
       }
     },
     "privacy": {
