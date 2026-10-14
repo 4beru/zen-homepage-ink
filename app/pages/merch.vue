@@ -46,7 +46,7 @@
       </aside>
 
       <div class="min-w-0">
-        <header class="pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-24 lg:pb-2">
+        <header class="pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-24 lg:pb-10">
           <AnimationReveal class="w-full">
             <p class="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gray-600 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
@@ -55,7 +55,7 @@
 
         </header>
 
-        <div class="flex flex-col gap-24 pb-24 sm:gap-28 md:gap-36 md:pb-40">
+        <div class="flex flex-col gap-24 pb-24 sm:gap-28 md:gap-32 2xl:gap-36 md:pb-40">
           <MerchItem
             v-for="(service, index) in services"
             :key="service.id"
@@ -155,8 +155,20 @@
         });
       });
 
+      // Keep the desktop navigation visually fixed while Services scrolls,
+      // then move it with the section's bottom edge so it never overlaps the footer.
+      ScrollTrigger.create({
+        trigger: servicesPageRef.value,
+        start: "top top",
+        end: "bottom top",
+        invalidateOnRefresh: true,
+        onUpdate: updateDesktopAsidePosition,
+        onRefresh: updateDesktopAsidePosition,
+      });
+
       // Safari needs this.
       ScrollTrigger.refresh();
+      updateDesktopAsidePosition();
     }, servicesPageRef.value);
   });
 
@@ -165,6 +177,23 @@
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
+
+  function updateDesktopAsidePosition() {
+    const nav = desktopFilterRef.value;
+    const section = servicesPageRef.value;
+    if (!nav || !section) return;
+
+    // The mobile navigation remains in its top glass bar.
+    if (!window.matchMedia("(min-width: 1024px)").matches) {
+      gsap.set(nav, { y: 0 });
+      return;
+    }
+
+    // The section's bottom edge is the boundary: once it approaches the viewport,
+    // the desktop rail travels upward with it and is out of view before the footer starts.
+    const sectionBottom = section.getBoundingClientRect().bottom;
+    gsap.set(nav, { y: Math.min(0, sectionBottom - window.innerHeight) });
+  }
 
   function setActiveSection(index, immediate = false) {
     if (index < 0 || index >= services.length || index === activeServiceIndex.value) return;
