@@ -70,21 +70,23 @@
     </div>
 
     <!-- Full-width follow-up section, separate from the Services two-column block. -->
-    <div class="container">
-      <div ref="extrasTriggerRef" class="h-px" aria-hidden="true" />
+    <section class="services-follow-up" aria-label="Project Journey and FAQs">
+      <div class="container">
+        <div ref="extrasTriggerRef" class="h-px" aria-hidden="true" />
 
-      <Transition
-        name="journey-faqs"
-        @before-enter="onJourneyBeforeEnter"
-        @enter="onJourneyEnter"
-        @leave="onJourneyLeave"
-      >
-        <div v-if="showExtras" class="flex flex-col gap-24 sm:gap-28 md:gap-32 2xl:gap-36">
-          <ProjectJourney />
-          <FaqAccordion />
-        </div>
-      </Transition>
-    </div>
+        <Transition
+          name="journey-faqs"
+          @before-enter="onJourneyBeforeEnter"
+          @enter="onJourneyEnter"
+          @leave="onJourneyLeave"
+        >
+          <div v-if="showExtras" class="flex flex-col gap-24 sm:gap-28 md:gap-32 2xl:gap-36">
+            <ProjectJourney />
+            <FaqAccordion />
+          </div>
+        </Transition>
+      </div>
+    </section>
   </section>
 </template>
 
@@ -320,9 +322,8 @@
       .call(() => {
         // The newly mounted sections add height below the viewport; re-measure
         // every trigger and keep Lenis aligned with the real scroll position.
-        // Recalculate Lenis dimensions after Vue mounts the new section.
-        // `scroll` is a numeric getter; `resize()` recalculates dimensions.
-        lenis.value?.resize();
+        // VueLenis uses autoResize in app.vue, so its ResizeObserver updates
+        // scroll dimensions; refresh GSAP triggers after the new content is mounted.
         ScrollTrigger.refresh();
       })
       .to(strips, {
