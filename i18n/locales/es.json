@@ -90,28 +90,24 @@
       "services": {
         "webDevelopment": {
           "title": "Desarrollo web creativo",
-          "navTitle": "Sitios Web",
           "description": "Diseñamos y desarrollamos sitios web con una dirección visual distintiva, interacciones cuidadas e ingeniería frontend sólida. Cada detalle contribuye a la historia y a la experiencia.",
           "alt": "Imagen del proyecto Rythm que ilustra el desarrollo web creativo.",
           "secondaryAlt": "Imagen adicional del proyecto Rythm."
         },
         "productArchitecture": {
           "title": "Arquitectura de productos digitales",
-          "navTitle": "Productos Digitales",
           "description": "Diseñamos las bases de productos digitales: desde los flujos de usuario y la estructura del sistema hasta el frontend, el backend y las integraciones, para que la experiencia pueda crecer de forma coherente.",
           "alt": "Imagen del proyecto Penti AI que ilustra la arquitectura de productos digitales.",
           "secondaryAlt": "Imagen adicional del proyecto Penti AI."
         },
         "motion3d": {
           "title": "Experiencias de motion y 3D",
-          "navTitle": "Motion 3D",
           "description": "Damos vida a las interfaces mediante motion, 3D y recursos visuales inmersivos, equilibrando una experiencia memorable con interacciones fluidas y buen rendimiento.",
           "alt": "Imagen del proyecto Unimatic perteneciente al portfolio del estudio.",
           "secondaryAlt": "Imagen adicional del proyecto Unimatic."
         },
         "mobileSaas": {
           "title": "Aplicaciones móviles y SaaS",
-          "navTitle": "Apps SaaS",
           "description": "Creamos experiencias móviles y SaaS que convierten flujos complejos en productos intuitivos, con UX práctica, una arquitectura mantenible y capacidad para evolucionar.",
           "alt": "Imagen del proyecto Subscrr que ilustra una experiencia de producto digital.",
           "secondaryAlt": "Imagen adicional del proyecto Subscrr."
