@@ -165,7 +165,7 @@
       ease: 'power3.inOut',
       overwrite: 'auto',
     });
-    const vertical = glyphIconVertical(index);
+    const vertical = iconVerticalByIndex(index);
     if (vertical) gsap.to(vertical, { scaleY: 1, rotation: 0, duration: instant ? 0 : 0.35, ease: 'power2.inOut' });
   }
 
