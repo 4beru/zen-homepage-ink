@@ -350,7 +350,17 @@
 
     // The continuation copies the active label only after its character sizing
     // has settled, so the duplicate uses the same rendered typography.
-    tl.eventCallback("onComplete", () => syncDesktopTitleContinuation(index));
+    tl.eventCallback("onComplete", () => {
+      runInPageContext(() => syncDesktopTitleContinuation(index));
+    });
+  }
+
+  function runInPageContext(callback) {
+    if (ctx) {
+      ctx.add(callback);
+    } else {
+      callback();
+    }
   }
 
   function getDesktopTitleFontSize() {
@@ -477,23 +487,25 @@
   function handleServicesResize() {
     resizeCall?.kill();
     resizeCall = gsap.delayedCall(0.16, () => {
-      if (
-        !window.matchMedia("(min-width: 1024px)").matches ||
-        activeServiceIndex.value < 0
-      ) {
-        return;
-      }
+      runInPageContext(() => {
+        if (
+          !window.matchMedia("(min-width: 1024px)").matches ||
+          activeServiceIndex.value < 0
+        ) {
+          return;
+        }
 
-      const activeChars = desktopSplits[activeServiceIndex.value]?.chars;
-      if (activeChars?.length) {
-        gsap.set(activeChars, {
-          fontSize: `${getDesktopTitleFontSize()}px`,
-          color: "#cfcfcf",
-        });
-      }
+        const activeChars = desktopSplits[activeServiceIndex.value]?.chars;
+        if (activeChars?.length) {
+          gsap.set(activeChars, {
+            fontSize: `${getDesktopTitleFontSize()}px`,
+            color: "#cfcfcf",
+          });
+        }
 
-      syncDesktopTitleContinuation(activeServiceIndex.value, true);
-      ScrollTrigger.refresh();
+        syncDesktopTitleContinuation(activeServiceIndex.value, true);
+        ScrollTrigger.refresh();
+      });
     });
   }
 
