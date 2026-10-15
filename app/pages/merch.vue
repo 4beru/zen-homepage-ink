@@ -635,5 +635,18 @@
     .services-panel-inner {
       transform: none !important;
     }
+
+    .services-panel-layout > aside > nav:first-of-type {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .services-panel-layout > aside > nav:last-of-type {
+      position: sticky;
+      top: 1.2rem;
+    }
   }
 </style>
