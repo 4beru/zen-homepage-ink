@@ -4,7 +4,7 @@
     <div ref="panelVisualRef" class="journey-panel-visual">
       <div ref="panelExitRef" class="journey-panel-exit">
         <div ref="panelInnerRef" class="journey-panel-inner">
-  <section ref="journeyRef" class="project-journey w-full border-t border-black/10 pt-24 pb-8 sm:pt-28 md:pt-36" aria-labelledby="journey-title">
+  <section class="project-journey w-full border-t border-black/10 pt-24 pb-8 sm:pt-28 md:pt-36" aria-labelledby="journey-title">
     <!-- Eyebrow -->
     <p class="journey-eyebrow mb-4 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
       {{ $t('pages.merch.journey.eyebrow') }}
@@ -285,7 +285,7 @@
   }
 
   onUnmounted(() => {
-    window.removeEventListener('resize', resizeHandler);
+    if (resizeHandler) window.removeEventListener('resize', resizeHandler);
     window.clearTimeout(resizeTimeout);
     titleSplit?.revert();
     animationContext?.revert();
