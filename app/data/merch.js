@@ -1,8 +1,8 @@
 export const services = [
   {
     id: "web-development",
-    image: "/albums/video-rock/rythm-desktop.png",
-    secondaryImage: "/albums/video-rock/rythm-cover.png",
+    image: "/images/merch/website-service-1.png",
+    secondaryImage: "/images/merch/website-service-1.png",
     titleKey: "pages.merch.services.webDevelopment.title",
     navTitleKey: "pages.merch.services.webDevelopment.navTitle",
     descriptionKey: "pages.merch.services.webDevelopment.description",
@@ -11,8 +11,8 @@ export const services = [
   },
   {
     id: "product-architecture",
-    image: "/albums/one/penti-desktop.png",
-    secondaryImage: "/albums/one/penti-cover.png",
+    image: "/images/merch/website-service-1.png",
+    secondaryImage: "/images/merch/website-service-1.png",
     titleKey: "pages.merch.services.productArchitecture.title",
     navTitleKey: "pages.merch.services.productArchitecture.navTitle",
     descriptionKey: "pages.merch.services.productArchitecture.description",
@@ -21,8 +21,8 @@ export const services = [
   },
   {
     id: "motion-3d",
-    image: "/albums/velodrome/unimatic-desktop.jpg",
-    secondaryImage: "/albums/velodrome/unimatic-cover.jpg",
+    image: "/images/merch/website-service-1.png",
+    secondaryImage: "/images/merch/website-service-1.png",
     titleKey: "pages.merch.services.motion3d.title",
     navTitleKey: "pages.merch.services.motion3d.navTitle",
     descriptionKey: "pages.merch.services.motion3d.description",
@@ -31,8 +31,8 @@ export const services = [
   },
   {
     id: "mobile-saas",
-    image: "/albums/living-room/subscrr-desktop.png",
-    secondaryImage: "/albums/living-room/subscrr-cover.png",
+    image: "/images/merch/website-service-1.png",
+    secondaryImage: "/images/merch/website-service-1.png",
     titleKey: "pages.merch.services.mobileSaas.title",
     navTitleKey: "pages.merch.services.mobileSaas.navTitle",
     descriptionKey: "pages.merch.services.mobileSaas.description",
