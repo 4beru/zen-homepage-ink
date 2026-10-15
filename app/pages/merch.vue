@@ -73,6 +73,7 @@
         </div>
       </div>
     </div>
+    </div>
 
     <!-- Full-width follow-up section, separate from the Services two-column block. -->
     <section class="services-follow-up" aria-label="Project Journey and FAQs">
@@ -136,7 +137,6 @@
   let servicesPanelTimeline;
   let servicesPanelResizeHandler;
   let servicesPanelResizeTimeout;
-  let servicesPanelHeight = 0;
   let servicesPanelDifference = 0;
   let servicesPanelContentHeight = 0;
 
@@ -303,7 +303,6 @@
     const difference = Math.max(0, contentHeight - panelHeight);
     const fakeScrollDuration = difference / panelHeight;
 
-    servicesPanelHeight = panelHeight;
     servicesPanelDifference = difference;
     servicesPanelContentHeight = Math.max(contentHeight, panelHeight);
     panel.style.marginBottom = `${difference}px`;
