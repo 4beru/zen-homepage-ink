@@ -17,10 +17,11 @@
               <button
                 type="button"
                 class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                :aria-label="$t(service.titleKey)"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
-                {{ $t(service.titleKey) }}
+                {{ $t(service.navTitleKey) }}
               </button>
             </li>
           </ul>
@@ -38,10 +39,11 @@
               <button
                 type="button"
                 class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
+                :aria-label="$t(service.titleKey)"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
-                {{ $t(service.titleKey) }}
+                {{ $t(service.navTitleKey) }}
               </button>
             </li>
           </ul>
