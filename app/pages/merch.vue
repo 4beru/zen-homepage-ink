@@ -138,7 +138,6 @@
   let servicesPanelResizeHandler;
   let servicesPanelResizeTimeout;
   let servicesPanelDifference = 0;
-  let servicesPanelContentHeight = 0;
 
   useSeoMeta({
     title: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
@@ -304,7 +303,6 @@
     const fakeScrollDuration = difference / panelHeight;
 
     servicesPanelDifference = difference;
-    servicesPanelContentHeight = Math.max(contentHeight, panelHeight);
     panel.style.marginBottom = `${difference}px`;
 
     servicesPanelContext = gsap.context(() => {
@@ -570,9 +568,10 @@
       const contentOffset = getElementOffsetWithin(serviceElement, servicesPanelLayoutRef.value);
       const activationY = window.innerHeight * (isDesktop ? 0.25 : 0.35);
       const fakeScroll = gsap.utils.clamp(0, servicesPanelDifference, contentOffset - activationY);
-      const progress = fakeScroll / servicesPanelDifference;
-
-      target = panelTrigger.start + progress * servicesPanelContentHeight;
+      // The pinned trigger maps one document-scroll pixel to one pixel of
+      // fake content movement during this phase. Do not normalize by the full
+      // pin duration: the final viewport is reserved for the panel handoff.
+      target = panelTrigger.start + fakeScroll;
       offset = 0;
     }
 
