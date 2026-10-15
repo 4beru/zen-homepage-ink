@@ -20,11 +20,10 @@
               <button
                 type="button"
                 class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-                :aria-label="$t(service.titleKey)"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
-                <span class="service-nav-label whitespace-nowrap">{{ $t(service.navTitleKey) }}</span>
+                {{ $t(service.titleKey) }}
               </button>
             </li>
           </ul>
@@ -41,12 +40,11 @@
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                class="block whitespace-normal text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-white [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
-                :aria-label="$t(service.titleKey)"
+                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-white [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
-                <span class="service-nav-label block max-h-[calc(100dvh-5rem)] whitespace-normal">{{ $t(service.navTitleKey) }}</span>
+                {{ $t(service.titleKey) }}
               </button>
             </li>
           </ul>
@@ -158,18 +156,11 @@
       const mobileButtons = [...(mobileFilterRef.value?.querySelectorAll("button") ?? [])];
       const desktopButtons = [...(desktopFilterRef.value?.querySelectorAll("button") ?? [])];
 
-      // Split only the visible label wrapper; the button keeps a stable accessible name.
       mobileSplits = mobileButtons.map((button) =>
-        SplitText.create(button.querySelector(".service-nav-label") ?? button, {
-          type: "chars",
-          charsClass: "service-nav-char",
-        })
+        SplitText.create(button, { type: "chars", charsClass: "service-nav-char" })
       );
       desktopSplits = desktopButtons.map((button) =>
-        SplitText.create(button.querySelector(".service-nav-label") ?? button, {
-          type: "chars",
-          charsClass: "service-nav-char",
-        })
+        SplitText.create(button, { type: "chars", charsClass: "service-nav-char" })
       );
 
       const mobileChars = mobileSplits.flatMap((split) => split.chars);
@@ -512,7 +503,7 @@
     if (mobileSplits[index]) {
       gsap.to(mobileSplits[index].chars, {
         fontSize: mobileActiveSize,
-        color: "#A3A3A3",
+        color: "#616161",
         duration: instant ? 0 : 0.42,
         stagger: instant ? 0 : 0.012,
         ease: "power2.inOut",
@@ -521,20 +512,9 @@
     }
 
     // ---------- Desktop (same as the original merch page) ----------
-    // Keep the active word within the available viewport height. Since aside labels
-    // use at most two short words, each word can occupy its own vertical column.
-    const navTitle = t(services[index].navTitleKey ?? services[index].titleKey);
-    const longestWordLength = Math.max(
-      1,
-      ...navTitle.trim().split(/\s+/).map((word) => word.length),
-    );
-    const availableHeight = Math.max(220, window.innerHeight - 80);
-    const viewportFitSize = availableHeight / (longestWordLength * 0.62);
-    const fontSizeNext = gsap.utils.clamp(
-      41.6,
-      192,
-      Math.min(window.innerWidth * 0.1, viewportFitSize),
-    );
+    // Matching: font-size: clamp(2.6rem, 10vw, 12rem);
+    const clamp = gsap.utils.clamp(41.6, 192); // min 2.6rem, max 12rem - in px.
+    const fontSizeNext = clamp(window.innerWidth * 0.1); // 10vw - result in px.
     const tl = gsap.timeline();
 
     if (previousIndex >= 0 && desktopSplits[previousIndex]) {
@@ -555,7 +535,7 @@
         desktopSplits[index].chars,
         {
           fontSize: `${fontSizeNext}px`,
-          color: "#A3A3A3",
+          color: "#cfcfcf",
           duration: instant ? 0 : 0.4,
           stagger: instant ? 0 : 0.03,
           ease: "power2.inOut",
@@ -630,14 +610,9 @@
     will-change: transform, opacity;
   }
 
-  .services-panel-visual,
   .services-panel-exit {
     background: #000;
     color: #fff;
-  }
-
-  .service-nav-label {
-    text-wrap: pretty;
   }
 
   .services-panel-layout {
