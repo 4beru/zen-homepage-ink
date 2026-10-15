@@ -3,21 +3,28 @@
     <AnimationReveal class="w-full">
       <h2
         :id="`service-title-${index}`"
-        class="max-w-5xl text-[clamp(2rem,5.5vw,4.6rem)] leading-[0.98]"
+        data-service-focus="text"
+        class="max-w-5xl text-[clamp(3rem,10vw,4.6rem)] leading-none text-black"
       >
         {{ $t(service.titleKey) }}
       </h2>
     </AnimationReveal>
 
     <AnimationReveal class="w-full">
-      <p class="mt-4 max-w-3xl text-base font-normal leading-relaxed sm:mt-5 sm:text-lg lg:text-xl">
+      <p
+        data-service-focus="text"
+        class="mt-3 max-w-3xl text-lg font-normal leading-relaxed text-gray-800 sm:mt-4 lg:text-xl"
+      >
         {{ $t(service.descriptionKey) }}
       </p>
     </AnimationReveal>
 
     <div class="mt-8 flex flex-col gap-8 sm:mt-10 sm:gap-10 lg:mt-12 lg:gap-12">
       <AnimationReveal class="w-full">
-        <figure class="group relative isolate w-full overflow-hidden rounded-xl bg-gray-100">
+        <figure
+          data-service-focus="visual"
+          class="group relative isolate w-full overflow-hidden rounded-xl bg-gray-100"
+        >
           <NuxtImg
             :src="service.image"
             :alt="$t(service.altKey)"
@@ -29,7 +36,10 @@
       </AnimationReveal>
 
       <AnimationReveal class="w-full">
-        <figure class="group relative isolate w-full overflow-hidden rounded-xl bg-gray-100">
+        <figure
+          data-service-focus="visual"
+          class="group relative isolate w-full overflow-hidden rounded-xl bg-gray-100"
+        >
           <NuxtImg
             :src="service.secondaryImage"
             :alt="$t(service.secondaryAltKey)"
