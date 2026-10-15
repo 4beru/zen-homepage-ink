@@ -116,6 +116,59 @@
       "meta": {
         "title": "Servicios",
         "description": "Desarrollo web creativo, arquitectura de productos digitales, experiencias de motion y 3D, y aplicaciones móviles y SaaS."
+      },
+      "journey": {
+        "eyebrow": "Cómo trabajamos",
+        "title": "Project Journey",
+        "intro": "Cada proyecto sigue el mismo camino deliberado: primero escuchamos, damos forma a la idea y después la construimos con cuidado hasta que está lista para el mundo.",
+        "steps": {
+          "discover": {
+            "title": "Descubrir",
+            "description": "Empezamos escuchando—objetivos, audiencia y restricciones—para que el briefing refleje el problema real antes de dibujar un solo píxel."
+          },
+          "define": {
+            "title": "Definir",
+            "description": "Las ideas se convierten en alcance: flujos de usuario, arquitectura y hitos quedan trazados para que todos sepan qué construimos y por qué."
+          },
+          "design": {
+            "title": "Diseñar",
+            "description": "Dirección de arte, interfaz y exploraciones de movimiento. Prototipamos los momentos clave pronto y los refinamos con ciclos de feedback honestos."
+          },
+          "develop": {
+            "title": "Desarrollar",
+            "description": "Frontend y backend construidos juntos, con rendimiento, accesibilidad y mantenibilidad integrados desde el inicio—no añadidos al final."
+          },
+          "deliver": {
+            "title": "Entregar",
+            "description": "QA, lanzamiento y traspaso con documentación y esmero. Después seguimos iterando, porque los grandes productos nunca están del todo terminados."
+          }
+        }
+      },
+      "faqs": {
+        "eyebrow": "Conviene saber",
+        "title": "FAQs",
+        "items": {
+          "process": {
+            "question": "¿Cómo suelen empezar los proyectos?",
+            "answer": "Con una conversación. Reservamos una llamada inicial para entender tus objetivos y preparamos una propuesta breve con alcance, fases y un calendario estimado."
+          },
+          "timeline": {
+            "question": "¿Cuánto dura un proyecto típico?",
+            "answer": "La mayoría de los encargos duran entre seis y doce semanas según el alcance. Los productos más grandes se dividen en fases para que veas resultados funcionales pronto, en lugar de esperar a un lanzamiento único."
+          },
+          "collaboration": {
+            "question": "¿Trabajáis con nuestros diseñadores o desarrolladores?",
+            "answer": "Sí. Podemos incorporarnos a tu equipo como especialistas o liderar el proyecto de principio a fin. Repositorios compartidos, documentación clara y demos periódicas mantienen a todos alineados en cualquier caso."
+          },
+          "stack": {
+            "question": "¿Qué tecnologías utilizáis?",
+            "answer": "Nuestro stack principal es Vue y Nuxt con GSAP para el movimiento, además de Node y servicios headless en el backend. Nos adaptamos a las herramientas que tu equipo ya domina cuando tiene sentido."
+          },
+          "handoff": {
+            "question": "¿Qué pasa después del lanzamiento?",
+            "answer": "Cada proyecto incluye documentación y una sesión de traspaso. También ofrecemos acuerdos de soporte continuo para equipos que nos quieren cerca mientras el producto crece."
+          }
+        }
       }
     },
     "privacy": {
