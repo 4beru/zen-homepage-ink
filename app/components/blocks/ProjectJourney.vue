@@ -296,7 +296,7 @@
 <style scoped>
   .journey-slide-panel {
     position: relative;
-    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
   }
 
