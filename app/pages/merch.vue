@@ -363,7 +363,7 @@
     return 32;
   }
 
-  function syncDesktopTitleContinuation(index) {
+  function syncDesktopTitleContinuation(index, updateLayout = false) {
     if (
       !window.matchMedia("(min-width: 1024px)").matches ||
       !desktopFilterRef.value ||
@@ -454,12 +454,17 @@
           0.12
         );
     } else {
-      gsap.to(layout, {
-        ...layoutTarget,
-        duration: 0.4,
-        ease: "power2.inOut",
-        overwrite: "auto",
-      });
+      // Once revealed, keep the third track open. Only resize it when the
+      // viewport changes; service-to-service transitions update the clipped text.
+      if (updateLayout) {
+        gsap.to(layout, {
+          ...layoutTarget,
+          duration: 0.35,
+          ease: "power2.inOut",
+          overwrite: "auto",
+        });
+      }
+
       gsap.to(clip, {
         height: overflowHeight,
         duration: 0.24,
@@ -487,7 +492,7 @@
         });
       }
 
-      syncDesktopTitleContinuation(activeServiceIndex.value);
+      syncDesktopTitleContinuation(activeServiceIndex.value, true);
       ScrollTrigger.refresh();
     });
   }
