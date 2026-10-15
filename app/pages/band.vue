@@ -112,10 +112,10 @@
           ease: 'power4.out',
         })
         .add(figuresReveal, '>0.5')
-        .add(membersReveal, '<0.4')
+        .add(introReveal, '<0.4')
         .play();
 
-      function membersReveal() {
+      function introReveal() {
         introRef.value.querySelectorAll('.line').forEach((line) => {
           gsap.to(line.querySelectorAll('.word'), {
             y: 0,
