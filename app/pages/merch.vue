@@ -304,6 +304,7 @@
 
     servicesPanelDifference = difference;
     panel.style.marginBottom = `${difference}px`;
+    const serviceTrackingEnd = fakeScrollDuration / (fakeScrollDuration + 1);
 
     servicesPanelContext = gsap.context(() => {
       gsap.set(visual, { scale: 1, autoAlpha: 1, transformOrigin: "center center" });
@@ -338,8 +339,11 @@
           scrub: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          onUpdate: () => {
-            if (!navIntroComplete) return;
+          onUpdate: (self) => {
+            // Stop recalculating the active item while the whole panel is shrinking
+            // away; after fake-scroll finishes, its visual transform is no longer a
+            // useful signal for which service should be selected.
+            if (!navIntroComplete || self.progress > serviceTrackingEnd) return;
             setActiveSection(getActiveServiceIndex());
             setFocusSection(getFocusIndex());
           },
