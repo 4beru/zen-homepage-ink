@@ -1,12 +1,15 @@
 <template>
   <section ref="servicesPageRef" class="services-page">
-    <div class="container grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[20rem_minmax(0,1fr)] 2xl:gap-x-12">
+    <div ref="servicesPanelRef" class="services-slide-panel">
+      <div ref="servicesPanelVisualRef" class="services-panel-visual">
+        <div ref="servicesPanelExitRef" class="services-panel-exit">
+          <div ref="servicesPanelLayoutRef" class="container services-panel-layout grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[20rem_minmax(0,1fr)] 2xl:gap-x-12" style="padding-block: 0">
       <aside class="relative">
         <!-- Mobile: reserve space for the fixed translucent navigation. -->
         <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
 
         <nav
-          class="fixed inset-x-0 top-0 z-[93] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
+          class="absolute inset-x-0 top-0 z-[93] border-b border-white/10 bg-black/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
           aria-label="Services navigation"
         >
           <ul
@@ -16,7 +19,7 @@
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -27,7 +30,7 @@
         </nav>
 
         <nav
-          class="hidden lg:sticky lg:top-[1.2rem] lg:z-[93] lg:block lg:h-[calc(100dvh-1.2rem)]"
+          class="hidden lg:absolute lg:left-0 lg:top-0 lg:z-[93] lg:block lg:h-[calc(100dvh-1.2rem)] lg:w-full"
           aria-label="Services navigation"
         >
           <ul
@@ -37,7 +40,7 @@
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
+                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-white [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -48,10 +51,10 @@
         </nav>
       </aside>
 
-      <div class="min-w-0 relative z-[94]">
+      <div ref="servicesPanelInnerRef" class="services-panel-inner min-w-0 relative z-[94] pt-[1.2rem] pb-[1.2rem]">
         <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
           <AnimationReveal class="w-full">
-            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
+            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-300 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
             </p>
           </AnimationReveal>
@@ -66,8 +69,19 @@
             :index="index"
           />
         </div>
+          </div>
+        </div>
       </div>
     </div>
+    </div>
+
+    <!-- Full-width follow-up section, separate from the Services two-column block. -->
+    <section class="services-follow-up" aria-label="Project Journey and FAQs">
+      <div class="container">
+        <ProjectJourney />
+        <FaqAccordion />
+      </div>
+    </section>
   </section>
 </template>
 
@@ -100,6 +114,11 @@
 
   const { t } = useI18n();
   const servicesPageRef = useTemplateRef("servicesPageRef");
+  const servicesPanelRef = useTemplateRef("servicesPanelRef");
+  const servicesPanelVisualRef = useTemplateRef("servicesPanelVisualRef");
+  const servicesPanelExitRef = useTemplateRef("servicesPanelExitRef");
+  const servicesPanelLayoutRef = useTemplateRef("servicesPanelLayoutRef");
+  const servicesPanelInnerRef = useTemplateRef("servicesPanelInnerRef");
   const mobileFilterRef = useTemplateRef("mobileFilterRef");
   const desktopFilterRef = useTemplateRef("desktopFilterRef");
   const lenis = useLenis();
@@ -113,6 +132,12 @@
   let focusIndex = -1;
   let ctx;
   let navIntroComplete = false;
+
+  let servicesPanelContext;
+  let servicesPanelTimeline;
+  let servicesPanelResizeHandler;
+  let servicesPanelResizeTimeout;
+  let servicesPanelDifference = 0;
 
   useSeoMeta({
     title: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
@@ -150,10 +175,10 @@
       setFocusSection(getFocusIndex(), 0);
 
       // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
-      gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
-      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#000" });
+      gsap.set(mobileChars, { fontSize: "0.625rem", color: "#ffffff" });
+      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#ffffff" });
 
-      // Reveal every service label in black first. Only after the intro completes
+      // Reveal every service label in white first. Only after the intro completes
       // do we animate the currently active service to its larger grey state.
       const activateInitialService = () => {
         const activate = () => {
@@ -187,50 +212,187 @@
           });
       }
 
-      // Desktop uses the original trigger point (25%), mobile keeps its own (35%).
-      const triggerOffset = () => (window.matchMedia("(min-width: 1024px)").matches ? "top+=25%" : "top+=35%");
+      if (prefersReducedMotion.value) {
+        // Keep ordinary document-scroll tracking when motion is disabled.
+        registerNativeServiceTriggers();
+        registerNativeFocusTriggers();
+      } else {
+        // The Services grid becomes one tall panel. Its right column fake-scrolls
+        // while the sidebar stays in the pinned viewport; state updates follow
+        // the transformed service blocks rather than stale document coordinates.
+        buildServicesPanelAnimations();
 
-      services.forEach((service, index) => {
-        ScrollTrigger.create({
-          trigger: `#${service.id}`,
-          start: () => `top ${triggerOffset()}`,
-          end: () => `bottom ${triggerOffset()}`,
-          endTrigger: `#${service.id}`,
-          invalidateOnRefresh: true, // Safari needs this.
-          onEnter: () => {
-            if (navIntroComplete) setActiveSection(index);
-          },
-          onEnterBack: () => {
-            if (navIntroComplete) setActiveSection(index);
-          },
-        });
-      });
+        servicesPanelResizeHandler = () => {
+          window.clearTimeout(servicesPanelResizeTimeout);
+          servicesPanelResizeTimeout = window.setTimeout(() => {
+            buildServicesPanelAnimations();
+          }, 160);
+        };
+        window.addEventListener("resize", servicesPanelResizeHandler, { passive: true });
+      }
 
-      // Triggers del blur: misma lógica que el aside, pero en una línea más alta
-      // (FOCUS_LINE), así el foco cambia antes de que se ejecute la animación del título.
-      serviceBlocks.forEach((block, index) => {
-        ScrollTrigger.create({
-          trigger: block,
-          start: () => `top top+=${getFocusLine()}%`,
-          end: () => `bottom top+=${getFocusLine()}%`,
-          invalidateOnRefresh: true,
-          onEnter: () => setFocusSection(index),
-          onEnterBack: () => setFocusSection(index),
-        });
-      });
-
-      // Refresh section triggers after fonts, images and layout have settled.
-      // The desktop navigation's position is handled by CSS sticky.
+      // Refresh after the panel's manual spacing and triggers have been registered.
       ScrollTrigger.refresh();
     }, servicesPageRef.value);
   });
 
   onUnmounted(() => {
+    if (servicesPanelResizeHandler) window.removeEventListener("resize", servicesPanelResizeHandler);
+    window.clearTimeout(servicesPanelResizeTimeout);
     gsap.killTweensOf(serviceBlocks);
+    servicesPanelContext?.revert();
     ctx?.revert();
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
+    servicesPanelRef.value?.style.removeProperty("margin-bottom");
   });
+
+  function registerNativeServiceTriggers() {
+    const triggerOffset = () =>
+      window.matchMedia("(min-width: 1024px)").matches ? "top+=25%" : "top+=35%";
+
+    services.forEach((service, index) => {
+      ScrollTrigger.create({
+        trigger: `#${service.id}`,
+        start: () => `top ${triggerOffset()}`,
+        end: () => `bottom ${triggerOffset()}`,
+        endTrigger: `#${service.id}`,
+        invalidateOnRefresh: true,
+        onEnter: () => {
+          if (navIntroComplete) setActiveSection(index);
+        },
+        onEnterBack: () => {
+          if (navIntroComplete) setActiveSection(index);
+        },
+      });
+    });
+  }
+
+  function registerNativeFocusTriggers() {
+    serviceBlocks.forEach((block, index) => {
+      ScrollTrigger.create({
+        trigger: block,
+        start: () => `top top+=${getFocusLine()}%`,
+        end: () => `bottom top+=${getFocusLine()}%`,
+        invalidateOnRefresh: true,
+        onEnter: () => setFocusSection(index),
+        onEnterBack: () => setFocusSection(index),
+      });
+    });
+  }
+
+  function buildServicesPanelAnimations() {
+    servicesPanelContext?.revert();
+    servicesPanelTimeline = undefined;
+
+    const panel = servicesPanelRef.value;
+    const visual = servicesPanelVisualRef.value;
+    const exitLayer = servicesPanelExitRef.value;
+    const layout = servicesPanelLayoutRef.value;
+    const inner = servicesPanelInnerRef.value;
+    if (!panel || !visual || !exitLayer || !layout || !inner) return;
+
+    panel.style.marginBottom = "0px";
+    gsap.set(inner, { clearProps: "transform" });
+    gsap.set(visual, { clearProps: "transform,opacity" });
+    gsap.set(exitLayer, { clearProps: "transform,opacity" });
+
+    const panelHeight = panel.clientHeight || window.innerHeight;
+    const contentHeight = Math.max(layout.scrollHeight, layout.offsetHeight);
+    const difference = Math.max(0, contentHeight - panelHeight);
+    const fakeScrollDuration = difference / panelHeight;
+
+    servicesPanelDifference = difference;
+    panel.style.marginBottom = `${difference}px`;
+    const serviceTrackingEnd = fakeScrollDuration / (fakeScrollDuration + 1);
+
+    servicesPanelContext = gsap.context(() => {
+      gsap.set(visual, { scale: 1, autoAlpha: 1, transformOrigin: "center center" });
+      gsap.set(exitLayer, { scale: 1, autoAlpha: 1, transformOrigin: "center center" });
+
+      // Incoming transition. The outgoing fade below is applied to a separate layer,
+      // so the two scroll-linked tweens never compete for the same transform.
+      gsap.fromTo(
+        visual,
+        { scale: 0.7, autoAlpha: 0.5 },
+        {
+          scale: 1,
+          autoAlpha: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: panel,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          start: "bottom bottom",
+          end: () => `+=${Math.max(layout.scrollHeight, panel.clientHeight)}`,
+          pin: panel,
+          pinSpacing: false,
+          scrub: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            // Stop recalculating the active item while the whole panel is shrinking
+            // away; after fake-scroll finishes, its visual transform is no longer a
+            // useful signal for which service should be selected.
+            if (!navIntroComplete || self.progress > serviceTrackingEnd) return;
+            setActiveSection(getActiveServiceIndex());
+            setFocusSection(getFocusIndex());
+          },
+        },
+      });
+
+      if (difference > 0) {
+        timeline.to(
+          inner,
+          {
+            y: () => -(Math.max(layout.scrollHeight, layout.offsetHeight) - panel.clientHeight),
+            duration: fakeScrollDuration,
+            ease: "none",
+          },
+          0,
+        );
+      }
+
+      // Once every service has travelled through the viewport, shrink/fade the
+      // entire Services panel so Project Journey is revealed underneath it.
+      timeline
+        .to(
+          exitLayer,
+          { scale: 0.7, autoAlpha: 0.5, duration: 0.9, ease: "none" },
+          fakeScrollDuration,
+        )
+        .to(
+          exitLayer,
+          { autoAlpha: 0, duration: 0.1, ease: "none" },
+          fakeScrollDuration + 0.9,
+        );
+
+      servicesPanelTimeline = timeline;
+    }, panel);
+
+    ScrollTrigger.refresh();
+  }
+
+  function getElementOffsetWithin(element, ancestor) {
+    let offset = 0;
+    let node = element;
+
+    while (node && node !== ancestor) {
+      offset += node.offsetTop || 0;
+      node = node.offsetParent;
+    }
+
+    return offset;
+  }
 
   function getActiveServiceIndex() {
     const activationRatio = window.matchMedia("(min-width: 1024px)").matches
@@ -330,7 +492,7 @@
     if (previousIndex >= 0 && mobileSplits[previousIndex]) {
       gsap.to(mobileSplits[previousIndex].chars, {
         fontSize: 10,
-        color: "#111111",
+        color: "#ffffff",
         duration: instant ? 0 : 0.42,
         stagger: instant ? 0 : 0.012,
         ease: "power2.inOut",
@@ -359,7 +521,7 @@
       // Shrink previous.
       tl.to(desktopSplits[previousIndex].chars, {
         fontSize: "1.8rem",
-        color: "#000",
+        color: "#ffffff",
         duration: instant ? 0 : 0.5,
         stagger: instant ? 0 : 0.03,
         ease: "power2.inOut",
@@ -390,13 +552,35 @@
     if (!service || !instance) return;
 
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    // Account for the mobile top bar and keep desktop targets comfortably below the top.
-    const offsetY = isDesktop ? 60 : 84;
     const duration = isDesktop ? 1.5 : 1.15;
     const reducedMotion = prefersReducedMotion.value;
+    const serviceElement = document.getElementById(service.id);
+    const panelTrigger = servicesPanelTimeline?.scrollTrigger;
+    let target = `#${service.id}`;
+    let offset = isDesktop ? -60 : -84;
 
-    instance.scrollTo(`#${service.id}`, {
-      offset: -offsetY,
+    // During the pinned fake-scroll, map a service's content offset to the
+    // real document scroll range that ScrollTrigger assigns to the panel.
+    if (
+      !reducedMotion &&
+      serviceElement &&
+      panelTrigger &&
+      Number.isFinite(panelTrigger.start) &&
+      servicesPanelDifference > 0 &&
+      servicesPanelLayoutRef.value
+    ) {
+      const contentOffset = getElementOffsetWithin(serviceElement, servicesPanelLayoutRef.value);
+      const activationY = window.innerHeight * (isDesktop ? 0.25 : 0.35);
+      const fakeScroll = gsap.utils.clamp(0, servicesPanelDifference, contentOffset - activationY);
+      // The pinned trigger maps one document-scroll pixel to one pixel of
+      // fake content movement during this phase. Do not normalize by the full
+      // pin duration: the final viewport is reserved for the panel handoff.
+      target = panelTrigger.start + fakeScroll;
+      offset = 0;
+    }
+
+    instance.scrollTo(target, {
+      offset,
       duration: reducedMotion ? 0 : duration,
       immediate: reducedMotion,
       easing: (t) =>
@@ -407,3 +591,72 @@
     });
   }
 </script>
+
+<style scoped>
+  .services-slide-panel {
+    position: relative;
+    height: 100dvh;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .services-panel-visual,
+  .services-panel-exit {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+
+  .services-panel-exit {
+    background: #000;
+    color: #fff;
+  }
+
+  .services-panel-layout {
+    position: relative;
+  }
+
+  .services-panel-inner {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-slide-panel {
+      height: auto;
+      min-height: 0;
+      overflow: visible;
+      margin-bottom: 0 !important;
+    }
+
+    .services-panel-visual,
+    .services-panel-exit {
+      height: auto;
+      overflow: visible;
+      transform: none !important;
+      opacity: 1 !important;
+      will-change: auto;
+    }
+
+    .services-panel-inner {
+      transform: none !important;
+    }
+
+    .services-panel-layout > aside > nav:first-of-type {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .services-panel-layout > aside > nav:last-of-type {
+      position: sticky;
+      top: 1.2rem;
+    }
+  }
+</style>

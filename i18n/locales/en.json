@@ -116,6 +116,59 @@
       "meta": {
         "title": "Services",
         "description": "Creative web development, digital product architecture, motion and 3D experiences, and mobile and SaaS applications."
+      },
+      "journey": {
+        "eyebrow": "How we work",
+        "title": "Project Journey",
+        "intro": "Every engagement follows the same deliberate path: we listen first, shape the idea, then build it with care until it is ready for the world.",
+        "steps": {
+          "discover": {
+            "title": "Discover",
+            "description": "We start by listening—goals, audience and constraints—so the brief reflects the real problem before a single pixel is drawn."
+          },
+          "define": {
+            "title": "Define",
+            "description": "Ideas become scope: user flows, architecture and milestones are mapped out so everyone knows what we are building and why."
+          },
+          "design": {
+            "title": "Design",
+            "description": "Art direction, interface and motion explorations. We prototype the key moments early and refine them with honest feedback loops."
+          },
+          "develop": {
+            "title": "Develop",
+            "description": "Frontend and backend built together with performance, accessibility and maintainability baked in—not bolted on at the end."
+          },
+          "deliver": {
+            "title": "Deliver",
+            "description": "QA, launch and handoff with documentation and care. Afterwards we keep iterating, because great products are never really finished."
+          }
+        }
+      },
+      "faqs": {
+        "eyebrow": "Good to know",
+        "title": "FAQs",
+        "items": {
+          "process": {
+            "question": "How do projects usually start?",
+            "answer": "With a conversation. We book an intro call to understand your goals, then put together a short proposal with scope, phases and an estimated timeline."
+          },
+          "timeline": {
+            "question": "How long does a typical project take?",
+            "answer": "Most engagements run between six and twelve weeks depending on scope. Larger products are split into phases so you see working results early instead of waiting for a big-bang launch."
+          },
+          "collaboration": {
+            "question": "Do you work with our designers or developers?",
+            "answer": "Yes. We can join your existing team as specialists or run the project end to end. Shared repositories, clear docs and regular demos keep everyone aligned either way."
+          },
+          "stack": {
+            "question": "What technologies do you use?",
+            "answer": "Our core stack is Vue and Nuxt with GSAP for motion, plus Node and headless services on the backend. We adapt to the tools your team already trusts when it makes sense."
+          },
+          "handoff": {
+            "question": "What happens after launch?",
+            "answer": "Every project ships with documentation and a handoff session. We also offer ongoing support agreements for teams that want us close by while the product grows."
+          }
+        }
       }
     },
     "privacy": {

@@ -8,7 +8,7 @@
     <AnimationReveal class="w-full">
       <h2
         :id="`service-title-${index}`"
-        class="max-w-5xl text-[clamp(3rem,10vw,4.6rem)] leading-none text-black"
+        class="max-w-5xl text-[clamp(3rem,10vw,4.6rem)] leading-none text-white"
       >
         {{ $t(service.titleKey) }}
       </h2>
