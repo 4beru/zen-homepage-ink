@@ -9,7 +9,7 @@
         <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
 
         <nav
-          class="absolute inset-x-0 top-0 z-[93] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
+          class="absolute inset-x-0 top-0 z-[93] border-b border-white/10 bg-black/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
           aria-label="Services navigation"
         >
           <ul
@@ -19,7 +19,7 @@
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -40,7 +40,7 @@
             <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
               <button
                 type="button"
-                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
+                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-white [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
                 :aria-current="activeServiceIndex === index ? 'location' : undefined"
                 @click="handleClickFilterOption(index)"
               >
@@ -54,7 +54,7 @@
       <div ref="servicesPanelInnerRef" class="services-panel-inner min-w-0 relative z-[94] pt-[1.2rem] pb-[1.2rem]">
         <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
           <AnimationReveal class="w-full">
-            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
+            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-300 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
             </p>
           </AnimationReveal>
@@ -175,10 +175,10 @@
       setFocusSection(getFocusIndex(), 0);
 
       // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
-      gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
-      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#000" });
+      gsap.set(mobileChars, { fontSize: "0.625rem", color: "#ffffff" });
+      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#ffffff" });
 
-      // Reveal every service label in black first. Only after the intro completes
+      // Reveal every service label in white first. Only after the intro completes
       // do we animate the currently active service to its larger grey state.
       const activateInitialService = () => {
         const activate = () => {
@@ -492,7 +492,7 @@
     if (previousIndex >= 0 && mobileSplits[previousIndex]) {
       gsap.to(mobileSplits[previousIndex].chars, {
         fontSize: 10,
-        color: "#111111",
+        color: "#ffffff",
         duration: instant ? 0 : 0.42,
         stagger: instant ? 0 : 0.012,
         ease: "power2.inOut",
@@ -521,7 +521,7 @@
       // Shrink previous.
       tl.to(desktopSplits[previousIndex].chars, {
         fontSize: "1.8rem",
-        color: "#000",
+        color: "#ffffff",
         duration: instant ? 0 : 0.5,
         stagger: instant ? 0 : 0.03,
         ease: "power2.inOut",
@@ -597,6 +597,7 @@
     position: relative;
     height: 100dvh;
     overflow: hidden;
+    background: transparent;
   }
 
   .services-panel-visual,
@@ -607,6 +608,11 @@
     overflow: hidden;
     transform-origin: center center;
     will-change: transform, opacity;
+  }
+
+  .services-panel-exit {
+    background: #000;
+    color: #fff;
   }
 
   .services-panel-layout {
