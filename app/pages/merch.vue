@@ -48,7 +48,12 @@
         </nav>
       </aside>
 
-      <div class="min-w-0 relative z-[94]">
+      <div
+        ref="contentLayoutRef"
+        class="min-w-0 relative z-[94] grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_var(--services-title-column-width)] lg:gap-x-[var(--services-title-column-gap)]"
+        style="--services-title-column-width: 0px; --services-title-column-gap: 0px;"
+      >
+        <div class="min-w-0">
         <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
           <AnimationReveal class="w-full">
             <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
@@ -66,6 +71,25 @@
             :index="index"
           />
         </div>
+        </div>
+
+        <!-- Desktop-only continuation for the active, oversized navigation title. -->
+        <aside
+          ref="continuationAsideRef"
+          class="relative hidden min-w-0 lg:block"
+          aria-hidden="true"
+        >
+          <div
+            ref="continuationViewportRef"
+            class="sticky top-[1.2rem] h-[calc(100dvh-1.2rem)]"
+          >
+            <div
+              ref="continuationClipRef"
+              class="pointer-events-none absolute left-0 top-[-1.2rem] overflow-hidden"
+              style="height: 0px; width: 100%;"
+            />
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -89,6 +113,10 @@
   const servicesPageRef = useTemplateRef("servicesPageRef");
   const mobileFilterRef = useTemplateRef("mobileFilterRef");
   const desktopFilterRef = useTemplateRef("desktopFilterRef");
+  const contentLayoutRef = useTemplateRef("contentLayoutRef");
+  const continuationAsideRef = useTemplateRef("continuationAsideRef");
+  const continuationViewportRef = useTemplateRef("continuationViewportRef");
+  const continuationClipRef = useTemplateRef("continuationClipRef");
   const lenis = useLenis();
 
   const activeServiceIndex = ref(-1);
@@ -98,6 +126,8 @@
   let desktopSplits = [];
   let ctx;
   let navIntroComplete = false;
+  let continuationRevealStarted = false;
+  let resizeCall;
 
   useSeoMeta({
     title: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
@@ -219,9 +249,14 @@
       // The desktop navigation's position is handled by CSS sticky.
       ScrollTrigger.refresh();
     }, servicesPageRef.value);
+
+    window.addEventListener("resize", handleServicesResize, { passive: true });
   });
 
   onUnmounted(() => {
+    window.removeEventListener("resize", handleServicesResize);
+    resizeCall?.kill();
+    continuationClipRef.value?.replaceChildren();
     ctx?.revert();
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
@@ -281,9 +316,8 @@
     }
 
     // ---------- Desktop (same as the original merch page) ----------
-    // Matching: font-size: clamp(2.6rem, 10vw, 12rem);
-    const clamp = gsap.utils.clamp(41.6, 192); // min 2.6rem, max 12rem - in px.
-    const fontSizeNext = clamp(window.innerWidth * 0.1); // 10vw - result in px.
+    // Matching: font-size: clamp(2.6rem, 10vw, 12rem).
+    const fontSizeNext = getDesktopTitleFontSize();
     const tl = gsap.timeline();
 
     if (previousIndex >= 0 && desktopSplits[previousIndex]) {
@@ -313,6 +347,149 @@
         "<"
       );
     }
+
+    // The continuation copies the active label only after its character sizing
+    // has settled, so the duplicate uses the same rendered typography.
+    tl.eventCallback("onComplete", () => syncDesktopTitleContinuation(index));
+  }
+
+  function getDesktopTitleFontSize() {
+    return gsap.utils.clamp(41.6, 192)(window.innerWidth * 0.1);
+  }
+
+  function getDesktopTitleColumnGap() {
+    if (window.innerWidth >= 1536) return 48;
+    if (window.innerWidth >= 1280) return 40;
+    return 32;
+  }
+
+  function syncDesktopTitleContinuation(index) {
+    if (
+      !window.matchMedia("(min-width: 1024px)").matches ||
+      !desktopFilterRef.value ||
+      !contentLayoutRef.value ||
+      !continuationAsideRef.value ||
+      !continuationViewportRef.value ||
+      !continuationClipRef.value
+    ) {
+      return;
+    }
+
+    const sourceButton = desktopFilterRef.value.querySelectorAll("button")[index];
+    const clip = continuationClipRef.value;
+    const layout = contentLayoutRef.value;
+    if (!sourceButton) return;
+
+    const sourceBounds = sourceButton.getBoundingClientRect();
+    const overflowHeight = Math.max(0, Math.ceil(-sourceBounds.top));
+
+    // Move a visual clone into the reserved third track. The clone is aligned
+    // to the source title's original bounds and clipped to only the part that
+    // extends beyond the top of the viewport.
+    const wrapper = document.createElement("div");
+    wrapper.style.position = "absolute";
+    wrapper.style.left = "0";
+    wrapper.style.top = `${sourceBounds.top}px`;
+    wrapper.style.transform = `translateY(${overflowHeight}px)`;
+    wrapper.style.pointerEvents = "none";
+    wrapper.style.whiteSpace = "nowrap";
+
+    const clone = sourceButton.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.setAttribute("tabindex", "-1");
+    clone.removeAttribute("aria-current");
+    clone.style.pointerEvents = "none";
+    wrapper.appendChild(clone);
+    clip.replaceChildren(wrapper);
+
+    if (overflowHeight === 0) {
+      gsap.to(clip, {
+        height: 0,
+        duration: continuationRevealStarted ? 0.25 : 0,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+      return;
+    }
+
+    const columnWidth = Math.ceil(sourceBounds.width + 8);
+    const columnGap = getDesktopTitleColumnGap();
+    const layoutTarget = {
+      "--services-title-column-width": `${columnWidth}px`,
+      "--services-title-column-gap": `${columnGap}px`,
+    };
+
+    if (!continuationRevealStarted) {
+      continuationRevealStarted = true;
+      gsap.set(layout, {
+        "--services-title-column-width": "0px",
+        "--services-title-column-gap": "0px",
+      });
+      gsap.set(clip, { height: 0, autoAlpha: 1 });
+
+      // This is the only entrance animation for the continuation column.
+      // After it has appeared, subsequent services only replace its content.
+      gsap
+        .timeline({
+          onComplete: () => ScrollTrigger.refresh(),
+        })
+        .to(
+          layout,
+          {
+            ...layoutTarget,
+            duration: 0.78,
+            ease: "power3.inOut",
+            overwrite: "auto",
+          },
+          0
+        )
+        .to(
+          clip,
+          {
+            height: overflowHeight,
+            duration: 0.72,
+            ease: "power3.out",
+            overwrite: "auto",
+          },
+          0.12
+        );
+    } else {
+      gsap.to(layout, {
+        ...layoutTarget,
+        duration: 0.4,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+      gsap.to(clip, {
+        height: overflowHeight,
+        duration: 0.24,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    }
+  }
+
+  function handleServicesResize() {
+    resizeCall?.kill();
+    resizeCall = gsap.delayedCall(0.16, () => {
+      if (
+        !window.matchMedia("(min-width: 1024px)").matches ||
+        activeServiceIndex.value < 0
+      ) {
+        return;
+      }
+
+      const activeChars = desktopSplits[activeServiceIndex.value]?.chars;
+      if (activeChars?.length) {
+        gsap.set(activeChars, {
+          fontSize: `${getDesktopTitleFontSize()}px`,
+          color: "#cfcfcf",
+        });
+      }
+
+      syncDesktopTitleContinuation(activeServiceIndex.value);
+      ScrollTrigger.refresh();
+    });
   }
 
   function handleClickFilterOption(index) {
