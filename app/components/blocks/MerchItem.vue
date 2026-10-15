@@ -16,7 +16,7 @@
 
     <AnimationReveal class="w-full">
       <p
-        class="mt-3 max-w-3xl text-lg font-bold leading-relaxed text-gray-800 sm:mt-4 lg:text-xl"
+        class="mt-3 max-w-3xl text-lg font-bold leading-[1.7778] text-gray-800 sm:mt-4 lg:text-xl lg:leading-[1.75]"
       >
         {{ $t(service.descriptionKey) }}
       </p>
@@ -25,7 +25,7 @@
     <div class="mt-8 flex flex-col gap-8 sm:mt-10 sm:gap-10 lg:mt-12 lg:gap-12">
       <AnimationReveal class="w-full">
         <figure
-          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[92%] xl:max-w-5xl"
+          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[88%] xl:max-w-5xl"
         >
           <NuxtImg
             :src="service.image"
@@ -39,7 +39,7 @@
 
       <AnimationReveal class="w-full">
         <figure
-          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[92%] xl:max-w-5xl"
+          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[88%] xl:max-w-5xl"
         >
           <NuxtImg
             :src="service.secondaryImage"
