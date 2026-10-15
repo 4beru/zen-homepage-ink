@@ -1,9 +1,13 @@
 <template>
-  <article :id="service.id" class="service-item w-full" :aria-labelledby="`service-title-${index}`">
+  <article
+    :id="service.id"
+    data-service-block
+    class="service-item w-full"
+    :aria-labelledby="`service-title-${index}`"
+  >
     <AnimationReveal class="w-full">
       <h2
         :id="`service-title-${index}`"
-        data-service-focus="text"
         class="max-w-5xl text-[clamp(3rem,10vw,4.6rem)] leading-none text-black"
       >
         {{ $t(service.titleKey) }}
@@ -12,8 +16,7 @@
 
     <AnimationReveal class="w-full">
       <p
-        data-service-focus="text"
-        class="mt-3 max-w-3xl text-lg font-normal leading-relaxed text-gray-800 sm:mt-4 lg:text-xl"
+        class="mt-3 max-w-3xl text-lg font-bold leading-relaxed text-gray-800 sm:mt-4 lg:text-xl"
       >
         {{ $t(service.descriptionKey) }}
       </p>
@@ -22,8 +25,7 @@
     <div class="mt-8 flex flex-col gap-8 sm:mt-10 sm:gap-10 lg:mt-12 lg:gap-12">
       <AnimationReveal class="w-full">
         <figure
-          data-service-focus="visual"
-          class="group relative isolate w-full overflow-hidden rounded-xl bg-gray-100"
+          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[92%] xl:max-w-5xl"
         >
           <NuxtImg
             :src="service.image"
@@ -37,8 +39,7 @@
 
       <AnimationReveal class="w-full">
         <figure
-          data-service-focus="visual"
-          class="group relative isolate w-full overflow-hidden rounded-xl bg-gray-100"
+          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[92%] xl:max-w-5xl"
         >
           <NuxtImg
             :src="service.secondaryImage"
