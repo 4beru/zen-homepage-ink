@@ -159,29 +159,21 @@
         });
       });
 
-      // Keep the element nearest the viewport center in focus.
-      // The elements above and below it soften as they enter or leave the viewport.
-      // Keep this effect scroll-driven and skip it for reduced-motion preferences.
+      // Blur the whole service only during its entrance and exit transitions.
+      // Keep the complete block sharp through most of its reading time.
+      // Skip scroll-driven blur when reduced motion is preferred.
       if (!prefersReducedMotion.value) {
-        const focusTargets = gsap.utils.toArray(
-          "[data-service-focus]",
+        const serviceBlocks = gsap.utils.toArray(
+          "[data-service-block]",
           servicesPageRef.value
         );
 
-        focusTargets.forEach((target) => {
-          const isVisual = target.dataset.serviceFocus === "visual";
-          const blurredFilter = isVisual
-            ? "blur(6px) saturate(0.82)"
-            : "blur(4px)";
-          const focusedFilter = isVisual
-            ? "blur(0px) saturate(1)"
-            : "blur(0px)";
-
+        serviceBlocks.forEach((block) => {
           gsap
             .timeline({
               defaults: { ease: "none" },
               scrollTrigger: {
-                trigger: target,
+                trigger: block,
                 start: "top bottom",
                 end: "bottom top",
                 scrub: true,
@@ -189,11 +181,12 @@
               },
             })
             .fromTo(
-              target,
-              { filter: blurredFilter },
-              { filter: focusedFilter, duration: 0.5 }
+              block,
+              { filter: "blur(6px)" },
+              { filter: "blur(0px)", duration: 0.1 }
             )
-            .to(target, { filter: blurredFilter, duration: 0.5 });
+            .to(block, { filter: "blur(0px)", duration: 0.8 })
+            .to(block, { filter: "blur(6px)", duration: 0.1 });
         });
       }
 
