@@ -65,24 +65,31 @@
             :service="service"
             :index="index"
           />
-
-          <!-- Project Journey and FAQs: revealed with a GSAP curtain transition
-               after the last service block. -->
-          <Transition name="journey-faqs" @before-enter="onJourneyBeforeEnter" @enter="onJourneyEnter" @leave="onJourneyLeave">
-            <div v-if="showExtras" ref="extrasRef" class="flex flex-col gap-24 sm:gap-28 md:gap-32 2xl:gap-36">
-              <ProjectJourney />
-              <FaqAccordion />
-            </div>
-          </Transition>
         </div>
       </div>
+    </div>
+
+    <!-- Full-width follow-up section, separate from the Services two-column block. -->
+    <div class="container">
+      <div ref="extrasTriggerRef" class="h-px" aria-hidden="true" />
+
+      <Transition
+        name="journey-faqs"
+        @before-enter="onJourneyBeforeEnter"
+        @enter="onJourneyEnter"
+        @leave="onJourneyLeave"
+      >
+        <div v-if="showExtras" class="flex flex-col gap-24 sm:gap-28 md:gap-32 2xl:gap-36">
+          <ProjectJourney />
+          <FaqAccordion />
+        </div>
+      </Transition>
     </div>
   </section>
 </template>
 
 <script setup>
   import { services } from "~/data/merch";
-  import { journeySteps, faqs } from "~/data/servicesExtras";
   import { pageTransitionConfig } from "~/helpers/transitionConfig";
   import { useLenis } from "lenis/vue";
   import gsap from "gsap";
@@ -120,7 +127,7 @@
   // Project Journey + FAQs mount after a scroll trigger and enter with a
   // GSAP curtain transition (see the <Transition> hooks below).
   const showExtras = ref(false);
-  const extrasRef = useTemplateRef("extrasRef");
+  const extrasTriggerRef = useTemplateRef("extrasTriggerRef");
 
   let mobileSplits = [];
   let desktopSplits = [];
@@ -234,16 +241,19 @@
         });
       });
 
-      // Monta Project Journey + FAQs cuando el último bloque de servicio entra
-      // en pantalla. El <Transition> aplica el efecto de cortina GSAP al entrar.
-      ScrollTrigger.create({
-        trigger: serviceBlocks[serviceBlocks.length - 1],
-        start: "top 70%",
-        once: true,
-        onEnter: () => {
-          showExtras.value = true;
-        },
-      });
+      // Trigger the reveal at the boundary of the new full-width section,
+      // not when the final service item merely starts entering the viewport.
+      if (extrasTriggerRef.value) {
+        ScrollTrigger.create({
+          trigger: extrasTriggerRef.value,
+          start: "top 85%",
+          once: true,
+          invalidateOnRefresh: true,
+          onEnter: () => {
+            showExtras.value = true;
+          },
+        });
+      }
 
       // Refresh section triggers after fonts, images and layout have settled.
       // The desktop navigation's position is handled by CSS sticky.
@@ -310,8 +320,10 @@
       .call(() => {
         // The newly mounted sections add height below the viewport; re-measure
         // every trigger and keep Lenis aligned with the real scroll position.
+        // Recalculate Lenis dimensions after Vue mounts the new section.
+        // `scroll` is a numeric getter; `resize()` recalculates dimensions.
+        lenis.value?.resize();
         ScrollTrigger.refresh();
-        lenis.value?.scroll(window.scrollY, { immediate: true });
       })
       .to(strips, {
         scaleY: 0,
