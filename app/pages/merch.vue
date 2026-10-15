@@ -6,7 +6,7 @@
         <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
 
         <nav
-          class="fixed inset-x-0 top-0 z-[94] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
+          class="fixed inset-x-0 top-0 z-[93] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
           aria-label="Services navigation"
         >
           <ul
@@ -27,7 +27,7 @@
         </nav>
 
         <nav
-          class="hidden lg:sticky lg:top-[1.2rem] lg:z-[94] lg:block lg:h-[calc(100dvh-1.2rem)]"
+          class="hidden lg:sticky lg:top-[1.2rem] lg:z-[93] lg:block lg:h-[calc(100dvh-1.2rem)]"
           aria-label="Services navigation"
         >
           <ul
@@ -48,7 +48,7 @@
         </nav>
       </aside>
 
-      <div class="min-w-0">
+      <div class="min-w-0 relative z-[94]">
         <header class="pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-24 lg:pb-10">
           <AnimationReveal class="w-full">
             <p class="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gray-600 sm:text-sm">
