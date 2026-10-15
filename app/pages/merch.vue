@@ -143,7 +143,7 @@
         // Keep animations created by the completion callback inside the page context
         // so ctx.revert() cleans them up when navigating away.
         if (ctx) {
-          ctx.add(activate)();
+          ctx.add(activate);
         } else {
           activate();
         }
