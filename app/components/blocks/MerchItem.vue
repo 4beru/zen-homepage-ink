@@ -31,7 +31,7 @@
             :src="service.image"
             :alt="$t(service.altKey)"
             :loading="index === 0 ? 'eager' : 'lazy'"
-            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015] sm:aspect-[16/10] lg:aspect-[16/9]"
+            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015]"
             sizes="100vw md:100vw xl:1920px"
           />
         </figure>
@@ -45,7 +45,7 @@
             :src="service.secondaryImage"
             :alt="$t(service.secondaryAltKey)"
             loading="lazy"
-            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015] sm:aspect-[16/10] lg:aspect-[16/9]"
+            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015]"
             sizes="100vw md:100vw xl:1920px"
           />
         </figure>
