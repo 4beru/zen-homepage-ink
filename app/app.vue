@@ -11,24 +11,34 @@
 </template>
 
 <script setup>
-  import { VueLenis, useLenis } from 'lenis/vue';
+  import { VueLenis } from 'lenis/vue';
   import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   const lenisRef = ref()
   const head = useLocaleHead();
 
-  // const lenis = useLenis(({ scroll }) => {
-  //   // console.log(scroll)
-  // })
+  onMounted(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  });
 
+  // Keep Lenis and ScrollTrigger on the same scroll lifecycle.
   watchEffect((onInvalidate) => {
+    const lenis = lenisRef.value?.lenis;
+    if (!lenis) return;
+
+    lenis.on("scroll", ScrollTrigger.update);
+
     function update(time) {
-      lenisRef.value?.lenis?.raf(time * 1000)
+      lenis.raf(time * 1000);
     }
-    gsap.ticker.add(update)
+
+    gsap.ticker.add(update);
+    gsap.ticker.lagSmoothing(0);
 
     onInvalidate(() => {
-      gsap.ticker.remove(update)
-    })
-  })
+      lenis.off("scroll", ScrollTrigger.update);
+      gsap.ticker.remove(update);
+    });
+  });
 </script>

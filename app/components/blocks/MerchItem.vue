@@ -1,66 +1,68 @@
 <template>
-  <div class="merch-items grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-18">
-    <div v-for="item in items" :key="item.id" class="merch-item flex flex-col items-center justify-end">
-      <AnimationReveal class="w-full" @start="isAnimationRevealStarted = true">
-        <div class="item relative overflow-hiddenx">
-          <div class="mask relative z-30 transition-all duration-400 ease-in-out rounded-xl">
-            <NuxtImg class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]" :src="`/images/merch/${item.image}`" :alt="`Merch item - ${item.name}`" />
-          </div>
-          <video ref="videoRef" class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken" preload="auto" autoplay muted loop playsinline disableremoteplayback aria-hidden="true">
-            <!-- <source src="/videos/spiral2_large.mp4" type="video/mp4" media="(min-width: 1920px)"> -->
-            <source src="/videos/spiral2_medium.mp4" type="video/mp4" media="(min-width: 1280px)">
-            <source src="/videos/spiral2_small.mp4" type="video/mp4">
-          </video>
-        </div>
+  <article
+    :id="service.id"
+    data-service-block
+    class="service-item w-full"
+    :aria-labelledby="`service-title-${index}`"
+  >
+    <AnimationReveal class="w-full">
+      <h2
+        :id="`service-title-${index}`"
+        class="max-w-5xl text-[clamp(3rem,10vw,4.6rem)] leading-none text-black"
+      >
+        {{ $t(service.titleKey) }}
+      </h2>
+    </AnimationReveal>
+
+    <AnimationReveal class="w-full">
+      <p
+        class="mt-3 max-w-3xl text-lg font-bold leading-[1.7778] text-gray-800 sm:mt-4 lg:text-xl lg:leading-[1.75]"
+      >
+        {{ $t(service.descriptionKey) }}
+      </p>
+    </AnimationReveal>
+
+    <div class="mt-8 flex flex-col gap-8 sm:mt-10 sm:gap-10 lg:mt-12 lg:gap-12">
+      <AnimationReveal class="w-full">
+        <figure
+          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[88%] xl:max-w-5xl"
+        >
+          <NuxtImg
+            :src="service.image"
+            :alt="$t(service.altKey)"
+            :loading="index === 0 ? 'eager' : 'lazy'"
+            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015] sm:aspect-[16/10] lg:aspect-[16/9]"
+            sizes="100vw md:100vw xl:1920px"
+          />
+        </figure>
       </AnimationReveal>
-      <AnimationReveal>
-        <h3 class="mt-3 will-change-[filter, text-shadow]">{{ item.name }}</h3>
-      </AnimationReveal>
-      <AnimationReveal>
-        <span class="block text-gray-500 will-change-[filter, text-shadow]">{{ $t('pages.merch.labels.noStock') }}</span>
+
+      <AnimationReveal class="w-full">
+        <figure
+          class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100 lg:w-[88%] xl:max-w-5xl"
+        >
+          <NuxtImg
+            :src="service.secondaryImage"
+            :alt="$t(service.secondaryAltKey)"
+            loading="lazy"
+            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015] sm:aspect-[16/10] lg:aspect-[16/9]"
+            sizes="100vw md:100vw xl:1920px"
+          />
+        </figure>
       </AnimationReveal>
     </div>
-  </div>
+  </article>
 </template>
 
 <script setup>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
   defineProps({
-    items: {
+    service: {
       type: Object,
-      required: true
+      required: true,
     },
-  })
-
-  const isAnimationRevealStarted = ref(false);
-
-  watch(
-    isAnimationRevealStarted,
-    (newValue) => {
-      if (newValue) {
-        // Sometimes elements loose their scroll position, so we have to refresh it.
-        ScrollTrigger.refresh();
-      }
-    })
+    index: {
+      type: Number,
+      required: true,
+    },
+  });
 </script>
-
-<style scoped>
-  .item:hover .mask {
-    transform: scale(1.04);
-  }
-
-  .mask + .item-bg-video {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all .4s ease;
-  }
-
-  .mask:hover + .item-bg-video {
-    opacity: 1;
-    transform: scale(1);
-  }
-</style>

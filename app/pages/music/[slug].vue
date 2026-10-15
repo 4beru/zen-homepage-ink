@@ -1,5 +1,5 @@
 <template>
-  <article class="container grid grid-cols-1 xl:grid-cols-2 gap-16 min-h-[calc(100dvh-100px)] mt-[100px]">
+  <article class="container grid grid-cols-1 xl:grid-cols-2 gap-16 min-h-dvh pt-[calc(100px+1.2rem)]">
     <aside>
       <AlbumArtwork :content="content" />
     </aside>

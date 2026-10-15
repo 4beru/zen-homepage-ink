@@ -82,28 +82,40 @@
       }
     },
     "merch": {
-      "name": "Merch",
-      "title": "Merch",
-      "sections": {
-        "tshirts": {
-          "title": "Camisetas"
+      "name": "Servicios",
+      "title": "Servicios",
+      "eyebrow": "Qué hacemos",
+      "intro": "Desde la primera idea hasta la interacción final, conectamos dirección creativa, visión de producto e ingeniería para construir experiencias digitales con propósito.",
+      "serviceLabel": "Servicio",
+      "services": {
+        "webDevelopment": {
+          "title": "Desarrollo web creativo",
+          "description": "Diseñamos y desarrollamos sitios web con una dirección visual distintiva, interacciones cuidadas e ingeniería frontend sólida. Cada detalle contribuye a la historia y a la experiencia.",
+          "alt": "Imagen del proyecto Rythm que ilustra el desarrollo web creativo.",
+          "secondaryAlt": "Imagen adicional del proyecto Rythm."
         },
-        "buttonBadges": {
-          "title": "Chapas"
+        "productArchitecture": {
+          "title": "Arquitectura de productos digitales",
+          "description": "Diseñamos las bases de productos digitales: desde los flujos de usuario y la estructura del sistema hasta el frontend, el backend y las integraciones, para que la experiencia pueda crecer de forma coherente.",
+          "alt": "Imagen del proyecto Penti AI que ilustra la arquitectura de productos digitales.",
+          "secondaryAlt": "Imagen adicional del proyecto Penti AI."
         },
-        "stickers": {
-          "title": "Pegatinas"
+        "motion3d": {
+          "title": "Experiencias de motion y 3D",
+          "description": "Damos vida a las interfaces mediante motion, 3D y recursos visuales inmersivos, equilibrando una experiencia memorable con interacciones fluidas y buen rendimiento.",
+          "alt": "Imagen del proyecto Unimatic perteneciente al portfolio del estudio.",
+          "secondaryAlt": "Imagen adicional del proyecto Unimatic."
         },
-        "posters": {
-          "title": "Pósters"
+        "mobileSaas": {
+          "title": "Aplicaciones móviles y SaaS",
+          "description": "Creamos experiencias móviles y SaaS que convierten flujos complejos en productos intuitivos, con UX práctica, una arquitectura mantenible y capacidad para evolucionar.",
+          "alt": "Imagen del proyecto Subscrr que ilustra una experiencia de producto digital.",
+          "secondaryAlt": "Imagen adicional del proyecto Subscrr."
         }
       },
-      "labels": {
-        "noStock": "No disponible"
-      },
       "meta": {
-        "title": "Merch",
-        "description": "Skizophonic merchandise"
+        "title": "Servicios",
+        "description": "Desarrollo web creativo, arquitectura de productos digitales, experiencias de motion y 3D, y aplicaciones móviles y SaaS."
       }
     },
     "privacy": {

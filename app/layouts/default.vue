@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-hidden">
+  <div class="overflow-x-clip">
     <AppHeader />
     <main class="min-h-dvh">
       <slot />
