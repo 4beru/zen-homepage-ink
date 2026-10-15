@@ -42,9 +42,9 @@
       }
     },
     "band": {
-      "name": "Team",
-      "title": "Team",
-      "copyrightText": "All images are copyright to their respective owners.",
+      "name": "References",
+      "title": "References",
+      "copyrightText": "All featured work belongs to its respective creators. Shared here for inspiration.",
       "labels": {
         "vocals": "Creative direction",
         "guitar": "Front-end engineering",
@@ -54,9 +54,10 @@
         "drums": "Product strategy"
       },
       "meta": {
-        "title": "Team",
-        "description": "Who we are and how we work"
-      }
+        "title": "References",
+        "description": "A collection of websites, creative studios, digital products and interactive experiences that inspire our work."
+      },
+      "intro": "We collect the websites, experiments and digital products that make us look twice. From Awwwards, Behance and Dribbble to independent studios and ambitious brands, these references fuel our curiosity, challenge our perspective and spark ideas for what we build next."
     },
     "music": {
       "name": "Works",
