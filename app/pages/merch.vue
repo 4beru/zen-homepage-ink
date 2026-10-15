@@ -134,9 +134,19 @@
       // Reveal every service label in black first. Only after the intro completes
       // do we animate the currently active service to its larger grey state.
       const activateInitialService = () => {
-        navIntroComplete = true;
-        setActiveSection(getActiveServiceIndex(), prefersReducedMotion.value);
-        ScrollTrigger.refresh();
+        const activate = () => {
+          navIntroComplete = true;
+          setActiveSection(getActiveServiceIndex(), prefersReducedMotion.value);
+          ScrollTrigger.refresh();
+        };
+
+        // Keep animations created by the completion callback inside the page context
+        // so ctx.revert() cleans them up when navigating away.
+        if (ctx) {
+          ctx.add(activate)();
+        } else {
+          activate();
+        }
       };
 
       if (prefersReducedMotion.value) {
