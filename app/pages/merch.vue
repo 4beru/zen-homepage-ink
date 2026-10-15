@@ -248,7 +248,7 @@
       if (extrasTriggerRef.value) {
         ScrollTrigger.create({
           trigger: extrasTriggerRef.value,
-          start: "top 85%",
+          start: "top 70%",
           once: true,
           invalidateOnRefresh: true,
           onEnter: () => {
@@ -320,10 +320,8 @@
         stagger: { each: 0.05, from: "random" },
       })
       .call(() => {
-        // The newly mounted sections add height below the viewport; re-measure
-        // every trigger and keep Lenis aligned with the real scroll position.
-        // VueLenis uses autoResize in app.vue, so its ResizeObserver updates
-        // scroll dimensions; refresh GSAP triggers after the new content is mounted.
+        // Refresh GSAP trigger positions after Vue mounts the new content.
+        // VueLenis uses autoResize in app.vue and updates dimensions via ResizeObserver.
         ScrollTrigger.refresh();
       })
       .to(strips, {
