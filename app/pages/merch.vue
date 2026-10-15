@@ -87,7 +87,7 @@
               ref="continuationClipRef"
               class="pointer-events-none absolute left-0 top-[-1.2rem] overflow-hidden"
               style="height: 0px; width: 100%;"
-            />
+            ></div>
           </div>
         </aside>
       </div>
