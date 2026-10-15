@@ -49,9 +49,9 @@
       </aside>
 
       <div class="min-w-0 relative z-[94]">
-        <header class="pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-24 lg:pb-10">
+        <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
           <AnimationReveal class="w-full">
-            <p class="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gray-600 sm:text-sm">
+            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
             </p>
           </AnimationReveal>
@@ -158,6 +158,44 @@
           onEnterBack: () => setActiveSection(index),
         });
       });
+
+      // Keep the element nearest the viewport center in focus.
+      // The elements above and below it soften as they enter or leave the viewport.
+      // Keep this effect scroll-driven and skip it for reduced-motion preferences.
+      if (!prefersReducedMotion.value) {
+        const focusTargets = gsap.utils.toArray(
+          "[data-service-focus]",
+          servicesPageRef.value
+        );
+
+        focusTargets.forEach((target) => {
+          const isVisual = target.dataset.serviceFocus === "visual";
+          const blurredFilter = isVisual
+            ? "blur(6px) saturate(0.82)"
+            : "blur(4px)";
+          const focusedFilter = isVisual
+            ? "blur(0px) saturate(1)"
+            : "blur(0px)";
+
+          gsap
+            .timeline({
+              defaults: { ease: "none" },
+              scrollTrigger: {
+                trigger: target,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            })
+            .fromTo(
+              target,
+              { filter: blurredFilter },
+              { filter: focusedFilter, duration: 0.5 }
+            )
+            .to(target, { filter: blurredFilter, duration: 0.5 });
+        });
+      }
 
       // Refresh section triggers after fonts, images and layout have settled.
       // The desktop navigation's position is handled by CSS sticky.
