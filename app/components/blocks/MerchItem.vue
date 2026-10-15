@@ -16,7 +16,7 @@
 
     <AnimationReveal class="w-full">
       <p
-        class="mt-3 max-w-3xl text-lg font-bold leading-[1.7778] text-gray-800 sm:mt-4 lg:text-xl lg:leading-[1.75]"
+        class="mt-3 max-w-3xl text-lg font-bold leading-[1.7778] sm:mt-4 lg:text-xl lg:leading-[1.75]"
       >
         {{ $t(service.descriptionKey) }}
       </p>
