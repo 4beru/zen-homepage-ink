@@ -2,8 +2,7 @@
   <!-- This follow-up panel uses the same pinned fake-scroll transition as the Services panel above. -->
   <div ref="panelRef" class="journey-slide-panel">
     <div ref="panelVisualRef" class="journey-panel-visual">
-      <div ref="panelExitRef" class="journey-panel-exit">
-        <div ref="panelInnerRef" class="journey-panel-inner">
+      <div ref="panelInnerRef" class="journey-panel-inner">
   <section class="project-journey w-full border-t border-black/10 pt-24 pb-8 sm:pt-28 md:pt-36" aria-labelledby="journey-title">
     <!-- Eyebrow -->
     <p class="journey-eyebrow mb-4 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
@@ -50,7 +49,6 @@
       </li>
     </ol>
   </section>
-        </div>
       </div>
     </div>
   </div>
@@ -66,7 +64,6 @@
 
   const panelRef = useTemplateRef('panelRef');
   const panelVisualRef = useTemplateRef('panelVisualRef');
-  const panelExitRef = useTemplateRef('panelExitRef');
   const panelInnerRef = useTemplateRef('panelInnerRef');
   const titleRef = useTemplateRef('titleRef');
   const introRef = useTemplateRef('introRef');
@@ -105,14 +102,12 @@
 
     const panel = panelRef.value;
     const visual = panelVisualRef.value;
-    const exitLayer = panelExitRef.value;
     const inner = panelInnerRef.value;
-    if (!panel || !visual || !exitLayer || !inner) return;
+    if (!panel || !visual || !inner) return;
 
     panel.style.marginBottom = '0px';
     gsap.set(inner, { clearProps: 'transform' });
     gsap.set(visual, { clearProps: 'transform,opacity' });
-    gsap.set(exitLayer, { clearProps: 'transform,opacity' });
 
     animationContext = gsap.context(() => {
       titleSplit = SplitText.create(titleRef.value, {
@@ -131,7 +126,6 @@
       panel.style.marginBottom = `${difference}px`;
 
       gsap.set(visual, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' });
-      gsap.set(exitLayer, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' });
 
       // Incoming scale-up: this is the handoff from Services into Project Journey.
       // Animate the visual child, not the element ScrollTrigger will pin.
@@ -156,7 +150,8 @@
         scrollTrigger: {
           trigger: panel,
           start: 'bottom bottom',
-          end: () => `+=${Math.max(inner.scrollHeight, panel.clientHeight)}`,
+          end: () =>
+            difference > 0 ? `+=${difference}` : 'bottom top',
           pin: panel,
           pinSpacing: false,
           scrub: true,
@@ -257,28 +252,8 @@
         );
       });
 
-      // Exit scale/fade mirrors the supplied CodePen pattern and reveals FAQs below.
-      // Keep exit transforms on a nested layer so they never compete with the entry tween.
-      const exitStart = hasFakeScroll ? fakeScrollDuration : 0.35;
-      const exitScaleDuration = hasFakeScroll ? 0.9 : 0.58;
-      const exitFadeDuration = hasFakeScroll ? 0.1 : 0.07;
-
-      timeline
-        .to(
-          exitLayer,
-          {
-            scale: 0.7,
-            autoAlpha: 0.5,
-            duration: exitScaleDuration,
-            ease: 'none',
-          },
-          exitStart,
-        )
-        .to(
-          exitLayer,
-          { autoAlpha: 0, duration: exitFadeDuration, ease: 'none' },
-          exitStart + exitScaleDuration,
-        );
+      // No scale/fade is attached to the end of this panel. Once its content
+      // has completed the fake-scroll, FAQs continues in the normal document flow.
 
       ScrollTrigger.refresh();
     }, panel);
@@ -309,15 +284,6 @@
     will-change: transform, opacity;
   }
 
-  .journey-panel-exit {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    transform-origin: center center;
-    will-change: transform, opacity;
-  }
-
   .journey-panel-inner {
     position: relative;
     width: 100%;
@@ -339,14 +305,6 @@
     }
 
     .journey-panel-visual {
-      height: auto;
-      overflow: visible;
-      transform: none !important;
-      opacity: 1 !important;
-      will-change: auto;
-    }
-
-    .journey-panel-exit {
       height: auto;
       overflow: visible;
       transform: none !important;
