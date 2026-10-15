@@ -72,19 +72,8 @@
     <!-- Full-width follow-up section, separate from the Services two-column block. -->
     <section class="services-follow-up" aria-label="Project Journey and FAQs">
       <div class="container">
-        <div ref="extrasTriggerRef" class="h-px" aria-hidden="true" />
-
-        <Transition
-          name="journey-faqs"
-          @before-enter="onJourneyBeforeEnter"
-          @enter="onJourneyEnter"
-          @leave="onJourneyLeave"
-        >
-          <div v-if="showExtras" class="flex flex-col gap-24 sm:gap-28 md:gap-32 2xl:gap-36">
-            <ProjectJourney />
-            <FaqAccordion />
-          </div>
-        </Transition>
+        <ProjectJourney />
+        <FaqAccordion />
       </div>
     </section>
   </section>
@@ -125,11 +114,6 @@
 
   const activeServiceIndex = ref(-1);
   const prefersReducedMotion = ref(false);
-
-  // Project Journey + FAQs mount after a scroll trigger and enter with a
-  // GSAP curtain transition (see the <Transition> hooks below).
-  const showExtras = ref(false);
-  const extrasTriggerRef = useTemplateRef("extrasTriggerRef");
 
   let mobileSplits = [];
   let desktopSplits = [];
@@ -243,20 +227,6 @@
         });
       });
 
-      // Trigger the reveal at the boundary of the new full-width section,
-      // not when the final service item merely starts entering the viewport.
-      if (extrasTriggerRef.value) {
-        ScrollTrigger.create({
-          trigger: extrasTriggerRef.value,
-          start: "top 70%",
-          once: true,
-          invalidateOnRefresh: true,
-          onEnter: () => {
-            showExtras.value = true;
-          },
-        });
-      }
-
       // Refresh section triggers after fonts, images and layout have settled.
       // The desktop navigation's position is handled by CSS sticky.
       ScrollTrigger.refresh();
@@ -269,74 +239,6 @@
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
-
-  // ---------- Journey + FAQs curtain transition (GSAP via <Transition> hooks) ----------
-  const CURTAIN_COUNT = 6;
-
-  function createCurtain(container) {
-    const curtain = document.createElement("div");
-    curtain.setAttribute("aria-hidden", "true");
-    curtain.className =
-      "pointer-events-none fixed inset-x-0 top-0 z-[95] flex h-dvh w-full items-stretch overflow-hidden bg-transparent";
-
-    for (let i = 0; i < CURTAIN_COUNT; i += 1) {
-      const strip = document.createElement("div");
-      strip.className = "h-full flex-1 origin-bottom scale-y-0 bg-black";
-      curtain.appendChild(strip);
-    }
-
-    container.appendChild(curtain);
-    return curtain;
-  }
-
-  function onJourneyBeforeEnter(el) {
-    el.__journeyCurtain = createCurtain(el);
-  }
-
-  function onJourneyEnter(el, done) {
-    const strips = el.__journeyCurtain?.querySelectorAll("div") ?? [];
-
-    if (prefersReducedMotion.value || !strips.length) {
-      el.__journeyCurtain?.remove();
-      ScrollTrigger.refresh();
-      done();
-      return;
-    }
-
-    // Curtains rise to cover the screen, content mounts behind them,
-    // then they drop again with a staggered reveal.
-    gsap
-      .timeline({
-        onComplete: () => {
-          el.__journeyCurtain?.remove();
-          ScrollTrigger.refresh();
-          done();
-        },
-      })
-      .to(strips, {
-        scaleY: 1,
-        duration: 0.45,
-        ease: "power4.inOut",
-        stagger: { each: 0.05, from: "random" },
-      })
-      .call(() => {
-        // Refresh GSAP trigger positions after Vue mounts the new content.
-        // VueLenis uses autoResize in app.vue and updates dimensions via ResizeObserver.
-        ScrollTrigger.refresh();
-      })
-      .to(strips, {
-        scaleY: 0,
-        transformOrigin: "top",
-        duration: 0.55,
-        ease: "power4.inOut",
-        stagger: { each: 0.05, from: "random" },
-      });
-  }
-
-  function onJourneyLeave(el, done) {
-    el.__journeyCurtain?.remove();
-    done();
-  }
 
   function getActiveServiceIndex() {
     const activationRatio = window.matchMedia("(min-width: 1024px)").matches
