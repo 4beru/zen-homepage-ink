@@ -97,6 +97,7 @@
   let mobileSplits = [];
   let desktopSplits = [];
   let ctx;
+  let navIntroComplete = false;
 
   useSeoMeta({
     title: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
@@ -130,19 +131,29 @@
       gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
       gsap.set(desktopChars, { fontSize: "1.8rem", color: "#000" });
 
+      // Reveal every service label in black first. Only after the intro completes
+      // do we animate the currently active service to its larger grey state.
+      const activateInitialService = () => {
+        navIntroComplete = true;
+        setActiveSection(getActiveServiceIndex(), prefersReducedMotion.value);
+        ScrollTrigger.refresh();
+      };
+
       if (prefersReducedMotion.value) {
         gsap.set(navChars, { autoAlpha: 1, clearProps: "transform" });
+        activateInitialService();
       } else {
-        gsap.from(navChars, {
-          y: 24,
-          autoAlpha: 0,
-          duration: 0.75,
-          stagger: { each: 0.008, from: "start" },
-          ease: "power4.out",
-        });
+        gsap
+          .timeline({ onComplete: activateInitialService })
+          .from(navChars, {
+            delay: 0.5,
+            y: 60,
+            autoAlpha: 0,
+            duration: 1,
+            stagger: { each: 0.008, from: "start" },
+            ease: "power4.out",
+          });
       }
-
-      setActiveSection(0, true);
 
       // Desktop uses the original trigger point (25%), mobile keeps its own (35%).
       const triggerOffset = () => (window.matchMedia("(min-width: 1024px)").matches ? "top+=25%" : "top+=35%");
@@ -154,8 +165,12 @@
           end: () => `bottom ${triggerOffset()}`,
           endTrigger: `#${service.id}`,
           invalidateOnRefresh: true, // Safari needs this.
-          onEnter: () => setActiveSection(index),
-          onEnterBack: () => setActiveSection(index),
+          onEnter: () => {
+            if (navIntroComplete) setActiveSection(index);
+          },
+          onEnterBack: () => {
+            if (navIntroComplete) setActiveSection(index);
+          },
         });
       });
 
@@ -201,6 +216,27 @@
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
+
+  function getActiveServiceIndex() {
+    const activationRatio = window.matchMedia("(min-width: 1024px)").matches
+      ? 0.25
+      : 0.35;
+    const activationY = window.innerHeight * activationRatio;
+    let lastPassedIndex = 0;
+
+    for (let index = 0; index < services.length; index += 1) {
+      const element = document.getElementById(services[index].id);
+      if (!element) continue;
+
+      const bounds = element.getBoundingClientRect();
+
+      if (bounds.top <= activationY) lastPassedIndex = index;
+      if (bounds.top <= activationY && bounds.bottom > activationY) return index;
+    }
+
+    // If the activation line falls between service blocks, keep the last one passed.
+    return lastPassedIndex;
+  }
 
   function setActiveSection(index, immediate = false) {
     if (index < 0 || index >= services.length || index === activeServiceIndex.value) return;
