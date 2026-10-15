@@ -1,5 +1,5 @@
 <template>
-  <!-- Only this follow-up panel is pinned; the Services aside keeps native sticky scrolling. -->
+  <!-- This follow-up panel uses the same pinned fake-scroll transition as the Services panel above. -->
   <div ref="panelRef" class="journey-slide-panel">
     <div ref="panelVisualRef" class="journey-panel-visual">
       <div ref="panelExitRef" class="journey-panel-exit">
@@ -189,10 +189,10 @@
 
       const stepElements = gsap.utils.toArray('.journey-step', stepsRef.value);
       const titleDuration = hasFakeScroll
-        ? Math.min(0.55, Math.max(0.08, fakeScrollDuration * 0.45))
+        ? Math.min(0.55, fakeScrollDuration * 0.45)
         : 0.24;
       const stepDuration = hasFakeScroll
-        ? Math.min(0.32, Math.max(0.06, fakeScrollDuration / (stepElements.length + 1)))
+        ? Math.min(0.32, fakeScrollDuration / (stepElements.length + 1) * 0.8)
         : 0.12;
       const maxTitleStart = hasFakeScroll ? Math.max(0, fakeScrollDuration - titleDuration) : 0.12;
       const maxStepStart = hasFakeScroll ? Math.max(0, fakeScrollDuration - stepDuration) : 0.2;
