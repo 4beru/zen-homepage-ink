@@ -2,7 +2,8 @@
   <!-- Only this follow-up panel is pinned; the Services aside keeps native sticky scrolling. -->
   <div ref="panelRef" class="journey-slide-panel">
     <div ref="panelVisualRef" class="journey-panel-visual">
-      <div ref="panelInnerRef" class="journey-panel-inner">
+      <div ref="panelExitRef" class="journey-panel-exit">
+        <div ref="panelInnerRef" class="journey-panel-inner">
   <section ref="journeyRef" class="project-journey w-full border-t border-black/10 pt-24 pb-8 sm:pt-28 md:pt-36" aria-labelledby="journey-title">
     <!-- Eyebrow -->
     <p class="journey-eyebrow mb-4 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
@@ -49,6 +50,7 @@
       </li>
     </ol>
   </section>
+        </div>
       </div>
     </div>
   </div>
@@ -64,8 +66,8 @@
 
   const panelRef = useTemplateRef('panelRef');
   const panelVisualRef = useTemplateRef('panelVisualRef');
+  const panelExitRef = useTemplateRef('panelExitRef');
   const panelInnerRef = useTemplateRef('panelInnerRef');
-  const journeyRef = useTemplateRef('journeyRef');
   const titleRef = useTemplateRef('titleRef');
   const introRef = useTemplateRef('introRef');
   const stepsRef = useTemplateRef('stepsRef');
@@ -103,12 +105,14 @@
 
     const panel = panelRef.value;
     const visual = panelVisualRef.value;
+    const exitLayer = panelExitRef.value;
     const inner = panelInnerRef.value;
-    if (!panel || !visual || !inner) return;
+    if (!panel || !visual || !exitLayer || !inner) return;
 
     panel.style.marginBottom = '0px';
     gsap.set(inner, { clearProps: 'transform' });
     gsap.set(visual, { clearProps: 'transform,opacity' });
+    gsap.set(exitLayer, { clearProps: 'transform,opacity' });
 
     animationContext = gsap.context(() => {
       titleSplit = SplitText.create(titleRef.value, {
@@ -127,6 +131,7 @@
       panel.style.marginBottom = `${difference}px`;
 
       gsap.set(visual, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' });
+      gsap.set(exitLayer, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' });
 
       // Incoming scale-up: this is the handoff from Services into Project Journey.
       // Animate the visual child, not the element ScrollTrigger will pin.
@@ -219,8 +224,10 @@
             autoAlpha: 0,
             filter: 'blur(4px)',
             ease: 'power4.out',
-            duration: titleDuration,
-            stagger: Math.min(0.035, titleDuration / Math.max(titleSplit.words.length, 1)),
+            duration: titleDuration * 0.6,
+            stagger: titleSplit.words.length > 1
+              ? Math.min(0.035, (titleDuration * 0.4) / (titleSplit.words.length - 1))
+              : 0,
           },
           revealStart(titleRef.value, maxTitleStart),
         );
@@ -251,13 +258,14 @@
       });
 
       // Exit scale/fade mirrors the supplied CodePen pattern and reveals FAQs below.
+      // Keep exit transforms on a nested layer so they never compete with the entry tween.
       const exitStart = hasFakeScroll ? fakeScrollDuration : 0.35;
       const exitScaleDuration = hasFakeScroll ? 0.9 : 0.58;
       const exitFadeDuration = hasFakeScroll ? 0.1 : 0.07;
 
       timeline
         .to(
-          visual,
+          exitLayer,
           {
             scale: 0.7,
             autoAlpha: 0.5,
@@ -267,7 +275,7 @@
           exitStart,
         )
         .to(
-          visual,
+          exitLayer,
           { autoAlpha: 0, duration: exitFadeDuration, ease: 'none' },
           exitStart + exitScaleDuration,
         );
@@ -301,6 +309,15 @@
     will-change: transform, opacity;
   }
 
+  .journey-panel-exit {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+
   .journey-panel-inner {
     position: relative;
     width: 100%;
@@ -322,6 +339,14 @@
     }
 
     .journey-panel-visual {
+      height: auto;
+      overflow: visible;
+      transform: none !important;
+      opacity: 1 !important;
+      will-change: auto;
+    }
+
+    .journey-panel-exit {
       height: auto;
       overflow: visible;
       transform: none !important;
