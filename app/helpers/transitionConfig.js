@@ -26,7 +26,7 @@ const resetTransitionStyles = () => {
 
   // The preloaders and route transition both animate these elements.
   // Remove stale inline transforms so the hamburger cannot remain collapsed.
-  gsap.set('.button-nav-icon-wrapper', { clearProps: "transform,pointerEvents" });
+  gsap.set('.button-nav-icon-wrapper', { clearProps: "transform,pointer-events" });
   gsap.set('.button-nav-icon-wrapper', { pointerEvents: 'auto' });
   gsap.set('.nav-icon', { clearProps: "transform" });
 };
