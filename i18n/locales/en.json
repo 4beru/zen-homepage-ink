@@ -128,6 +128,32 @@
       "meta": {
         "title": "Services",
         "description": "Creative web development, digital product architecture, motion and 3D experiences, and mobile and SaaS applications."
+      },
+      "journey": {
+        "eyebrow": "From the first signal to the final experience",
+        "title": "Project Journey",
+        "footerLeft": "Strategy · Design · Engineering",
+        "footerRight": "Built to move forward",
+        "steps": {
+          "discover": {
+            "number": "STEP · 01",
+            "title": "We find what makes you different",
+            "description": "We get close to your product, your people and your point of view—then turn what sets you apart into a clear digital direction.",
+            "alt": "Rythm project website showing its visual direction and digital experience."
+          },
+          "shape": {
+            "number": "STEP · 02",
+            "title": "We shape the experience",
+            "description": "With the direction set, we connect identity, interface and engineering into a distinctive experience that earns attention and makes the next step feel obvious.",
+            "alt": "Penti AI project interface illustrating digital product design and architecture."
+          },
+          "launch": {
+            "number": "STEP · 03",
+            "title": "We launch with intent",
+            "description": "We refine the details, bring every interaction into focus and prepare the product to meet the world—with a foundation built to evolve.",
+            "alt": "Unimatic project interface showing motion-led art direction and a digital product."
+          }
+        }
       }
     },
     "privacy": {

@@ -60,7 +60,7 @@
 
         </header>
 
-        <div class="flex flex-col gap-24 pb-24 sm:gap-28 md:gap-32 2xl:gap-36 md:pb-40">
+        <div class="flex flex-col gap-24 pb-16 sm:gap-28 sm:pb-20 md:gap-32 md:pb-24 2xl:gap-36">
           <section
             v-for="(service, serviceIndex) in services"
             :id="service.id"
@@ -80,6 +80,8 @@
       </div>
     </div>
   </section>
+
+  <ProjectJourney />
 </template>
 
 <script setup>

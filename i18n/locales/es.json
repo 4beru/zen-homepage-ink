@@ -128,6 +128,32 @@
       "meta": {
         "title": "Servicios",
         "description": "Desarrollo web creativo, arquitectura de productos digitales, experiencias de motion y 3D, y aplicaciones móviles y SaaS."
+      },
+      "journey": {
+        "eyebrow": "De la primera idea a la experiencia final",
+        "title": "Recorrido del proyecto",
+        "footerLeft": "Estrategia · Diseño · Ingeniería",
+        "footerRight": "Diseñado para evolucionar",
+        "steps": {
+          "discover": {
+            "number": "PASO · 01",
+            "title": "Descubrimos lo que te hace diferente",
+            "description": "Nos acercamos a tu producto, tu público y tu visión; después convertimos aquello que te distingue en una dirección digital clara.",
+            "alt": "Sitio web del proyecto Rythm que muestra su dirección visual y experiencia digital."
+          },
+          "shape": {
+            "number": "PASO · 02",
+            "title": "Damos forma a la experiencia",
+            "description": "Con la dirección definida, conectamos identidad, interfaz e ingeniería en una experiencia distintiva que capta la atención y facilita el siguiente paso.",
+            "alt": "Interfaz del proyecto Penti AI que ilustra el diseño y la arquitectura de un producto digital."
+          },
+          "launch": {
+            "number": "PASO · 03",
+            "title": "Lanzamos con intención",
+            "description": "Pulimos los detalles, damos claridad a cada interacción y preparamos el producto para salir al mundo con una base lista para evolucionar.",
+            "alt": "Interfaz del proyecto Unimatic que muestra dirección de arte con motion y un producto digital."
+          }
+        }
       }
     },
     "privacy": {
