@@ -38,9 +38,6 @@
               </svg>
             </span>
           </button>
-          <p id="footer-faq-booking-status" class="text-xs leading-relaxed text-black/45">
-            {{ $t("footer.faq.bookingSoon") }}
-          </p>
         </div>
       </div>
 
