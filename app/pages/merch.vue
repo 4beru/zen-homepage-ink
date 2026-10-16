@@ -61,12 +61,21 @@
         </header>
 
         <div class="flex flex-col gap-24 pb-24 sm:gap-28 md:gap-32 2xl:gap-36 md:pb-40">
-          <MerchItem
-            v-for="(service, index) in services"
+          <section
+            v-for="(service, serviceIndex) in services"
+            :id="service.id"
             :key="service.id"
-            :service="service"
-            :index="index"
-          />
+            data-service-section
+            class="flex flex-col gap-14 sm:gap-16 lg:gap-20"
+            :aria-label="$t(service.titleKey)"
+          >
+            <MerchItem
+              v-for="(item, itemIndex) in service.items"
+              :key="item.id"
+              :item="item"
+              :index="serviceIndex * 2 + itemIndex"
+            />
+          </section>
         </div>
       </div>
     </div>
@@ -87,18 +96,12 @@
     pageTransition: pageTransitionConfig,
   });
 
-  // Opacidad de los bloques fuera de foco. Con 1 solo se aplica blur;
-  // bájala (por ejemplo 0.55) si quieres que se lean más "apagados".
+  // El blur mantiene la misma opacidad y acompaña el cambio de foco del aside.
   const INACTIVE_OPACITY = 1;
 
-  // Línea de scroll donde cambia el foco del blur, en % de la altura del viewport
-  // medido desde arriba (el bloque cambia cuando su borde superior cruza esa línea).
-  // Debe ser MAYOR que la línea del aside (25 desktop / 35 mobile) para que el blur
-  // cambie ANTES que el título. Súbela para más adelanto, bájala para menos.
-  const FOCUS_LINE = { desktop: 55, mobile: 65 };
-
-  // Duración del cambio de blur, en segundos.
-  const FOCUS_DURATION = 0.6;
+  // Se comparte el umbral del aside: 25% en desktop y 35% en móvil.
+  // Así el blur y la animación del título arrancan desde el mismo ScrollTrigger.
+  const FOCUS_DURATION = 0.58;
 
   const { t } = useI18n();
   const servicesPageRef = useTemplateRef("servicesPageRef");
@@ -111,7 +114,7 @@
 
   let mobileSplits = [];
   let desktopSplits = [];
-  let serviceBlocks = [];
+  let serviceSections = [];
   let focusIndex = -1;
   let ctx;
   let navIntroComplete = false;
@@ -144,12 +147,12 @@
       const desktopChars = desktopSplits.flatMap((split) => split.chars);
       const navChars = [...mobileChars, ...desktopChars];
 
-      // Bloques de contenido (uno por servicio, en el mismo orden que `services`).
-      // Su blur es independiente del aside: cambia en su propia línea de scroll (FOCUS_LINE).
-      serviceBlocks = gsap.utils.toArray("[data-service-block]", servicesPageRef.value);
+      // Cada sección agrupa los dos componentes visuales asociados a un título del aside.
+      // El foco se aplica al grupo completo para que ambos componentes compartan el mismo estado.
+      serviceSections = gsap.utils.toArray("[data-service-section]", servicesPageRef.value);
 
-      // Estado inicial sin animación: el bloque en foco nítido, el resto desenfocado.
-      setFocusSection(getFocusIndex(), 0);
+      // Estado inicial: la sección situada en el umbral común del aside queda nítida.
+      setFocusSection(getActiveServiceIndex(), 0);
 
       // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
       gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
@@ -189,35 +192,16 @@
           });
       }
 
-      // Desktop uses the original trigger point (25%), mobile keeps its own (35%).
-      const triggerOffset = () => (window.matchMedia("(min-width: 1024px)").matches ? "top+=25%" : "top+=35%");
-
+      // Un único trigger por título del aside coordina la navegación y el blur.
+      // Ambos efectos comienzan al entrar/salir del mismo grupo y con el mismo umbral.
       services.forEach((service, index) => {
         ScrollTrigger.create({
           trigger: `#${service.id}`,
-          start: () => `top ${triggerOffset()}`,
-          end: () => `bottom ${triggerOffset()}`,
-          endTrigger: `#${service.id}`,
-          invalidateOnRefresh: true, // Safari needs this.
-          onEnter: () => {
-            if (navIntroComplete) setActiveSection(index);
-          },
-          onEnterBack: () => {
-            if (navIntroComplete) setActiveSection(index);
-          },
-        });
-      });
-
-      // Triggers del blur: misma lógica que el aside, pero en una línea más alta
-      // (FOCUS_LINE), así el foco cambia antes de que se ejecute la animación del título.
-      serviceBlocks.forEach((block, index) => {
-        ScrollTrigger.create({
-          trigger: block,
-          start: () => `top top+=${getFocusLine()}%`,
-          end: () => `bottom top+=${getFocusLine()}%`,
+          start: () => `top top+=${getActivationLine()}%`,
+          end: () => `bottom top+=${getActivationLine()}%`,
           invalidateOnRefresh: true,
-          onEnter: () => setFocusSection(index),
-          onEnterBack: () => setFocusSection(index),
+          onEnter: () => activateServiceSection(index),
+          onEnterBack: () => activateServiceSection(index),
         });
       });
 
@@ -228,17 +212,18 @@
   });
 
   onUnmounted(() => {
-    gsap.killTweensOf(serviceBlocks);
+    gsap.killTweensOf(serviceSections);
     ctx?.revert();
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
 
+  function getActivationLine() {
+    return window.matchMedia("(min-width: 1024px)").matches ? 25 : 35;
+  }
+
   function getActiveServiceIndex() {
-    const activationRatio = window.matchMedia("(min-width: 1024px)").matches
-      ? 0.25
-      : 0.35;
-    const activationY = window.innerHeight * activationRatio;
+    const activationY = window.innerHeight * (getActivationLine() / 100);
     let lastPassedIndex = 0;
 
     for (let index = 0; index < services.length; index += 1) {
@@ -251,35 +236,18 @@
       if (bounds.top <= activationY && bounds.bottom > activationY) return index;
     }
 
-    // If the activation line falls between service blocks, keep the last one passed.
+    // If the activation line falls between service groups, keep the last one passed.
     return lastPassedIndex;
   }
 
-  function getFocusLine() {
-    return window.matchMedia("(min-width: 1024px)").matches
-      ? FOCUS_LINE.desktop
-      : FOCUS_LINE.mobile;
-  }
-
-  // Bloque en foco según la línea de scroll del blur. Si la línea cae entre dos bloques,
-  // se mantiene el último que la pasó (misma lógica que getActiveServiceIndex).
-  function getFocusIndex() {
-    const lineY = window.innerHeight * (getFocusLine() / 100);
-    let lastPassedIndex = 0;
-
-    for (let index = 0; index < serviceBlocks.length; index += 1) {
-      const bounds = serviceBlocks[index].getBoundingClientRect();
-
-      if (bounds.top <= lineY) lastPassedIndex = index;
-      if (bounds.top <= lineY && bounds.bottom > lineY) return index;
-    }
-
-    return lastPassedIndex;
+  function activateServiceSection(index) {
+    setFocusSection(index);
+    if (navIntroComplete) setActiveSection(index);
   }
 
   function setFocusSection(index, duration = FOCUS_DURATION) {
     if (prefersReducedMotion.value) return;
-    if (index < 0 || index >= serviceBlocks.length || index === focusIndex) return;
+    if (index < 0 || index >= serviceSections.length || index === focusIndex) return;
 
     const previousIndex = focusIndex;
     focusIndex = index;
@@ -288,11 +256,11 @@
 
   // Enfoca el bloque activo y desenfoca el resto.
   function setBlockFocus(activeIndex, previousIndex, duration) {
-    if (prefersReducedMotion.value || !serviceBlocks.length) return;
+    if (prefersReducedMotion.value || !serviceSections.length) return;
 
     const blurPx = window.matchMedia("(min-width: 1024px)").matches ? 8 : 5;
 
-    serviceBlocks.forEach((block, i) => {
+    serviceSections.forEach((block, i) => {
       const isActive = i === activeIndex;
 
       // Tras la primera llamada solo cambian el bloque que pierde foco y el que lo gana.
@@ -405,7 +373,10 @@
         t < 0.5
           ? 8 * t ** 4
           : 1 - Math.pow(-2 * t + 2, 4) / 2,
-      onComplete: () => setActiveSection(index),
+      onComplete: () => {
+        setFocusSection(index);
+        setActiveSection(index);
+      },
     });
   }
 </script>
