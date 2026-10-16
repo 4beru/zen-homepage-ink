@@ -223,7 +223,10 @@
           "answer": "La inversión depende del alcance, la complejidad, los plazos y el nivel de colaboración necesario. Tras una primera conversación, podemos definir un alcance realista y preparar una estimación a medida."
         }
       ],
-      "aside": "Respuestas claras antes de empezar."
+      "aside": "Respuestas claras antes de empezar.",
+      "headshotAlt": "Retrato de un profesional creativo",
+      "bookCall": "Reservar una llamada",
+      "bookingSoon": "El enlace de reservas estará disponible pronto"
     }
   }
 }
