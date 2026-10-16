@@ -99,9 +99,8 @@
   // El blur mantiene la misma opacidad y acompaña el cambio de foco del aside.
   const INACTIVE_OPACITY = 1;
 
-  // Se comparte el umbral del aside: 25% en desktop y 35% en móvil.
-  // Así el blur y la animación del título arrancan desde el mismo ScrollTrigger.
-  const FOCUS_DURATION = 0.58;
+  // El blur y el título comparten el mismo disparador; la duración del blur
+  // se calcula según la cantidad real de caracteres animados en el aside.
 
   const { t } = useI18n();
   const servicesPageRef = useTemplateRef("servicesPageRef");
@@ -245,7 +244,25 @@
     if (navIntroComplete) setActiveSection(index);
   }
 
-  function setFocusSection(index, duration = FOCUS_DURATION) {
+  function getFocusDuration(index) {
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const splits = isDesktop ? desktopSplits : mobileSplits;
+    const previousIndex = activeServiceIndex.value;
+    const previousLength = previousIndex >= 0 ? splits[previousIndex]?.chars.length ?? 0 : 0;
+    const nextLength = splits[index]?.chars.length ?? 0;
+    const outgoingDuration = isDesktop ? 0.5 : 0.42;
+    const incomingDuration = isDesktop ? 0.4 : 0.42;
+    const stagger = isDesktop ? 0.03 : 0.012;
+
+    const outgoingEnd = previousIndex >= 0
+      ? outgoingDuration + Math.max(0, previousLength - 1) * stagger
+      : 0;
+    const incomingEnd = incomingDuration + Math.max(0, nextLength - 1) * stagger;
+
+    return Math.max(outgoingEnd, incomingEnd);
+  }
+
+  function setFocusSection(index, duration = getFocusDuration(index)) {
     if (prefersReducedMotion.value) return;
     if (index < 0 || index >= serviceSections.length || index === focusIndex) return;
 
