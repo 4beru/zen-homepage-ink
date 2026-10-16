@@ -6,14 +6,14 @@ export const services = [
     items: [
       {
         id: "rythm-website",
-        image: "/albums/video-rock/rythm-desktop.png",
+        image: "/images/merch/nexterra-website-1.png",
         titleKey: "pages.merch.services.webDevelopment.title",
         descriptionKey: "pages.merch.services.webDevelopment.description",
         altKey: "pages.merch.services.webDevelopment.alt",
       },
       {
         id: "rythm-interactions",
-        image: "/albums/video-rock/rythm.png",
+        image: "/images/merch/retainer-website-2.png",
         titleKey: "pages.merch.services.webDevelopment.secondaryTitle",
         descriptionKey: "pages.merch.services.webDevelopment.secondaryDescription",
         altKey: "pages.merch.services.webDevelopment.secondaryAlt",
@@ -27,14 +27,14 @@ export const services = [
     items: [
       {
         id: "penti-product",
-        image: "/albums/one/penti-desktop.png",
+        image: "/images/merch/isora-webapp-1.png",
         titleKey: "pages.merch.services.productArchitecture.title",
         descriptionKey: "pages.merch.services.productArchitecture.description",
         altKey: "pages.merch.services.productArchitecture.alt",
       },
       {
         id: "penti-integrations",
-        image: "/albums/one/penti.png",
+        image: "/images/merch/cimac-webapp-2.png",
         titleKey: "pages.merch.services.productArchitecture.secondaryTitle",
         descriptionKey: "pages.merch.services.productArchitecture.secondaryDescription",
         altKey: "pages.merch.services.productArchitecture.secondaryAlt",
@@ -48,14 +48,14 @@ export const services = [
     items: [
       {
         id: "unimatic-motion",
-        image: "/albums/velodrome/unimatic-desktop.jpg",
+        image: "/images/merch/ramotion-mobile-1.png",
         titleKey: "pages.merch.services.motion3d.title",
         descriptionKey: "pages.merch.services.motion3d.description",
         altKey: "pages.merch.services.motion3d.alt",
       },
       {
         id: "unimatic-interactions",
-        image: "/albums/velodrome/unimatic.png",
+        image: "/images/merch/makko-mobile-2.png",
         titleKey: "pages.merch.services.motion3d.secondaryTitle",
         descriptionKey: "pages.merch.services.motion3d.secondaryDescription",
         altKey: "pages.merch.services.motion3d.secondaryAlt",
@@ -69,14 +69,14 @@ export const services = [
     items: [
       {
         id: "subscrr-product",
-        image: "/albums/living-room/subscrr-desktop.png",
+        image: "/images/merch/omnibuds-design-1.png",
         titleKey: "pages.merch.services.mobileSaas.title",
         descriptionKey: "pages.merch.services.mobileSaas.description",
         altKey: "pages.merch.services.mobileSaas.alt",
       },
       {
         id: "subscrr-ux",
-        image: "/albums/living-room/subscrr.png",
+        image: "/images/merch/halo-design-2.png",
         titleKey: "pages.merch.services.mobileSaas.secondaryTitle",
         descriptionKey: "pages.merch.services.mobileSaas.secondaryDescription",
         altKey: "pages.merch.services.mobileSaas.secondaryAlt",
