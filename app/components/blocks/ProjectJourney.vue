@@ -2,22 +2,15 @@
   <section
     id="project-journey"
     ref="journeyRef"
-    class="relative isolate overflow-hidden bg-[#080808] text-[#f0efe9]"
+    class="relative isolate overflow-hidden bg-[#000] text-[#fff]"
     aria-labelledby="project-journey-title"
   >
     <div class="container py-16 sm:py-20 lg:py-28 xl:py-32">
       <header class="mb-10 sm:mb-14 lg:mb-16">
-        <p
-          data-journey-eyebrow
-          class="mb-5 text-[0.625rem] font-bold uppercase tracking-[0.2em] text-white/55 sm:mb-7 sm:text-xs"
-        >
-          {{ $t("pages.merch.journey.eyebrow") }}
-        </p>
-
         <h2
           id="project-journey-title"
           ref="journeyTitleRef"
-          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] text-[#f0efe9] [text-wrap:balance] lg:whitespace-nowrap"
+          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] lg:whitespace-nowrap"
         >
           {{ $t("pages.merch.journey.title") }}
         </h2>
@@ -69,14 +62,6 @@
             />
           </figure>
         </article>
-      </div>
-
-      <div
-        aria-hidden="true"
-        class="mt-6 flex items-center justify-between text-[0.5625rem] font-bold uppercase tracking-[0.16em] text-white/35 sm:mt-8 sm:text-[0.625rem]"
-      >
-        <span>{{ $t("pages.merch.journey.footerLeft") }}</span>
-        <span>{{ $t("pages.merch.journey.footerRight") }}</span>
       </div>
     </div>
   </section>
