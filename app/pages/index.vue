@@ -119,6 +119,7 @@
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
   let block1Split, block2Split, block3Split;
   let ctx;
+  let isHomeActive = false;
 
   useSeoMeta({
     title: `${t('pages.home.meta.title')} | ${t('siteName')}`,
@@ -128,7 +129,11 @@
   })
 
   onMounted(async () => {
+    isHomeActive = true;
     await document.fonts.ready;
+
+    // Avoid initializing a pinned timeline after Home was left during font loading.
+    if (!isHomeActive || !homeTimelineRef.value?.isConnected) return;
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
@@ -380,16 +385,19 @@
   })
 
   onBeforeRouteLeave(() => {
-    // GSAP timeline "goes blank" and nothing shows on screen when you click a link.
-    // Scrolling the document makes a trick and keeps the timeline while the page transition is running (hacky?).
+    // Preserve the outgoing frame for the route transition when the timeline exists.
     window.scrollTo(0, 0);
-    ctx.kill();
+    ctx?.kill();
+  });
+
+  onBeforeUnmount(() => {
+    isHomeActive = false;
   });
 
   onUnmounted(() => {
-    ctx.revert();
-    block1Split.revert();
-    block2Split.revert();
-    block3Split.revert();
+    ctx?.revert();
+    block1Split?.revert();
+    block2Split?.revert();
+    block3Split?.revert();
   });
 </script>
