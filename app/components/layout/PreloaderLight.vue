@@ -38,9 +38,13 @@
   const route = useRoute()
   const routesAreLoaded = useState('routesAreLoadedLight', () => []);
   let ctx = gsap.context(() => { });
+  let isPreloaderActive = false;
 
   onMounted(async () => {
+    isPreloaderActive = true;
     await nextTick();
+    if (!isPreloaderActive || !preloaderLightRef.value?.isConnected) return;
+
     disableScroll();
     // await document.fonts.ready;
 
@@ -87,6 +91,8 @@
                 console.error(error);
               }
 
+              if (!isPreloaderActive || !preloaderLightRef.value?.isConnected) return;
+
               gsap
                 .timeline()
                 .to(preloaderTextRef.value, {
@@ -114,6 +120,10 @@
         .play();
 
     }, preloaderLightRef.value);
+  });
+
+  onBeforeUnmount(() => {
+    isPreloaderActive = false;
   });
 
   onUnmounted(() => {
