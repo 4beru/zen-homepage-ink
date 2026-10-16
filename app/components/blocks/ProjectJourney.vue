@@ -115,10 +115,15 @@
 
   let ctx;
   let titleSplit;
+  let isJourneyActive = false;
 
   onMounted(async () => {
+    isJourneyActive = true;
     await nextTick();
     await document.fonts.ready;
+
+    // Route transitions can unmount Services while font loading is still pending.
+    if (!isJourneyActive || !journeyRef.value?.isConnected) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
@@ -181,6 +186,10 @@
 
       ScrollTrigger.refresh();
     }, journeyRef.value);
+  });
+
+  onBeforeUnmount(() => {
+    isJourneyActive = false;
   });
 
   onUnmounted(() => {
