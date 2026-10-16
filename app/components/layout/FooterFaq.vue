@@ -76,7 +76,7 @@
                 :id="`footer-faq-panel-${index}`"
                 role="region"
                 :aria-labelledby="`footer-faq-trigger-${index}`"
-                class="grid grid-rows-[1fr]"
+                class="grid"
               >
                 <div class="min-h-0 overflow-hidden">
                   <div class="max-w-3xl pb-6 pr-8 text-sm leading-relaxed text-black/65 sm:pb-7 sm:text-base">
