@@ -88,6 +88,7 @@
   import { services } from "~/data/merch";
   import { pageTransitionConfig } from "~/helpers/transitionConfig";
   import { useLenis } from "lenis/vue";
+  import { enableScroll } from "~/utils/scrollLock.js";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
@@ -128,6 +129,12 @@
   });
 
   onMounted(async () => {
+    // Recover from a route transition that left the global body/main scroll lock active.
+    // Do this before waiting for fonts so scroll is available as soon as Services mounts.
+    enableScroll();
+    gsap.set("main", { clearProps: "overflow,transform" });
+    lenis.value?.start();
+
     await nextTick();
     await document.fonts.ready;
 
