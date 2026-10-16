@@ -47,7 +47,7 @@
   const navWrapperRef = useTemplateRef('navWrapperRef')
   const route = useRoute()
 
-  watch(route, () => {
+  watch(() => route.fullPath, () => {
     isOpen.value = false
   })
 
