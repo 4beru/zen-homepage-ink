@@ -6,9 +6,42 @@
           <span class="h-3 w-3 shrink-0 rounded-full bg-black" aria-hidden="true"></span>
           <span>{{ $t("footer.faq.eyebrow") }}</span>
         </div>
-        <p class="max-w-xs text-sm leading-relaxed text-black/60">
-          {{ $t("footer.faq.aside") }}
-        </p>
+        <div class="flex max-w-xs flex-col items-start gap-4">
+          <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=384&h=480&q=85"
+            :alt="$t('footer.faq.headshotAlt')"
+            class="h-24 w-24 object-cover grayscale"
+            width="96"
+            height="96"
+            loading="lazy"
+            decoding="async"
+          />
+          <p class="max-w-xs text-base leading-relaxed text-black/75 sm:text-lg">
+            {{ $t("footer.faq.aside") }}
+          </p>
+          <button
+            type="button"
+            disabled
+            :aria-describedby="'footer-faq-booking-status'"
+            class="group inline-flex min-h-11 items-center gap-5 border border-black/20 py-1.5 pl-4 pr-1.5 text-left text-xs font-medium text-black transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black disabled:cursor-not-allowed"
+          >
+            <span>{{ $t("footer.faq.bookCall") }}</span>
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center bg-black text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 12 12"
+                fill="none"
+                class="h-3 w-3"
+                aria-hidden="true"
+              >
+                <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
+              </svg>
+            </span>
+          </button>
+          <p id="footer-faq-booking-status" class="text-xs leading-relaxed text-black/45">
+            {{ $t("footer.faq.bookingSoon") }}
+          </p>
+        </div>
       </div>
 
       <div class="min-w-0 lg:col-span-9">
