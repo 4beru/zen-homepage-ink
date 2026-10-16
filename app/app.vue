@@ -8,6 +8,7 @@
     </VueLenis>
   </NuxtLayout>
   <PageTransitionOverlay />
+  <div class="film-grain-overlay" aria-hidden="true"></div>
 </template>
 
 <script setup>
