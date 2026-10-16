@@ -1,5 +1,7 @@
 <template>
   <article
+    data-service-item
+    :data-service-index="serviceIndex"
     class="service-item w-full"
     :aria-labelledby="`service-title-${item.id}`"
   >
@@ -43,6 +45,10 @@
       required: true,
     },
     index: {
+      type: Number,
+      required: true,
+    },
+    serviceIndex: {
       type: Number,
       required: true,
     },

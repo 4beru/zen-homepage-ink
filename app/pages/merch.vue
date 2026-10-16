@@ -74,6 +74,7 @@
               :key="item.id"
               :item="item"
               :index="serviceIndex * 2 + itemIndex"
+              :service-index="serviceIndex"
             />
           </section>
         </div>
@@ -117,6 +118,7 @@
   let mobileSplits = [];
   let desktopSplits = [];
   let serviceSections = [];
+  let serviceItems = [];
   let focusIndex = -1;
   let ctx;
   let navIntroComplete = false;
@@ -155,12 +157,12 @@
       const desktopChars = desktopSplits.flatMap((split) => split.chars);
       const navChars = [...mobileChars, ...desktopChars];
 
-      // Cada sección agrupa los dos componentes visuales asociados a un título del aside.
-      // El foco se aplica al grupo completo para que ambos componentes compartan el mismo estado.
+      // El aside sigue trabajando por grupos, pero cada item controla su propio blur.
       serviceSections = gsap.utils.toArray("[data-service-section]", servicesPageRef.value);
+      serviceItems = gsap.utils.toArray("[data-service-item]", servicesPageRef.value);
 
-      // Estado inicial: la sección situada en el umbral común del aside queda nítida.
-      setFocusSection(getActiveServiceIndex(), 0);
+      // Estado inicial: solo el item que cruza el umbral de foco queda nítido.
+      setFocusItem(getActiveItemIndex(), 0);
 
       // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
       gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
@@ -213,6 +215,20 @@
         });
       });
 
+      // El blur vuelve a dispararse por componente, no por el grupo entero.
+      // Se usa el mismo umbral del aside: el primer item de cada grupo cambia de foco
+      // en paralelo al título, mientras que el segundo puede enfocarse sin cambiar el aside.
+      serviceItems.forEach((item, index) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: () => `top top+=${getActivationLine()}%`,
+          end: () => `bottom top+=${getActivationLine()}%`,
+          invalidateOnRefresh: true,
+          onEnter: () => setFocusItem(index),
+          onEnterBack: () => setFocusItem(index),
+        });
+      });
+
       // Refresh section triggers after fonts, images and layout have settled.
       // The desktop navigation's position is handled by CSS sticky.
       ScrollTrigger.refresh();
@@ -220,7 +236,7 @@
   });
 
   onUnmounted(() => {
-    gsap.killTweensOf(serviceSections);
+    gsap.killTweensOf(serviceItems);
     ctx?.revert();
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
@@ -249,65 +265,89 @@
   }
 
   function activateServiceSection(index) {
-    setFocusSection(index);
+    // The aside remains grouped by service; item blur is driven by individual triggers.
     if (navIntroComplete) setActiveSection(index);
   }
 
+  function getActiveItemIndex() {
+    const activationY = window.innerHeight * (getActivationLine() / 100);
+    let lastPassedIndex = 0;
+
+    for (let index = 0; index < serviceItems.length; index += 1) {
+      const bounds = serviceItems[index].getBoundingClientRect();
+
+      if (bounds.top <= activationY) lastPassedIndex = index;
+      if (bounds.top <= activationY && bounds.bottom > activationY) return index;
+    }
+
+    return lastPassedIndex;
+  }
+
   function getFocusDuration(index) {
+    if (focusIndex < 0) return 0;
+
+    const previousItem = serviceItems[focusIndex];
+    const nextItem = serviceItems[index];
+    const previousServiceIndex = Number(previousItem?.dataset.serviceIndex);
+    const nextServiceIndex = Number(nextItem?.dataset.serviceIndex);
+
+    // A transition between the two items of one service doesn't change the aside.
+    if (previousServiceIndex === nextServiceIndex) return 0.58;
+
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
     const splits = isDesktop ? desktopSplits : mobileSplits;
-    const previousIndex = activeServiceIndex.value;
-    const previousLength = previousIndex >= 0 ? splits[previousIndex]?.chars.length ?? 0 : 0;
-    const nextLength = splits[index]?.chars.length ?? 0;
+    const previousLength = splits[previousServiceIndex]?.chars.length ?? 0;
+    const nextLength = splits[nextServiceIndex]?.chars.length ?? 0;
     const outgoingDuration = isDesktop ? 0.5 : 0.42;
     const incomingDuration = isDesktop ? 0.4 : 0.42;
     const stagger = isDesktop ? 0.03 : 0.012;
 
-    const outgoingEnd = previousIndex >= 0
-      ? outgoingDuration + Math.max(0, previousLength - 1) * stagger
-      : 0;
+    const outgoingEnd = outgoingDuration + Math.max(0, previousLength - 1) * stagger;
     const incomingEnd = incomingDuration + Math.max(0, nextLength - 1) * stagger;
 
     return Math.max(outgoingEnd, incomingEnd);
   }
 
-  function setFocusSection(index, duration = getFocusDuration(index)) {
+  function getFirstItemIndexForService(serviceIndex) {
+    return serviceItems.findIndex(
+      (item) => Number(item.dataset.serviceIndex) === serviceIndex
+    );
+  }
+
+  function setFocusItem(index, duration = getFocusDuration(index)) {
     if (prefersReducedMotion.value) return;
-    if (index < 0 || index >= serviceSections.length || index === focusIndex) return;
+    if (index < 0 || index >= serviceItems.length || index === focusIndex) return;
 
     const previousIndex = focusIndex;
     focusIndex = index;
-    setBlockFocus(index, previousIndex, duration);
+    setItemFocus(index, previousIndex, duration);
   }
 
-  // Enfoca el bloque activo y desenfoca el resto.
-  function setBlockFocus(activeIndex, previousIndex, duration) {
-    if (prefersReducedMotion.value || !serviceSections.length) return;
+  // Enfoca un único componente. El estado del aside sigue perteneciendo al grupo de servicio.
+  function setItemFocus(activeIndex, previousIndex, duration) {
+    if (prefersReducedMotion.value || !serviceItems.length) return;
 
     const blurPx = window.matchMedia("(min-width: 1024px)").matches ? 8 : 5;
 
-    serviceSections.forEach((block, i) => {
+    serviceItems.forEach((item, i) => {
       const isActive = i === activeIndex;
 
-      // Tras la primera llamada solo cambian el bloque que pierde foco y el que lo gana.
+      // Solo animamos el item que pierde el foco y el que lo recibe.
       if (previousIndex >= 0 && !isActive && i !== previousIndex) return;
 
-      if (gsap.getProperty(block, "filter") === "none") {
-        // Ya está nítido: no hay nada que animar.
+      if (gsap.getProperty(item, "filter") === "none") {
         if (isActive) return;
-        // GSAP no interpola desde `filter: none`, así que le damos un valor inicial numérico.
-        gsap.set(block, { filter: "blur(0px)" });
+        gsap.set(item, { filter: "blur(0px)" });
       }
 
-      gsap.to(block, {
+      gsap.to(item, {
         filter: isActive ? "blur(0px)" : `blur(${blurPx}px)`,
         opacity: isActive ? 1 : INACTIVE_OPACITY,
         duration,
         ease: "power2.out",
         overwrite: "auto",
         onComplete: () => {
-          // Sin filtro residual: evita stacking context y mantiene el texto nítido.
-          if (isActive) gsap.set(block, { clearProps: "filter,opacity" });
+          if (isActive) gsap.set(item, { clearProps: "filter,opacity" });
         },
       });
     });
@@ -400,7 +440,8 @@
           ? 8 * t ** 4
           : 1 - Math.pow(-2 * t + 2, 4) / 2,
       onComplete: () => {
-        setFocusSection(index);
+        const firstItemIndex = getFirstItemIndexForService(index);
+        if (firstItemIndex >= 0) setFocusItem(firstItemIndex);
         setActiveSection(index);
       },
     });
