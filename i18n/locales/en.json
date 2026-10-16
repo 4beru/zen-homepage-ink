@@ -185,6 +185,44 @@
   },
   "footer": {
     "siteBy": "Site by",
-    "privacy": "Privacy policy"
+    "privacy": "Privacy policy",
+    "faq": {
+      "eyebrow": "FAQs",
+      "title": "A few things to know before we work together.",
+      "questions": [
+        {
+          "question": "What kind of projects do you take on?",
+          "answer": "We work on distinctive websites, digital products, mobile and SaaS applications, and motion-led experiences. The best fit is a project where thoughtful design and solid engineering matter equally."
+        },
+        {
+          "question": "Who will actually work on my project?",
+          "answer": "You work directly with the people shaping and building your project. We keep communication close and bring in specialist support only when the project calls for it."
+        },
+        {
+          "question": "How long does a project usually take?",
+          "answer": "It depends on scope and complexity. A focused website can take several weeks, while a larger digital product may need a few months. We agree on milestones and priorities before work begins."
+        },
+        {
+          "question": "How do you manage communication and feedback?",
+          "answer": "We agree on a clear point of contact, regular check-ins and shared milestones. Feedback is gathered at defined moments so decisions stay clear and progress keeps moving."
+        },
+        {
+          "question": "What do you need to get started?",
+          "answer": "A conversation about your goals, audience, constraints and what success looks like is enough to begin. Existing brand assets, references or technical requirements are helpful, but they don't need to be perfectly prepared."
+        },
+        {
+          "question": "Can you work with an existing brand or product?",
+          "answer": "Absolutely. We can build on what already works, refine the visual direction, redesign an existing website or improve a product without forcing a complete rebrand."
+        },
+        {
+          "question": "What happens after launch?",
+          "answer": "We can help with handover, fixes and agreed follow-up improvements. The exact level of ongoing support is defined around your needs and the way your product will evolve."
+        },
+        {
+          "question": "How is the project investment determined?",
+          "answer": "The investment depends on the scope, complexity, timeline and level of collaboration involved. After an initial conversation, we can define a realistic scope and provide a tailored estimate."
+        }
+      ]
+    }
   }
 }

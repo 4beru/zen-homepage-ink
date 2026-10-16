@@ -185,6 +185,44 @@
   },
   "footer": {
     "siteBy": "Sitio por",
-    "privacy": "Política privacidad"
+    "privacy": "Política privacidad",
+    "faq": {
+      "eyebrow": "FAQs",
+      "title": "Lo que conviene saber antes de trabajar juntos.",
+      "questions": [
+        {
+          "question": "¿Qué tipo de proyectos realizan?",
+          "answer": "Trabajamos en sitios web distintivos, productos digitales, aplicaciones móviles y SaaS, y experiencias que integran motion. Encajamos especialmente bien cuando el diseño cuidado y la ingeniería sólida importan por igual."
+        },
+        {
+          "question": "¿Quién trabajará realmente en mi proyecto?",
+          "answer": "Trabajarás directamente con las personas que definen y construyen tu proyecto. Mantenemos una comunicación cercana e incorporamos especialistas cuando el proyecto lo requiere."
+        },
+        {
+          "question": "¿Cuánto suele durar un proyecto?",
+          "answer": "Depende del alcance y la complejidad. Un sitio web acotado puede llevar varias semanas, mientras que un producto digital más amplio puede necesitar algunos meses. Acordamos las etapas y prioridades antes de empezar."
+        },
+        {
+          "question": "¿Cómo organizan la comunicación y las revisiones?",
+          "answer": "Definimos un contacto principal, reuniones periódicas e hitos compartidos. Concentramos las revisiones en momentos concretos para mantener las decisiones claras y avanzar con continuidad."
+        },
+        {
+          "question": "¿Qué necesitan para empezar?",
+          "answer": "Basta con conversar sobre tus objetivos, tu público, las limitaciones y qué significaría tener éxito. La identidad visual, las referencias o los requisitos técnicos existentes ayudan, pero no hace falta tenerlo todo resuelto."
+        },
+        {
+          "question": "¿Pueden trabajar sobre una marca o producto existente?",
+          "answer": "Por supuesto. Podemos aprovechar lo que ya funciona, refinar la dirección visual, rediseñar un sitio web o mejorar un producto sin imponer un cambio completo de marca."
+        },
+        {
+          "question": "¿Qué sucede después del lanzamiento?",
+          "answer": "Podemos acompañar la entrega, resolver ajustes y acordar mejoras posteriores. El soporte continuo se define según tus necesidades y la evolución prevista del producto."
+        },
+        {
+          "question": "¿Cómo se determina la inversión del proyecto?",
+          "answer": "La inversión depende del alcance, la complejidad, los plazos y el nivel de colaboración necesario. Tras una primera conversación, podemos definir un alcance realista y preparar una estimación a medida."
+        }
+      ]
+    }
   }
 }
