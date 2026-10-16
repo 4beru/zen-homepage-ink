@@ -49,12 +49,18 @@
             data-journey-image
             class="group relative isolate col-span-2 mt-6 aspect-[16/10] overflow-hidden bg-white/[0.04] sm:mt-7 lg:col-span-1 lg:mt-0 lg:aspect-[16/10] xl:aspect-[16/9]"
           >
-            <NuxtImg
-              :src="step.image"
-              :alt="$t(step.altKey)"
-              :loading="index === 0 ? 'eager' : 'lazy'"
+            <video
+              :src="step.video"
+              :poster="step.poster"
+              :aria-label="$t(step.altKey)"
+              aria-roledescription="video"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              tabindex="-1"
               class="absolute inset-0 block h-full w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.02]"
-              sizes="100vw sm:100vw lg:60vw xl:65vw"
             />
             <span
               aria-hidden="true"
@@ -83,7 +89,8 @@
       numberKey: "pages.merch.journey.steps.discover.number",
       titleKey: "pages.merch.journey.steps.discover.title",
       descriptionKey: "pages.merch.journey.steps.discover.description",
-      image: "/albums/video-rock/rythm-desktop.png",
+      video: "/videos/pj-step-1.webm",
+      poster: "/albums/video-rock/rythm-desktop.png",
       altKey: "pages.merch.journey.steps.discover.alt",
     },
     {
@@ -91,7 +98,8 @@
       numberKey: "pages.merch.journey.steps.shape.number",
       titleKey: "pages.merch.journey.steps.shape.title",
       descriptionKey: "pages.merch.journey.steps.shape.description",
-      image: "/albums/one/penti-desktop.png",
+      video: "/videos/pj-step-2.webm",
+      poster: "/albums/one/penti-desktop.png",
       altKey: "pages.merch.journey.steps.shape.alt",
     },
     {
@@ -99,7 +107,8 @@
       numberKey: "pages.merch.journey.steps.launch.number",
       titleKey: "pages.merch.journey.steps.launch.title",
       descriptionKey: "pages.merch.journey.steps.launch.description",
-      image: "/albums/velodrome/unimatic-desktop.jpg",
+      video: "/videos/pj-step-3.webm",
+      poster: "/albums/velodrome/unimatic-desktop.jpg",
       altKey: "pages.merch.journey.steps.launch.alt",
     },
   ];
