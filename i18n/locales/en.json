@@ -223,7 +223,10 @@
           "answer": "The investment depends on the scope, complexity, timeline and level of collaboration involved. After an initial conversation, we can define a realistic scope and provide a tailored estimate."
         }
       ],
-      "aside": "Clear answers before we get started."
+      "aside": "Clear answers before we get started.",
+      "headshotAlt": "Portrait of a creative professional",
+      "bookCall": "Book a call",
+      "bookingSoon": "Booking link coming soon"
     }
   }
 }
