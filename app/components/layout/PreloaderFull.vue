@@ -55,11 +55,16 @@
   const routesAreLoaded = useState('routesAreLoadedFull', () => []);
   const randomIndex = import.meta.client ? Math.floor(Math.random() * 6) : 0;
   let ctx = gsap.context(() => { });
+  let isPreloaderActive = false;
 
   onMounted(async () => {
+    isPreloaderActive = true;
     await nextTick();
+    if (!isPreloaderActive || !preloaderFullRef.value?.isConnected) return;
+
     disableScroll();
     await document.fonts.ready;
+    if (!isPreloaderActive || !preloaderFullRef.value?.isConnected) return;
 
     if (routesAreLoaded.value.includes(route.path)) {
       emit('done');
@@ -104,6 +109,8 @@
               } catch (error) {
                 console.error(error);
               }
+
+              if (!isPreloaderActive || !preloaderFullRef.value?.isConnected) return;
 
               gsap
                 .timeline({
@@ -205,6 +212,10 @@
         }, '<0.4')
 
     }, preloaderFullRef.value);
+  });
+
+  onBeforeUnmount(() => {
+    isPreloaderActive = false;
   });
 
   onUnmounted(() => {
