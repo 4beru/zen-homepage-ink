@@ -7,7 +7,7 @@
           <span>{{ $t("footer.faq.eyebrow") }}</span>
         </div>
         <p class="max-w-xs text-sm leading-relaxed text-black/60">
-          {{ $t("footer.faq.questions").length }} {{ $t("footer.faq.eyebrow") }}
+          {{ $t("footer.faq.aside") }}
         </p>
       </div>
 
