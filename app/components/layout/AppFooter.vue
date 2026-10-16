@@ -1,7 +1,7 @@
 <template>
   <footer ref="footerMainRef" class="footer-main bg-black">
-    <FooterFaq class="mb-20 sm:mb-28 lg:mb-36" />
     <div class="bg-white mt-0 rounded-b-3xl">
+      <FooterFaq class="mb-16 sm:mb-28 lg:mb-16" />
       <AppLogo class="relative z-20 fill-black mx-auto lg:mx-0 w-3/4 xl:w-1/2" />
     </div>
     <div class="relative z-20 bg-black h-[250px] [clip-path:inset(0_0_0_0)]">
