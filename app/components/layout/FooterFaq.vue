@@ -10,7 +10,7 @@
           <img
             src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=384&h=480&q=85"
             :alt="$t('footer.faq.headshotAlt')"
-            class="h-24 w-24 object-cover grayscale"
+            class="size-28 aspect-square object-cover grayscale sm:size-32 md:size-36 lg:size-[182px]"
             width="96"
             height="96"
             loading="lazy"
@@ -22,7 +22,6 @@
           <button
             type="button"
             disabled
-            :aria-describedby="'footer-faq-booking-status'"
             class="group inline-flex min-h-11 items-center gap-5 border border-black/20 py-1.5 pl-4 pr-1.5 text-left text-xs font-medium text-black transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black disabled:cursor-not-allowed"
           >
             <span>{{ $t("footer.faq.bookCall") }}</span>
@@ -51,28 +50,41 @@
             <h3>
               <button
                 :id="`footer-faq-trigger-${index}`"
-                class="group flex w-full items-center justify-between gap-6 py-5 text-left text-base font-medium leading-snug sm:py-6 sm:text-lg"
+                class="group flex w-full items-center justify-between gap-6 py-5 text-left text-base font-medium leading-snug text-black transition-colors duration-300 ease-out hover:text-black/55 focus-visible:text-black/65 motion-reduce:transition-none sm:py-6 sm:text-lg"
                 type="button"
                 :aria-expanded="openIndex === index"
                 :aria-controls="`footer-faq-panel-${index}`"
                 @click="toggleQuestion(index)"
               >
-                <span>{{ $rt(item.question) }}</span>
+                <span class="transition-opacity duration-300 ease-out group-hover:opacity-60 group-focus-visible:opacity-70 motion-reduce:transition-none">{{ $rt(item.question) }}</span>
                 <span class="relative flex h-5 w-5 shrink-0 items-center justify-center" aria-hidden="true">
                   <span class="absolute h-px w-3.5 bg-current transition-transform duration-300"></span>
                   <span class="absolute h-3.5 w-px bg-current transition-transform duration-300" :class="openIndex === index ? 'scale-y-0' : 'scale-y-100'"></span>
                 </span>
               </button>
             </h3>
-            <div
-              v-if="openIndex === index"
-              :id="`footer-faq-panel-${index}`"
-              role="region"
-              :aria-labelledby="`footer-faq-trigger-${index}`"
-              class="max-w-3xl pb-6 pr-8 text-sm leading-relaxed text-black/65 sm:pb-7 sm:text-base"
+            <Transition
+              enter-active-class="transition-[grid-template-rows,opacity,transform] duration-300 ease-out motion-reduce:duration-0"
+              enter-from-class="grid-rows-[0fr] translate-y-[-4px] opacity-0"
+              enter-to-class="grid-rows-[1fr] translate-y-0 opacity-100"
+              leave-active-class="transition-[grid-template-rows,opacity,transform] duration-250 ease-in motion-reduce:duration-0"
+              leave-from-class="grid-rows-[1fr] translate-y-0 opacity-100"
+              leave-to-class="grid-rows-[0fr] translate-y-[-4px] opacity-0"
             >
-              {{ $rt(item.answer) }}
-            </div>
+              <div
+                v-if="openIndex === index"
+                :id="`footer-faq-panel-${index}`"
+                role="region"
+                :aria-labelledby="`footer-faq-trigger-${index}`"
+                class="grid grid-rows-[1fr]"
+              >
+                <div class="min-h-0 overflow-hidden">
+                  <div class="max-w-3xl pb-6 pr-8 text-sm leading-relaxed text-black/65 sm:pb-7 sm:text-base">
+                    {{ $rt(item.answer) }}
+                  </div>
+                </div>
+              </div>
+            </Transition>
           </article>
         </div>
       </div>
