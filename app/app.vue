@@ -15,6 +15,7 @@
   import { VueLenis } from 'lenis/vue';
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { setScrollLockLenis } from "~/utils/scrollLock.js";
 
   const lenisRef = ref()
   const head = useLocaleHead();
@@ -28,6 +29,7 @@
     const lenis = lenisRef.value?.lenis;
     if (!lenis) return;
 
+    setScrollLockLenis(lenis);
     lenis.on("scroll", ScrollTrigger.update);
 
     function update(time) {
@@ -40,6 +42,7 @@
     onInvalidate(() => {
       lenis.off("scroll", ScrollTrigger.update);
       gsap.ticker.remove(update);
+      setScrollLockLenis(null);
     });
   });
 </script>
