@@ -287,8 +287,12 @@
     }, albumsListRef.value);
   });
 
+  onBeforeUnmount(() => {
+    isActive = false;
+  });
+
   onUnmounted(() => {
-    ctx.revert();
+    ctx?.revert();
 
     document.removeEventListener("wheel", handleWheel);
     document.removeEventListener("touchstart", handleTouchStart);
