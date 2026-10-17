@@ -53,7 +53,7 @@
       <div class="min-w-0 relative">
         <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
           <h1 class="sr-only">{{ $t('pages.merch.title') }}</h1>
-          <AnimationReveal class="w-full">
+          <AnimationReveal :active="isServicesActive" class="w-full">
             <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
             </p>
@@ -262,7 +262,7 @@
   });
 
   function runInServicesContext(callback) {
-    if (!isServicesActive) return;
+    if (!isServicesActive.value) return;
     if (ctx) ctx.add(callback);
     else callback();
   }
