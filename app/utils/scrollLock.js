@@ -3,26 +3,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-let lenisInstance = null;
-
-// Keep the global scroll lock and the root Lenis instance in sync.
-// Route transitions and preloaders both use this shared helper.
-export function setScrollLockLenis(instance) {
-  lenisInstance = instance ?? null;
-}
-
 export function disableScroll() {
   const scrollY = window.scrollY;
 
-  // Stop Lenis before fixing the document. Otherwise its ticker can keep writing
-  // an old scroll target while the body is locked and leave ScrollTrigger out of sync.
-  lenisInstance?.stop();
-
-  document.body.style.top = `-${scrollY}px`;
-  document.documentElement.style.top = `-${scrollY}px`;
+  // Be aware, when method "position: fixed; top: -scrollYpx;" is used to freeze the page,
+  // all child "position: fixed" elements suddenly become positioned relative to that shifted container, not the viewport.
+  // So, we may need to reset the position of all child elements in the spectific component right before route leaves.
+  document.body.style.top = `-${scrollY}px`; // Lock position.
+  document.documentElement.style.top = `-${scrollY}px`; // Lock position.
   document.body.classList.add('scroll-lock');
   document.documentElement.classList.add('scroll-lock');
 
+  // Some elements need to be refreshed after scroll position is locked.
   ScrollTrigger.refresh();
 }
 
@@ -31,14 +23,6 @@ export function enableScroll() {
   document.body.style.top = '';
   document.body.classList.remove('scroll-lock');
   document.documentElement.classList.remove('scroll-lock');
-
-  if (lenisInstance) {
-    // Reset Lenis' internal animated/target scroll as well as the native page.
-    // Force permits the immediate reset while Lenis is stopped.
-    lenisInstance.scrollTo(0, { immediate: true, force: true });
-    lenisInstance.start();
-    return;
-  }
 
   window.scrollTo(0, 0);
 }
