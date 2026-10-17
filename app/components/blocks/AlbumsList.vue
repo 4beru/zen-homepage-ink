@@ -65,6 +65,7 @@
   const buttonDisabled = ref(false);
 
   let ctx;
+  let isAlbumsListActive = false;
   let isAnimating = false;
   let slides, images, headings, years, outerWrappers, innerWrappers, splitHeadings, splitYears, wrap;
   const currentIndex = useState('currentAlbumIndex', () => undefined);
@@ -155,7 +156,10 @@
   }
 
   onMounted(async () => {
-    await document.fonts.ready
+    isAlbumsListActive = true;
+    await document.fonts.ready;
+
+    if (!isAlbumsListActive || !albumsListRef.value?.isConnected) return;
 
     slides = document.querySelectorAll(".slide");
     images = document.querySelectorAll(".bg");
@@ -201,6 +205,8 @@
       });
       observer.disable();
 
+      // The preloader may already be complete when this async setup resumes
+      // after document.fonts.ready. Run immediately so the first slide is not skipped.
       watch(
         () => props.play,
         (newVal) => {
@@ -209,13 +215,17 @@
             goToSlide(startIndex);
           }
         },
-        { immediate: false }
+        { immediate: true }
       )
 
     }, albumsListRef.value);
   });
 
+  onBeforeUnmount(() => {
+    isAlbumsListActive = false;
+  });
+
   onUnmounted(() => {
-    ctx.revert();
+    ctx?.revert();
   });
 </script>

@@ -82,7 +82,8 @@
     </div>
   </section>
 
-  <ProjectJourney />
+  <!-- Temporarily disabled to isolate Services route lifecycle from Project Journey. -->
+  <!-- <ProjectJourney /> -->
 </template>
 
 <script setup>
@@ -120,6 +121,7 @@
   let serviceItems = [];
   let focusIndex = -1;
   let ctx;
+  let isServicesActive = false;
   let navIntroComplete = false;
 
   useSeoMeta({
@@ -130,8 +132,14 @@
   });
 
   onMounted(async () => {
+    isServicesActive = true;
+
     await nextTick();
     await document.fonts.ready;
+
+    // Navigation can finish while fonts are loading. Never initialize GSAP against
+    // a detached Services page or leave ScrollTriggers behind after route changes.
+    if (!isServicesActive || !servicesPageRef.value?.isConnected) return;
 
     prefersReducedMotion.value = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -203,8 +211,8 @@
           start: () => `top top+=${getActivationLine()}%`,
           end: () => `bottom top+=${getActivationLine()}%`,
           invalidateOnRefresh: true,
-          onEnter: () => activateServiceSection(index),
-          onEnterBack: () => activateServiceSection(index),
+          onEnter: () => runInServicesContext(() => activateServiceSection(index)),
+          onEnterBack: () => runInServicesContext(() => activateServiceSection(index)),
         });
       });
 
@@ -217,8 +225,8 @@
           start: () => `top top+=${getActivationLine()}%`,
           end: () => `bottom top+=${getActivationLine()}%`,
           invalidateOnRefresh: true,
-          onEnter: () => setFocusItem(index),
-          onEnterBack: () => setFocusItem(index),
+          onEnter: () => runInServicesContext(() => setFocusItem(index)),
+          onEnterBack: () => runInServicesContext(() => setFocusItem(index)),
         });
       });
 
@@ -228,12 +236,27 @@
     }, servicesPageRef.value);
   });
 
+  onBeforeRouteLeave(() => {
+    // Prevent ScrollTrigger callbacks from creating animations during the exit transition.
+    isServicesActive = false;
+  });
+
+  onBeforeUnmount(() => {
+    isServicesActive = false;
+  });
+
   onUnmounted(() => {
     gsap.killTweensOf(serviceItems);
     ctx?.revert();
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
+
+  function runInServicesContext(callback) {
+    if (!isServicesActive) return;
+    if (ctx) ctx.add(callback);
+    else callback();
+  }
 
   function getActivationLine() {
     return window.matchMedia("(min-width: 1024px)").matches ? 25 : 35;
@@ -433,9 +456,11 @@
           ? 8 * t ** 4
           : 1 - Math.pow(-2 * t + 2, 4) / 2,
       onComplete: () => {
-        const firstItemIndex = getFirstItemIndexForService(index);
-        if (firstItemIndex >= 0) setFocusItem(firstItemIndex);
-        setActiveSection(index);
+        runInServicesContext(() => {
+          const firstItemIndex = getFirstItemIndexForService(index);
+          if (firstItemIndex >= 0) setFocusItem(firstItemIndex);
+          setActiveSection(index);
+        });
       },
     });
   }
