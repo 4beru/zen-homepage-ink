@@ -4,43 +4,6 @@ import { useTransition } from "#imports";
 import { disableScroll, enableScroll } from '~/utils/scrollLock.js';
 
 const { toggleTransitionComplete } = useTransition();
-let activeTransitionTimeline = null;
-
-const stopActiveTransition = () => {
-  if (!activeTransitionTimeline) return;
-
-  activeTransitionTimeline.eventCallback("onComplete", null);
-  activeTransitionTimeline.kill();
-  activeTransitionTimeline = null;
-};
-
-const resetTransitionStyles = () => {
-  gsap.set('#page-transition-overlay', { autoAlpha: 0 });
-  gsap.set('#page-transition-columns rect', { '--scaleYColumnsTransition': 0 });
-  gsap.set('#page-transition-circles', { scale: 1, autoAlpha: 0 });
-  gsap.set('main', { clearProps: "all" });
-
-  if (document.querySelector('footer')) {
-    gsap.set('footer', { autoAlpha: 1 });
-  }
-
-  // The preloaders and route transition both animate these elements.
-  // Remove stale inline transforms so the hamburger cannot remain collapsed.
-  gsap.set('.button-nav-icon-wrapper', { clearProps: "transform,pointer-events" });
-  gsap.set('.button-nav-icon-wrapper', { pointerEvents: 'auto' });
-  gsap.set('.nav-icon', { clearProps: "transform" });
-};
-
-const resetAnimations = () => {
-  stopActiveTransition();
-  resetTransitionStyles();
-  enableScroll();
-};
-
-const recoverFromCancelledTransition = () => {
-  resetAnimations();
-  toggleTransitionComplete(true);
-};
 
 export const pageTransitionConfig = {
   name: 'page-transition',
@@ -48,46 +11,30 @@ export const pageTransitionConfig = {
   css: false,
   appear: false,
   onEnter: (el, done) => {
+    // No animations on enter as they are custom-made on each route/page.
     resetAnimations();
     toggleTransitionComplete(true);
     done();
   },
-  onEnterCancelled: recoverFromCancelledTransition,
-  onLeaveCancelled: recoverFromCancelledTransition,
   onLeave: (el, done) => {
-    // If another navigation interrupted an earlier transition, discard its visual
-    // state before locking the page for this one.
-    if (activeTransitionTimeline) {
-      stopActiveTransition();
-      resetTransitionStyles();
-      enableScroll();
-    }
-
     disableScroll();
     toggleTransitionComplete(false);
 
-    let timeline;
-    timeline = gsap.timeline({
-      paused: true,
-      onStart() {
-        gsap.set('#page-transition-overlay', { autoAlpha: 1 });
-        gsap.set('#page-transition-circles', { autoAlpha: 1 });
-        gsap.set('.button-nav-icon-wrapper', { pointerEvents: 'none' });
-      },
-      onComplete() {
-        if (activeTransitionTimeline !== timeline) return;
-
-        activeTransitionTimeline = null;
-        gsap.set('#page-transition-overlay', { autoAlpha: 0 });
-        gsap.set('#page-transition-circles', { autoAlpha: 0 });
-        toggleTransitionComplete(true);
-        done();
-      },
-    });
-
-    activeTransitionTimeline = timeline;
-
-    timeline
+    gsap
+      .timeline({
+        paused: true,
+        onStart() {
+          gsap.set('#page-transition-overlay', { autoAlpha: 1 })
+          gsap.set('#page-transition-circles', { autoAlpha: 1 })
+          gsap.set('.button-nav-icon-wrapper', { pointerEvents: 'none' });
+        },
+        onComplete() {
+          gsap.set('#page-transition-overlay', { autoAlpha: 0 })
+          gsap.set('#page-transition-circles', { autoAlpha: 0 })
+          toggleTransitionComplete(true);
+          done();
+        },
+      })
       .to('main', {
         duration: 1.9,
         y: -80,
@@ -103,9 +50,9 @@ export const pageTransitionConfig = {
         duration: 1.2,
         stagger: {
           each: 0.04,
-          from: "random",
+          from: "random"
         },
-        ease: 'power4.inOut',
+        ease: 'power4.inOut'
       }, '<0.1')
       .from('#page-transition-circles .center-ring', {
         duration: 0.4,
@@ -120,7 +67,7 @@ export const pageTransitionConfig = {
         ease: 'back.out(2)',
       }, '<')
       .from('#page-transition-circles .outer-ring', {
-        duration: 0.9,
+        duration: .9,
         scale: 0,
         svgOrigin: "144.16 144.16",
         ease: 'power1.out',
@@ -128,7 +75,7 @@ export const pageTransitionConfig = {
       .to('#page-transition-circles', {
         scale: 50,
         duration: 0.6,
-        ease: 'power4.in',
+        ease: 'power4.in'
       })
       .play();
   },
@@ -140,39 +87,25 @@ export const pageTransitionFadeConfig = {
   css: false,
   appear: false,
   onEnter: (el, done) => {
+    // No animations on enter as they are custom-made on each route/page.
     resetAnimations();
     toggleTransitionComplete(true);
     done();
   },
-  onEnterCancelled: recoverFromCancelledTransition,
-  onLeaveCancelled: recoverFromCancelledTransition,
   onLeave: (el, done) => {
-    if (activeTransitionTimeline) {
-      stopActiveTransition();
-      resetTransitionStyles();
-      enableScroll();
-    }
-
     disableScroll();
     toggleTransitionComplete(false);
 
     const children = el.querySelectorAll('div, h1, h2, h3, h4');
-    let timeline;
 
-    timeline = gsap.timeline({
-      paused: true,
-      onComplete() {
-        if (activeTransitionTimeline !== timeline) return;
-
-        activeTransitionTimeline = null;
-        toggleTransitionComplete(true);
-        done();
-      },
-    });
-
-    activeTransitionTimeline = timeline;
-
-    timeline
+    gsap
+      .timeline({
+        paused: true,
+        onComplete() {
+          toggleTransitionComplete(true);
+          done();
+        },
+      })
       .to(children, {
         delay: 0.15,
         duration: 0.7,
@@ -190,3 +123,19 @@ export const pageTransitionFadeConfig = {
       .play();
   },
 };
+
+const resetAnimations = () => {
+  gsap.set('#page-transition-overlay', { autoAlpha: 0 })
+  gsap.set('#page-transition-columns rect', { '--scaleYColumnsTransition': 0 })
+  gsap.set('#page-transition-circles', { scale: 1 })
+  gsap.set('main', { clearProps: "all" })
+  if (document.querySelector('footer')) {
+    gsap.set('footer', { autoAlpha: 1 })
+  }
+  gsap.set('.button-nav-icon-wrapper', { pointerEvents: 'auto' });
+  gsap.to('.nav-icon', {
+    scaleX: 1,
+    ease: 'power4.out'
+  });
+  enableScroll();
+}
