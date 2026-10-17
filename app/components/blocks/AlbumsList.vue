@@ -65,6 +65,7 @@
   const buttonDisabled = ref(false);
 
   let ctx;
+  let isAlbumsListActive = false;
   let isAnimating = false;
   let slides, images, headings, years, outerWrappers, innerWrappers, splitHeadings, splitYears, wrap;
   const currentIndex = useState('currentAlbumIndex', () => undefined);
@@ -155,7 +156,10 @@
   }
 
   onMounted(async () => {
-    await document.fonts.ready
+    isAlbumsListActive = true;
+    await document.fonts.ready;
+
+    if (!isAlbumsListActive || !albumsListRef.value?.isConnected) return;
 
     slides = document.querySelectorAll(".slide");
     images = document.querySelectorAll(".bg");
@@ -215,7 +219,11 @@
     }, albumsListRef.value);
   });
 
+  onBeforeUnmount(() => {
+    isAlbumsListActive = false;
+  });
+
   onUnmounted(() => {
-    ctx.revert();
+    ctx?.revert();
   });
 </script>
