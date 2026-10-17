@@ -1,88 +1,91 @@
 <template>
-  <section ref="servicesPageRef" class="services-page">
-    <div class="container grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[20rem_minmax(0,1fr)] 2xl:gap-x-12">
-      <aside class="relative">
-        <!-- Mobile: reserve space for the fixed translucent navigation. -->
-        <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
+  <!-- Keep one page root so Nuxt can run transition cleanup on every route change. -->
+  <div class="services-page-root">
+    <section ref="servicesPageRef" class="services-page">
+      <div class="container grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[20rem_minmax(0,1fr)] 2xl:gap-x-12">
+        <aside class="relative">
+          <!-- Mobile: reserve space for the fixed translucent navigation. -->
+          <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
 
-        <nav
-          class="fixed inset-x-0 top-0 z-[93] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
-          aria-label="Services navigation"
-        >
-          <ul
-            ref="mobileFilterRef"
-            class="m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
+          <nav
+            class="fixed inset-x-0 top-0 z-[93] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
+            aria-label="Services navigation"
           >
-            <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
-              <button
-                type="button"
-                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-                :aria-label="$t(service.titleKey)"
-                :aria-current="activeServiceIndex === index ? 'location' : undefined"
-                @click="handleClickFilterOption(index)"
-              >
-                {{ $t(service.navTitleKey) }}
-              </button>
-            </li>
-          </ul>
-        </nav>
+            <ul
+              ref="mobileFilterRef"
+              class="m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
+            >
+              <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
+                <button
+                  type="button"
+                  class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  :aria-label="$t(service.titleKey)"
+                  :aria-current="activeServiceIndex === index ? 'location' : undefined"
+                  @click="handleClickFilterOption(index)"
+                >
+                  {{ $t(service.navTitleKey) }}
+                </button>
+              </li>
+            </ul>
+          </nav>
 
-        <nav
-          class="hidden lg:sticky lg:top-[1.2rem] lg:z-[93] lg:block lg:h-[calc(100dvh-1.2rem)]"
-          aria-label="Services navigation"
-        >
-          <ul
-            ref="desktopFilterRef"
-            class="absolute bottom-8 left-0 m-0 flex list-none flex-row items-end gap-2 p-0 xl:gap-3 2xl:bottom-12"
+          <nav
+            class="hidden lg:sticky lg:top-[1.2rem] lg:z-[93] lg:block lg:h-[calc(100dvh-1.2rem)]"
+            aria-label="Services navigation"
           >
-            <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
-              <button
-                type="button"
-                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
-                :aria-label="$t(service.titleKey)"
-                :aria-current="activeServiceIndex === index ? 'location' : undefined"
-                @click="handleClickFilterOption(index)"
-              >
-                {{ $t(service.navTitleKey) }}
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </aside>
+            <ul
+              ref="desktopFilterRef"
+              class="absolute bottom-8 left-0 m-0 flex list-none flex-row items-end gap-2 p-0 xl:gap-3 2xl:bottom-12"
+            >
+              <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
+                <button
+                  type="button"
+                  class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
+                  :aria-label="$t(service.titleKey)"
+                  :aria-current="activeServiceIndex === index ? 'location' : undefined"
+                  @click="handleClickFilterOption(index)"
+                >
+                  {{ $t(service.navTitleKey) }}
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </aside>
 
-      <div class="min-w-0 relative z-[94]">
-        <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
-          <AnimationReveal class="w-full">
-            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
-              {{ $t('pages.merch.eyebrow') }}
-            </p>
-          </AnimationReveal>
+        <div class="min-w-0 relative z-[94]">
+          <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
+            <AnimationReveal class="w-full">
+              <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
+                {{ $t('pages.merch.eyebrow') }}
+              </p>
+            </AnimationReveal>
 
-        </header>
+          </header>
 
-        <div class="flex flex-col gap-24 pb-16 sm:gap-28 sm:pb-20 md:gap-32 md:pb-24 2xl:gap-36">
-          <section
-            v-for="(service, serviceIndex) in services"
-            :id="service.id"
-            :key="service.id"
-            data-service-section
-            class="flex flex-col gap-14 sm:gap-16 lg:gap-20"
-            :aria-label="$t(service.titleKey)"
-          >
-            <MerchItem
-              v-for="(item, itemIndex) in service.items"
-              :key="item.id"
-              :item="item"
-              :index="serviceIndex * 2 + itemIndex"
-              :service-index="serviceIndex"
-            />
-          </section>
+          <div class="flex flex-col gap-24 pb-16 sm:gap-28 sm:pb-20 md:gap-32 md:pb-24 2xl:gap-36">
+            <section
+              v-for="(service, serviceIndex) in services"
+              :id="service.id"
+              :key="service.id"
+              data-service-section
+              class="flex flex-col gap-14 sm:gap-16 lg:gap-20"
+              :aria-label="$t(service.titleKey)"
+            >
+              <MerchItem
+                v-for="(item, itemIndex) in service.items"
+                :key="item.id"
+                :item="item"
+                :index="serviceIndex * 2 + itemIndex"
+                :service-index="serviceIndex"
+              />
+            </section>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <ProjectJourney />
+    <ProjectJourney />
+  </div>
 </template>
 
 <script setup>
