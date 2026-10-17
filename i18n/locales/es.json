@@ -154,6 +154,23 @@
             "alt": "Interfaz del proyecto Unimatic que muestra dirección de arte con motion y un producto digital."
           }
         }
+      },
+      "sections": {
+        "tshirts": {
+          "title": "Camisetas"
+        },
+        "buttonBadges": {
+          "title": "Chapas"
+        },
+        "stickers": {
+          "title": "Pegatinas"
+        },
+        "posters": {
+          "title": "Pósters"
+        }
+      },
+      "labels": {
+        "noStock": "No disponible"
       }
     },
     "privacy": {

@@ -154,6 +154,23 @@
             "alt": "Unimatic project interface showing motion-led art direction and a digital product."
           }
         }
+      },
+      "sections": {
+        "tshirts": {
+          "title": "Creative web development"
+        },
+        "buttonBadges": {
+          "title": "Digital product architecture"
+        },
+        "stickers": {
+          "title": "Motion & 3D experiences"
+        },
+        "posters": {
+          "title": "Mobile & SaaS apps"
+        }
+      },
+      "labels": {
+        "noStock": "Currently unavailable"
       }
     },
     "privacy": {
