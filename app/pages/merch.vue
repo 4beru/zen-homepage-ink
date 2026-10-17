@@ -32,8 +32,8 @@
       </nav>
     </aside>
 
-    <section class="merch-list ml-auto flex w-full flex-col gap-18 md:gap-28 lg:w-[80%]">
-      <header class="pt-4 sm:pt-6 lg:pt-10">
+    <section class="merch-list ml-auto flex w-full flex-col gap-18 md:gap-28 lg:gap-16 lg:w-[76%]">
+      <header class="pt-4 sm:pt-6 lg:pt-12">
         <AnimationReveal>
           <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
