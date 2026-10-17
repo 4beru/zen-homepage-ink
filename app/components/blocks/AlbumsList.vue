@@ -213,7 +213,7 @@
             goToSlide(startIndex);
           }
         },
-        { immediate: false }
+        { immediate: true }
       )
 
     }, albumsListRef.value);
