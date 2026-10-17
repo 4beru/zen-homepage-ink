@@ -89,7 +89,6 @@
   import { services } from "~/data/merch";
   import { pageTransitionConfig } from "~/helpers/transitionConfig";
   import { useLenis } from "lenis/vue";
-  import { enableScroll } from "~/utils/scrollLock.js";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
@@ -121,7 +120,6 @@
   let serviceItems = [];
   let focusIndex = -1;
   let ctx;
-  let isServicesActive = false;
   let navIntroComplete = false;
 
   useSeoMeta({
@@ -132,19 +130,8 @@
   });
 
   onMounted(async () => {
-    isServicesActive = true;
-
-    // Recover the global scroll state without clearing styles owned by the active
-    // route transition. Transition cleanup is centralized in transitionConfig.js.
-    enableScroll();
-    lenis.value?.start();
-
     await nextTick();
     await document.fonts.ready;
-
-    // The page can be unmounted while fonts are still loading (e.g. browser Back).
-    // Do not create ScrollTriggers or GSAP tweens for a detached page.
-    if (!isServicesActive || !servicesPageRef.value?.isConnected) return;
 
     prefersReducedMotion.value = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -216,8 +203,8 @@
           start: () => `top top+=${getActivationLine()}%`,
           end: () => `bottom top+=${getActivationLine()}%`,
           invalidateOnRefresh: true,
-          onEnter: () => runInServicesContext(() => activateServiceSection(index)),
-          onEnterBack: () => runInServicesContext(() => activateServiceSection(index)),
+          onEnter: () => activateServiceSection(index),
+          onEnterBack: () => activateServiceSection(index),
         });
       });
 
@@ -230,8 +217,8 @@
           start: () => `top top+=${getActivationLine()}%`,
           end: () => `bottom top+=${getActivationLine()}%`,
           invalidateOnRefresh: true,
-          onEnter: () => runInServicesContext(() => setFocusItem(index)),
-          onEnterBack: () => runInServicesContext(() => setFocusItem(index)),
+          onEnter: () => setFocusItem(index),
+          onEnterBack: () => setFocusItem(index),
         });
       });
 
@@ -241,22 +228,12 @@
     }, servicesPageRef.value);
   });
 
-  onBeforeUnmount(() => {
-    isServicesActive = false;
-  });
-
   onUnmounted(() => {
     gsap.killTweensOf(serviceItems);
     ctx?.revert();
     mobileSplits.forEach((split) => split.revert());
     desktopSplits.forEach((split) => split.revert());
   });
-
-  function runInServicesContext(callback) {
-    if (!isServicesActive) return;
-    if (ctx) ctx.add(callback);
-    else callback();
-  }
 
   function getActivationLine() {
     return window.matchMedia("(min-width: 1024px)").matches ? 25 : 35;
@@ -456,11 +433,9 @@
           ? 8 * t ** 4
           : 1 - Math.pow(-2 * t + 2, 4) / 2,
       onComplete: () => {
-        runInServicesContext(() => {
-          const firstItemIndex = getFirstItemIndexForService(index);
-          if (firstItemIndex >= 0) setFocusItem(firstItemIndex);
-          setActiveSection(index);
-        });
+        const firstItemIndex = getFirstItemIndexForService(index);
+        if (firstItemIndex >= 0) setFocusItem(firstItemIndex);
+        setActiveSection(index);
       },
     });
   }
