@@ -11,6 +11,9 @@
 
 <script setup>
   import gsap from 'gsap';
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
 
   const props = defineProps({
     active: {
@@ -43,14 +46,14 @@
         autoAlpha: 0,
       })
       revealTimeline = gsap.timeline({
-          delay: randomDelay,
-          onStart: () => {
-            emit('start')
-          },
-          onComplete: () => {
-            emit('done')
-          }
-        })
+        delay: randomDelay,
+        onStart: () => {
+          emit('start')
+        },
+        onComplete: () => {
+          emit('done')
+        },
+      })
         .to('.anim-reveal-columns rect', {
           '--scaleYColumnsReveal': "100%",
           duration: 1,
