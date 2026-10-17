@@ -64,7 +64,6 @@
   const albumsListRef = useTemplateRef('albumsListRef');
   const buttonDisabled = ref(false);
   let ctx;
-  let isActive = false;
 
   let isAnimating = false;
   let direction = "down";
@@ -236,9 +235,7 @@
   }
 
   onMounted(async () => {
-    isActive = true;
-    await document.fonts.ready;
-    if (!isActive || !albumsListRef.value?.isConnected) return;
+    await document.fonts.ready
 
     slides = document.querySelectorAll(".slide");
     images = document.querySelectorAll(".bg");
@@ -287,12 +284,8 @@
     }, albumsListRef.value);
   });
 
-  onBeforeUnmount(() => {
-    isActive = false;
-  });
-
   onUnmounted(() => {
-    ctx?.revert();
+    ctx.revert();
 
     document.removeEventListener("wheel", handleWheel);
     document.removeEventListener("touchstart", handleTouchStart);
