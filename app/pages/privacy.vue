@@ -49,6 +49,6 @@
   })
 
   onUnmounted(() => {
-    ctx.revert();
+    ctx?.revert();
   });
 </script>
