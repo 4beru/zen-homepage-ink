@@ -92,8 +92,8 @@
           "title": "Creative web development",
           "navTitle": "Websites",
           "description": "We design and build distinctive websites with clear art direction, considered interaction and dependable frontend engineering. Every detail serves the story and the experience.",
-          "alt": "Rythm project visual illustrating creative web development.",
-          "secondaryAlt": "Additional Rythm project visual.",
+          "alt": "Website visual illustrating creative web development.",
+          "secondaryAlt": "Additional website visual highlighting immersive interactions.",
           "secondaryTitle": "Immersive web interactions",
           "secondaryDescription": "Scroll-led sequences and precise micro-interactions bring a brand's identity into the experience without compromising clarity or performance."
         },
@@ -101,8 +101,8 @@
           "title": "Digital product architecture",
           "navTitle": "Web Apps",
           "description": "We shape the foundations behind digital products—from user flows and system structure to frontend, backend and integrations—so the experience stays coherent as the product grows.",
-          "alt": "Penti AI project visual illustrating digital product architecture.",
-          "secondaryAlt": "Additional Penti AI project visual.",
+          "alt": "Web application interface illustrating digital product architecture.",
+          "secondaryAlt": "Additional web application visual showing connected product experiences.",
           "secondaryTitle": "Connected product experiences",
           "secondaryDescription": "We bring interfaces, backend services and integrations together in a coherent system that can evolve as features, teams and data grow."
         },
@@ -110,8 +110,8 @@
           "title": "Motion & 3D experiences",
           "navTitle": "Mobile",
           "description": "We bring interfaces to life with purposeful motion, 3D and immersive visual techniques, balancing a memorable feel with responsive interaction and performance.",
-          "alt": "Unimatic project visual from the studio's portfolio.",
-          "secondaryAlt": "Additional Unimatic project visual.",
+          "alt": "Mobile interface visual illustrating motion and interactive design.",
+          "secondaryAlt": "Additional mobile interface visual highlighting purposeful interaction.",
           "secondaryTitle": "Motion with a clear purpose",
           "secondaryDescription": "From subtle transitions to expressive 3D scenes, every movement supports feedback, hierarchy and the rhythm of the experience."
         },
@@ -119,8 +119,8 @@
           "title": "Mobile & SaaS apps",
           "navTitle": "Design",
           "description": "We create focused mobile and SaaS experiences that turn complex workflows into intuitive products, with practical UX, maintainable architecture and room to evolve.",
-          "alt": "Subscrr project visual illustrating a digital product experience.",
-          "secondaryAlt": "Additional Subscrr project visual.",
+          "alt": "Digital product design visual for a mobile or SaaS experience.",
+          "secondaryAlt": "Additional UX and interface design visual for digital workflows.",
           "secondaryTitle": "UX for everyday workflows",
           "secondaryDescription": "We turn complex tasks into clear screens and reusable patterns, helping mobile and SaaS products stay intuitive as they grow."
         }

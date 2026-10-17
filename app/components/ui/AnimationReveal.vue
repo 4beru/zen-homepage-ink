@@ -11,9 +11,13 @@
 
 <script setup>
   import gsap from 'gsap';
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger);
+  const props = defineProps({
+    active: {
+      type: Boolean,
+      default: true,
+    },
+  });
 
   const emit = defineEmits(['start', 'done'])
 
@@ -22,14 +26,23 @@
   const offset = 0.1; // Initial delay.
   const randomDelay = +(Math.random() * 0.7 + 0.2).toFixed(2) + offset;
   let ctx;
+  let revealTimeline;
 
   onMounted(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!props.active || prefersReducedMotion) {
+      emit("start");
+      revealContent();
+      emit("done");
+      return;
+    }
+
     ctx = gsap.context(() => {
       gsap.set([innerWrapperRef.value, '.anim-reveal-columns rect'], {
         autoAlpha: 0,
       })
-      gsap
-        .timeline({
+      revealTimeline = gsap.timeline({
           delay: randomDelay,
           onStart: () => {
             emit('start')
@@ -76,8 +89,37 @@
     }, outerWrapperRef.value);
   })
 
+  watch(
+    () => props.active,
+    (active) => {
+      if (!active) stopReveal();
+    },
+    { flush: "sync" }
+  );
+
+  function revealContent() {
+    if (innerWrapperRef.value) {
+      gsap.set(innerWrapperRef.value, { autoAlpha: 1 });
+    }
+
+    const overlay = outerWrapperRef.value?.querySelector(".anim-reveal-columns");
+    if (overlay) gsap.set(overlay, { autoAlpha: 0 });
+  }
+
+  function stopReveal() {
+    revealTimeline?.kill();
+    revealTimeline = undefined;
+
+    ctx?.revert();
+    ctx = undefined;
+
+    // Keep the outgoing page legible while its shared route transition runs.
+    revealContent();
+  }
+
   onUnmounted(() => {
-    ctx.revert();
+    revealTimeline?.kill();
+    ctx?.revert();
   });
 </script>
 

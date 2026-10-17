@@ -1,256 +1,476 @@
 <template>
-  <section ref="merchRef" class="container relative flex gap-16 justify-end pt-[60px]">
-    <h1 class="sr-only">{{ $t('pages.merch.title') }}</h1>
+  <section ref="servicesPageRef" class="services-page">
+    <div class="container grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-x-8 xl:grid-cols-[18rem_minmax(0,1fr)] xl:gap-x-10 2xl:grid-cols-[20rem_minmax(0,1fr)] 2xl:gap-x-12">
+      <aside class="relative">
+        <!-- Mobile: reserve space for the fixed translucent navigation. -->
+        <div class="h-[calc(3.5rem+env(safe-area-inset-top))] lg:hidden" aria-hidden="true" />
 
-    <aside ref="filterRef" class="merch-filter-wrapper fixed top-16 left-4 lg:top-20 lg:left-20 md:block" aria-label="Merch filter options" role="complementary">
-      <nav aria-label="Merch filter navigation">
-        <ul class="merch-filter">
-          <li v-for="(item, index) in filterSections" :key="item.key" class="relative">
-            <button class="w-max text-xl md:text-[1.8rem] uppercase leading-none" :class="item.key" @click="handleClickFilterOption(index)">{{ item.label }}</button>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+        <nav
+          class="fixed inset-x-0 top-0 z-[93] border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:hidden"
+          aria-label="Services navigation"
+        >
+          <ul
+            ref="mobileFilterRef"
+            class="m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden"
+          >
+            <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
+              <button
+                type="button"
+                class="block whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-[1.1] tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                :aria-label="$t(service.titleKey)"
+                :aria-current="activeServiceIndex === index ? 'location' : undefined"
+                @click="handleClickFilterOption(index)"
+              >
+                {{ $t(service.navTitleKey) }}
+              </button>
+            </li>
+          </ul>
+        </nav>
 
-    <section class="merch-list flex flex-col gap-18 md:gap-28 w-[80%]">
-      <article id="tshirts">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.tshirts.title') }}</h2>
-        <MerchItem :items="tshirts" />
-      </article>
-      <article id="badges">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.buttonBadges.title') }}</h2>
-        <MerchItem :items="badges" />
-      </article>
-      <article id="stickers">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.stickers.title') }}</h2>
-        <MerchItem :items="stickers" />
-      </article>
-      <article id="posters">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.posters.title') }}</h2>
-        <MerchItem :items="posters" />
-      </article>
-    </section>
+        <nav
+          class="hidden lg:sticky lg:top-[1.2rem] lg:z-[93] lg:block lg:h-[calc(100dvh-1.2rem)]"
+          aria-label="Services navigation"
+        >
+          <ul
+            ref="desktopFilterRef"
+            class="absolute bottom-8 left-0 m-0 flex list-none flex-row items-end gap-2 p-0 xl:gap-3 2xl:bottom-12"
+          >
+            <li v-for="(service, index) in services" :key="service.id" class="shrink-0">
+              <button
+                type="button"
+                class="block w-max whitespace-nowrap text-xl font-extrabold uppercase leading-none tracking-[0.055em] text-black [writing-mode:vertical-rl] [text-orientation:mixed] [transform:rotate(180deg)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[1.8rem]"
+                :aria-label="$t(service.titleKey)"
+                :aria-current="activeServiceIndex === index ? 'location' : undefined"
+                @click="handleClickFilterOption(index)"
+              >
+                {{ $t(service.navTitleKey) }}
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="min-w-0 relative">
+        <header class="pt-8 pb-4 sm:pt-12 sm:pb-5 lg:pt-24 lg:pb-5">
+          <h1 class="sr-only">{{ $t('pages.merch.title') }}</h1>
+          <AnimationReveal class="w-full">
+            <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
+              {{ $t('pages.merch.eyebrow') }}
+            </p>
+          </AnimationReveal>
+
+        </header>
+
+        <div class="flex flex-col gap-24 pb-16 sm:gap-28 sm:pb-20 md:gap-32 md:pb-24 2xl:gap-36">
+          <section
+            v-for="(service, serviceIndex) in services"
+            :id="service.id"
+            :key="service.id"
+            data-service-section
+            class="flex flex-col gap-14 sm:gap-16 lg:gap-20"
+            :aria-label="$t(service.titleKey)"
+          >
+            <MerchItem
+              v-for="(item, itemIndex) in service.items"
+              :key="item.id"
+              :item="item"
+              :index="serviceIndex * 2 + itemIndex"
+              :service-index="serviceIndex"
+              :active="isServicesActive"
+            />
+          </section>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Temporarily disabled to isolate Services route lifecycle from Project Journey. -->
+  <!-- <ProjectJourney /> -->
 </template>
 
 <script setup>
-  import { tshirts, badges, stickers, posters } from "~/data/merch";
-  import { pageTransitionConfig } from '~/helpers/transitionConfig';
-
+  import { services } from "~/data/merch";
+  import { pageTransitionConfig } from "~/helpers/transitionConfig";
+  import { useLenis } from "lenis/vue";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
-  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
-  gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
+  gsap.registerPlugin(ScrollTrigger, SplitText);
 
   definePageMeta({
     pageTransition: pageTransitionConfig,
   });
 
+  // El blur mantiene la misma opacidad y acompaña el cambio de foco del aside.
+  const INACTIVE_OPACITY = 1;
+
+  // El blur y el título comparten el mismo disparador; la duración del blur
+  // se calcula según la cantidad real de caracteres animados en el aside.
+
   const { t } = useI18n();
+  const servicesPageRef = useTemplateRef("servicesPageRef");
+  const mobileFilterRef = useTemplateRef("mobileFilterRef");
+  const desktopFilterRef = useTemplateRef("desktopFilterRef");
+  const lenis = useLenis();
+
+  const activeServiceIndex = ref(-1);
+  const prefersReducedMotion = ref(false);
+
+  let mobileSplits = [];
+  let desktopSplits = [];
+  let serviceItems = [];
+  let focusIndex = -1;
+  let ctx;
+  const isServicesActive = ref(true);
+  let navIntroComplete = false;
 
   useSeoMeta({
-    title: `${t('pages.merch.meta.title')} | ${t('siteName')}`,
-    description: t('pages.merch.meta.description'),
-    ogTitle: `${t('pages.merch.meta.title')} | ${t('siteName')}`,
-    ogDescription: t('pages.merch.meta.description'),
-  })
-
-  const filterSections = [
-    { label: t('pages.merch.sections.tshirts.title'), key: 'tshirts' },
-    { label: t('pages.merch.sections.buttonBadges.title'), key: 'badges' },
-    { label: t('pages.merch.sections.stickers.title'), key: 'stickers' },
-    { label: t('pages.merch.sections.posters.title'), key: 'posters' },
-  ];
-  const activeFilterSection = ref(null);
-  const merchRef = useTemplateRef('merchRef');
-  const filterRef = useTemplateRef('filterRef');
-  let ctx;
+    title: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
+    description: t("pages.merch.meta.description"),
+    ogTitle: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
+    ogDescription: t("pages.merch.meta.description"),
+  });
 
   onMounted(async () => {
-    gsap.set('.merch-filter', { autoAlpha: 0 });
+    isServicesActive.value = true;
+
+    await nextTick();
     await document.fonts.ready;
 
+    // Navigation can finish while fonts are loading. Never initialize GSAP against
+    // a detached Services page or leave ScrollTriggers behind after route changes.
+    if (!isServicesActive.value || !servicesPageRef.value?.isConnected) return;
+
+    prefersReducedMotion.value = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     ctx = gsap.context(() => {
-      const filterSplit = SplitText.create(".merch-filter li button", {
-        type: 'lines, words, chars',
-        mask: 'lines',
-        charsClass: 'char'
-      });
+      const mobileButtons = [...(mobileFilterRef.value?.querySelectorAll("button") ?? [])];
+      const desktopButtons = [...(desktopFilterRef.value?.querySelectorAll("button") ?? [])];
 
-      gsap.set('.merch-filter', { autoAlpha: 1 });
-      gsap.set(filterSplit.lines, { y: 60, });
-      gsap
-        .timeline(
-          {
-            onComplete: () => createScrollTriggerBySection(),
-          }
-        )
-        .to(filterSplit.lines, {
-          delay: 0.5,
-          y: 0,
-          duration: 1,
-          ease: 'power4',
-        })
+      mobileSplits = mobileButtons.map((button) =>
+        SplitText.create(button, { type: "chars", charsClass: "service-nav-char" })
+      );
+      desktopSplits = desktopButtons.map((button) =>
+        SplitText.create(button, { type: "chars", charsClass: "service-nav-char" })
+      );
 
-      const createScrollTriggerBySection = () => {
-        filterSections.forEach((section, index) => {
-          ScrollTrigger.create({
-            trigger: `#${section.key}`,
-            // iOS Safari has some issues providing correct scroll positions.
-            start: 'top top+=25%',
-            end: 'bottom top+=25%',
-            endTrigger: `#${section.key}`,
-            invalidateOnRefresh: true, // Safari needs this.
-            // markers: true,
-            onEnter: () => setActiveSection(index),
-            onEnterBack: () => setActiveSection(index),
+      const mobileChars = mobileSplits.flatMap((split) => split.chars);
+      const desktopChars = desktopSplits.flatMap((split) => split.chars);
+      const navChars = [...mobileChars, ...desktopChars];
+
+      // El aside sigue trabajando por grupos, pero cada item controla su propio blur.
+      serviceItems = gsap.utils.toArray("[data-service-item]", servicesPageRef.value);
+
+      // Estado inicial: solo el item que cruza el umbral de foco queda nítido.
+      setFocusItem(getActiveItemIndex(), 0);
+
+      // Set explicit starting sizes so GSAP motion stays aligned with Tailwind sizing.
+      gsap.set(mobileChars, { fontSize: "0.625rem", color: "#111111" });
+      gsap.set(desktopChars, { fontSize: "1.8rem", color: "#000" });
+
+      // Reveal every service label in black first. Only after the intro completes
+      // do we animate the currently active service to its larger grey state.
+      const activateInitialService = () => {
+        if (!isServicesActive.value) return;
+
+        const activate = () => {
+          if (!isServicesActive.value) return;
+          navIntroComplete = true;
+          setActiveSection(getActiveServiceIndex(), prefersReducedMotion.value);
+          ScrollTrigger.refresh();
+        };
+
+        // Keep animations created by the completion callback inside the page context
+        // so ctx.revert() cleans them up when navigating away.
+        if (ctx) {
+          ctx.add(activate);
+        } else {
+          activate();
+        }
+      };
+
+      if (prefersReducedMotion.value) {
+        gsap.set(navChars, { autoAlpha: 1, clearProps: "transform" });
+        activateInitialService();
+      } else {
+        gsap
+          .timeline({ onComplete: activateInitialService })
+          .from(navChars, {
+            delay: 0.5,
+            y: 60,
+            autoAlpha: 0,
+            duration: 1,
+            stagger: { each: 0.008, from: "start" },
+            ease: "power4.out",
           });
-        });
-
-        // Safari needs this.
-        ScrollTrigger.refresh();
       }
 
-      gsap.utils.toArray('.merch-items .merch-item').forEach((item) => {
-        const image = item.querySelector('img');
-        const header = item.querySelector('h3');
-        const text = item.querySelector('span');
-
-        const headerSplit = SplitText.create(header, {
-          type: 'chars',
+      // Un único trigger por título del aside coordina la navegación y el blur.
+      // Ambos efectos comienzan al entrar/salir del mismo grupo y con el mismo umbral.
+      services.forEach((service, index) => {
+        ScrollTrigger.create({
+          trigger: `#${service.id}`,
+          start: () => `top top+=${getActivationLine()}%`,
+          end: () => `bottom top+=${getActivationLine()}%`,
+          invalidateOnRefresh: true,
+          onEnter: () => runInServicesContext(() => activateServiceSection(index)),
+          onEnterBack: () => runInServicesContext(() => activateServiceSection(index)),
         });
-        const textSplit = SplitText.create(text, {
-          type: 'chars',
-        });
-
-        // Items disappear as it scrolls out (to top).
-        gsap
-          .timeline({
-            defaults: { ease: 'none' },
-            scrollTrigger: {
-              trigger: item,
-              start: 'bottom center',
-              end: 'bottom top',
-              scrub: 0,
-              preventOverlaps: true,
-              fastScrollEnd: true,
-              // markers: true,
-            }
-          })
-          .fromTo(image,
-            {
-              borderRadius: 12,
-              filter: 'blur(0px) contrast(1) saturate(1)',
-            },
-            {
-              borderRadius: 20,
-              filter: 'blur(6px) contrast(2.5) saturate(0)',
-            })
-          .fromTo([headerSplit.chars, textSplit.chars],
-            {
-              filter: 'blur(0px)',
-              fontWeight: 800,
-              textShadow: '0px 0px 0px rgba(0,0,0,0), 0px 0px 0px rgba(0,0,0,0),0px 0px 0px rgba(0,0,0,0), 0px 0px 0px rgba(0,0,0,0)',
-            },
-            {
-              filter: 'blur(6px)',
-              fontWeight: 900,
-              color: '#000',
-              textShadow: '3px 0px 2px rgba(0,0,0,1), -3px 0px 2px rgba(0,0,0,1), 0px 3px 2px rgba(0,0,0,1), 0px -3px 2px rgba(0,0,0,1)',
-              stagger: 0.02,
-            }, '<');
-
-        // Items appear as it scrolls in (from bottom).
-        gsap.set(image, { filter: 'blur(6px) contrast(2.5) saturate(0)' });
-        gsap
-          .timeline({
-            defaults: { ease: 'none' },
-            scrollTrigger: {
-              trigger: item,
-              start: 'top bottom-=20%',
-              end: 'bottom bottom',
-              scrub: 0,
-              preventOverlaps: true,
-              fastScrollEnd: true,
-              // markers: true,
-            }
-          })
-          .fromTo(image,
-            {
-              borderRadius: 20,
-              filter: 'blur(6px) contrast(2.5) saturate(0)',
-            },
-            {
-              borderRadius: 12,
-              filter: 'blur(0px) contrast(1) saturate(1)',
-            })
-          .fromTo([headerSplit.chars, textSplit.chars],
-            {
-              filter: 'blur(6px)',
-            },
-            {
-              filter: 'blur(0px)',
-              stagger: 0.02,
-            }, '<');
-
       });
 
-    }, merchRef.value);
-  })
+      // El blur vuelve a dispararse por componente, no por el grupo entero.
+      // Se usa el mismo umbral del aside: el primer item de cada grupo cambia de foco
+      // en paralelo al título, mientras que el segundo puede enfocarse sin cambiar el aside.
+      serviceItems.forEach((item, index) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: () => `top top+=${getActivationLine()}%`,
+          end: () => `bottom top+=${getActivationLine()}%`,
+          invalidateOnRefresh: true,
+          onEnter: () => runInServicesContext(() => setFocusItem(index)),
+          onEnterBack: () => runInServicesContext(() => setFocusItem(index)),
+        });
+      });
 
-  onUnmounted(() => {
-    ctx.revert();
+      // Refresh section triggers after fonts, images and layout have settled.
+      // The desktop navigation's position is handled by CSS sticky.
+      ScrollTrigger.refresh();
+    }, servicesPageRef.value);
   });
 
   onBeforeRouteLeave(() => {
-    // When leaving the page, we need to reset the filter position
-    // because the scroll is locked with "position: fixed "until the page transition is complete.
-    filterRef.value.style.top = `${window.scrollY + filterRef.value.offsetTop}px`;
-  })
+    // Stop in-page animation work before the shared page transition locks scrolling.
+    isServicesActive.value = false;
 
-  const setActiveSection = (index) => {
-    const nextSection = filterSections[index].key;
-    const prevSection = activeFilterSection.value;
+    // Cancel an in-progress Lenis scroll without leaving the global scroller stopped.
+    const instance = lenis.value;
+    if (instance) {
+      instance.scrollTo(instance.scroll, { immediate: true, force: true });
+    }
+  });
 
-    if (prevSection === nextSection) return;
+  onBeforeUnmount(() => {
+    isServicesActive.value = false;
+  });
 
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-    const tl = gsap.timeline();
+  onUnmounted(() => {
+    gsap.killTweensOf(serviceItems);
+    ctx?.revert();
+    mobileSplits.forEach((split) => split.revert());
+    desktopSplits.forEach((split) => split.revert());
+  });
+
+  function runInServicesContext(callback) {
+    if (!isServicesActive) return;
+    if (ctx) ctx.add(callback);
+    else callback();
+  }
+
+  function getActivationLine() {
+    return window.matchMedia("(min-width: 1024px)").matches ? 25 : 35;
+  }
+
+  function getActiveServiceIndex() {
+    const activationY = window.innerHeight * (getActivationLine() / 100);
+    let lastPassedIndex = 0;
+
+    for (let index = 0; index < services.length; index += 1) {
+      const element = document.getElementById(services[index].id);
+      if (!element) continue;
+
+      const bounds = element.getBoundingClientRect();
+
+      if (bounds.top <= activationY) lastPassedIndex = index;
+      if (bounds.top <= activationY && bounds.bottom > activationY) return index;
+    }
+
+    // If the activation line falls between service groups, keep the last one passed.
+    return lastPassedIndex;
+  }
+
+  function activateServiceSection(index) {
+    // The aside remains grouped by service; item blur is driven by individual triggers.
+    if (navIntroComplete) setActiveSection(index);
+  }
+
+  function getActiveItemIndex() {
+    const activationY = window.innerHeight * (getActivationLine() / 100);
+    let lastPassedIndex = 0;
+
+    for (let index = 0; index < serviceItems.length; index += 1) {
+      const bounds = serviceItems[index].getBoundingClientRect();
+
+      if (bounds.top <= activationY) lastPassedIndex = index;
+      if (bounds.top <= activationY && bounds.bottom > activationY) return index;
+    }
+
+    return lastPassedIndex;
+  }
+
+  function getFocusDuration(index) {
+    if (focusIndex < 0) return 0;
+
+    const previousItem = serviceItems[focusIndex];
+    const nextItem = serviceItems[index];
+    const previousServiceIndex = Number(previousItem?.dataset.serviceIndex);
+    const nextServiceIndex = Number(nextItem?.dataset.serviceIndex);
+
+    // A transition between the two items of one service doesn't change the aside.
+    if (previousServiceIndex === nextServiceIndex) return 0.58;
+
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    const splits = isDesktop ? desktopSplits : mobileSplits;
+    const previousLength = splits[previousServiceIndex]?.chars.length ?? 0;
+    const nextLength = splits[nextServiceIndex]?.chars.length ?? 0;
+    const outgoingDuration = isDesktop ? 0.5 : 0.42;
+    const incomingDuration = isDesktop ? 0.4 : 0.42;
+    const stagger = isDesktop ? 0.03 : 0.012;
+
+    const outgoingEnd = outgoingDuration + Math.max(0, previousLength - 1) * stagger;
+    const incomingEnd = incomingDuration + Math.max(0, nextLength - 1) * stagger;
+
+    return Math.max(outgoingEnd, incomingEnd);
+  }
+
+  function getFirstItemIndexForService(serviceIndex) {
+    return serviceItems.findIndex(
+      (item) => Number(item.dataset.serviceIndex) === serviceIndex
+    );
+  }
+
+  function setFocusItem(index, duration = getFocusDuration(index)) {
+    if (prefersReducedMotion.value) return;
+    if (index < 0 || index >= serviceItems.length || index === focusIndex) return;
+
+    const previousIndex = focusIndex;
+    focusIndex = index;
+    setItemFocus(index, previousIndex, duration);
+  }
+
+  // Enfoca un único componente. El estado del aside sigue perteneciendo al grupo de servicio.
+  function setItemFocus(activeIndex, previousIndex, duration) {
+    if (prefersReducedMotion.value || !serviceItems.length) return;
+
+    const blurPx = window.matchMedia("(min-width: 1024px)").matches ? 8 : 5;
+
+    serviceItems.forEach((item, i) => {
+      const isActive = i === activeIndex;
+
+      // Solo animamos el item que pierde el foco y el que lo recibe.
+      if (previousIndex >= 0 && !isActive && i !== previousIndex) return;
+
+      if (gsap.getProperty(item, "filter") === "none") {
+        if (isActive) return;
+        gsap.set(item, { filter: "blur(0px)" });
+      }
+
+      gsap.to(item, {
+        filter: isActive ? "blur(0px)" : `blur(${blurPx}px)`,
+        opacity: isActive ? 1 : INACTIVE_OPACITY,
+        duration,
+        ease: "power2.out",
+        overwrite: "auto",
+        onComplete: () => {
+          if (isActive) gsap.set(item, { clearProps: "filter,opacity" });
+        },
+      });
+    });
+  }
+
+  function setActiveSection(index, immediate = false) {
+    if (index < 0 || index >= services.length || index === activeServiceIndex.value) return;
+
+    const previousIndex = activeServiceIndex.value;
+    activeServiceIndex.value = index;
+    const instant = immediate || prefersReducedMotion.value;
+
+    // ---------- Mobile (unchanged) ----------
+    const mobileActiveSize = gsap.utils.clamp(13, 17, Math.min(window.innerWidth * 0.012, window.innerHeight / 38));
+
+    if (previousIndex >= 0 && mobileSplits[previousIndex]) {
+      gsap.to(mobileSplits[previousIndex].chars, {
+        fontSize: 10,
+        color: "#111111",
+        duration: instant ? 0 : 0.42,
+        stagger: instant ? 0 : 0.012,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    }
+
+    if (mobileSplits[index]) {
+      gsap.to(mobileSplits[index].chars, {
+        fontSize: mobileActiveSize,
+        color: "#616161",
+        duration: instant ? 0 : 0.42,
+        stagger: instant ? 0 : 0.012,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
+    }
+
+    // ---------- Desktop (same as the original merch page) ----------
     // Matching: font-size: clamp(2.6rem, 10vw, 12rem);
     const clamp = gsap.utils.clamp(41.6, 192); // min 2.6rem, max 12rem - in px.
-    const fontSizeNext = clamp(window.innerWidth * 0.10); // 10vw - result in px.
+    const fontSizeNext = clamp(window.innerWidth * 0.1); // 10vw - result in px.
+    const tl = gsap.timeline();
 
-    if (prevSection) {
+    if (previousIndex >= 0 && desktopSplits[previousIndex]) {
       // Shrink previous.
-      tl.to(`.${prevSection} .char`, {
-        fontSize: isDesktop ? '1.8rem' : '1.25rem',
-        color: '#000',
-        stagger: 0.03,
-        ease: 'power2.inOut',
-      })
+      tl.to(desktopSplits[previousIndex].chars, {
+        fontSize: "1.8rem",
+        color: "#000",
+        duration: instant ? 0 : 0.5,
+        stagger: instant ? 0 : 0.03,
+        ease: "power2.inOut",
+        overwrite: "auto",
+      });
     }
-    // Grow next.
-    tl.to(`.${nextSection} .char`, {
-      fontSize: `${fontSizeNext}px`,
-      color: '#cfcfcf',
-      duration: 0.4,
-      stagger: 0.03,
-      ease: 'power2.inOut',
-    }, '<');
 
-    activeFilterSection.value = nextSection;
-  };
+    if (desktopSplits[index]) {
+      // Grow next.
+      tl.to(
+        desktopSplits[index].chars,
+        {
+          fontSize: `${fontSizeNext}px`,
+          color: "#cfcfcf",
+          duration: instant ? 0 : 0.4,
+          stagger: instant ? 0 : 0.03,
+          ease: "power2.inOut",
+          overwrite: "auto",
+        },
+        "<"
+      );
+    }
+  }
 
-  const handleClickFilterOption = (index) => {
-    gsap.to(window, {
-      duration: 1.5,
-      scrollTo: {
-        y: `#${filterSections[index].key}`,
-        offsetY: 60,
+  function handleClickFilterOption(index) {
+    const service = services[index];
+    const instance = lenis.value;
+    if (!service || !instance) return;
+
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    // Account for the mobile top bar and keep desktop targets comfortably below the top.
+    const offsetY = isDesktop ? 60 : 84;
+    const duration = isDesktop ? 1.5 : 1.15;
+    const reducedMotion = prefersReducedMotion.value;
+
+    instance.scrollTo(`#${service.id}`, {
+      offset: -offsetY,
+      duration: reducedMotion ? 0 : duration,
+      immediate: reducedMotion,
+      easing: (t) =>
+        t < 0.5
+          ? 8 * t ** 4
+          : 1 - Math.pow(-2 * t + 2, 4) / 2,
+      onComplete: () => {
+        runInServicesContext(() => {
+          const firstItemIndex = getFirstItemIndexForService(index);
+          if (firstItemIndex >= 0) setFocusItem(firstItemIndex);
+          setActiveSection(index);
+        });
       },
-      ease: 'power4.inOut',
     });
   }
 </script>
