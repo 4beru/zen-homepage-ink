@@ -205,6 +205,8 @@
       });
       observer.disable();
 
+      // The preloader may already be complete when this async setup resumes
+      // after document.fonts.ready. Run immediately so the first slide is not skipped.
       watch(
         () => props.play,
         (newVal) => {
