@@ -3,17 +3,19 @@
     ref="merchRef"
     class="container relative flex gap-16 justify-end pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-[60px]"
   >
-    <h1 class="sr-only">{{ $t('pages.merch.title') }}</h1>
-
     <aside
       ref="filterRef"
-      class="merch-filter-wrapper fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:top-20 lg:left-20 lg:right-auto lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-blur-none"
+      class="merch-filter-wrapper fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
       aria-label="Services navigation"
       role="complementary"
     >
-      <nav aria-label="Services navigation">
+
+      <nav
+        class="lg:sticky lg:top-[60px] lg:h-[calc(100dvh-60px)]"
+        aria-label="Services navigation"
+      >
         <ul
-          class="merch-filter m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:items-end lg:gap-2 lg:overflow-visible lg:px-0 lg:py-0 xl:gap-3"
+          class="merch-filter m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:absolute lg:bottom-8 lg:left-0 lg:items-end lg:gap-2 lg:overflow-visible lg:px-0 lg:py-0 xl:gap-3 2xl:bottom-12"
         >
           <li v-for="(service, index) in filterSections" :key="service.key" class="relative shrink-0">
             <button
@@ -31,10 +33,10 @@
     </aside>
 
     <section class="merch-list ml-auto flex w-full flex-col gap-18 md:gap-28 lg:w-[80%]">
-      <header class="pt-4 sm:pt-6 lg:pt-0">
-        <AnimationReveal class="w-full">
+      <header class="pt-4 sm:pt-6 lg:pt-10">
+        <AnimationReveal>
           <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
-            {{ $t('pages.merch.eyebrow') }}
+              {{ $t('pages.merch.eyebrow') }}
           </p>
         </AnimationReveal>
       </header>
@@ -184,13 +186,20 @@
   });
 
   onBeforeRouteLeave(() => {
-    // Keep the fixed aside in the same visual position while the shared
-    // page transition locks the document scroll.
     isServicesActive = false;
     navigationTween?.kill();
 
-    if (filterRef.value) {
-      filterRef.value.style.top = `${window.scrollY + filterRef.value.offsetTop}px`;
+    const aside = filterRef.value;
+    if (!aside) return;
+
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      const nav = aside.querySelector("nav");
+      if (!nav) return;
+      const offset = nav.getBoundingClientRect().top - aside.getBoundingClientRect().top;
+      nav.style.position = "relative";
+      nav.style.top = `${offset}px`;
+    } else {
+      aside.style.top = `${window.scrollY + aside.offsetTop}px`;
     }
   });
 
