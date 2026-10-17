@@ -1,108 +1,86 @@
-export const tshirts = [
+export const services = [
   {
-    id: 1,
-    name: 'Skizophonic',
-    image: 'tshirt_skizophonic.png',
-    stock: 0,
+    id: "web-development",
+    titleKey: "pages.merch.services.webDevelopment.title",
+    navTitleKey: "pages.merch.services.webDevelopment.navTitle",
+    items: [
+      {
+        id: "rythm-website",
+        image: "/images/merch/nexterra-website-1.png",
+        titleKey: "pages.merch.services.webDevelopment.title",
+        descriptionKey: "pages.merch.services.webDevelopment.description",
+        altKey: "pages.merch.services.webDevelopment.alt",
+      },
+      {
+        id: "rythm-interactions",
+        image: "/images/merch/retainer-website-2.png",
+        titleKey: "pages.merch.services.webDevelopment.secondaryTitle",
+        descriptionKey: "pages.merch.services.webDevelopment.secondaryDescription",
+        altKey: "pages.merch.services.webDevelopment.secondaryAlt",
+      },
+    ],
   },
   {
-    id: 2,
-    name: 'Sound',
-    image: 'tshirt_sound.png',
-    stock: 0,
+    id: "product-architecture",
+    titleKey: "pages.merch.services.productArchitecture.title",
+    navTitleKey: "pages.merch.services.productArchitecture.navTitle",
+    items: [
+      {
+        id: "penti-product",
+        image: "/images/merch/isora-webapp-1.png",
+        titleKey: "pages.merch.services.productArchitecture.title",
+        descriptionKey: "pages.merch.services.productArchitecture.description",
+        altKey: "pages.merch.services.productArchitecture.alt",
+      },
+      {
+        id: "penti-integrations",
+        image: "/images/merch/cimac-webapp-2.png",
+        titleKey: "pages.merch.services.productArchitecture.secondaryTitle",
+        descriptionKey: "pages.merch.services.productArchitecture.secondaryDescription",
+        altKey: "pages.merch.services.productArchitecture.secondaryAlt",
+      },
+    ],
   },
   {
-    id: 3,
-    name: 'Flowers',
-    image: 'tshirt_flowers.png',
+    id: "motion-3d",
+    titleKey: "pages.merch.services.motion3d.title",
+    navTitleKey: "pages.merch.services.motion3d.navTitle",
+    items: [
+      {
+        id: "unimatic-motion",
+        image: "/images/merch/ramotion-mobile-1.png",
+        titleKey: "pages.merch.services.motion3d.title",
+        descriptionKey: "pages.merch.services.motion3d.description",
+        altKey: "pages.merch.services.motion3d.alt",
+      },
+      {
+        id: "unimatic-interactions",
+        image: "/images/merch/makko-mobile-2.png",
+        titleKey: "pages.merch.services.motion3d.secondaryTitle",
+        descriptionKey: "pages.merch.services.motion3d.secondaryDescription",
+        altKey: "pages.merch.services.motion3d.secondaryAlt",
+      },
+    ],
   },
   {
-    id: 4,
-    name: 'Retro',
-    image: 'tshirt_retro.png',
+    id: "mobile-saas",
+    titleKey: "pages.merch.services.mobileSaas.title",
+    navTitleKey: "pages.merch.services.mobileSaas.navTitle",
+    items: [
+      {
+        id: "subscrr-product",
+        image: "/images/merch/omnibuds-design-1.png",
+        titleKey: "pages.merch.services.mobileSaas.title",
+        descriptionKey: "pages.merch.services.mobileSaas.description",
+        altKey: "pages.merch.services.mobileSaas.alt",
+      },
+      {
+        id: "subscrr-ux",
+        image: "/images/merch/halo-design-2.png",
+        titleKey: "pages.merch.services.mobileSaas.secondaryTitle",
+        descriptionKey: "pages.merch.services.mobileSaas.secondaryDescription",
+        altKey: "pages.merch.services.mobileSaas.secondaryAlt",
+      },
+    ],
   },
-  {
-    id: 5,
-    name: 'Heads - blue',
-    image: 'tshirt_heads_blue.png',
-  },
-  {
-    id: 6,
-    name: 'Heads - pink',
-    image: 'tshirt_heads_pink.png',
-  },
-  // {
-  //   id: 7,
-  //   name: 'Sound colours',
-  //   image: 'tshirt_sound_colours.png',
-  // },
-]
-
-export const badges = [
-  {
-    id: 1,
-    name: 'Skizophonic',
-    image: 'badge_skizophonic.png',
-  }
-]
-
-export const stickers = [
-  {
-    id: 1,
-    name: 'Subliminal',
-    image: 'sticker_subliminal.jpg',
-  },
-  {
-    id: 2,
-    name: 'Retrogame',
-    image: 'sticker_retrogame.png',
-  },
-  {
-    id: 3,
-    name: 'Novio caballo',
-    image: 'sticker_novio_caballo.jpg',
-  },
-  {
-    id: 4,
-    name: 'Psychedelic',
-    image: 'sticker_psychedelic.jpg',
-  },
-  {
-    id: 5,
-    name: 'Velodrome',
-    image: 'sticker_velodrome.jpg',
-  },
-  {
-    id: 6,
-    name: 'No-light men',
-    image: 'sticker_nolightmen.jpg',
-  },
-  {
-    id: 7,
-    name: 'Star',
-    image: 'sticker_star.jpg',
-  },
-]
-
-export const posters = [
-  {
-    id: 1,
-    name: 'Black & white',
-    image: 'poster_skizophonic_black_white.jpg',
-  },
-  {
-    id: 2,
-    name: 'Velodrome',
-    image: 'poster_velodrome_disc.jpg',
-  },
-  // {
-  //   id: 3,
-  //   name: 'Shapes',
-  //   image: 'poster_shapes.jpg',
-  // },
-  // {
-  //   id: 4,
-  //   name: 'Benicàssim.pop',
-  //   image: 'poster_benicassim_pop_octubre2013.jpg',
-  // },
-]
+];

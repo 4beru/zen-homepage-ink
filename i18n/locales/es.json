@@ -92,8 +92,8 @@
           "title": "Desarrollo web creativo",
           "navTitle": "Sitios Web",
           "description": "Diseñamos y desarrollamos sitios web con una dirección visual distintiva, interacciones cuidadas e ingeniería frontend sólida. Cada detalle contribuye a la historia y a la experiencia.",
-          "alt": "Imagen del proyecto Rythm que ilustra el desarrollo web creativo.",
-          "secondaryAlt": "Imagen adicional del proyecto Rythm.",
+          "alt": "Vista de un sitio web que ejemplifica el desarrollo web creativo.",
+          "secondaryAlt": "Imagen adicional de un sitio web con interacciones inmersivas.",
           "secondaryTitle": "Interacciones web inmersivas",
           "secondaryDescription": "Las secuencias vinculadas al scroll y las microinteracciones precisas integran la identidad de marca en la experiencia sin sacrificar claridad ni rendimiento."
         },
@@ -101,8 +101,8 @@
           "title": "Arquitectura de productos digitales",
           "navTitle": "Productos Digitales",
           "description": "Diseñamos las bases de productos digitales: desde los flujos de usuario y la estructura del sistema hasta el frontend, el backend y las integraciones, para que la experiencia pueda crecer de forma coherente.",
-          "alt": "Imagen del proyecto Penti AI que ilustra la arquitectura de productos digitales.",
-          "secondaryAlt": "Imagen adicional del proyecto Penti AI.",
+          "alt": "Interfaz de una aplicación web que ilustra la arquitectura de productos digitales.",
+          "secondaryAlt": "Imagen adicional de una aplicación web con experiencias conectadas.",
           "secondaryTitle": "Experiencias de producto conectadas",
           "secondaryDescription": "Conectamos interfaces, servicios de backend e integraciones en un sistema coherente que puede evolucionar a medida que crecen las funciones, los equipos y los datos."
         },
@@ -110,8 +110,8 @@
           "title": "Experiencias de motion y 3D",
           "navTitle": "Motion 3D",
           "description": "Damos vida a las interfaces mediante motion, 3D y recursos visuales inmersivos, equilibrando una experiencia memorable con interacciones fluidas y buen rendimiento.",
-          "alt": "Imagen del proyecto Unimatic perteneciente al portfolio del estudio.",
-          "secondaryAlt": "Imagen adicional del proyecto Unimatic.",
+          "alt": "Vista de una interfaz móvil que ilustra motion y diseño interactivo.",
+          "secondaryAlt": "Imagen adicional de una interfaz móvil con interacciones intencionadas.",
           "secondaryTitle": "Motion con propósito",
           "secondaryDescription": "Desde transiciones sutiles hasta escenas 3D expresivas, cada movimiento refuerza la respuesta de la interfaz, la jerarquía y el ritmo de la experiencia."
         },
@@ -119,8 +119,8 @@
           "title": "Aplicaciones móviles y SaaS",
           "navTitle": "Apps SaaS",
           "description": "Creamos experiencias móviles y SaaS que convierten flujos complejos en productos intuitivos, con UX práctica, una arquitectura mantenible y capacidad para evolucionar.",
-          "alt": "Imagen del proyecto Subscrr que ilustra una experiencia de producto digital.",
-          "secondaryAlt": "Imagen adicional del proyecto Subscrr.",
+          "alt": "Imagen de diseño de producto digital para una experiencia móvil o SaaS.",
+          "secondaryAlt": "Imagen adicional de UX e interfaz para flujos de trabajo digitales.",
           "secondaryTitle": "UX para flujos cotidianos",
           "secondaryDescription": "Convertimos tareas complejas en pantallas claras y patrones reutilizables para que los productos móviles y SaaS sigan siendo intuitivos mientras evolucionan."
         }
