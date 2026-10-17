@@ -236,6 +236,11 @@
     }, servicesPageRef.value);
   });
 
+  onBeforeRouteLeave(() => {
+    // Prevent ScrollTrigger callbacks from creating animations during the exit transition.
+    isServicesActive = false;
+  });
+
   onBeforeUnmount(() => {
     isServicesActive = false;
   });
