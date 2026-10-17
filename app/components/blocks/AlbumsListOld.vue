@@ -64,6 +64,7 @@
   const albumsListRef = useTemplateRef('albumsListRef');
   const buttonDisabled = ref(false);
   let ctx;
+  let isActive = false;
 
   let isAnimating = false;
   let direction = "down";
@@ -235,7 +236,9 @@
   }
 
   onMounted(async () => {
-    await document.fonts.ready
+    isActive = true;
+    await document.fonts.ready;
+    if (!isActive || !albumsListRef.value?.isConnected) return;
 
     slides = document.querySelectorAll(".slide");
     images = document.querySelectorAll(".bg");
