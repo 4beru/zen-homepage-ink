@@ -18,12 +18,6 @@
             <p class="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.16em] sm:tracking-[0.24em] uppercase text-white leading-tight">
               {{ $t('pages.home.heroHeadline') }}
             </p>
-            <!-- Text 2 -->
-            <p class="text-[10px] sm:text-xs md:text-sm tracking-[0.14em] sm:tracking-[0.2em] uppercase font-mono text-white/80 leading-normal flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
-              <span>{{ $t('pages.home.heroSubPart1') }}</span>
-              <span class="opacity-40 select-none">//</span>
-              <span>{{ $t('pages.home.heroSubPart2') }}</span>
-            </p>
           </div>
         </div>
       </HeroHypnotic>
