@@ -63,12 +63,21 @@
       element.classList.toggle('hover:scale-110')
       element.classList.toggle('band-image-expanded')
       element.closest('figure')?.classList.toggle('band-figure-expanded')
+
+      if (element.classList.contains('band-image-expanded')) {
+        gsap.set(element.parentElement, { x: 0, y: 0 })
+      }
     }
 
-    // Scroll to element after CSS transition is done.
+    // Keep the expanded image centered after its size transition finishes.
+    const isExpanded = isLargeDevice.matches && element.classList.contains('band-image-expanded');
     const delay = isLargeDevice.matches ? 500 : 0;
     setTimeout(function () {
-      element.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" })
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: isExpanded ? "center" : "start",
+        inline: isExpanded ? "center" : "start",
+      })
     }, delay);
   }
 
@@ -76,6 +85,10 @@
     // @todo Make a composable.
     const movement = 15;
     const target = e.currentTarget;
+
+    // Do not let the hover-parallax offset move an expanded image out of center.
+    if (target.classList.contains('band-image-expanded')) return;
+
     const rect = target.getBoundingClientRect();
     const relX = e.clientX - rect.left;
     const relY = e.clientY - rect.top;
@@ -179,13 +192,24 @@
 
   @media (min-width: 1024px) {
     .section-band figure.band-figure-expanded {
+      display: flex;
       flex: 0 0 100%;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .section-band figure.band-figure-expanded > div.relative {
+      display: flex;
+      justify-content: center;
       width: 100%;
     }
 
     .section-band figure img.band-image-expanded {
+      width: min(100%, calc(133.333dvh - 1.867rem));
       height: auto;
       aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transform: none;
     }
   }
 </style>
