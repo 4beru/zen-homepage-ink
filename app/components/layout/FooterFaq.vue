@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white px-5 py-16 text-black sm:px-8 sm:py-20 md:px-12 lg:px-14 lg:py-28" aria-labelledby="footer-faq-title">
     <div class="mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-16">
-      <div class="flex flex-col justify-between gap-8 lg:col-span-3">
+      <div class="order-last flex flex-col justify-between gap-8 lg:order-none lg:col-span-3">
         <div class="flex items-center gap-3 text-sm font-semibold tracking-wide">
           <span class="h-3 w-3 shrink-0 rounded-full bg-black" aria-hidden="true"></span>
           <span>{{ $t("footer.faq.eyebrow") }}</span>
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="min-w-0 lg:col-span-9">
+      <div class="order-first min-w-0 lg:order-none lg:col-span-9">
         <h2 id="footer-faq-title" class="mb-12 max-w-4xl text-[clamp(2.25rem,5.2vw,5rem)] font-semibold leading-[0.98] tracking-[-0.055em] sm:mb-16 lg:mb-20">
           {{ $t("footer.faq.title") }}
         </h2>
