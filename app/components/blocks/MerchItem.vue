@@ -20,7 +20,6 @@
           <video
             ref="previewVideoRef"
             :src="props.item.video"
-            :poster="props.item.image"
             aria-hidden="true"
             tabindex="-1"
             muted
