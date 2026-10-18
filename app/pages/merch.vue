@@ -32,8 +32,8 @@
       </nav>
     </aside>
 
-    <section class="merch-list ml-auto flex w-full flex-col gap-18 md:gap-28 lg:gap-16 lg:w-[72%]">
-      <header class="pt-4 sm:pt-6 lg:pt-12">
+    <section class="merch-list ml-auto flex w-full flex-col gap-24 md:gap-40 lg:gap-32 lg:w-[72%]">
+      <header class="pt-4 sm:pt-6 lg:pt-22">
         <AnimationReveal>
           <p class="mb-3 text-xs inline-block font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
               {{ $t('pages.merch.eyebrow') }}
@@ -41,12 +41,13 @@
         </AnimationReveal>
       </header>
 
-      <div class="flex flex-col gap-14 pb-16 sm:gap-16 sm:pb-20 md:pb-24 lg:gap-20">
+      <!-- Aumenté el gap a 24 en móvil, 32 en sm y 48 en pantallas grandes -->
+      <div class="flex flex-col z-41 gap-24 pb-24 sm:gap-32 sm:pb-32 md:pb-40 lg:gap-48">
         <section
           v-for="(service, serviceIndex) in services"
           :id="service.id"
           :key="service.id"
-          class="service-section flex flex-col gap-14 sm:gap-16 lg:gap-20"
+          class="service-section flex flex-col gap-24 sm:gap-32 lg:gap-40"
           :aria-label="$t(service.titleKey)"
         >
           <h2 class="sr-only">{{ $t(service.titleKey) }}</h2>
@@ -61,6 +62,7 @@
         </section>
       </div>
     </section>
+
   </section>
 </template>
 
@@ -127,7 +129,7 @@
       const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
       gsap.set(filterSplit.chars, {
         fontSize: isDesktop ? "1.8rem" : "0.625rem",
-        color: "#111111",
+        color: "#000",
       });
 
       gsap.set(".merch-filter", { autoAlpha: 1 });
@@ -222,7 +224,7 @@
   }
 
   function getActivationLine() {
-    return window.matchMedia("(min-width: 1024px)").matches ? 25 : 35;
+    return window.matchMedia("(min-width: 1024px)").matches ? 40 : 50;
   }
 
   function getActiveItemIndex() {
@@ -293,7 +295,7 @@
     if (previousSection) {
       gsap.to(`.merch-filter .${previousSection} .char`, {
         fontSize: baseFontSize,
-        color: "#111111",
+        color: "#000",
         duration: instant ? 0 : duration,
         stagger: instant ? 0 : stagger,
         ease: "power2.inOut",
@@ -303,7 +305,7 @@
 
     gsap.to(`.merch-filter .${nextSection} .char`, {
       fontSize: `${nextFontSize}px`,
-      color: "#616161",
+      color: "#cfcfcf",
       duration: instant ? 0 : duration,
       stagger: instant ? 0 : stagger,
       ease: "power2.inOut",
