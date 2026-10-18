@@ -1,6 +1,6 @@
 export const images = [
   {
-    src: 'skizophonic_velodrome.jpg',
+    src: 'zen-space-logo.png',
     alt: 'Skizophonic 2013',
   },
   {
