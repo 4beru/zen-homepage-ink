@@ -225,7 +225,7 @@
 
       journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
         const copy = step.querySelectorAll("[data-journey-copy]");
-        const image = step.querySelector("[data-journey-image");
+        const image = step.querySelector("[data-journey-image]");
 
         gsap.timeline({
           scrollTrigger: {
