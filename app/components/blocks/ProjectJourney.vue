@@ -10,7 +10,8 @@
         <h2
           id="project-journey-title"
           ref="journeyTitleRef"
-          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] lg:whitespace-nowrap"
+          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] transition-[opacity,transform,filter] duration-800 ease-out motion-reduce:transition-none lg:whitespace-nowrap"
+          :class="isTitleRevealed ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-6 opacity-0 blur-[6px]'"
         >
           {{ $t("pages.merch.journey.title") }}
         </h2>
@@ -20,12 +21,13 @@
         <article
           v-for="step in steps"
           :key="step.id"
-          data-journey-step
+          :data-journey-step="step.id"
           class="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-x-6 sm:py-9 lg:grid-cols-[minmax(4.5rem,0.52fr)_minmax(15rem,1.05fr)_minmax(0,2.15fr)] lg:gap-x-7 lg:py-0 xl:grid-cols-[minmax(5rem,0.55fr)_minmax(16rem,1fr)_minmax(0,2.2fr)] xl:gap-x-10"
         >
           <p
             data-journey-copy
-            class="pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 sm:text-[0.625rem] lg:pt-8 xl:pt-10"
+            class="pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-[0.625rem] lg:pt-8 xl:pt-10"
+            :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-4 opacity-0 blur-[5px]'"
           >
             {{ $t(step.numberKey) }}
           </p>
@@ -33,13 +35,15 @@
           <div class="min-w-0 lg:py-8 xl:py-10">
             <h3
               data-journey-copy
-              class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] sm:text-2xl xl:text-[1.65rem]"
+              class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-2xl xl:text-[1.65rem]"
+              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.titleKey) }}
             </h3>
             <p
               data-journey-copy
-              class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 sm:mt-4 sm:text-base"
+              class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-base"
+              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.descriptionKey) }}
             </p>
@@ -47,7 +51,8 @@
 
           <figure
             data-journey-image
-            class="group relative isolate col-span-2 mt-6 aspect-[16/10] overflow-hidden bg-white/[0.04] sm:mt-7 lg:col-span-1 lg:mt-0 lg:aspect-[16/10] xl:aspect-[16/9]"
+            class="group relative isolate col-span-2 mt-6 aspect-[16/10] overflow-hidden bg-white/[0.04] transition-[clip-path] duration-1000 ease-in-out motion-reduce:transition-none sm:mt-7 lg:col-span-1 lg:mt-0 lg:aspect-[16/10] xl:aspect-[16/9]"
+            :class="isStepRevealed(step.id) ? '[clip-path:inset(0_0_0%_0)]' : '[clip-path:inset(0_0_100%_0)]'"
           >
             <video
               data-journey-video
@@ -74,11 +79,6 @@
 </template>
 
 <script setup>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
   const journeyRef = useTemplateRef("journeyRef");
   const journeyTitleRef = useTemplateRef("journeyTitleRef");
 
@@ -112,14 +112,27 @@
     },
   ];
 
-  let isActive = false;
-  let animationContext;
-  let videoObserver;
-  let motionPreferenceQuery;
+  const isTitleRevealed = ref(false);
+  const revealedStepIds = ref([]);
   const activeVideos = new Set();
 
-  const videosShouldPause = () =>
-    !isActive || document.hidden || motionPreferenceQuery?.matches;
+  let isActive = false;
+  let revealObserver;
+  let videoObserver;
+  let motionPreferenceQuery;
+
+  const isStepRevealed = (id) => revealedStepIds.value.includes(id);
+
+  function revealAllContent() {
+    isTitleRevealed.value = true;
+    revealedStepIds.value = steps.map((step) => step.id);
+    revealObserver?.disconnect();
+    revealObserver = undefined;
+  }
+
+  function videosShouldPause() {
+    return !isActive || document.hidden || motionPreferenceQuery?.matches;
+  }
 
   function pauseVideo(video, reset = true) {
     video.pause();
@@ -135,7 +148,7 @@
     try {
       await video.play();
 
-      // The observer or motion preference may change while play() is pending.
+      // Visibility or motion preferences may change while play() is pending.
       if (videosShouldPause() || !activeVideos.has(video)) {
         pauseVideo(video);
       }
@@ -144,34 +157,45 @@
     }
   }
 
-  function handleVisibilityChange() {
-    if (document.hidden) {
-      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
-        video.pause();
-      });
+  function setupRevealObserver() {
+    if (!journeyRef.value || !("IntersectionObserver" in window)) {
+      revealAllContent();
       return;
     }
 
-    activeVideos.forEach((video) => playVideo(video));
-  }
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-  function handleMotionPreferenceChange() {
-    if (motionPreferenceQuery.matches) {
-      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
-        pauseVideo(video);
-      });
-      return;
-    }
+          if (entry.target === journeyTitleRef.value) {
+            isTitleRevealed.value = true;
+          } else {
+            const stepId = entry.target.dataset.journeyStep;
 
-    if (!document.hidden) {
-      activeVideos.forEach((video) => playVideo(video));
-    }
+            if (stepId && !isStepRevealed(stepId)) {
+              revealedStepIds.value = [...revealedStepIds.value, stepId];
+            }
+          }
+
+          revealObserver?.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.05,
+      }
+    );
+
+    if (journeyTitleRef.value) revealObserver.observe(journeyTitleRef.value);
+    journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
+      revealObserver.observe(step);
+    });
   }
 
   function setupVideoPlayback() {
     if (!journeyRef.value || !("IntersectionObserver" in window)) return;
 
-    motionPreferenceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach(({ target, isIntersecting }) => {
@@ -196,79 +220,75 @@
       video.muted = true;
       videoObserver.observe(video);
     });
-
-    motionPreferenceQuery.addEventListener("change", handleMotionPreferenceChange);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
   }
 
-  async function setupAnimations() {
-    await nextTick();
-    await document.fonts.ready;
-
-    // Footer/layout transitions can unmount this component while fonts load.
-    if (!isActive || !journeyRef.value?.isConnected || !journeyTitleRef.value) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    animationContext = gsap.context(() => {
-      gsap.from(journeyTitleRef.value, {
-        y: 26,
-        autoAlpha: 0,
-        filter: "blur(6px)",
-        duration: 0.85,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: journeyTitleRef.value,
-          start: "top 84%",
-          once: true,
-        },
+  function handleVisibilityChange() {
+    if (document.hidden) {
+      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+        video.pause();
       });
+      return;
+    }
 
-      journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
-        const copy = step.querySelectorAll("[data-journey-copy]");
-        const image = step.querySelector("[data-journey-image]");
+    activeVideos.forEach((video) => playVideo(video));
+  }
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: step,
-            start: "top 82%",
-            once: true,
-          },
-        })
-          .from(copy, {
-            y: 22,
-            autoAlpha: 0,
-            filter: "blur(5px)",
-            duration: 0.65,
-            stagger: 0.08,
-            ease: "power3.out",
-          })
-          .from(
-            image,
-            {
-              clipPath: "inset(0 0 100% 0)",
-              duration: 0.9,
-              ease: "power3.inOut",
-            },
-            "<0.05"
-          );
+  function handleMotionPreferenceChange() {
+    if (motionPreferenceQuery.matches) {
+      revealAllContent();
+      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+        pauseVideo(video);
       });
-    }, journeyRef.value);
+      return;
+    }
+
+    if (!document.hidden) {
+      activeVideos.forEach((video) => playVideo(video));
+    }
+  }
+
+  function addMotionPreferenceListener() {
+    if (motionPreferenceQuery.addEventListener) {
+      motionPreferenceQuery.addEventListener("change", handleMotionPreferenceChange);
+    } else {
+      motionPreferenceQuery.addListener(handleMotionPreferenceChange);
+    }
+  }
+
+  function removeMotionPreferenceListener() {
+    if (!motionPreferenceQuery) return;
+
+    if (motionPreferenceQuery.removeEventListener) {
+      motionPreferenceQuery.removeEventListener("change", handleMotionPreferenceChange);
+    } else {
+      motionPreferenceQuery.removeListener(handleMotionPreferenceChange);
+    }
   }
 
   onMounted(() => {
     isActive = true;
+    motionPreferenceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (motionPreferenceQuery.matches) {
+      revealAllContent();
+    } else {
+      setupRevealObserver();
+    }
+
     setupVideoPlayback();
-    void setupAnimations();
+    addMotionPreferenceListener();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
   });
 
   onBeforeUnmount(() => {
     isActive = false;
+    revealObserver?.disconnect();
     videoObserver?.disconnect();
-    motionPreferenceQuery?.removeEventListener("change", handleMotionPreferenceChange);
+    removeMotionPreferenceListener();
     document.removeEventListener("visibilitychange", handleVisibilityChange);
-    activeVideos.forEach((video) => pauseVideo(video));
+    journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+      pauseVideo(video);
+    });
     activeVideos.clear();
-    animationContext?.revert();
-    animationContext = undefined;
   });
 </script>
