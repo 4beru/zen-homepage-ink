@@ -7,6 +7,7 @@ export const services = [
       {
         id: "rythm-website",
         image: "/images/merch/nexterra-website-1.png",
+        video: "/videos/nexterra-website-1.mp4",
         titleKey: "pages.merch.services.webDevelopment.title",
         descriptionKey: "pages.merch.services.webDevelopment.description",
         altKey: "pages.merch.services.webDevelopment.alt",
@@ -14,6 +15,7 @@ export const services = [
       {
         id: "rythm-interactions",
         image: "/images/merch/retainer-website-2.png",
+        video: "/videos/retainer-website-2.mp4",
         titleKey: "pages.merch.services.webDevelopment.secondaryTitle",
         descriptionKey: "pages.merch.services.webDevelopment.secondaryDescription",
         altKey: "pages.merch.services.webDevelopment.secondaryAlt",
@@ -28,6 +30,7 @@ export const services = [
       {
         id: "penti-product",
         image: "/images/merch/isora-webapp-1.png",
+        video: "/videos/isora-webapp-1.mp4",
         titleKey: "pages.merch.services.productArchitecture.title",
         descriptionKey: "pages.merch.services.productArchitecture.description",
         altKey: "pages.merch.services.productArchitecture.alt",
@@ -35,6 +38,7 @@ export const services = [
       {
         id: "penti-integrations",
         image: "/images/merch/cimac-webapp-2.png",
+        video: "/videos/cimac-webapp-2.mp4",
         titleKey: "pages.merch.services.productArchitecture.secondaryTitle",
         descriptionKey: "pages.merch.services.productArchitecture.secondaryDescription",
         altKey: "pages.merch.services.productArchitecture.secondaryAlt",
@@ -49,6 +53,7 @@ export const services = [
       {
         id: "unimatic-motion",
         image: "/images/merch/ramotion-mobile-1.png",
+        video: "/videos/ramotion-mobile-1.mp4",
         titleKey: "pages.merch.services.motion3d.title",
         descriptionKey: "pages.merch.services.motion3d.description",
         altKey: "pages.merch.services.motion3d.alt",
@@ -56,6 +61,7 @@ export const services = [
       {
         id: "unimatic-interactions",
         image: "/images/merch/makko-mobile-2.png",
+        video: "/videos/makko-mobile-2.mp4",
         titleKey: "pages.merch.services.motion3d.secondaryTitle",
         descriptionKey: "pages.merch.services.motion3d.secondaryDescription",
         altKey: "pages.merch.services.motion3d.secondaryAlt",
@@ -70,6 +76,7 @@ export const services = [
       {
         id: "subscrr-product",
         image: "/images/merch/omnibuds-design-1.png",
+        video: "/videos/omnibuds-design-1.mp4",
         titleKey: "pages.merch.services.mobileSaas.title",
         descriptionKey: "pages.merch.services.mobileSaas.description",
         altKey: "pages.merch.services.mobileSaas.alt",
@@ -77,6 +84,7 @@ export const services = [
       {
         id: "subscrr-ux",
         image: "/images/merch/halo-design-2.png",
+        video: "/videos/halo-design-2.mp4",
         titleKey: "pages.merch.services.mobileSaas.secondaryTitle",
         descriptionKey: "pages.merch.services.mobileSaas.secondaryDescription",
         altKey: "pages.merch.services.mobileSaas.secondaryAlt",
