@@ -2,18 +2,8 @@
   <section ref="sectionBandRef" class="section-band">
     <h1 class="sr-only">{{ $t('pages.band.title') }}</h1>
     <div class="flex flex-col lg:flex-row lg:flex-wrap gap-x-4 bg-black text-white border-t-16 border-t-black">
-      <div class="flex-auto">
-        <ul ref="membersRef" class="members flex flex-col gap-1.5 p-6 text-[clamp(1.05rem,3vw,1.15rem)] [&_span]:block" role="list">
-          <li><span>{{ $t('pages.band.labels.vocals') }} & {{ $t('pages.band.labels.guitar') }}: Nacho Galí</span></li>
-          <li><span>{{ $t('pages.band.labels.guitar') }}: Dan Alcaide</span></li>
-          <li><span>{{ $t('pages.band.labels.guitar') }}: Fede Trillo</span></li>
-          <li><span>{{ $t('pages.band.labels.keyboards') }}: Eloy Alcaide</span></li>
-          <li><span>{{ $t('pages.band.labels.bass') }} & {{ $t('pages.band.labels.trombone') }}: Javier Gascón</span></li>
-          <li><span>{{ $t('pages.band.labels.bass') }}: Carlos Sánchez</span></li>
-          <li><span>{{ $t('pages.band.labels.drums') }}: Carlos Cruz</span></li>
-          <li><span>{{ $t('pages.band.labels.drums') }}: David Marco</span></li>
-          <li><span>Skizonettes:<br> Sofía Royo & Nuria Pallares & Sol González</span></li>
-        </ul>
+      <div class="flex-auto min-w-0 max-w-2xl">
+        <p ref="introRef" class="p-6 text-pretty text-[clamp(1.05rem,2.4vw,1.35rem)] leading-relaxed max-w-2xl">{{ $t('pages.band.intro') }}</p>
       </div>
       <figure v-for="(image, index) in images" :key="image.src" :class="`figure-${index}`" class="relative flex-auto overflow-hidden">
         <div class="reveal-columns absolute z-90 inset-0 w-full h-full">
@@ -45,7 +35,7 @@
 
   const { t } = useI18n();
   const sectionBandRef = useTemplateRef('sectionBandRef');
-  const membersRef = useTemplateRef('membersRef');
+  const introRef = useTemplateRef('introRef');
   const prevImage = ref(null);
   const currentImage = ref(null);
   let isLargeDevice;
@@ -101,7 +91,7 @@
   onMounted(() => {
     isLargeDevice = window.matchMedia("(min-width: 1024px)");
 
-    SplitText.create(membersRef.value, {
+    SplitText.create(introRef.value, {
       type: 'lines, words',
       mask: 'lines',
       linesClass: 'line',
@@ -109,7 +99,7 @@
     });
 
     gsap.set(sectionBandRef.value, { clipPath: 'inset(100% 0% 0% 0%)' });
-    gsap.set(membersRef.value.querySelectorAll('.word'), { y: 200 });
+    gsap.set(introRef.value.querySelectorAll('.word'), { y: 200 });
 
     ctx = gsap.context(() => {
       gsap
@@ -122,11 +112,11 @@
           ease: 'power4.out',
         })
         .add(figuresReveal, '>0.5')
-        .add(membersReveal, '<0.4')
+        .add(introReveal, '<0.4')
         .play();
 
-      function membersReveal() {
-        membersRef.value.querySelectorAll('.line').forEach((line) => {
+      function introReveal() {
+        introRef.value.querySelectorAll('.line').forEach((line) => {
           gsap.to(line.querySelectorAll('.word'), {
             y: 0,
             duration: 1.4,
