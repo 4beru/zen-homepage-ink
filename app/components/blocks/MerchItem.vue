@@ -76,6 +76,7 @@
   const isPreviewPlaying = ref(false);
   let previewRequestId = 0;
   let previewPauseTimeoutId;
+  let isPreviewRequested = false;
 
   function clearPreviewPauseTimeout() {
     if (previewPauseTimeoutId === undefined) return;
@@ -105,7 +106,8 @@
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // If the pointer returns during the fade, let playback continue smoothly.
+    // Track hover intent separately so a pending play() can reverse the fade.
+    isPreviewRequested = true;
     clearPreviewPauseTimeout();
     const requestId = ++previewRequestId;
 
@@ -126,13 +128,14 @@
 
   function handlePreviewTransitionEnd(event) {
     if (event.propertyName !== "opacity") return;
-    if (isPreviewPlaying.value) return;
+    if (isPreviewPlaying.value || isPreviewRequested) return;
 
     pauseAndResetPreview();
   }
 
   function stopPreview() {
     previewRequestId += 1;
+    isPreviewRequested = false;
 
     const wasVisible = isPreviewPlaying.value;
     isPreviewPlaying.value = false;
@@ -162,6 +165,7 @@
 
   function disposePreview() {
     previewRequestId += 1;
+    isPreviewRequested = false;
     isPreviewPlaying.value = false;
     clearPreviewPauseTimeout();
 
