@@ -55,12 +55,14 @@
     currentImage.value = element;
 
     if (prevImage.value !== currentImage.value) {
-      prevImage.value.classList.remove('h-[calc(100dvh-1.4rem)]')
+      prevImage.value.classList.remove('band-image-expanded')
+      prevImage.value.closest('figure')?.classList.remove('band-figure-expanded')
     }
 
     if (isLargeDevice.matches) {
       element.classList.toggle('hover:scale-110')
-      element.classList.toggle('h-[calc(100dvh-1.4rem)]')
+      element.classList.toggle('band-image-expanded')
+      element.closest('figure')?.classList.toggle('band-figure-expanded')
     }
 
     // Scroll to element after CSS transition is done.
@@ -173,5 +175,17 @@
     transform: scaleY(var(--scaleYBandColumnsReveal));
     transform-origin: bottom;
     will-change: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .section-band figure.band-figure-expanded {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+
+    .section-band figure img.band-image-expanded {
+      height: auto;
+      aspect-ratio: 4 / 3;
+    }
   }
 </style>
