@@ -1,5 +1,6 @@
 <template>
   <footer ref="footerMainRef" class="footer-main bg-black">
+    <ProjectJourney />
     <div class="bg-white mt-0 rounded-b-3xl">
       <FooterFaq class="mb-16 sm:mb-28 lg:mb-16" />
       <AppLogo class="relative z-20 fill-black mx-auto lg:mx-0 w-3/4 xl:w-1/2" />
