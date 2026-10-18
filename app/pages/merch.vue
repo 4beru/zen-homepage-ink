@@ -305,7 +305,7 @@
 
     gsap.to(`.merch-filter .${nextSection} .char`, {
       fontSize: `${nextFontSize}px`,
-      color: "#cfcfcf",
+      color: "#616161",
       duration: instant ? 0 : duration,
       stagger: instant ? 0 : stagger,
       ease: "power2.inOut",
