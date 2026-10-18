@@ -42,9 +42,9 @@
       }
     },
     "band": {
-      "name": "Banda",
-      "title": "Banda",
-      "copyrightText": "Todos los derechos de las imágenes pertenecen a sus respectivos autores.",
+      "name": "Referencias",
+      "title": "Referencias",
+      "copyrightText": "Los trabajos mostrados pertenecen a sus respectivos creadores. Se comparten con fines de inspiración.",
       "labels": {
         "vocals": "Voz",
         "guitar": "Guitarra",
@@ -54,9 +54,10 @@
         "drums": "Batería"
       },
       "meta": {
-        "title": "Banda",
-        "description": "Quiénes somos y cómo somos"
-      }
+        "title": "Referencias",
+        "description": "Una colección de sitios web, estudios creativos, productos digitales y experiencias interactivas que inspiran nuestro trabajo."
+      },
+      "intro": "Reunimos sitios web, experimentos y productos digitales que nos hacen detenernos a mirar. Desde Awwwards, Behance y Dribbble hasta estudios independientes y marcas ambiciosas, estas referencias alimentan nuestra curiosidad, cuestionan nuestra perspectiva y despiertan ideas para lo que construiremos después."
     },
     "music": {
       "name": "Trabajos",
