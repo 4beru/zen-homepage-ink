@@ -28,6 +28,7 @@
             preload="none"
             class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-out motion-reduce:transition-none"
             :class="{ 'opacity-100': isPreviewPlaying }"
+            @transitionend="handlePreviewTransitionEnd"
           />
         </figure>
       </AnimationReveal>
@@ -68,9 +69,34 @@
     },
   });
 
+  const PREVIEW_FADE_DURATION_MS = 300;
+  const PREVIEW_PAUSE_FALLBACK_MS = PREVIEW_FADE_DURATION_MS + 100;
+
   const previewVideoRef = useTemplateRef("previewVideoRef");
   const isPreviewPlaying = ref(false);
   let previewRequestId = 0;
+  let previewPauseTimeoutId;
+
+  function clearPreviewPauseTimeout() {
+    if (previewPauseTimeoutId === undefined) return;
+
+    window.clearTimeout(previewPauseTimeoutId);
+    previewPauseTimeoutId = undefined;
+  }
+
+  function pauseAndResetPreview() {
+    clearPreviewPauseTimeout();
+
+    const video = previewVideoRef.value;
+    if (!video || isPreviewPlaying.value) return;
+
+    video.pause();
+
+    // Reset after the fade so the video remains visible while it fades out.
+    if (video.readyState > 0) {
+      video.currentTime = 0;
+    }
+  }
 
   async function playPreview() {
     const video = previewVideoRef.value;
@@ -79,6 +105,8 @@
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // If the pointer returns during the fade, let playback continue smoothly.
+    clearPreviewPauseTimeout();
     const requestId = ++previewRequestId;
 
     try {
@@ -91,25 +119,61 @@
       // Autoplay can be denied by the browser; keep the still image visible.
       if (requestId === previewRequestId) {
         isPreviewPlaying.value = false;
+        pauseAndResetPreview();
       }
     }
   }
 
+  function handlePreviewTransitionEnd(event) {
+    if (event.propertyName !== "opacity") return;
+    if (isPreviewPlaying.value) return;
+
+    pauseAndResetPreview();
+  }
+
   function stopPreview() {
     previewRequestId += 1;
+
+    const wasVisible = isPreviewPlaying.value;
     isPreviewPlaying.value = false;
+
+    const video = previewVideoRef.value;
+    if (!video) return;
+
+    clearPreviewPauseTimeout();
+
+    // If the video never became visible, there is no fade to wait for.
+    if (!wasVisible) {
+      video.pause();
+
+      if (video.readyState > 0) {
+        video.currentTime = 0;
+      }
+
+      return;
+    }
+
+    // transitionend normally pauses it; this timeout is a safety net in case
+    // the browser skips the transition event.
+    previewPauseTimeoutId = window.setTimeout(() => {
+      pauseAndResetPreview();
+    }, PREVIEW_PAUSE_FALLBACK_MS);
+  }
+
+  function disposePreview() {
+    previewRequestId += 1;
+    isPreviewPlaying.value = false;
+    clearPreviewPauseTimeout();
 
     const video = previewVideoRef.value;
     if (!video) return;
 
     video.pause();
 
-    // Reset only after metadata is available, so re-entering always starts
-    // from the beginning without assigning currentTime in HAVE_NOTHING.
     if (video.readyState > 0) {
       video.currentTime = 0;
     }
   }
 
-  onBeforeUnmount(stopPreview);
+  onBeforeUnmount(disposePreview);
 </script>
