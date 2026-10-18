@@ -35,14 +35,14 @@
           <div class="min-w-0 lg:py-8 xl:py-10">
             <h3
               data-journey-copy
-              class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-2xl xl:text-[1.65rem]"
+              class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] delay-75 duration-700 ease-out motion-reduce:transition-none sm:text-2xl xl:text-[1.65rem]"
               :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.titleKey) }}
             </h3>
             <p
               data-journey-copy
-              class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-base"
+              class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] delay-150 duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-base"
               :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.descriptionKey) }}
@@ -199,7 +199,10 @@
     videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach(({ target, isIntersecting }) => {
-          const video = target;
+          // Observe each step, not the clipped video itself. This lets the
+          // browser prepare playback before the image reveal has completed.
+          const video = target.querySelector("[data-journey-video]");
+          if (!video) return;
 
           if (isIntersecting) {
             activeVideos.add(video);
@@ -216,9 +219,10 @@
       }
     );
 
-    journeyRef.value.querySelectorAll("[data-journey-video]").forEach((video) => {
-      video.muted = true;
-      videoObserver.observe(video);
+    journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
+      const video = step.querySelector("[data-journey-video]");
+      if (video) video.muted = true;
+      videoObserver.observe(step);
     });
   }
 
