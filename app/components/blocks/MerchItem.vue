@@ -7,12 +7,12 @@
   >
     <div class="grid grid-cols-1 items-center gap-5 sm:gap-6 lg:grid-cols-12 lg:gap-y-8 lg:gap-x-6 xl:gap-x-7 2xl:gap-x-8">
       <AnimationReveal class="w-full lg:col-span-7 xl:col-span-8">
-        <figure class="group relative isolate w-full overflow-hidden rounded-none bg-gray-100">
+        <figure class="group relative isolate aspect-[4/3] w-full overflow-hidden rounded-none bg-gray-100">
           <NuxtImg
             :src="item.image"
             :alt="$t(item.altKey)"
             :loading="index === 0 ? 'eager' : 'lazy'"
-            class="block aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015]"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.015]"
             sizes="100vw md:100vw xl:1920px"
           />
         </figure>
