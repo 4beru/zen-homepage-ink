@@ -18,7 +18,7 @@
 
       <div class="border-t border-white/15">
         <article
-          v-for="(step, index) in steps"
+          v-for="step in steps"
           :key="step.id"
           data-journey-step
           class="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-x-6 sm:py-9 lg:grid-cols-[minmax(4.5rem,0.52fr)_minmax(15rem,1.05fr)_minmax(0,2.15fr)] lg:gap-x-7 lg:py-0 xl:grid-cols-[minmax(5rem,0.55fr)_minmax(16rem,1fr)_minmax(0,2.2fr)] xl:gap-x-10"
@@ -50,15 +50,15 @@
             class="group relative isolate col-span-2 mt-6 aspect-[16/10] overflow-hidden bg-white/[0.04] sm:mt-7 lg:col-span-1 lg:mt-0 lg:aspect-[16/10] xl:aspect-[16/9]"
           >
             <video
+              data-journey-video
               :src="step.video"
               :poster="step.poster"
               :aria-label="$t(step.altKey)"
               aria-roledescription="video"
-              autoplay
               loop
               muted
               playsinline
-              preload="metadata"
+              preload="none"
               tabindex="-1"
               class="absolute inset-0 block h-full w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.02]"
             />
@@ -76,9 +76,8 @@
 <script setup>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { SplitText } from "gsap/SplitText";
 
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 
   const journeyRef = useTemplateRef("journeyRef");
   const journeyTitleRef = useTemplateRef("journeyTitleRef");
@@ -113,29 +112,110 @@
     },
   ];
 
-  let ctx;
-  let titleSplit;
+  let isActive = false;
+  let animationContext;
+  let videoObserver;
+  let motionPreferenceQuery;
+  const activeVideos = new Set();
 
-  onMounted(async () => {
+  const videosShouldPause = () =>
+    !isActive || document.hidden || motionPreferenceQuery?.matches;
+
+  function pauseVideo(video, reset = true) {
+    video.pause();
+
+    if (reset && video.readyState > 0) {
+      video.currentTime = 0;
+    }
+  }
+
+  async function playVideo(video) {
+    if (videosShouldPause() || !activeVideos.has(video)) return;
+
+    try {
+      await video.play();
+
+      // The observer or motion preference may change while play() is pending.
+      if (videosShouldPause() || !activeVideos.has(video)) {
+        pauseVideo(video);
+      }
+    } catch {
+      // Keep the poster visible if playback is unavailable or denied.
+    }
+  }
+
+  function handleVisibilityChange() {
+    if (document.hidden) {
+      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+        video.pause();
+      });
+      return;
+    }
+
+    activeVideos.forEach((video) => playVideo(video));
+  }
+
+  function handleMotionPreferenceChange() {
+    if (motionPreferenceQuery.matches) {
+      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+        pauseVideo(video);
+      });
+      return;
+    }
+
+    if (!document.hidden) {
+      activeVideos.forEach((video) => playVideo(video));
+    }
+  }
+
+  function setupVideoPlayback() {
+    if (!journeyRef.value || !("IntersectionObserver" in window)) return;
+
+    motionPreferenceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          const video = target;
+
+          if (isIntersecting) {
+            activeVideos.add(video);
+            playVideo(video);
+          } else {
+            activeVideos.delete(video);
+            pauseVideo(video);
+          }
+        });
+      },
+      {
+        rootMargin: "160px 0px",
+        threshold: 0.05,
+      }
+    );
+
+    journeyRef.value.querySelectorAll("[data-journey-video]").forEach((video) => {
+      video.muted = true;
+      videoObserver.observe(video);
+    });
+
+    motionPreferenceQuery.addEventListener("change", handleMotionPreferenceChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+  }
+
+  async function setupAnimations() {
     await nextTick();
     await document.fonts.ready;
 
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    // Footer/layout transitions can unmount this component while fonts load.
+    if (!isActive || !journeyRef.value?.isConnected || !journeyTitleRef.value) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    ctx = gsap.context(() => {
-      titleSplit = SplitText.create(journeyTitleRef.value, {
-        type: "chars",
-        charsClass: "journey-title-char",
-      });
-
-      gsap.from(titleSplit.chars, {
-        yPercent: 115,
+    animationContext = gsap.context(() => {
+      gsap.from(journeyTitleRef.value, {
+        y: 26,
         autoAlpha: 0,
-        filter: "blur(8px)",
-        duration: 0.9,
-        stagger: 0.018,
-        ease: "power4.out",
+        filter: "blur(6px)",
+        duration: 0.85,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: journeyTitleRef.value,
           start: "top 84%",
@@ -143,48 +223,52 @@
         },
       });
 
-      const stepElements = gsap.utils.toArray("[data-journey-step]", journeyRef.value);
-
-      stepElements.forEach((step) => {
+      journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
         const copy = step.querySelectorAll("[data-journey-copy]");
-        const image = step.querySelector("[data-journey-image]");
+        const image = step.querySelector("[data-journey-image");
 
-        gsap.from(copy, {
-          y: 22,
-          autoAlpha: 0,
-          filter: "blur(5px)",
-          duration: 0.72,
-          stagger: 0.1,
-          ease: "power3.out",
+        gsap.timeline({
           scrollTrigger: {
             trigger: step,
             start: "top 82%",
             once: true,
           },
-        });
-
-        gsap.fromTo(
-          image,
-          { clipPath: "inset(0 0 100% 0)" },
-          {
-            clipPath: "inset(0 0 0% 0)",
-            duration: 1,
-            ease: "power3.inOut",
-            scrollTrigger: {
-              trigger: step,
-              start: "top 82%",
-              once: true,
+        })
+          .from(copy, {
+            y: 22,
+            autoAlpha: 0,
+            filter: "blur(5px)",
+            duration: 0.65,
+            stagger: 0.08,
+            ease: "power3.out",
+          })
+          .from(
+            image,
+            {
+              clipPath: "inset(0 0 100% 0)",
+              duration: 0.9,
+              ease: "power3.inOut",
             },
-          }
-        );
+            "<0.05"
+          );
       });
-
-      ScrollTrigger.refresh();
     }, journeyRef.value);
+  }
+
+  onMounted(() => {
+    isActive = true;
+    setupVideoPlayback();
+    void setupAnimations();
   });
 
-  onUnmounted(() => {
-    ctx?.revert();
-    titleSplit?.revert();
+  onBeforeUnmount(() => {
+    isActive = false;
+    videoObserver?.disconnect();
+    motionPreferenceQuery?.removeEventListener("change", handleMotionPreferenceChange);
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+    activeVideos.forEach((video) => pauseVideo(video));
+    activeVideos.clear();
+    animationContext?.revert();
+    animationContext = undefined;
   });
 </script>
