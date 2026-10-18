@@ -1,69 +1,73 @@
 <template>
-  <section
-    ref="merchRef"
-    class="container relative flex gap-16 justify-end pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-[60px]"
-  >
-    <aside
-      ref="filterRef"
-      class="merch-filter-wrapper fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
-      aria-label="Services navigation"
-      role="complementary"
-    >
-
-      <nav
-        class="lg:sticky lg:top-[60px] lg:h-[calc(100dvh-60px)]"
-        aria-label="Services navigation"
+  <div class="w-full">
+    <section
+        ref="merchRef"
+        class="container relative flex gap-16 justify-end pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-[60px]"
       >
-        <ul
-          class="merch-filter m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:absolute lg:bottom-8 lg:left-0 lg:items-end lg:gap-2 lg:overflow-visible lg:px-0 lg:py-0 xl:gap-3 2xl:bottom-12"
+        <aside
+          ref="filterRef"
+          class="merch-filter-wrapper fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
+          aria-label="Services navigation"
+          role="complementary"
         >
-          <li v-for="(service, index) in filterSections" :key="service.key" class="relative shrink-0">
-            <button
-              type="button"
-              class="block w-max whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-none tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:text-[1.8rem] lg:tracking-[0.055em] lg:[writing-mode:vertical-rl] lg:[text-orientation:mixed] lg:[transform:rotate(180deg)]"
-              :class="service.key"
-              :aria-current="activeFilterSection === service.key ? 'location' : undefined"
-              @click="handleClickFilterOption(index)"
+    
+          <nav
+            class="lg:sticky lg:top-[60px] lg:h-[calc(100dvh-60px)]"
+            aria-label="Services navigation"
+          >
+            <ul
+              class="merch-filter m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:absolute lg:bottom-8 lg:left-0 lg:items-end lg:gap-2 lg:overflow-visible lg:px-0 lg:py-0 xl:gap-3 2xl:bottom-12"
             >
-              {{ service.label }}
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-
-    <section class="merch-list ml-auto flex w-full flex-col gap-24 md:gap-40 lg:gap-32 lg:w-[72%]">
-      <header class="pt-4 sm:pt-6 lg:pt-22">
-        <AnimationReveal>
-          <p class="mb-3 text-xs inline-block font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
-              {{ $t('pages.merch.eyebrow') }}
-          </p>
-        </AnimationReveal>
-      </header>
-
-      <!-- Aumenté el gap a 24 en móvil, 32 en sm y 48 en pantallas grandes -->
-      <div class="flex flex-col z-41 gap-24 pb-24 sm:gap-32 sm:pb-32 md:pb-40 lg:gap-48">
-        <section
-          v-for="(service, serviceIndex) in services"
-          :id="service.id"
-          :key="service.id"
-          class="service-section flex flex-col gap-24 sm:gap-32 lg:gap-40"
-          :aria-label="$t(service.titleKey)"
-        >
-          <h2 class="sr-only">{{ $t(service.titleKey) }}</h2>
-
-          <MerchItem
-            v-for="(item, itemIndex) in service.items"
-            :key="item.id"
-            :item="item"
-            :index="serviceIndex * 2 + itemIndex"
-            :service-index="serviceIndex"
-          />
+              <li v-for="(service, index) in filterSections" :key="service.key" class="relative shrink-0">
+                <button
+                  type="button"
+                  class="block w-max whitespace-nowrap text-[0.625rem] font-extrabold uppercase leading-none tracking-[0.12em] text-[#111111] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary lg:text-[1.8rem] lg:tracking-[0.055em] lg:[writing-mode:vertical-rl] lg:[text-orientation:mixed] lg:[transform:rotate(180deg)]"
+                  :class="service.key"
+                  :aria-current="activeFilterSection === service.key ? 'location' : undefined"
+                  @click="handleClickFilterOption(index)"
+                >
+                  {{ service.label }}
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+    
+        <section class="merch-list ml-auto flex w-full flex-col gap-24 md:gap-40 lg:gap-32 lg:w-[72%]">
+          <header class="pt-4 sm:pt-6 lg:pt-22">
+            <AnimationReveal>
+              <p class="mb-3 text-xs inline-block font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
+                  {{ $t('pages.merch.eyebrow') }}
+              </p>
+            </AnimationReveal>
+          </header>
+    
+          <!-- Aumenté el gap a 24 en móvil, 32 en sm y 48 en pantallas grandes -->
+          <div class="flex flex-col z-41 gap-24 pb-24 sm:gap-32 sm:pb-32 md:pb-40 lg:gap-48">
+            <section
+              v-for="(service, serviceIndex) in services"
+              :id="service.id"
+              :key="service.id"
+              class="service-section flex flex-col gap-24 sm:gap-32 lg:gap-40"
+              :aria-label="$t(service.titleKey)"
+            >
+              <h2 class="sr-only">{{ $t(service.titleKey) }}</h2>
+    
+              <MerchItem
+                v-for="(item, itemIndex) in service.items"
+                :key="item.id"
+                :item="item"
+                :index="serviceIndex * 2 + itemIndex"
+                :service-index="serviceIndex"
+              />
+            </section>
+          </div>
         </section>
-      </div>
-    </section>
+    
+      </section>
 
-  </section>
+    <ProjectJourney />
+  </div>
 </template>
 
 <script setup>
