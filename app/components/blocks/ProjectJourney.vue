@@ -10,8 +10,8 @@
         <h2
           id="project-journey-title"
           ref="journeyTitleRef"
-          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] transition-[opacity,transform,filter] duration-800 ease-out motion-reduce:transition-none lg:whitespace-nowrap"
-          :class="isTitleRevealed ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-6 opacity-0 blur-[6px]'"
+          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none lg:whitespace-nowrap"
+          :class="isTitleRevealed ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-6 opacity-0 blur-[6px]'"
         >
           {{ $t("pages.merch.journey.title") }}
         </h2>
@@ -27,7 +27,7 @@
           <p
             data-journey-copy
             class="pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-[0.625rem] lg:pt-8 xl:pt-10"
-            :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-4 opacity-0 blur-[5px]'"
+            :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
           >
             {{ $t(step.numberKey) }}
           </p>
@@ -36,14 +36,14 @@
             <h3
               data-journey-copy
               class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-2xl xl:text-[1.65rem]"
-              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-4 opacity-0 blur-[5px]'"
+              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.titleKey) }}
             </h3>
             <p
               data-journey-copy
               class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-base"
-              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-4 opacity-0 blur-[5px]'"
+              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.descriptionKey) }}
             </p>
