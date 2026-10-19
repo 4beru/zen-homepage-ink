@@ -22,11 +22,11 @@
           v-for="step in steps"
           :key="step.id"
           :data-journey-step="step.id"
-          class="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-x-6 sm:py-9 lg:grid-cols-[minmax(4.5rem,0.52fr)_minmax(15rem,1.05fr)_minmax(0,2.15fr)] lg:gap-x-7 lg:py-0 xl:grid-cols-[minmax(5rem,0.55fr)_minmax(16rem,1fr)_minmax(0,2.2fr)] xl:gap-x-10"
+          class="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-3 border-b border-white/15 py-7 sm:gap-x-6 sm:py-9 lg:grid-cols-[minmax(4.5rem,0.52fr)_minmax(15rem,1.05fr)_minmax(0,2.15fr)] lg:gap-x-7 lg:py-0 xl:grid-cols-[minmax(5rem,0.55fr)_minmax(16rem,1fr)_minmax(0,2.2fr)] xl:gap-x-10"
         >
           <p
             data-journey-copy
-            class="pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-[0.625rem] lg:pt-8 xl:pt-10"
+            class="whitespace-nowrap pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-[0.625rem] lg:pt-8 xl:pt-10"
             :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
           >
             {{ $t(step.numberKey) }}
@@ -35,14 +35,14 @@
           <div class="min-w-0 lg:py-8 xl:py-10">
             <h3
               data-journey-copy
-              class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] delay-75 duration-700 ease-out motion-reduce:transition-none sm:text-2xl xl:text-[1.65rem]"
+              class="max-w-[22ch] text-lg font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] delay-75 duration-700 ease-out motion-reduce:transition-none sm:text-[1.375rem] xl:text-[1.5rem]"
               :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.titleKey) }}
             </h3>
             <p
               data-journey-copy
-              class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] delay-150 duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-base"
+              class="mt-3 max-w-[34ch] text-[0.8125rem] font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] delay-150 duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-[0.9375rem]"
               :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.descriptionKey) }}
