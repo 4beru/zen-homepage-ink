@@ -6,7 +6,7 @@
       >
         <aside
           ref="filterRef"
-          class="merch-filter-wrapper fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
+          class="merch-filter-wrapper hidden lg:block fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
           aria-label="Services navigation"
           role="complementary"
         >
@@ -48,18 +48,28 @@
               v-for="(service, serviceIndex) in services"
               :id="service.id"
               :key="service.id"
-              class="service-section flex flex-col gap-24 sm:gap-32 lg:gap-40"
+              class="service-section flex flex-col gap-6 sm:gap-8 lg:gap-0"
               :aria-label="$t(service.titleKey)"
             >
               <h2 class="sr-only">{{ $t(service.titleKey) }}</h2>
-    
-              <MerchItem
-                v-for="(item, itemIndex) in service.items"
-                :key="item.id"
-                :item="item"
-                :index="serviceIndex * 2 + itemIndex"
-                :service-index="serviceIndex"
-              />
+
+              <p
+                aria-hidden="true"
+                class="flex items-center gap-4 text-[0.6875rem] font-extrabold uppercase leading-none tracking-[0.18em] text-[#616161] sm:text-xs lg:hidden"
+              >
+                <span>{{ $t(service.navTitleKey) }}</span>
+                <span class="h-px flex-1 bg-black/10"></span>
+              </p>
+
+              <div class="flex flex-col gap-14 sm:gap-20 lg:gap-40">
+                <MerchItem
+                  v-for="(item, itemIndex) in service.items"
+                  :key="item.id"
+                  :item="item"
+                  :index="serviceIndex * 2 + itemIndex"
+                  :service-index="serviceIndex"
+                />
+              </div>
             </section>
           </div>
         </section>

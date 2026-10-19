@@ -99,31 +99,31 @@
           "secondaryDescription": "Scroll-led sequences and precise micro-interactions bring a brand's identity into the experience without compromising clarity or performance."
         },
         "productArchitecture": {
-          "title": "Digital product architecture",
+          "title": "Web apps built to last",
           "navTitle": "Web Apps",
-          "description": "We shape the foundations behind digital products—from user flows and system structure to frontend, backend and integrations—so the experience stays coherent as the product grows.",
-          "alt": "Web application interface illustrating digital product architecture.",
+          "description": "We design and build web applications and SaaS platforms—from user flows and data structure to frontend, backend and integrations—so the product stays fast, maintainable and coherent as it grows.",
+          "alt": "Web application interface illustrating product design and architecture.",
           "secondaryAlt": "Additional web application visual showing connected product experiences.",
           "secondaryTitle": "Connected product experiences",
           "secondaryDescription": "We bring interfaces, backend services and integrations together in a coherent system that can evolve as features, teams and data grow."
         },
         "motion3d": {
-          "title": "Motion & 3D experiences",
+          "title": "Mobile app development",
           "navTitle": "Mobile",
-          "description": "We bring interfaces to life with purposeful motion, 3D and immersive visual techniques, balancing a memorable feel with responsive interaction and performance.",
-          "alt": "Mobile interface visual illustrating motion and interactive design.",
-          "secondaryAlt": "Additional mobile interface visual highlighting purposeful interaction.",
-          "secondaryTitle": "Motion with a clear purpose",
-          "secondaryDescription": "From subtle transitions to expressive 3D scenes, every movement supports feedback, hierarchy and the rhythm of the experience."
+          "description": "We build mobile apps that feel fast and native, turning complex flows into simple, intuitive screens—with solid architecture and room to grow.",
+          "alt": "Mobile app interface illustrating mobile app development.",
+          "secondaryAlt": "Additional mobile app visual highlighting fluid interactions.",
+          "secondaryTitle": "Fluid mobile interactions",
+          "secondaryDescription": "Gestures, transitions and subtle motion give every tap clear feedback, keeping the experience smooth, responsive and easy to use on any screen."
         },
         "mobileSaas": {
-          "title": "Mobile & SaaS apps",
+          "title": "Interface & product design",
           "navTitle": "Design",
-          "description": "We create focused mobile and SaaS experiences that turn complex workflows into intuitive products, with practical UX, maintainable architecture and room to evolve.",
-          "alt": "Digital product design visual for a mobile or SaaS experience.",
+          "description": "We design interfaces and visual systems that make products clear and memorable—from first wireframes to polished screens, ready to be built.",
+          "alt": "Interface design visual showing a polished product screen.",
           "secondaryAlt": "Additional UX and interface design visual for digital workflows.",
           "secondaryTitle": "UX for everyday workflows",
-          "secondaryDescription": "We turn complex tasks into clear screens and reusable patterns, helping mobile and SaaS products stay intuitive as they grow."
+          "secondaryDescription": "We turn complex tasks into clear screens and reusable patterns, helping digital products stay intuitive as they grow."
         }
       },
       "meta": {
