@@ -34,9 +34,9 @@
         </aside>
     
         <section class="merch-list ml-auto flex w-full flex-col gap-10 sm:gap-12 lg:gap-32 lg:w-[72%]">
-          <header class="pt-8 sm:pt-10 lg:pt-22">
-            <AnimationReveal>
-              <p class="mb-0 block text-center text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] text-black [text-wrap:balance] lg:mb-3 lg:inline-block lg:text-left lg:text-sm lg:font-bold lg:leading-normal lg:tracking-[0.18em] lg:text-gray-700">
+          <header class="flex justify-center pt-12 sm:pt-14 lg:pt-22">
+            <AnimationReveal class="max-w-full">
+              <p class="block whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-black text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(1.5rem,10vw,7rem)] xl:text-[clamp(1.5rem,10vw,8.8rem)] 2xl:text-[clamp(1.5rem,10vw,10.5rem)]">
                   {{ $t('pages.merch.eyebrow') }}
               </p>
             </AnimationReveal>
