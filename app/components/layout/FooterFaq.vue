@@ -19,10 +19,14 @@
           <p class="max-w-xs text-base leading-relaxed text-black/75 sm:text-lg">
             {{ $t("footer.faq.aside") }}
           </p>
-          <button
-            type="button"
-            disabled
-            class="group inline-flex min-h-11 items-center gap-5 border border-black/20 py-1.5 pl-4 pr-1.5 text-left text-xs font-medium text-black transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black disabled:cursor-not-allowed"
+          <a
+            href="https://cal.com/aberu-ar-pei6iq/intro-call-w-aberu"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cal-namespace="zenIntroCall"
+            data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
+            data-cal-config='{"layout":"month_view","theme":"light"}'
+            class="group inline-flex min-h-11 items-center gap-5 border border-black/20 py-1.5 pl-4 pr-1.5 text-left text-xs font-medium text-black transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
           >
             <span>{{ $t("footer.faq.bookCall") }}</span>
             <span class="flex h-8 w-8 shrink-0 items-center justify-center bg-black text-white">
@@ -36,7 +40,7 @@
                 <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
               </svg>
             </span>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -94,6 +98,63 @@
 
 <script setup>
   const openIndex = ref(-1);
+
+  const CAL_NAMESPACE = "zenIntroCall";
+
+  function initializeCalEmbed() {
+    if (window.Cal?.ns?.[CAL_NAMESPACE]) return;
+
+    (function (C, A, L) {
+      const push = (api, args) => api.q.push(args);
+      const d = C.document;
+
+      C.Cal = C.Cal || function () {
+        const cal = C.Cal;
+        const args = arguments;
+
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+
+        if (args[0] === L) {
+          const api = function () {
+            push(api, arguments);
+          };
+          const namespace = args[1];
+          api.q = api.q || [];
+
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = api;
+            push(api, args);
+          } else {
+            push(cal, args);
+          }
+
+          return;
+        }
+
+        push(cal, args);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    window.Cal("init", CAL_NAMESPACE, { origin: "https://app.cal.com" });
+    window.Cal.ns[CAL_NAMESPACE]("ui", {
+      styles: {
+        branding: {
+          brandColor: "#000000",
+        },
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    });
+  }
+
+  onMounted(() => {
+    initializeCalEmbed();
+  });
 
   function toggleQuestion(index) {
     openIndex.value = openIndex.value === index ? -1 : index;
