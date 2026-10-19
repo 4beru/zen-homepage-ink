@@ -10,7 +10,7 @@
         <h2
           id="project-journey-title"
           ref="journeyTitleRef"
-          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none lg:whitespace-nowrap"
+          class="mx-auto block w-full whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(1.5rem,10vw,7rem)] xl:text-[clamp(1.5rem,10vw,8.8rem)] 2xl:text-[clamp(1.5rem,10vw,10.5rem)] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none"
           :class="isTitleRevealed ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-6 opacity-0 blur-[6px]'"
         >
           {{ $t("pages.merch.journey.title") }}
