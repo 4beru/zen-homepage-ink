@@ -33,10 +33,10 @@
           </nav>
         </aside>
     
-        <section class="merch-list ml-auto flex w-full flex-col gap-24 md:gap-40 lg:gap-32 lg:w-[72%]">
-          <header class="pt-4 sm:pt-6 lg:pt-22">
+        <section class="merch-list ml-auto flex w-full flex-col gap-10 sm:gap-12 md:gap-40 lg:gap-32 lg:w-[72%]">
+          <header class="pt-8 sm:pt-10 lg:pt-22">
             <AnimationReveal>
-              <p class="mb-3 text-xs inline-block font-bold uppercase tracking-[0.18em] text-gray-700 sm:text-sm">
+              <p class="mb-0 block text-center text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] text-black [text-wrap:balance] lg:mb-3 lg:inline-block lg:text-left lg:text-sm lg:font-bold lg:leading-normal lg:tracking-[0.18em] lg:text-gray-700">
                   {{ $t('pages.merch.eyebrow') }}
               </p>
             </AnimationReveal>
@@ -68,6 +68,7 @@
                   :item="item"
                   :index="serviceIndex * 2 + itemIndex"
                   :service-index="serviceIndex"
+                  :is-active="focusedItemIndex === serviceIndex * 2 + itemIndex"
                 />
               </div>
             </section>
@@ -105,6 +106,7 @@
   }));
 
   const activeFilterSection = ref(null);
+  const focusedItemIndex = ref(-1);
   const prefersReducedMotion = ref(false);
 
   let ctx;
@@ -260,6 +262,7 @@
     if (index === focusIndex && !immediate) return;
 
     focusIndex = index;
+    focusedItemIndex.value = index;
     const blurPx = window.matchMedia("(min-width: 1024px)").matches ? 8 : 5;
     const shouldAnimate = !immediate && !prefersReducedMotion.value;
 
