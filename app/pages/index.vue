@@ -26,7 +26,7 @@
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
+          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
             <source :src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
             <source :src="`/videos/${video.small}`" type="video/mp4">
           </video>

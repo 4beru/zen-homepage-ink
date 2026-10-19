@@ -37,14 +37,14 @@
         <AnimationReveal class="w-full">
           <h3
             :id="`service-title-${props.item.id}`"
-            class="max-w-[15ch] text-[clamp(1.7rem,2.55vw,3rem)] leading-[1.04] tracking-[-0.035em] text-black"
+            class="w-full text-[clamp(1.4rem,2.1vw,2.5rem)] leading-[1.04] tracking-[-0.035em] text-black"
           >
             {{ $t(props.item.titleKey) }}
           </h3>
         </AnimationReveal>
 
         <AnimationReveal class="mt-3 w-full sm:mt-4">
-          <p class="max-w-prose text-base font-bold leading-[1.7] sm:text-lg lg:text-[1.0625rem] xl:text-lg">
+          <p class="max-w-prose text-sm font-bold leading-[1.7] sm:text-lg lg:text-[1.0625rem] xl:text-lg">
             {{ $t(props.item.descriptionKey) }}
           </p>
         </AnimationReveal>

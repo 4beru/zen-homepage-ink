@@ -51,15 +51,17 @@
               class="service-section flex flex-col gap-6 sm:gap-8 lg:gap-0"
               :aria-label="$t(service.titleKey)"
             >
-              <h2 class="sr-only">{{ $t(service.titleKey) }}</h2>
+              <h2 class="sr-only">{{ $t(service.titleKey) }} </h2>
 
-              <p
-                aria-hidden="true"
-                class="flex items-center gap-4 text-[0.6875rem] font-extrabold uppercase leading-none tracking-[0.18em] text-[#616161] sm:text-xs lg:hidden"
-              >
-                <span>{{ $t(service.navTitleKey) }}</span>
-                <span class="h-px flex-1 bg-black/10"></span>
-              </p>
+              <AnimationReveal class="w-full">
+                <p
+                  aria-hidden="true"
+                  class="flex items-center gap-4 text-[0.6875rem] font-extrabold uppercase leading-none tracking-[0.18em] text-[#616161] sm:text-xs lg:hidden"
+                >
+                  <span>{{ $t(service.navTitleKey) }}</span>
+                  <span class="h-px flex-1 bg-black/10"></span>
+                </p>
+              </AnimationReveal>
 
               <div class="flex flex-col gap-14 sm:gap-20 lg:gap-40">
                 <MerchItem
