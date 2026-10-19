@@ -33,10 +33,10 @@
           </nav>
         </aside>
     
-        <section class="merch-list ml-auto flex w-full flex-col gap-10 sm:gap-12 lg:gap-32 lg:w-[72%]">
+        <section class="merch-list ml-auto flex w-full flex-col gap-10 sm:gap-12 lg:gap-16 xl:gap-20 lg:w-[72%]">
           <header class="flex justify-center pt-12 sm:pt-14 lg:pt-22">
             <AnimationReveal class="max-w-full">
-              <p class="block whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-black text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(1.5rem,10vw,7rem)] xl:text-[clamp(1.5rem,10vw,8.8rem)] 2xl:text-[clamp(1.5rem,10vw,10.5rem)]">
+              <p class="block whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-black text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(2rem,4vw,3.75rem)] xl:text-[clamp(2.25rem,4vw,4.25rem)] 2xl:text-[clamp(2.5rem,4vw,4.75rem)]">
                   {{ $t('pages.merch.eyebrow') }}
               </p>
             </AnimationReveal>
