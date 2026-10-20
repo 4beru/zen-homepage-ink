@@ -122,7 +122,13 @@
   })
 
   onMounted(async () => {
+    // Start the Home timeline from its first frame after a full page reload.
+    window.scrollTo(0, 0);
+
     await document.fonts.ready;
+
+    // Font loading can defer ScrollTrigger setup; don't carry a restored offset into it.
+    window.scrollTo(0, 0);
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
