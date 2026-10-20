@@ -182,7 +182,7 @@
           </p>
           <CalBookingButton
             :label="$t('footer.faq.bookCall')"
-            size="sm"
+            size="xs"
             class="border border-black/15 focus-visible:outline-black"
           />
 
