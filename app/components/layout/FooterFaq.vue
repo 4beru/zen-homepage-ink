@@ -10,7 +10,7 @@
           <img
             src="/images/abel_ortega_huaraca_profile.webp"
             :alt="$t('footer.faq.headshotAlt')"
-            class="size-28 aspect-square object-cover grayscale sm:size-32 md:size-36 lg:size-[182px]"
+            class="size-28 aspect-square object-cover sm:size-32 md:size-36 lg:size-[182px]"
             width="96"
             height="96"
             loading="lazy"
