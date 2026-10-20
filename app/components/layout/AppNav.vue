@@ -9,7 +9,7 @@
     <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
       <nav class="main-navigation" aria-label="Main navigation">
-        <ul class="relative z-90 flex flex-col gap-4 p-12 uppercase">
+        <ul class="relative z-90 flex flex-col gap-4 px-12 pt-12 pb-6 uppercase">
           <li>
             <AnimationTextShadow>
               <NuxtLinkLocale to="/">{{ $t('pages.home.name') }}</NuxtLinkLocale>
@@ -33,21 +33,21 @@
         </ul>
       </nav>
 
-      <nav class="social-navigation relative z-90 mt-8" aria-label="Contact">
+      <nav class="social-navigation relative z-90 mt-3 sm:mt-4" aria-label="Contact">
         <button
           type="button"
           data-cal-namespace="zenIntroCall"
           data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
           data-cal-config='{"layout":"month_view","theme":"light"}'
-          class="group relative isolate inline-flex min-h-12 items-center gap-6 overflow-hidden border border-white/30 py-1.5 pl-5 pr-1.5 text-left text-sm font-medium tracking-wide text-white transition-colors duration-300 before:absolute before:inset-0 before:z-0 before:origin-left before:scale-x-0 before:bg-white before:transition-transform before:duration-500 before:ease-out hover:border-white hover:text-black hover:before:scale-x-100 focus-visible:border-white focus-visible:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none"
+          class="group relative isolate inline-flex min-h-16 items-center gap-7 overflow-hidden border border-white bg-white py-2 pl-6 pr-2 text-left text-base font-semibold tracking-wide text-black transition-colors duration-300 before:absolute before:inset-0 before:z-0 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-500 before:ease-out hover:border-black hover:text-white hover:before:scale-x-100 focus-visible:border-black focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none sm:gap-8 sm:text-lg"
         >
-          <span class="relative z-10 transition-colors duration-300 group-hover:text-black group-focus-visible:text-black">Tell us your story</span>
-          <span class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center bg-white text-black transition-[background-color,color,transform] duration-300 group-hover:scale-105 group-hover:bg-black group-hover:text-white group-focus-visible:bg-black group-focus-visible:text-white motion-reduce:transition-none">
+          <span class="relative z-10 transition-colors duration-300 group-hover:text-white group-focus-visible:text-white">Tell us your story</span>
+          <span class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center bg-black text-white transition-[background-color,color,transform] duration-300 group-hover:scale-105 group-hover:bg-white group-hover:text-black group-focus-visible:bg-white group-focus-visible:text-black motion-reduce:transition-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 12 12"
               fill="none"
-              class="h-4 w-4"
+              class="h-5 w-5 sm:h-6 sm:w-6"
               aria-hidden="true"
             >
               <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
