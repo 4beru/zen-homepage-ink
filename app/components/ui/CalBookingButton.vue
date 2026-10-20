@@ -56,11 +56,16 @@
     size: {
       type: String,
       default: "md",
-      validator: (value) => ["sm", "md", "lg"].includes(value),
+      validator: (value) => ["xs", "sm", "md", "lg"].includes(value),
     },
   })
 
   const sizeVariants = {
+    xs: {
+      button: "gap-2 sm:gap-2.5 py-1 pl-2.5 pr-1 sm:py-1.5 sm:pl-3 sm:pr-1.5 text-base sm:text-lg",
+      aside: "h-7 w-7 sm:h-8 sm:w-8",
+      arrow: "h-3.5 w-3.5 sm:h-4 sm:w-4",
+    },
     sm: {
       button: "gap-2.5 sm:gap-3 py-1.5 pl-3 pr-1.5 sm:py-2 sm:pl-3.5 sm:pr-2 text-lg sm:text-xl",
       aside: "h-8 w-8 sm:h-9 sm:w-9",
