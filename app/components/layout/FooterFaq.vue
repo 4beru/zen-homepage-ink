@@ -16,7 +16,7 @@
             loading="lazy"
             decoding="async"
           />
-          <p class="max-w-xs text-base leading-relaxed text-black/75 sm:text-lg">
+          <p class="max-w-[65%] text-base leading-relaxed text-black/75 sm:text-lg">
             {{ $t("footer.faq.aside") }}
           </p>
           <button
