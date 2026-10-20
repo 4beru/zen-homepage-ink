@@ -5,8 +5,8 @@
       <AppLogo class="relative z-20 fill-black mx-auto lg:mx-0 w-3/4 xl:w-1/2" />
     </div>
     <div class="relative z-20 bg-black h-[250px] [clip-path:inset(0_0_0_0)]">
-      <div ref="footerContentRef" class="footer-content fixed left-0 bottom-0 h-[250px] w-full flex flex-col items-center lg:items-start text-center lg:text-left gap-4 py-6 md:py-8 md:px-14 bg-black text-white">
-        <div class="footer-clock w-full font-semibold text-[clamp(1.125rem,4.35vw,4rem)] leading-[1.04] tracking-[-0.04em]" aria-live="off">
+      <div ref="footerContentRef" class="footer-content fixed left-0 bottom-0 h-[250px] w-full flex flex-col items-center lg:items-start text-center lg:text-left gap-5 pt-8 pb-6 md:pt-10 md:pb-8 md:px-14 bg-black text-white">
+        <div class="footer-clock w-full font-semibold text-[clamp(1rem,2.8vw,2rem)] leading-[1.08] tracking-[-0.035em]" aria-live="off">
           <p>
             <span class="block">Buenos Aires {{ clock.time }}</span>
             <span class="block">{{ clock.date }} ({{ clock.offset }})</span>
