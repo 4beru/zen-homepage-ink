@@ -1,9 +1,8 @@
 <template>
-  <button
-    type="button"
-    data-cal-namespace="zenIntroCall"
-    data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
-    data-cal-config='{"layout":"month_view","theme":"light"}'
+  <a
+    :href="href"
+    target="_blank"
+    rel="noopener noreferrer"
     :aria-label="label"
     class="button_wrap group relative isolate inline-flex items-center overflow-hidden rounded-[2px] bg-white text-left font-bold tracking-[-0.02em] text-black cursor-pointer transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
     :class="sizeStyles.button"
@@ -41,7 +40,7 @@
         <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
       </svg>
     </span>
-  </button>
+  </a>
 </template>
 
 <script setup>
@@ -49,6 +48,10 @@
     label: {
       type: String,
       default: "Tell us your story",
+    },
+    href: {
+      type: String,
+      default: "https://cal.com/aberu-ar-pei6iq/intro-call-w-aberu",
     },
     size: {
       type: String,
@@ -76,61 +79,4 @@
   }
 
   const sizeStyles = computed(() => sizeVariants[props.size] ?? sizeVariants.md)
-
-  const CAL_NAMESPACE = "zenIntroCall"
-
-  function initializeCalEmbed() {
-    if (window.Cal?.ns?.[CAL_NAMESPACE]) return
-
-    ;(function (C, A, L) {
-      const push = (api, args) => api.q.push(args)
-      const d = C.document
-
-      C.Cal = C.Cal || function () {
-        const cal = C.Cal
-        const args = arguments
-
-        if (!cal.loaded) {
-          cal.ns = {}
-          cal.q = cal.q || []
-          d.head.appendChild(d.createElement("script")).src = A
-          cal.loaded = true
-        }
-
-        if (args[0] === L) {
-          const api = function () {
-            push(api, arguments)
-          }
-          const namespace = args[1]
-          api.q = api.q || []
-
-          if (typeof namespace === "string") {
-            cal.ns[namespace] = api
-            push(api, args)
-          } else {
-            push(cal, args)
-          }
-
-          return
-        }
-
-        push(cal, args)
-      }
-    })(window, "https://app.cal.com/embed/embed.js", "init")
-
-    window.Cal("init", CAL_NAMESPACE, { origin: "https://app.cal.com" })
-    window.Cal.ns[CAL_NAMESPACE]("ui", {
-      styles: {
-        branding: {
-          brandColor: "#000000",
-        },
-      },
-      hideEventTypeDetails: false,
-      layout: "month_view",
-    })
-  }
-
-  onMounted(() => {
-    initializeCalEmbed()
-  })
 </script>

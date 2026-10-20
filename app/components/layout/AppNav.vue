@@ -37,8 +37,14 @@
 
       <!-- Grupo 2: Call to Action + Selector de idioma -->
       <div class="relative z-90 mt-12 sm:mt-16 flex flex-col items-center gap-2 text-base leading-none">
-        <nav class="social-navigation flex" aria-label="Contact">
-          <CalBookingButton label="Tell us your story" size="md" />
+        <nav class="social-navigation" aria-label="Contact">
+          <ul>
+            <li>
+              <span class="inline-block">
+                <CalBookingButton label="Tell us your story" size="md" />
+              </span>
+            </li>
+          </ul>
         </nav>
 
         <NavLang class="!mt-0 !pt-0" />
@@ -96,15 +102,6 @@
         stagger: 0.04,
         ease: 'power2.inOut'
       }, '<')
-      .fromTo('.nav-wrapper .social-navigation .button_wrap', {
-        y: -50,
-        autoAlpha: 0,
-      }, {
-        y: 0,
-        autoAlpha: 1,
-        duration: 0.5,
-        ease: 'power2.inOut'
-      }, '<')
 
     const tlClose = gsap
       .timeline({
@@ -119,15 +116,6 @@
         y: -50,
         ease: 'power4.in',
       })
-      .fromTo('.nav-wrapper .social-navigation .button_wrap', {
-        autoAlpha: 1,
-        y: 0,
-      }, {
-        duration: 0.4,
-        autoAlpha: 0,
-        y: -50,
-        ease: 'power4.in',
-      }, '<')
       .fromTo(navWrapperRef.value, {
         clipPath: 'inset(0% 0% 0% 0%)',
       }, {
@@ -135,7 +123,6 @@
         clipPath: 'inset(0% 0% 100% 0%)',
         ease: 'power4.inOut'
       }, '<0.25')
-
 
     watchEffect(() => {
       if (isOpen.value) {
@@ -152,7 +139,6 @@
       isFirstPageLoad = false
     })
   })
-
 </script>
 
 <style scoped>
