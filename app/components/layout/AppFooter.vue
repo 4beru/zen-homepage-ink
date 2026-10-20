@@ -13,7 +13,7 @@
           </p>
         </div>
         <div class="copyright mt-auto pt-4 flex flex-col lg:flex-row gap-2.5 [&_a]:anim-underline-white">
-          <p>&copy; {{ currentYear }} zen space <span class="inline-block ml-2.5">&pi; <NuxtLinkLocale to="/privacy">{{ $t('footer.privacy') }}</NuxtLinkLocale></span></p>
+          <p>&copy; {{ currentYear }} ZEN SPACE Studio <span class="inline-block ml-2.5">&pi; <NuxtLinkLocale to="/privacy">{{ $t('footer.privacy') }}</NuxtLinkLocale></span></p>
           <p>&infin; {{ $t('footer.siteBy') }} <a href="https://www.aberu.site">aberu.site</a>
             <DanHummingbird />
           </p>
