@@ -8,7 +8,7 @@
         </div>
         <div class="flex max-w-xs flex-col items-start gap-4">
           <img
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=384&h=480&q=85"
+            src="/images/abel_ortega_huaraca_profile.webp"
             :alt="$t('footer.faq.headshotAlt')"
             class="size-28 aspect-square object-cover grayscale sm:size-32 md:size-36 lg:size-[182px]"
             width="96"
