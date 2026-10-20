@@ -19,10 +19,8 @@
           <p class="max-w-xs text-base leading-relaxed text-black/75 sm:text-lg">
             {{ $t("footer.faq.aside") }}
           </p>
-          <a
-            href="https://cal.com/aberu-ar-pei6iq/intro-call-w-aberu"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             data-cal-namespace="zenIntroCall"
             data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
             data-cal-config='{"layout":"month_view","theme":"light"}'
@@ -40,7 +38,7 @@
                 <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
               </svg>
             </span>
-          </a>
+          </button>
         </div>
       </div>
 
