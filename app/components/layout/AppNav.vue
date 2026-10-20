@@ -96,6 +96,15 @@
         stagger: 0.04,
         ease: 'power2.inOut'
       }, '<')
+      .fromTo('.nav-wrapper .social-navigation .button_wrap', {
+        yPercent: -200,
+        autoAlpha: 0,
+      }, {
+        yPercent: 0,
+        autoAlpha: 1,
+        duration: 0.5,
+        ease: 'power2.inOut'
+      }, '<')
 
     const tlClose = gsap
       .timeline({
@@ -110,6 +119,15 @@
         y: -50,
         ease: 'power4.in',
       })
+      .fromTo('.nav-wrapper .social-navigation .button_wrap', {
+        autoAlpha: 1,
+        y: 0,
+      }, {
+        duration: 0.4,
+        autoAlpha: 0,
+        y: -50,
+        ease: 'power4.in',
+      }, '<')
       .fromTo(navWrapperRef.value, {
         clipPath: 'inset(0% 0% 0% 0%)',
       }, {
