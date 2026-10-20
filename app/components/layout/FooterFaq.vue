@@ -26,15 +26,15 @@
             data-cal-namespace="zenIntroCall"
             data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
             data-cal-config='{"layout":"month_view","theme":"light"}'
-            class="group inline-flex min-h-11 items-center gap-5 border border-black/20 py-1.5 pl-4 pr-1.5 text-left text-xs font-medium text-black transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+            class="group relative isolate inline-flex min-h-11 items-center gap-5 overflow-hidden border border-black/20 py-1.5 pl-4 pr-1.5 text-left text-xs font-medium text-black transition-colors duration-300 before:absolute before:inset-0 before:z-0 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-500 before:ease-out hover:border-black hover:text-white hover:before:scale-x-100 focus-visible:border-black focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black focus-visible:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none"
           >
-            <span>{{ $t("footer.faq.bookCall") }}</span>
-            <span class="flex h-8 w-8 shrink-0 items-center justify-center bg-black text-white">
+            <span class="relative z-10 transition-colors duration-300 group-hover:text-white group-focus-visible:text-white">{{ $t("footer.faq.bookCall") }}</span>
+            <span class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center bg-black text-white transition-[background-color,color,transform] duration-300 group-hover:scale-105 group-hover:bg-white group-hover:text-black group-focus-visible:bg-white group-focus-visible:text-black motion-reduce:transition-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 12 12"
                 fill="none"
-                class="h-3 w-3"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5 motion-reduce:transition-none"
                 aria-hidden="true"
               >
                 <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
