@@ -97,10 +97,10 @@
         ease: 'power2.inOut'
       }, '<')
       .fromTo('.nav-wrapper .social-navigation .button_wrap', {
-        yPercent: -200,
+        y: -50,
         autoAlpha: 0,
       }, {
-        yPercent: 0,
+        y: 0,
         autoAlpha: 1,
         duration: 0.5,
         ease: 'power2.inOut'
