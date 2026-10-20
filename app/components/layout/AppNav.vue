@@ -32,8 +32,28 @@
           </li>
         </ul>
       </nav>
-      <nav class="social-navigation" aria-label="Social navigation">
-        <SocialLinks class="text-3xl sm:text-5xl" />
+
+      <nav class="social-navigation relative z-90 mt-8" aria-label="Contact">
+        <button
+          type="button"
+          data-cal-namespace="zenIntroCall"
+          data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
+          data-cal-config='{"layout":"month_view","theme":"light"}'
+          class="group relative isolate inline-flex min-h-12 items-center gap-6 overflow-hidden border border-white/30 py-1.5 pl-5 pr-1.5 text-left text-sm font-medium tracking-wide text-white transition-colors duration-300 before:absolute before:inset-0 before:z-0 before:origin-left before:scale-x-0 before:bg-white before:transition-transform before:duration-500 before:ease-out hover:border-white hover:text-black hover:before:scale-x-100 focus-visible:border-white focus-visible:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none"
+        >
+          <span class="relative z-10 transition-colors duration-300 group-hover:text-black group-focus-visible:text-black">Tell us your story</span>
+          <span class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center bg-white text-black transition-[background-color,color,transform] duration-300 group-hover:scale-105 group-hover:bg-black group-hover:text-white group-focus-visible:bg-black group-focus-visible:text-white motion-reduce:transition-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 12 12"
+              fill="none"
+              class="h-4 w-4"
+              aria-hidden="true"
+            >
+              <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
+            </svg>
+          </span>
+        </button>
       </nav>
       <NavLang />
     </div>
@@ -47,6 +67,8 @@
   const navWrapperRef = useTemplateRef('navWrapperRef')
   const route = useRoute()
 
+  const CAL_NAMESPACE = "zenIntroCall"
+
   watch(route, () => {
     isOpen.value = false
   })
@@ -55,8 +77,61 @@
     isOpen.value = !isOpen.value
   }
 
+  function initializeCalEmbed() {
+    if (window.Cal?.ns?.[CAL_NAMESPACE]) return
+
+    (function (C, A, L) {
+      const push = (api, args) => api.q.push(args)
+      const d = C.document
+
+      C.Cal = C.Cal || function () {
+        const cal = C.Cal
+        const args = arguments
+
+        if (!cal.loaded) {
+          cal.ns = {}
+          cal.q = cal.q || []
+          d.head.appendChild(d.createElement("script")).src = A
+          cal.loaded = true
+        }
+
+        if (args[0] === L) {
+          const api = function () {
+            push(api, arguments)
+          }
+          const namespace = args[1]
+          api.q = api.q || []
+
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = api
+            push(api, args)
+          } else {
+            push(cal, args)
+          }
+
+          return
+        }
+
+        push(cal, args)
+      }
+    })(window, "https://app.cal.com/embed/embed.js", "init")
+
+    window.Cal("init", CAL_NAMESPACE, { origin: "https://app.cal.com" })
+    window.Cal.ns[CAL_NAMESPACE]("ui", {
+      styles: {
+        branding: {
+          brandColor: "#000000",
+        },
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    })
+  }
+
   onMounted(() => {
-    let isFirstPageLoad = true;
+    initializeCalEmbed()
+
+    let isFirstPageLoad = true
 
     gsap.set(navWrapperRef.value, { clipPath: 'inset(0% 0% 100% 0%)', })
 
