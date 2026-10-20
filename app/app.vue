@@ -16,6 +16,13 @@
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+  // Prevent Firefox (and other browsers) from restoring a stale scroll position
+  // before the pinned Home timeline is initialized.
+  if (import.meta.client) {
+    window.history.scrollRestoration = "manual";
+    ScrollTrigger.clearScrollMemory("manual");
+  }
+
   const lenisRef = ref()
   const head = useLocaleHead();
 
