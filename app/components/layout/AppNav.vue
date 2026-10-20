@@ -8,8 +8,10 @@
 
     <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
+
+      <!-- Grupo 1: Navegación principal -->
       <nav class="main-navigation" aria-label="Main navigation">
-        <ul class="relative z-90 flex flex-col gap-4 px-12 pt-12 pb-6 uppercase">
+        <ul class="relative z-90 flex flex-col gap-3 sm:gap-4 px-12 uppercase">
           <li>
             <AnimationTextShadow>
               <NuxtLinkLocale to="/">{{ $t('pages.home.name') }}</NuxtLinkLocale>
@@ -33,29 +35,56 @@
         </ul>
       </nav>
 
-      <nav class="social-navigation relative z-90 mt-3 sm:mt-4" aria-label="Contact">
-        <button
-          type="button"
-          data-cal-namespace="zenIntroCall"
-          data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
-          data-cal-config='{"layout":"month_view","theme":"light"}'
-          class="group relative isolate inline-flex min-h-16 items-center gap-7 overflow-hidden border border-white bg-white py-2 pl-6 pr-2 text-left text-base font-semibold tracking-wide text-black transition-colors duration-300 before:absolute before:inset-0 before:z-0 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-500 before:ease-out hover:border-black hover:text-white hover:before:scale-x-100 focus-visible:border-black focus-visible:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none sm:gap-8 sm:text-lg"
-        >
-          <span class="relative z-10 transition-colors duration-300 group-hover:text-white group-focus-visible:text-white">Tell us your story</span>
-          <span class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center bg-black text-white transition-[background-color,color,transform] duration-300 group-hover:scale-105 group-hover:bg-white group-hover:text-black group-focus-visible:bg-white group-focus-visible:text-black motion-reduce:transition-none">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 12 12"
-              fill="none"
-              class="h-5 w-5 sm:h-6 sm:w-6"
+      <!-- Grupo 2: Call to Action + Selector de idioma -->
+      <div class="relative z-90 mt-12 sm:mt-16 flex flex-col items-center gap-2 text-base leading-none">
+        <nav class="social-navigation flex" aria-label="Contact">
+          <button
+            type="button"
+            data-cal-namespace="zenIntroCall"
+            data-cal-link="aberu-ar-pei6iq/intro-call-w-aberu"
+            data-cal-config='{"layout":"month_view","theme":"light"}'
+            class="button_wrap group relative isolate inline-flex items-center gap-3.5 sm:gap-4 overflow-hidden rounded-[2px] bg-white py-2 pl-3.5 pr-2 sm:py-2.5 sm:pl-4 sm:pr-2.5 text-left text-2xl sm:text-3xl font-bold tracking-[-0.02em] text-black cursor-pointer transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+          >
+            <!-- Texto con máscara y animación de transición -->
+            <span class="button_text_wrap relative z-10 block overflow-hidden py-0.5">
+              <span class="button_text block font-bold leading-none [text-shadow:0_1.25em_0_currentColor] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-[1.25em] group-focus-visible:-translate-y-[1.25em] motion-reduce:transition-none">
+                Tell us your story
+              </span>
+            </span>
+
+            <!-- Contenedor de la flecha con fondo independiente y doble SVG -->
+            <span
+              class="button_aside relative z-10 flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center overflow-hidden rounded-[2px] text-white"
               aria-hidden="true"
             >
-              <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
-            </svg>
-          </span>
-        </button>
-      </nav>
-      <NavLang />
+              <!-- Fondo negro animado -->
+              <span class="button_aside_bg absolute inset-0 rounded-[2px] bg-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[0.92] group-focus-visible:scale-[0.92] motion-reduce:transition-none"></span>
+
+              <!-- Flecha 1: Sale hacia arriba a la derecha -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 12 12"
+                fill="none"
+                class="button_arrow relative z-10 h-[18px] w-[18px] sm:h-5 sm:w-5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-[160%] group-hover:-translate-y-[160%] group-focus-visible:translate-x-[160%] group-focus-visible:-translate-y-[160%] motion-reduce:transition-none"
+              >
+                <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
+              </svg>
+
+              <!-- Flecha 2 (is-entering): Entra desde abajo a la izquierda -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 12 12"
+                fill="none"
+                class="button_arrow is-entering absolute z-10 h-[18px] w-[18px] sm:h-5 sm:w-5 -translate-x-[160%] translate-y-[160%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0 group-hover:translate-y-0 group-focus-visible:translate-x-0 group-focus-visible:translate-y-0 motion-reduce:transition-none"
+              >
+                <path d="M8.90954 9.09046L9 3L2.90954 3.09046L2.90213 4.32367L6.86437 4.25391L2.55914 8.55914L3.44086 9.44086L7.74609 5.13563L7.68708 9.10862L8.90954 9.09046Z" fill="currentColor" />
+              </svg>
+            </span>
+          </button>
+        </nav>
+
+        <NavLang class="!mt-0 !pt-0" />
+      </div>
     </div>
   </div>
 </template>
