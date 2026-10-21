@@ -173,7 +173,7 @@
         },
         "mobileApps": {
           "title": "Desarrollo de aplicaciones móviles",
-          "navTitle": "Desarrollo móvil",
+          "navTitle": "Apps Mov",
           "description": "Desarrollamos aplicaciones móviles rápidas y con una experiencia natural. Convertimos flujos complejos en pantallas simples e intuitivas, con una arquitectura sólida y capacidad para crecer.",
           "alt": "Interfaz de una aplicación móvil que ilustra el desarrollo de apps móviles.",
           "secondaryAlt": "Vista adicional de una aplicación móvil con interacciones fluidas.",
@@ -306,9 +306,9 @@
           "answer": "La inversión depende del alcance, la complejidad, los plazos y el nivel de colaboración necesario. Después de una primera conversación, definimos un alcance realista y preparamos una estimación a medida."
         }
       ],
-      "aside": "¿Quieres saber si somos una buena opción para tu proyecto?",
+      "aside": "¿Te gustaría saber si encajariamos bien?",
       "headshotAlt": "Retrato de Aberu",
-      "bookCall": "Agenda una llamada con Aberu",
+      "bookCall": "Contacta a Abel",
       "bookingSoon": "El enlace para reservar estará disponible pronto."
     }
   },
