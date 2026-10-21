@@ -4,9 +4,10 @@ import { ref, onMounted } from 'vue'
 const isReady = ref(false)
 
 onMounted(() => {
-  // Primer frame: el navegador procesa el DOM hidratado y rasteriza el SVG en GPU (con opacity: 0)
+  // Deja pasar dos ciclos de renderizado antes de iniciar el fundido.
+  // Esto separa el montaje del cambio de opacidad, sin bloquear la carga de medios.
   requestAnimationFrame(() => {
-    // Segundo frame: la pantalla blanca ya está pintada; inicia la transición suave a opacity: 0.224
+    requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       isReady.value = true
     })
