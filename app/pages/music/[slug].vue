@@ -41,8 +41,8 @@
           <AnimationReveal v-if="content.videos.youtube.length" class="w-full">
             <div class="videos flex flex-col gap-6">
               <div v-for="video in content.videos.youtube" :key="video.id" class="flex flex-col gap-1">
-                <h2>{{ video.title }}</h2>
-                <YoutubeEmbed :video-id="video.id" :alt="video.title" />
+                <h2>{{ $t(video.titleKey) }}</h2>
+                <YoutubeEmbed :video-id="video.id" :alt="$t(video.titleKey)" />
               </div>
             </div>
           </AnimationReveal>
@@ -74,9 +74,9 @@
 
   useSeoMeta({
     title: `${content.title} | ${t('siteName')}`,
-    description: content.meta.description,
+    description: t(content.meta.descriptionKey),
     ogTitle: `${content.title} | ${t('siteName')}`,
-    ogDescription: content.meta.description,
+    ogDescription: t(content.meta.descriptionKey),
     ogType: 'website',
     ogImage: `${config.public.appUrl}/albums/${slug}/${content.images.cover}`,
     ogImageAlt: t('components.accessibility.albumCover', { title: content.title }),

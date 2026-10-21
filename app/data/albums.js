@@ -11,7 +11,7 @@ export const albums = [
     year: 2024,
     recordLabel: 'rythm.fm',
     meta: {
-      description: 'A connected music streaming experience for discovery, playlists, and listening together.',
+      descriptionKey: 'pages.music.projectMeta.rythm',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -37,15 +37,15 @@ export const albums = [
       youtube: [
         {
           id: 'ZxYlp1WF0zc',
-          title: 'Finally, Good Music Is Back on Discord',
+          titleKey: 'pages.music.videoTitles.rythmDiscordMusicBack',
         },
         {
           id: '9IW5RNSBhIU',
-          title: 'Step-by-Step Setup Guide',
+          titleKey: 'pages.music.videoTitles.rythmSetupGuide',
         },
         {
           id: 'LLnnkEvCTLA',
-          title: 'How to Invite and Configure It for Your Server',
+          titleKey: 'pages.music.videoTitles.rythmInviteConfigure',
         },
       ],
     },
@@ -77,7 +77,7 @@ export const albums = [
     releaseDate: '2025-09-14',
     recordLabel: 'unimaticwatches.com',
     meta: {
-      description: 'Unimatic combines minimalist Italian design with functional engineering across dive watches, chronographs, and tool watches built for durability and legibility.',
+      descriptionKey: 'pages.music.projectMeta.unimatic',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -103,15 +103,15 @@ export const albums = [
       youtube: [
         {
           id: '6uWonLQeJ9k',
-          title: 'Field Watch Review & Hands-On',
+          titleKey: 'pages.music.videoTitles.unimaticFieldWatch',
         },
         {
           id: '84QOEV89mhQ',
-          title: 'Minimalist Italian Design: Unimatic Dial & Details',
+          titleKey: 'pages.music.videoTitles.unimaticDialDetails',
         },
         {
           id: 'RQq4cGLNcbg',
-          title: 'Inside the World of Unimatic Toolwatches',
+          titleKey: 'pages.music.videoTitles.unimaticToolwatches',
         },
       ],
     },
@@ -145,7 +145,7 @@ export const albums = [
     releaseDate: '2025-05-01',
     recordLabel: 'penti.ai',
     meta: {
-      description: 'Penti is an AI-powered cybersecurity platform that uses autonomous agents to continuously validate application, API, and infrastructure security, exposing vulnerabilities with replayable evidence.',
+      descriptionKey: 'pages.music.projectMeta.penti',
     },
     player: {
       spotify: '',
@@ -166,15 +166,15 @@ export const albums = [
       youtube: [
         {
           id: '2Z-9EOyb6HE',
-          title: 'The New Methodology for Hacking AI',
+          titleKey: 'pages.music.videoTitles.pentiHackingAi',
         },
         {
           id: 'xOQW_qMZdlc',
-          title: 'Hacking AI Models: Think Series',
+          titleKey: 'pages.music.videoTitles.pentiThinkSeries',
         },
         {
           id: 'W-lgskJTXO8',
-          title: 'AI Security & Vulnerability Assessment',
+          titleKey: 'pages.music.videoTitles.pentiSecurityAssessment',
         },
       ],
     },
@@ -207,7 +207,7 @@ export const albums = [
     releaseDate: '2026-02-28',
     recordLabel: 'miralife.app',
     meta: {
-      description: 'Mira Life helps people understand their wellbeing across six dimensions by turning habits, mood, and health signals into actionable insights.',
+      descriptionKey: 'pages.music.projectMeta.miraLife',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -228,15 +228,15 @@ export const albums = [
       youtube: [
         {
           id: 'ispHUvvdXZQ',
-          title: 'Mira Life: Start From Within',
+          titleKey: 'pages.music.videoTitles.miraStartWithin',
         },
         {
           id: 'PBxiO7zCYQM',
-          title: 'Your Six Dimensions of Life Potential',
+          titleKey: 'pages.music.videoTitles.miraSixDimensions',
         },
         {
           id: 'mZQpmY6fAcw',
-          title: 'The Art of Recovery and Body Signals',
+          titleKey: 'pages.music.videoTitles.miraRecoverySignals',
         },
       ],
     },
@@ -269,7 +269,7 @@ export const albums = [
     releaseDate: '2026-09-19',
     recordLabel: 'subscrr.app',
     meta: {
-      description: 'Subscrr brings subscriptions, renewal reminders, and recurring expenses into one place, helping users understand their spending and avoid surprise charges.'
+      descriptionKey: 'pages.music.projectMeta.subscrr'
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -295,15 +295,15 @@ export const albums = [
       youtube: [
         {
           id: 'EbeH_yAOMQQ',
-          title: 'Track Every Subscription at a Glance',
+          titleKey: 'pages.music.videoTitles.subscrrTracking',
         },
         {
           id: 'wLiOGDug7Is',
-          title: 'All Your Recurring Expenses in One Place',
+          titleKey: 'pages.music.videoTitles.subscrrRecurringExpenses',
         },
         {
           id: 'dfNV_ios4HU',
-          title: 'Let AI Help You Save on Subscriptions',
+          titleKey: 'pages.music.videoTitles.subscrrAiSavings',
         },
       ],
     },

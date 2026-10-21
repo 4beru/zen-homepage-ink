@@ -121,6 +121,30 @@
         "downloadApp": "Download app",
         "website": "Visit website",
         "appStore": "Open in the App Store"
+      },
+      "projectMeta": {
+        "rythm": "Rythm brings music discovery and shared listening into one connected experience. Explore a personalized feed, manage playlists, and listen with friends in real time across supported platforms.",
+        "unimatic": "Unimatic blends minimalist Italian design with rigorous functional engineering to create high-performance dive and toolwatches. Built for durability with 300m water resistance, these timepieces transcend simple utility through iconic, meticulously crafted aesthetics.",
+        "penti": "Penti is an agentic AI cybersecurity platform that provides continuous security validation. It simulates real-world attacks across your applications, APIs, and infrastructure to expose vulnerabilities and prove exactly what an attacker can reach.",
+        "miraLife": "Mira Life measures your personal capacity across six key dimensions to help you understand your true potential. By analyzing your daily habits, mood, and health metrics, it provides scientific, actionable insights to manage your energy without overwhelming you.",
+        "subscrr": "Subscrr keeps all your subscriptions in one secure place with reminders, insights, and honest totals. It helps you track your expenses, discover where your money goes, and avoid surprise charges across your Apple devices."
+      },
+      "videoTitles": {
+        "rythmDiscordMusicBack": "Finally, Good Music Is Back on Discord",
+        "rythmSetupGuide": "Step-by-Step Setup Guide",
+        "rythmInviteConfigure": "How to Invite and Configure It for Your Server",
+        "unimaticFieldWatch": "Field Watch Review & Hands-On",
+        "unimaticDialDetails": "Minimalist Italian Design: Unimatic Dial & Details",
+        "unimaticToolwatches": "Inside the World of Unimatic Toolwatches",
+        "pentiHackingAi": "The New Methodology for Hacking AI",
+        "pentiThinkSeries": "Hacking AI Models: Think Series",
+        "pentiSecurityAssessment": "AI Security & Vulnerability Assessment",
+        "miraStartWithin": "Mira Life: Start From Within",
+        "miraSixDimensions": "Your Six Dimensions of Life Potential",
+        "miraRecoverySignals": "The Art of Recovery and Body Signals",
+        "subscrrTracking": "Track Every Subscription at a Glance",
+        "subscrrRecurringExpenses": "All Your Recurring Expenses in One Place",
+        "subscrrAiSavings": "Let AI Help You Save on Subscriptions"
       }
     },
     "merch": {
