@@ -80,9 +80,9 @@ export default defineNuxtConfig({
     ],
     customRoutes: "config", // disable custom route with page components
     pages: {
-      home: {
-        en: "/home",
-        es: "/home",
+      index: {
+        en: "/",
+        es: "/",
         "zh-CN": "/首页",
       },
       band: {
