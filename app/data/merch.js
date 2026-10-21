@@ -6,7 +6,7 @@ export const services = [
     items: [
       {
         id: "nexterra-website",
-        image: "/images/merch/nexterra-website-1.png",
+        image: "/images/merch/nexterra-website-1.webp",
         video: "/videos/nexterra-website-1.mp4",
         titleKey: "pages.merch.services.webDevelopment.title",
         descriptionKey: "pages.merch.services.webDevelopment.description",
@@ -14,7 +14,7 @@ export const services = [
       },
       {
         id: "retainer-website",
-        image: "/images/merch/retainer-website-2.png",
+        image: "/images/merch/retainer-website-2.webp",
         video: "/videos/retainer-website-2.mp4",
         titleKey: "pages.merch.services.webDevelopment.secondaryTitle",
         descriptionKey: "pages.merch.services.webDevelopment.secondaryDescription",
@@ -29,7 +29,7 @@ export const services = [
     items: [
       {
         id: "isora-webapp",
-        image: "/images/merch/isora-webapp-1.png",
+        image: "/images/merch/isora-webapp-1.webp",
         video: "/videos/isora-webapp-1.mp4",
         titleKey: "pages.merch.services.webApps.title",
         descriptionKey: "pages.merch.services.webApps.description",
@@ -37,7 +37,7 @@ export const services = [
       },
       {
         id: "cimac-webapp",
-        image: "/images/merch/cimac-webapp-2.png",
+        image: "/images/merch/cimac-webapp-2.webp",
         video: "/videos/cimac-webapp-2.mp4",
         titleKey: "pages.merch.services.webApps.secondaryTitle",
         descriptionKey: "pages.merch.services.webApps.secondaryDescription",
@@ -52,7 +52,7 @@ export const services = [
     items: [
       {
         id: "ramotion-mobile",
-        image: "/images/merch/ramotion-mobile-1.png",
+        image: "/images/merch/ramotion-mobile-1.webp",
         video: "/videos/ramotion-mobile-1.mp4",
         titleKey: "pages.merch.services.mobileApps.title",
         descriptionKey: "pages.merch.services.mobileApps.description",
@@ -60,7 +60,7 @@ export const services = [
       },
       {
         id: "makko-mobile",
-        image: "/images/merch/makko-mobile-2.png",
+        image: "/images/merch/makko-mobile-2.webp",
         video: "/videos/makko-mobile-2.mp4",
         titleKey: "pages.merch.services.mobileApps.secondaryTitle",
         descriptionKey: "pages.merch.services.mobileApps.secondaryDescription",
@@ -75,7 +75,7 @@ export const services = [
     items: [
       {
         id: "omnibuds-design",
-        image: "/images/merch/omnibuds-design-1.png",
+        image: "/images/merch/omnibuds-design-1.webp",
         video: "/videos/omnibuds-design-1.mp4",
         titleKey: "pages.merch.services.productDesign.title",
         descriptionKey: "pages.merch.services.productDesign.description",
@@ -83,7 +83,7 @@ export const services = [
       },
       {
         id: "halo-design",
-        image: "/images/merch/halo-design-2.png",
+        image: "/images/merch/halo-design-2.webp",
         video: "/videos/halo-design-2.mp4",
         titleKey: "pages.merch.services.productDesign.secondaryTitle",
         descriptionKey: "pages.merch.services.productDesign.secondaryDescription",
