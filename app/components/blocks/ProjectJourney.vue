@@ -89,7 +89,7 @@
       titleKey: "pages.merch.journey.steps.discover.title",
       descriptionKey: "pages.merch.journey.steps.discover.description",
       video: "/videos/pj-step-1.webm",
-      poster: "/albums/video-rock/rythm-desktop.png",
+      poster: "/albums/video-rock/rythm-desktop.webp",
       altKey: "pages.merch.journey.steps.discover.alt",
     },
     {
@@ -98,7 +98,7 @@
       titleKey: "pages.merch.journey.steps.shape.title",
       descriptionKey: "pages.merch.journey.steps.shape.description",
       video: "/videos/pj-step-2.webm",
-      poster: "/albums/one/penti-desktop.png",
+      poster: "/albums/one/penti-desktop.webp",
       altKey: "pages.merch.journey.steps.shape.alt",
     },
     {
@@ -107,7 +107,7 @@
       titleKey: "pages.merch.journey.steps.launch.title",
       descriptionKey: "pages.merch.journey.steps.launch.description",
       video: "/videos/pj-step-3.webm",
-      poster: "/albums/velodrome/unimatic-desktop.jpg",
+      poster: "/albums/velodrome/unimatic-desktop.webp",
       altKey: "pages.merch.journey.steps.launch.alt",
     },
   ];
