@@ -252,7 +252,8 @@
     "navigation": {
       "main": "Navegación principal",
       "contact": "Contacto",
-      "album": "Navegación del proyecto"
+      "album": "Navegación del proyecto",
+      "language": "Navegación de idiomas"
     },
     "accessibility": {
       "openMenu": "Abrir menú",

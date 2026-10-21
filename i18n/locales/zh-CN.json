@@ -252,7 +252,8 @@
     "navigation": {
       "main": "主导航",
       "contact": "联系",
-      "album": "项目导航"
+      "album": "项目导航",
+      "language": "语言切换"
     },
     "accessibility": {
       "openMenu": "打开菜单",

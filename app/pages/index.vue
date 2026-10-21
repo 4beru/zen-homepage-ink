@@ -103,7 +103,7 @@
       'large': 'subscrr_720p.mp4',
     },
   }
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const isPageLoaded = ref(false);
   const homeTimelineRef = useTemplateRef('homeTimelineRef');
   const timelineRef = useTemplateRef('timelineRef');
@@ -132,15 +132,17 @@
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
+    const splitType = locale.value === 'zh-CN' ? 'lines, chars' : 'lines, words';
+
     ctx = gsap.context(() => {
       block1Split = SplitText.create(".block1 p", {
-        type: 'lines, words',
+        type: splitType,
       });
       block2Split = SplitText.create(".block2 p", {
-        type: 'lines, words',
+        type: splitType,
       });
       block3Split = SplitText.create(".block3 p", {
-        type: 'lines, words',
+        type: splitType,
       });
 
       gsap.set('.circle0, .circle1, .circle2, .circle3, .circle4', {
@@ -294,7 +296,7 @@
           duration: 0.7,
           ease: 'power4.in',
         }, '<0.3')
-        .from(block2Split.words, {
+        .from(locale.value === 'zh-CN' ? block2Split.chars : block2Split.words, {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
@@ -344,7 +346,7 @@
             })
           },
         })
-        .from(block3Split.words, {
+        .from(locale.value === 'zh-CN' ? block3Split.chars : block3Split.words, {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
