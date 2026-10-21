@@ -72,8 +72,15 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='3' intercept='-1'/%3E%3CfeFuncG type='linear' slope='3' intercept='-1'/%3E%3CfeFuncB type='linear' slope='3' intercept='-1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   background-repeat: repeat;
-  animation: film-grain-jitter 480ms steps(1, end) infinite;
-  will-change: transform;
+  animation:
+    film-grain-entrance 1.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+    film-grain-jitter 480ms steps(1, end) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes film-grain-entrance {
+  from { opacity: 0; }
+  to { opacity: 0.224; }
 }
 
 @keyframes film-grain-jitter {
@@ -91,6 +98,7 @@
 @media (prefers-reduced-motion: reduce) {
   .film-grain-overlay {
     animation: none;
+    opacity: 0.224;
     will-change: auto;
     transform: none;
   }
