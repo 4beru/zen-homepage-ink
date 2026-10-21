@@ -157,7 +157,7 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        labelKey: 'pages.music.linkLabels.website',
         link: 'https://penti.ai/',
         icon: 'lucide:globe'
       }
@@ -219,7 +219,7 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        labelKey: 'pages.music.linkLabels.website',
         link: 'https://miralife.app/en/',
         icon: 'lucide:globe',
       },
@@ -281,7 +281,7 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        labelKey: 'pages.music.linkLabels.website',
         link: 'https://subscrr.app/',
         icon: 'lucide:globe',
       },

@@ -141,10 +141,10 @@ export default defineNuxtConfig({
           content: "website",
         },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "author", content: "Dan Alcaide" },
+        { name: "author", content: "Aberu" },
         { name: "generator", content: "Nuxt" },
         { name: "format-detection", content: "telephone=no" },
-        { name: "apple-mobile-web-app-title", content: "Skizophonic" },
+        { name: "apple-mobile-web-app-title", content: "Zen Space" },
       ],
       link: [
         {
