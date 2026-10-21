@@ -63,7 +63,7 @@
   const config = useRuntimeConfig()
   const { locale, t } = useI18n()
   const slug = useRoute().params.slug
-  const { data: post } = await useAsyncData(slug, () => {
+  const { data: post } = await useAsyncData(`${locale.value}:${slug}`, () => {
     return queryCollection('music').path(`/${locale.value}/music/${slug}`).first()
   })
 
