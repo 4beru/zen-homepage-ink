@@ -15,6 +15,7 @@
       <NuxtLinkLocale to="/" class="w-fit">Go back home</NuxtLinkLocale>
     </section>
   </NuxtLayout>
+  <FilmGrain />
 </template>
 
 <script setup>
