@@ -4,8 +4,6 @@
     :data-service-index="props.serviceIndex"
     class="service-item w-full"
     :aria-labelledby="`service-title-${props.item.id}`"
-    @mouseenter="handlePointerEnter"
-    @mouseleave="handlePointerLeave"
   >
     <div class="grid grid-cols-1 items-center gap-5 sm:gap-6 lg:grid-cols-12 lg:gap-y-8 lg:gap-x-6 xl:gap-x-7 2xl:gap-x-8">
       <AnimationReveal class="w-full lg:col-span-7 xl:col-span-8">
@@ -79,32 +77,18 @@
   const previewVideoRef = useTemplateRef("previewVideoRef");
   const isPreviewPlaying = ref(false);
 
-  function supportsHoverPreview() {
-    return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  }
-
-  function handlePointerEnter() {
-    if (supportsHoverPreview()) playPreview();
-  }
-
-  function handlePointerLeave() {
-    if (supportsHoverPreview()) stopPreview();
-  }
-
-  // On touch devices, the focused Services item is the mobile equivalent of hover.
-  // The parent already updates this state alongside its existing blur transition.
+  // The focused item is the only one without blur, on both desktop and mobile.
+  // Keep video playback synchronized with that shared focus state.
   watch(
     () => props.isActive,
     (isActive) => {
-      if (supportsHoverPreview()) return;
-
       if (isActive) playPreview();
       else stopPreview();
     }
   );
 
   onMounted(() => {
-    if (!supportsHoverPreview() && props.isActive) playPreview();
+    if (props.isActive) playPreview();
   });
   let previewRequestId = 0;
   let previewPauseTimeoutId;
