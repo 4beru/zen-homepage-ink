@@ -4,24 +4,73 @@
       <FooterFaq class="mb-16 sm:mb-28 lg:mb-16" />
       <AppLogo class="relative z-20 fill-black mx-auto lg:mx-0 w-3/4 xl:w-1/2" />
     </div>
-    <div class="relative z-20 bg-black h-[250px] [clip-path:inset(0_0_0_0)]">
-      <div ref="footerContentRef" class="footer-content fixed left-0 bottom-0 h-[250px] w-full flex flex-col items-center lg:items-start text-center lg:text-left gap-5 pt-8 pb-6 md:pt-10 md:pb-8 md:px-14 bg-black text-white">
-        <div class="footer-clock w-full font-semibold text-[clamp(1.125rem,2.8vw,2rem)] leading-[1.08] tracking-[-0.035em]" aria-live="off">
-          <p>
+
+    <!-- Altura adaptada en mobile (235px) y 250px en desktop -->
+    <div class="relative z-20 bg-black h-[235px] md:h-[250px] [clip-path:inset(0_0_0_0)]">
+      <div
+        ref="footerContentRef"
+        class="footer-content fixed left-0 bottom-0 h-[235px] md:h-[250px] w-full flex flex-col justify-center items-center lg:items-start text-center lg:text-left gap-4 md:gap-7 px-6 md:px-14 bg-black text-white"
+      >
+        <!-- Bloque 1: Reloj -->
+        <div
+          class="footer-clock w-full font-semibold text-[clamp(1.2rem,2.8vw,2rem)] leading-[1.12] tracking-[-0.035em]"
+          aria-live="off"
+        >
+          <p class="flex flex-col gap-0.5">
             <span class="block">Buenos Aires {{ clock.time }}</span>
-            <span class="block">{{ clock.date }} ({{ clock.offset }})</span>
+            <span class="block text-white/75">{{ clock.date }} ({{ clock.offset }})</span>
           </p>
         </div>
-        <div class="copyright mt-auto pt-4 flex flex-col lg:flex-row gap-2.5 [&_a]:anim-underline-white">
-          <p>&copy; {{ currentYear }} ZEN SPACE Studio <span class="inline-block ml-2.5">&pi; <NuxtLinkLocale to="/privacy">{{ $t('footer.privacy') }}</NuxtLinkLocale></span></p>
-          <p>&infin; {{ $t('footer.siteBy') }} <a href="https://www.aberu.site">aberu.site</a>
-            <DanHummingbird />
-          </p>
+
+        <!-- Bloque 2: Barra inferior -->
+        <div
+          class="w-full flex flex-col lg:flex-row items-center lg:justify-between gap-3.5 lg:gap-6"
+        >
+          <!-- Izquierda: Copyright y créditos -->
+          <div
+            class="copyright flex flex-col lg:flex-row items-center gap-1.5 lg:gap-6 text-sm md:text-base [&_a]:anim-underline-white"
+          >
+            <p class="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1">
+              <span>&copy; {{ currentYear }} ZEN SPACE Studio</span>
+              <span class="inline-flex items-center gap-1">
+                &pi; <NuxtLinkLocale to="/privacy">{{ $t('footer.privacy') }}</NuxtLinkLocale>
+              </span>
+            </p>
+
+            <p class="inline-flex items-center justify-center lg:justify-start gap-1.5">
+              <span>&infin; {{ $t('footer.siteBy') }} <a href="https://www.aberu.site">aberu.site</a></span>
+              <DanHummingbird />
+            </p>
+          </div>
+
+          <!-- Derecha (Desktop) / Abajo de todo (Mobile): Email estilo Monolog -->
+          <!-- pl-0 pr-4 (16px a la derecha) + translate-x-2 en hover (8px) = centrado exacto (8px izq / 8px der) -->
+          <a
+            data-hover-highlight="link"
+            data-track="email"
+            href="mailto:hello@zenspace.lat?subject=Coming%20from%20your%20website%3A%20%5BSubject%5D"
+            class="footer_middle_email group relative isolate inline-flex items-center pl-0 pr-4 py-1 text-base md:text-lg font-medium leading-snug tracking-[-0.02em] transition-colors ease-out focus-visible:outline-none text-white duration-300 hover:text-black hover:duration-150 focus-visible:text-black focus-visible:duration-150 motion-reduce:transition-none"
+          >
+            <!-- Fondo blanco con entrada rápida (150ms) y salida desvanecida (500ms) -->
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 -z-10 bg-white opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-hover:duration-150 group-focus-visible:opacity-100 group-focus-visible:duration-150 motion-reduce:transition-none"
+            ></span>
+
+            <!-- Texto pegado a la izquierda en reposo (translate-x-0) que viaja al centro en hover (translate-x-2) -->
+            <span
+              data-hover-heading=""
+              class="relative z-10 block translate-x-0 will-change-transform underline decoration-current decoration-1 underline-offset-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transition-none"
+            >
+              ⮡ hello@zenspace.lat
+            </span>
+          </a>
         </div>
       </div>
     </div>
   </footer>
 </template>
+
 
 <script setup>
   const currentYear = new Date().getFullYear();
