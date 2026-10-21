@@ -74,7 +74,7 @@
   background-repeat: repeat;
   transition: opacity 2.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: film-grain-jitter 480ms steps(1, end) infinite;
-  will-change: transform, opacity;
+  will-change: transform;
 }
 
 .film-grain-overlay.is-ready {
