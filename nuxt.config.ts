@@ -71,32 +71,44 @@ export default defineNuxtConfig({
         language: "es-ES",
         file: "es.json",
       },
+      {
+        code: "zh-CN",
+        name: "简体中文",
+        language: "zh-CN",
+        file: "zh-CN.json",
+      },
     ],
     customRoutes: "config", // disable custom route with page components
     pages: {
       home: {
         en: "/home",
         es: "/home",
+        "zh-CN": "/首页",
       },
       band: {
         en: "/band",
         es: "/banda",
+        "zh-CN": "/灵感",
       },
       merch: {
         en: "/merch",
         es: "/merch",
+        "zh-CN": "/服务",
       },
       music: {
         en: "/music",
         es: "/musica",
+        "zh-CN": "/作品",
       },
       "music-slug": {
         en: "/music/[slug]",
         es: "/musica/[slug]",
+        "zh-CN": "/作品/[slug]",
       },
       privacy: {
         en: "/privacy",
         es: "/privacidad",
+        "zh-CN": "/隐私政策",
       },
     },
   },

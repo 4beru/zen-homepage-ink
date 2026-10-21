@@ -1,0 +1,329 @@
+{
+  "siteName": "Zen Space",
+  "languages": {
+    "code": "zh-CN",
+    "es": "西班牙语",
+    "en": "英语",
+    "zh-CN": "简体中文"
+  },
+  "meta": {
+    "title": "Zen Space｜创意软件工作室",
+    "description": "Zen Space 创意软件工作室，专注于设计与开发独具特色的网站和数字产品。"
+  },
+  "preloader": {
+    "text": [
+      "界面生长的螺旋",
+      "像素的机械跃升",
+      "动态交织的感官体验",
+      "超越代码的万花筒",
+      "涟漪构成的数字迷宫",
+      "数字生活的切线"
+    ]
+  },
+  "pages": {
+    "home": {
+      "name": "首页",
+      "title": "首页",
+      "heroHeadline": "设计。构建。焕新体验。",
+      "heroSubPart1": "创意软件工作室",
+      "heroSubPart2": "数字产品架构",
+      "heroSubheadline": "创意软件工作室 // 数字产品架构",
+      "heading": "Zen Space 是什么？",
+      "block1": "Zen Space 是一家创意软件工作室，专注于设计与构建网站和数字产品，让清晰的技术架构与大胆的视觉创意相得益彰。",
+      "block2": "我们将细致的设计、富有表现力的动态效果与扎实的工程能力融为一体，打造独具辨识度、直观易用的数字体验。",
+      "block3": "无论您正准备推出一款产品，还是希望重新塑造品牌的线上形象，如果您同样重视细节、品质与独到的审美，我们期待与您交流。",
+      "buttonHypnotic": "查看作品",
+      "meta": {
+        "title": "首页",
+        "description": "以鲜明创意打造沉浸式网站与数字产品的创意软件工作室。"
+      },
+      "preloader": {
+        "text1": "正在加载动态效果",
+        "text2": "正在同步像素"
+      }
+    },
+    "band": {
+      "name": "灵感参考",
+      "title": "灵感参考",
+      "copyrightText": "所有展示作品均属于各自的创作者，仅在此分享以供灵感参考。",
+      "meta": {
+        "title": "灵感参考",
+        "description": "精选网站、创意工作室、数字产品与互动体验，为我们的创作带来灵感。"
+      },
+      "intro": "我们持续收藏那些让人忍不住多看一眼的网站、实验作品与数字产品。从 Awwwards、Behance、Dribbble，到独立工作室与富有抱负的品牌，这些参考不断激发我们的好奇心、拓展视野，也为下一次创作带来新的灵感。",
+      "images": {
+        "zenSpaceLogo": "Zen Space 标志与视觉识别设计。",
+        "image1minus1GameStudio": "1minus1 Game Studio 网站与视觉识别设计。",
+        "aiForTripPlannerApp": "用于规划旅行行程的 AI 旅行助手应用。",
+        "aiPoweredPersonalStylistApp": "基于 AI 的个人穿搭顾问应用与时尚推荐。",
+        "aquirinBrandDesign": "Aquirin 品牌识别与视觉设计。",
+        "beautySkincareEcommerceApp": "美妆与护肤电商购物体验。",
+        "belgradeArborArchitectureWebsiteDesign": "Belgrade Arbor 建筑事务所网站与项目展示。",
+        "cultureIndexCreativeStudio": "Culture Index 创意工作室网站。",
+        "dashboardDeliveryDesign": "配送运营仪表盘与数据可视化设计。",
+        "healthcareCompanyMobileApp": "医疗健康移动应用界面与患者服务。",
+        "hotelBookingMobileAppDesign": "酒店预订移动应用与旅行住宿搜索。",
+        "jesperLandbergWebsiteStudio": "Jesper Landberg 网站工作室作品集。",
+        "junkbrandingPortfolioCh": "Junkbranding 创意作品集与视觉识别项目。",
+        "kyoosangChoiBrandDesign": "Kyoosang Choi 品牌设计与艺术指导。",
+        "lajoyaEuropeWebsite": "LaJoya Europe 网站与品牌展示。",
+        "maisonAugeCreativeStudio": "Maison Auge 创意工作室网站。",
+        "mentalHealthMobileApp": "心理健康移动应用界面与身心健康工具。",
+        "missionPersonalInjuryLawyer": "Mission 人身伤害律师事务所网站。",
+        "neuCulturedConceptDesign": "Neu Cultured 概念设计与视觉探索。",
+        "nflLeagueBrandDesign": "NFL 联盟品牌设计与体育视觉识别。",
+        "offpossibleCreativePortfolio": "Offpossible 创意作品集与工作室项目。",
+        "offpossibleMobilePortfolio": "适配移动设备屏幕的 Offpossible 作品集。",
+        "onseisStudioDesign": "Onseis 工作室网站与设计作品集。",
+        "pegassiSpotifyPlaylist": "Pegassi Spotify 播放列表封面与音乐视觉形象。",
+        "rapideYachtGroupWebsite": "Rapide Yacht Group 网站与豪华游艇展示。",
+        "realStateBookingApp": "用于浏览和预订房产的房地产应用。",
+        "ronnsquareArchitectureWebsite": "Ronnsquare 建筑网站与建筑项目作品集。",
+        "rovaSmartRunningTrackerApp": "Rova 智能跑步追踪应用与运动数据。",
+        "secondRideBrandDesign": "Second Ride 品牌识别与视觉设计。",
+        "shipmentTrackingFleetManagementDesign": "货运追踪与车队管理界面。",
+        "smartFinancialManagementApp": "个人财务管理应用与账户概览。",
+        "solarEnergyMonitoringMobileApp": "太阳能监测移动应用与能源数据。",
+        "sonyaPesselevPortfoliioDesign": "Sonya Pesselev 创意作品集与设计展示。",
+        "storeyArchitectureWebsite": "Storey 建筑事务所网站与建筑项目。",
+        "structureConsultingEngineers": "Structure 工程咨询公司网站与专业服务。",
+        "sweetTapeWebsite": "Sweet Tape 网站与产品展示。",
+        "swimtopiaBusinessWebsite": "Swimtopia 商业网站与游泳项目服务。",
+        "theobromaChocolatWebsiteDesign": "Theobroma Chocolat 网站与巧克力产品展示。",
+        "thinkBigStudioBrandDesign": "Think Big Studio 品牌识别与创意指导。",
+        "trustGussInjuryLawyers": "Trust Guss 伤害诉讼律师网站与法律服务。",
+        "unipayMobileAppDesignUiUx": "Unipay 移动支付应用与用户界面设计。",
+        "webDesignForManageAndAutomatePayments": "用于支付管理与自动化的平台网站。"
+      }
+    },
+    "music": {
+      "name": "作品",
+      "title": "作品",
+      "labels": {
+        "back": "返回作品集",
+        "music": "作品",
+        "info": "项目简介",
+        "tracklist": "交付内容",
+        "recordLabel": "客户",
+        "expandArtwork": "展开预览",
+        "collapseArtwork": "收起预览",
+        "deliverables": "交付内容"
+      },
+      "meta": {
+        "title": "作品",
+        "description": "精选项目与案例展示。"
+      },
+      "preloader": {
+        "text1": "正在加载作品",
+        "text2": "正在同步代码"
+      },
+      "linkLabels": {
+        "webApp": "打开 Web 应用",
+        "downloadApp": "下载应用",
+        "website": "访问网站",
+        "appStore": "在 App Store 中查看"
+      },
+      "projectMeta": {
+        "rythm": "Rythm 将音乐发现与共同聆听融为一体。您可以探索个性化推荐、管理播放列表，并在支持的平台上与朋友实时一起听歌。",
+        "unimatic": "Unimatic 将意大利极简设计与严谨的功能工程相结合，打造高性能潜水腕表与工具腕表。腕表具备 300 米防水性能，以坚固耐用的构造和精心打磨的标志性美学超越单纯的实用功能。",
+        "penti": "Penti 是一款基于智能 AI 代理的网络安全平台，提供持续性的安全验证。它会模拟针对应用、API 与基础设施的真实攻击，发现潜在漏洞，并明确验证攻击者可能触及的范围。",
+        "miraLife": "Mira Life 从六个关键维度帮助您了解自身状态与潜能。它分析日常习惯、情绪和健康指标，提供有科学依据且可付诸行动的洞察，帮助您更好地管理精力，而不会带来额外负担。",
+        "subscrr": "Subscrr 将所有订阅集中在一个安全的空间，并提供提醒、洞察与清晰的费用总览。它帮助您追踪开支、了解资金去向，并避免 Apple 设备上的意外扣费。"
+      },
+      "videoTitles": {
+        "rythmDiscordMusicBack": "好音乐，终于重返 Discord",
+        "rythmSetupGuide": "逐步设置指南",
+        "rythmInviteConfigure": "如何邀请机器人并为您的服务器进行配置",
+        "unimaticFieldWatch": "Field Watch 评测与上手体验",
+        "unimaticDialDetails": "意式极简设计：Unimatic 表盘与细节",
+        "unimaticToolwatches": "走进 Unimatic 工具腕表的世界",
+        "pentiHackingAi": "AI 攻击测试的新方法",
+        "pentiThinkSeries": "AI 模型安全测试：Think 系列",
+        "pentiSecurityAssessment": "AI 安全与漏洞评估",
+        "miraStartWithin": "Mira Life：从内在开始",
+        "miraSixDimensions": "探索生命潜能的六个维度",
+        "miraRecoverySignals": "恢复的艺术与身体信号",
+        "subscrrTracking": "一目了然地追踪所有订阅",
+        "subscrrRecurringExpenses": "将所有周期性支出集中管理",
+        "subscrrAiSavings": "借助 AI 节省订阅开支"
+      }
+    },
+    "merch": {
+      "name": "服务",
+      "title": "服务",
+      "eyebrow": "我们提供什么",
+      "intro": "从最初的构想到最终的交互，我们将创意指导、产品思维与工程能力融为一体，打造目标清晰、体验出众的数字产品。",
+      "services": {
+        "webDevelopment": {
+          "title": "创意网站开发",
+          "navTitle": "网站",
+          "description": "我们设计并开发具有鲜明个性的网站，以清晰的艺术指导、审慎的交互设计和可靠的前端工程为基础，让每个细节都服务于品牌叙事与使用体验。",
+          "alt": "展现创意网站开发的网页视觉设计。",
+          "secondaryAlt": "突出沉浸式交互体验的另一组网页视觉。",
+          "secondaryTitle": "沉浸式网页交互",
+          "secondaryDescription": "通过随滚动展开的叙事与精细的微交互，将品牌个性融入使用体验，同时兼顾清晰度与性能。"
+        },
+        "webApps": {
+          "title": "为长期发展而打造的 Web 应用",
+          "navTitle": "Web 应用",
+          "description": "我们设计并构建 Web 应用与 SaaS 平台，覆盖用户流程、数据结构、前后端开发及系统集成，让产品在持续增长的同时依然快速、易维护且体验一致。",
+          "alt": "展示产品设计与架构的 Web 应用界面。",
+          "secondaryAlt": "展示互联产品体验的另一组 Web 应用视觉。",
+          "secondaryTitle": "相互连接的产品体验",
+          "secondaryDescription": "我们将界面、后端服务与系统集成为统一的体系，让产品随功能、团队和数据增长而持续演进。"
+        },
+        "mobileApps": {
+          "title": "移动应用开发",
+          "navTitle": "移动应用",
+          "description": "我们打造流畅、贴近原生体验的移动应用，将复杂流程转化为直观易用的界面，并以扎实的架构为未来增长留足空间。",
+          "alt": "展现移动应用开发的应用界面。",
+          "secondaryAlt": "强调流畅交互体验的另一组移动应用视觉。",
+          "secondaryTitle": "流畅自然的移动交互",
+          "secondaryDescription": "手势、转场与细腻的动态反馈，让每一次操作都清晰自然，使体验在不同屏幕上始终流畅、灵敏且易用。"
+        },
+        "productDesign": {
+          "title": "界面与产品设计",
+          "navTitle": "产品设计",
+          "description": "我们设计清晰而令人印象深刻的界面与视觉系统，从最初的线框稿到精细完善、可供开发落地的界面，每一步都兼顾实用与表达。",
+          "alt": "展现精致产品界面的界面设计视觉。",
+          "secondaryAlt": "用于数字工作流程的另一组用户体验与界面设计视觉。",
+          "secondaryTitle": "贴近日常工作的用户体验",
+          "secondaryDescription": "我们将复杂任务转化为清晰界面与可复用的设计模式，让数字产品在不断发展时依然直观易用。"
+        }
+      },
+      "meta": {
+        "title": "服务",
+        "description": "创意网站开发、数字产品架构、动态视觉体验、3D 内容与移动及 SaaS 应用开发。"
+      },
+      "journey": {
+        "eyebrow": "从最初的信号，到完整的体验",
+        "title": "项目历程",
+        "footerLeft": "策略 · 设计 · 工程",
+        "footerRight": "为持续前进而打造",
+        "steps": {
+          "discover": {
+            "number": "阶段 · 01",
+            "title": "找到您的独特之处",
+            "description": "我们深入了解您的产品、受众与观点，再将真正让您与众不同的特质转化为清晰的数字方向。",
+            "alt": "Rythm 项目网站，展现其视觉方向与数字体验。"
+          },
+          "shape": {
+            "number": "阶段 · 02",
+            "title": "塑造完整体验",
+            "description": "在明确方向后，我们将品牌识别、界面与工程融为独特的体验，既能吸引注意，也能让下一步行动自然明了。",
+            "alt": "Penti AI 项目界面，呈现数字产品设计与架构。"
+          },
+          "launch": {
+            "number": "阶段 · 03",
+            "title": "带着明确目标上线",
+            "description": "我们打磨细节，让每次交互都恰到好处，并为产品面向世界做好准备，同时建立可持续演进的基础。",
+            "alt": "Unimatic 项目界面，展现以动态视觉为导向的艺术指导与数字产品。"
+          }
+        }
+      },
+      "navigationLabel": "服务导航"
+    },
+    "privacy": {
+      "name": "隐私",
+      "title": "隐私政策与 Cookie",
+      "p1": "您的隐私对我们很重要。本网站仅使用一项偏好设置 Cookie，用于记住您选择的语言。我们不会使用广告或分析 Cookie 跟踪您的浏览行为。",
+      "p2": "我们只希望与您分享我们的作品，仅此而已。",
+      "p3": "需要说明的是，本网站托管于第三方服务商。该服务商可能会出于安全或基础网站性能等目的使用自己的 Cookie。这部分不在我们的控制范围内，但我们会尽可能减少自身使用的 Cookie。",
+      "p4": "我们相信，好的创作离不开好奇心、协作，以及适时离开屏幕的片刻。支持本地创作者，保持好奇，也为好点子留出成长的空间。",
+      "p5": "今天，构想未来。明天，让它成为现实。",
+      "meta": {
+        "title": "隐私政策与 Cookie",
+        "description": "了解 Zen Space 的隐私政策与 Cookie 使用方式。"
+      }
+    }
+  },
+  "components": {
+    "cursor": {
+      "scroll": "滚动",
+      "flip": "翻转",
+      "zoom": "缩放"
+    },
+    "bandcampEmbed": {
+      "noPlayer": "此项目暂时无法提供预览。"
+    },
+    "albumArtwork": {
+      "moreInfo": "点击预览图或“+”号"
+    },
+    "navigation": {
+      "main": "主导航",
+      "contact": "联系",
+      "album": "项目导航"
+    },
+    "accessibility": {
+      "openMenu": "打开菜单",
+      "closeMenu": "关闭菜单",
+      "videoUnsupported": "您的浏览器不支持视频播放。",
+      "youtubePlayer": "YouTube 视频播放器",
+      "albumCover": "{title} 封面",
+      "albumBackCover": "{title} 封底",
+      "albumDisc": "{title} 光盘"
+    },
+    "contact": {
+      "tellStory": "告诉我们您的想法"
+    }
+  },
+  "footer": {
+    "siteBy": "网站开发：",
+    "privacy": "隐私政策",
+    "faq": {
+      "eyebrow": "常见问题",
+      "title": "合作开始前，您可能想了解这些。",
+      "questions": [
+        {
+          "question": "你们承接哪些类型的项目？",
+          "answer": "我们专注于具有鲜明个性的网站、数字产品、移动与 SaaS 应用，以及富有动态表现力的数字体验。最适合我们的项目，是那些同样重视设计品质与扎实工程能力的合作。"
+        },
+        {
+          "question": "实际负责我项目的会是谁？",
+          "answer": "您将直接与负责规划和构建项目的团队成员沟通。我们保持紧密协作，只有在项目确有需要时才引入专项支持。"
+        },
+        {
+          "question": "一个项目通常需要多长时间？",
+          "answer": "这取决于项目范围与复杂程度。目标明确的网站可能需要数周，更大型的数字产品则可能需要数月。正式开始前，我们会先约定关键节点与优先事项。"
+        },
+        {
+          "question": "你们如何安排沟通与反馈？",
+          "answer": "我们会明确主要联系人、定期沟通的节奏以及共同认可的里程碑。在约定的节点收集反馈，让决策清晰、项目持续推进。"
+        },
+        {
+          "question": "开始合作前需要准备什么？",
+          "answer": "先聊聊您的目标、受众、限制条件，以及您如何定义成功，就足以开始。现有品牌素材、参考案例或技术要求也会有帮助，但不必在开始前准备得面面俱到。"
+        },
+        {
+          "question": "你们可以接手现有品牌或产品吗？",
+          "answer": "当然可以。我们可以保留已有优势、梳理视觉方向、重新设计现有网站，或持续改进产品，而不必强行进行全面品牌重塑。"
+        },
+        {
+          "question": "项目上线之后会怎样？",
+          "answer": "我们可以协助交接、修复问题，并按约定继续改进。后续支持的具体范围会根据您的需求以及产品的发展计划共同确定。"
+        },
+        {
+          "question": "项目费用如何确定？",
+          "answer": "费用取决于项目范围、复杂程度、时间安排与协作深度。初步沟通后，我们会梳理合理的实施范围，并提供针对您需求的报价。"
+        }
+      ],
+      "aside": "想了解我们是否适合与您合作？",
+      "headshotAlt": "Aberu 的肖像",
+      "bookCall": "预约与 Aberu 沟通",
+      "bookingSoon": "预约链接即将开放"
+    },
+    "location": "布宜诺斯艾利斯",
+    "emailSubject": "来自 Zen Space 网站的咨询"
+  },
+  "errors": {
+    "status": "错误 {statusCode}",
+    "notFoundTitle": "页面未找到",
+    "notFoundLead": "看来这个页面走错了方向。",
+    "notFoundBody": "您要查找的页面不存在，或可能已更换位置。",
+    "notFoundInvite": "欢迎继续探索我们打造的数字体验。",
+    "tagline": "今天，构想未来。明天，让它成为现实。",
+    "genericMessage": "加载此页面时出现问题，请稍后重试。",
+    "projectNotFound": "未找到该项目。",
+    "backHome": "返回首页"
+  }
+}

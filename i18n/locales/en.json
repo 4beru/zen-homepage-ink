@@ -3,7 +3,8 @@
   "languages": {
     "code": "en",
     "es": "Spanish",
-    "en": "English"
+    "en": "English",
+    "zh-CN": "简体中文"
   },
   "meta": {
     "title": "Zen Space",
@@ -310,7 +311,9 @@
       "headshotAlt": "Portrait of Aberu",
       "bookCall": "Book a call with Aberu",
       "bookingSoon": "Booking link coming soon"
-    }
+    },
+    "location": "Buenos Aires",
+    "emailSubject": "Message from the Zen Space website"
   },
   "errors": {
     "status": "Error {statusCode}",

@@ -3,7 +3,8 @@
   "languages": {
     "code": "es",
     "es": "Español",
-    "en": "Inglés"
+    "en": "Inglés",
+    "zh-CN": "Chino simplificado"
   },
   "meta": {
     "title": "Zen Space",
@@ -310,7 +311,9 @@
       "headshotAlt": "Retrato de Aberu",
       "bookCall": "Contacta a Abel",
       "bookingSoon": "El enlace para reservar estará disponible pronto."
-    }
+    },
+    "location": "Buenos Aires",
+    "emailSubject": "Mensaje desde el sitio web de Zen Space"
   },
   "errors": {
     "status": "Error {statusCode}",
