@@ -6,8 +6,8 @@
     "en": "Inglés"
   },
   "meta": {
-    "title": "Skizophonic",
-    "description": "Banda de música formada entre Benicasim y Castellón, España"
+    "title": "Zen Space",
+    "description": "Estudio de software creativo que diseña y desarrolla sitios web y productos digitales distintivos."
   },
   "preloader": {
     "text": [
@@ -45,19 +45,55 @@
       "name": "Referencias",
       "title": "Referencias",
       "copyrightText": "Los trabajos mostrados pertenecen a sus respectivos creadores. Se comparten con fines de inspiración.",
-      "labels": {
-        "vocals": "Voz",
-        "guitar": "Guitarra",
-        "keyboards": "Teclados",
-        "bass": "Bajo",
-        "trombone": "Trombón",
-        "drums": "Batería"
-      },
       "meta": {
         "title": "Referencias",
         "description": "Una colección de sitios web, estudios creativos, productos digitales y experiencias interactivas que inspiran nuestro trabajo."
       },
-      "intro": "Reunimos sitios web, experimentos y productos digitales que nos hacen detenernos a mirar. Desde Awwwards, Behance y Dribbble hasta estudios independientes y marcas ambiciosas, estas referencias alimentan nuestra curiosidad, cuestionan nuestra perspectiva y despiertan ideas para lo que construiremos después."
+      "intro": "Reunimos sitios web, experimentos y productos digitales que nos hacen detenernos a mirar. Desde Awwwards, Behance y Dribbble hasta estudios independientes y marcas ambiciosas, estas referencias alimentan nuestra curiosidad, cuestionan nuestra perspectiva y despiertan ideas para lo que construiremos después.",
+      "images": {
+        "zenSpaceLogo": "Logotipo e identidad visual de Zen Space.",
+        "image1minus1GameStudio": "Sitio web e identidad visual de 1minus1 Game Studio.",
+        "aiForTripPlannerApp": "Aplicación de planificación de viajes con IA para organizar itinerarios.",
+        "aiPoweredPersonalStylistApp": "Aplicación de estilista personal con IA y recomendaciones de moda.",
+        "aquirinBrandDesign": "Identidad de marca y diseño visual de Aquirin.",
+        "beautySkincareEcommerceApp": "Experiencia de compra online de belleza y cuidado de la piel.",
+        "belgradeArborArchitectureWebsiteDesign": "Sitio web de arquitectura de Belgrade Arbor y presentación de proyectos.",
+        "cultureIndexCreativeStudio": "Sitio web del estudio creativo Culture Index.",
+        "dashboardDeliveryDesign": "Panel de operaciones de reparto y visualización de datos.",
+        "healthcareCompanyMobileApp": "Interfaz de una aplicación móvil sanitaria y servicios para pacientes.",
+        "hotelBookingMobileAppDesign": "Aplicación móvil para reservar hoteles y buscar alojamiento.",
+        "jesperLandbergWebsiteStudio": "Portfolio del estudio web de Jesper Landberg.",
+        "junkbrandingPortfolioCh": "Portfolio creativo de Junkbranding y trabajos de identidad visual.",
+        "kyoosangChoiBrandDesign": "Diseño de marca y dirección de arte de Kyoosang Choi.",
+        "lajoyaEuropeWebsite": "Sitio web de LaJoya Europe y presentación de marca.",
+        "maisonAugeCreativeStudio": "Sitio web del estudio creativo Maison Auge.",
+        "mentalHealthMobileApp": "Interfaz de una aplicación móvil de salud mental y herramientas de bienestar.",
+        "missionPersonalInjuryLawyer": "Sitio web del bufete Mission, especializado en lesiones personales.",
+        "neuCulturedConceptDesign": "Diseño conceptual y exploración visual de Neu Cultured.",
+        "nflLeagueBrandDesign": "Identidad visual de la NFL y diseño de marca deportiva.",
+        "offpossibleCreativePortfolio": "Portfolio creativo de Offpossible y trabajos del estudio.",
+        "offpossibleMobilePortfolio": "Portfolio de Offpossible adaptado a pantallas móviles.",
+        "onseisStudioDesign": "Sitio web y portfolio de diseño del estudio Onseis.",
+        "pegassiSpotifyPlaylist": "Arte de playlist de Spotify e identidad musical de Pegassi.",
+        "rapideYachtGroupWebsite": "Sitio web de Rapide Yacht Group y presentación de yates.",
+        "realStateBookingApp": "Aplicación para explorar y reservar propiedades inmobiliarias.",
+        "ronnsquareArchitectureWebsite": "Sitio web de arquitectura Ronnsquare y portfolio de edificios.",
+        "rovaSmartRunningTrackerApp": "Aplicación de seguimiento de running de Rova y métricas de actividad.",
+        "secondRideBrandDesign": "Identidad de marca y diseño visual de Second Ride.",
+        "shipmentTrackingFleetManagementDesign": "Interfaz de seguimiento de envíos y gestión de flotas.",
+        "smartFinancialManagementApp": "Aplicación de finanzas personales y resumen de cuentas.",
+        "solarEnergyMonitoringMobileApp": "Aplicación móvil de monitorización de energía solar y métricas de consumo.",
+        "sonyaPesselevPortfoliioDesign": "Portfolio creativo y presentación de diseño de Sonya Pesselev.",
+        "storeyArchitectureWebsite": "Sitio web de Storey Architecture y proyectos arquitectónicos.",
+        "structureConsultingEngineers": "Sitio web de Structure Consulting Engineers y servicios profesionales.",
+        "sweetTapeWebsite": "Sitio web de Sweet Tape y presentación de productos.",
+        "swimtopiaBusinessWebsite": "Sitio web de Swimtopia y servicios de programas de natación.",
+        "theobromaChocolatWebsiteDesign": "Sitio web de Theobroma Chocolat y presentación de productos de chocolate.",
+        "thinkBigStudioBrandDesign": "Identidad de marca y dirección creativa de Think Big Studio.",
+        "trustGussInjuryLawyers": "Sitio web de Trust Guss Injury Lawyers y servicios legales.",
+        "unipayMobileAppDesignUiUx": "Aplicación móvil de pagos Unipay y diseño de interfaz.",
+        "webDesignForManageAndAutomatePayments": "Sitio web de una plataforma para gestionar y automatizar pagos."
+      }
     },
     "music": {
       "name": "Trabajos",
@@ -68,7 +104,6 @@
         "info": "Info",
         "tracklist": "Entregables",
         "recordLabel": "Cliente",
-        "socialLinks": "Abrir",
         "expandArtwork": "Expandir álbum",
         "collapseArtwork": "Colapsar álbum",
         "deliverables": "Entregables"
@@ -80,6 +115,12 @@
       "preloader": {
         "text1": "cargando música",
         "text2": "sincroniza ruido"
+      },
+      "linkLabels": {
+        "webApp": "Abrir aplicación web",
+        "downloadApp": "Descargar aplicación",
+        "website": "Visitar sitio web",
+        "appStore": "Abrir en App Store"
       }
     },
     "merch": {
@@ -87,7 +128,6 @@
       "title": "Servicios",
       "eyebrow": "Qué hacemos",
       "intro": "Desde la primera idea hasta la interacción final, conectamos dirección creativa, visión de producto e ingeniería para construir experiencias digitales con propósito.",
-      "serviceLabel": "Servicio",
       "services": {
         "webDevelopment": {
           "title": "Desarrollo web creativo",
@@ -98,32 +138,32 @@
           "secondaryTitle": "Interacciones web inmersivas",
           "secondaryDescription": "Las secuencias vinculadas al scroll y las microinteracciones precisas integran la identidad de marca en la experiencia sin sacrificar claridad ni rendimiento."
         },
-        "productArchitecture": {
-          "title": "Arquitectura de productos digitales",
-          "navTitle": "Productos Digitales",
+        "webApps": {
+          "title": "Aplicaciones web escalables",
+          "navTitle": "Apps web",
           "description": "Diseñamos las bases de productos digitales: desde los flujos de usuario y la estructura del sistema hasta el frontend, el backend y las integraciones, para que la experiencia pueda crecer de forma coherente.",
           "alt": "Interfaz de una aplicación web que ilustra la arquitectura de productos digitales.",
           "secondaryAlt": "Imagen adicional de una aplicación web con experiencias conectadas.",
           "secondaryTitle": "Experiencias de producto conectadas",
           "secondaryDescription": "Conectamos interfaces, servicios de backend e integraciones en un sistema coherente que puede evolucionar a medida que crecen las funciones, los equipos y los datos."
         },
-        "motion3d": {
-          "title": "Experiencias de motion y 3D",
-          "navTitle": "Motion 3D",
-          "description": "Damos vida a las interfaces mediante motion, 3D y recursos visuales inmersivos, equilibrando una experiencia memorable con interacciones fluidas y buen rendimiento.",
-          "alt": "Vista de una interfaz móvil que ilustra motion y diseño interactivo.",
-          "secondaryAlt": "Imagen adicional de una interfaz móvil con interacciones intencionadas.",
-          "secondaryTitle": "Motion con propósito",
-          "secondaryDescription": "Desde transiciones sutiles hasta escenas 3D expresivas, cada movimiento refuerza la respuesta de la interfaz, la jerarquía y el ritmo de la experiencia."
+        "mobileApps": {
+          "title": "Desarrollo de aplicaciones móviles",
+          "navTitle": "Apps móviles",
+          "description": "Desarrollamos aplicaciones móviles rápidas y naturales, convirtiendo flujos complejos en pantallas simples e intuitivas, con una arquitectura sólida y margen para crecer.",
+          "alt": "Interfaz de una aplicación móvil que ilustra el desarrollo de apps móviles.",
+          "secondaryAlt": "Vista adicional de una aplicación móvil con interacciones fluidas.",
+          "secondaryTitle": "Interacciones móviles fluidas",
+          "secondaryDescription": "Los gestos, las transiciones y el movimiento sutil ofrecen una respuesta clara a cada toque y mantienen una experiencia fluida y fácil de usar en cualquier pantalla."
         },
-        "mobileSaas": {
-          "title": "Aplicaciones móviles y SaaS",
-          "navTitle": "Apps SaaS",
-          "description": "Creamos experiencias móviles y SaaS que convierten flujos complejos en productos intuitivos, con UX práctica, una arquitectura mantenible y capacidad para evolucionar.",
-          "alt": "Imagen de diseño de producto digital para una experiencia móvil o SaaS.",
-          "secondaryAlt": "Imagen adicional de UX e interfaz para flujos de trabajo digitales.",
-          "secondaryTitle": "UX para flujos cotidianos",
-          "secondaryDescription": "Convertimos tareas complejas en pantallas claras y patrones reutilizables para que los productos móviles y SaaS sigan siendo intuitivos mientras evolucionan."
+        "productDesign": {
+          "title": "Diseño de producto e interfaces",
+          "navTitle": "Diseño de producto",
+          "description": "Diseñamos interfaces y sistemas visuales que hacen que los productos sean claros y memorables, desde los primeros wireframes hasta pantallas pulidas listas para desarrollarse.",
+          "alt": "Vista de diseño de interfaz con una pantalla de producto pulida.",
+          "secondaryAlt": "Vista adicional de UX e interfaz para flujos de trabajo digitales.",
+          "secondaryTitle": "UX para tareas cotidianas",
+          "secondaryDescription": "Convertimos tareas complejas en pantallas claras y patrones reutilizables para que los productos digitales sigan siendo intuitivos a medida que crecen."
         }
       },
       "meta": {
@@ -156,31 +196,15 @@
           }
         }
       },
-      "sections": {
-        "tshirts": {
-          "title": "Camisetas"
-        },
-        "buttonBadges": {
-          "title": "Chapas"
-        },
-        "stickers": {
-          "title": "Pegatinas"
-        },
-        "posters": {
-          "title": "Pósters"
-        }
-      },
-      "labels": {
-        "noStock": "No disponible"
-      }
+      "navigationLabel": "Navegación de servicios"
     },
     "privacy": {
       "name": "Privacidad",
       "title": "Política de privacidad y cookies",
-      "p1": "Nos importa tu privacidad (y la nuestra). Por eso no utilizamos cookies en este sitio web, ni tenemos intención de hacerlo. No nos interesa rastrear a los visitantes ni recopilar datos sobre ti, simplemente no queremos hacerlo.",
+      "p1": "Tu privacidad nos importa. Este sitio utiliza una pequeña cookie de preferencia para recordar el idioma que elegiste. No utilizamos cookies publicitarias ni de analítica para rastrear tu actividad de navegación.",
       "p2": "Nuestro único propósito es compartir nuestra música contigo. Nada más, nada menos.",
       "p3": "Dicho esto, nuestro sitio web está alojado por un proveedor externo y puede que ellos utilicen sus propias cookies para cosas como la seguridad o el rendimiento básico del sitio. Esa parte está fuera de nuestro control pero por nuestra parte mantenemos todo lo más libre de cookies posible.",
-      "p4": "Tampoco vendemos comida pero nuestro consejo es que comas más verduras para mantenerte sano. También te animamos a que apoyes los productos españoles; nuestro jamón ibérico y aceite de oliva forman parte de las maravillas del mundo.",
+      "p4": "Creemos que el trabajo creativo necesita curiosidad, colaboración y tiempo lejos de la pantalla. Apoya a los productores locales, mantén la curiosidad y deja espacio para que crezcan las buenas ideas.",
       "p5": "Hoy, salva tu fin de semana. Mañana, salva tu alma.",
       "meta": {
         "title": "Política de privacidad y cookies",
@@ -199,6 +223,23 @@
     },
     "albumArtwork": {
       "moreInfo": "Pulsa sobre el álbum o “+”"
+    },
+    "navigation": {
+      "main": "Navegación principal",
+      "contact": "Contacto",
+      "album": "Navegación del proyecto"
+    },
+    "accessibility": {
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú",
+      "videoUnsupported": "Tu navegador no admite la reproducción de vídeo.",
+      "youtubePlayer": "Reproductor de vídeo de YouTube",
+      "albumCover": "Carátula de {title}",
+      "albumBackCover": "Contraportada de {title}",
+      "albumDisc": "Disco de {title}"
+    },
+    "contact": {
+      "tellStory": "Cuéntanos tu proyecto"
     }
   },
   "footer": {
@@ -241,10 +282,21 @@
           "answer": "La inversión depende del alcance, la complejidad, los plazos y el nivel de colaboración necesario. Tras una primera conversación, podemos definir un alcance realista y preparar una estimación a medida."
         }
       ],
-      "aside": "¿Hablamos de tu proyecto?",
+      "aside": "¿Quieres saber si somos una buena opción para tu proyecto?",
       "headshotAlt": "Retrato de Aberu",
       "bookCall": "Reserva una llamada con Aberu",
       "bookingSoon": "El enlace de reservas estará disponible pronto"
     }
+  },
+  "errors": {
+    "status": "Error {statusCode}",
+    "notFoundTitle": "No se encontró la página",
+    "notFoundLead": "Parece que esta página se ha desviado del camino.",
+    "notFoundBody": "La página que buscas no existe o puede haberse trasladado.",
+    "notFoundInvite": "Mientras tanto, descubre las experiencias digitales que creamos.",
+    "tagline": "Hoy, imagínalo. Mañana, hazlo realidad.",
+    "genericMessage": "Se ha producido un error al cargar esta página. Inténtalo de nuevo.",
+    "projectNotFound": "No se encontró el proyecto.",
+    "backHome": "Volver al inicio"
   }
 }

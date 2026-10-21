@@ -33,7 +33,7 @@
             <div class="flex flex-col sm:flex-row gap-4">
               <span v-for="social in content.social" :key="social.label" class="flex items-center gap-2">
                 <Icon :name="social.icon" />
-                <a :href="social.link" target="_blank" rel="noopener noreferrer">{{ $t('pages.music.labels.socialLinks') }} {{ social.label }}</a>
+                <a :href="social.link" target="_blank" rel="noopener noreferrer">{{ $t(social.labelKey) }}</a>
               </span>
             </div>
           </AnimationReveal>
@@ -61,7 +61,7 @@
   });
 
   const config = useRuntimeConfig()
-  const { locale } = useI18n()
+  const { locale, t } = useI18n()
   const slug = useRoute().params.slug
   const { data: post } = await useAsyncData(slug, () => {
     return queryCollection('music').path(`/${locale.value}/music/${slug}`).first()
@@ -69,17 +69,17 @@
 
   const content = albums.find(album => album.slug === slug)
   if (!content) {
-    throw createError({ statusCode: 404, statusMessage: 'Project not found' })
+    throw createError({ statusCode: 404, statusMessage: t('errors.projectNotFound') })
   }
 
   useSeoMeta({
-    title: `${content.title} | Zen Space`,
+    title: `${content.title} | ${t('siteName')}`,
     description: content.meta.description,
-    ogTitle: `${content.title} | Zen Space`,
+    ogTitle: `${content.title} | ${t('siteName')}`,
     ogDescription: content.meta.description,
     ogType: 'website',
     ogImage: `${config.public.appUrl}/albums/${slug}/${content.images.cover}`,
-    ogImageAlt: `${content.title} - project cover`,
+    ogImageAlt: t('components.accessibility.albumCover', { title: content.title }),
     ogImageWidth: 1000,
     ogImageHeight: 900,
   })

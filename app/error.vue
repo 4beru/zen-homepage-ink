@@ -1,18 +1,18 @@
 <template>
   <NuxtLayout>
     <section class="error-page xl:w-1/2 container flex flex-col justify-center gap-8 min-h-dvh md:text-balance">
-      <p class="text-sm uppercase">Error {{ error?.statusCode }}</p>
+      <p class="text-sm uppercase">{{ $t('errors.status', { statusCode: error?.statusCode ?? 500 }) }}</p>
       <div v-if="error?.statusCode === 404" class=" prose-lg prose-h1:m-0 prose-h1:text-5xl md:prose-h1:text-6xl prose-p:leading-normal">
-        <h1>Page not found</h1>
-        <p class="text-2xl mt-2">Oops! The page you're requesting doesn't exist.</p>
-        <p>If you're looking for food... sorry, this is not the right place.</p>
-        <p>We are not even sure what we are doing here, but we can offer you some nice music to fill your ears and feed your intellect.</p>
-        <p>Today, save your weekend. Tomorrow, save your soul.</p>
+        <h1>{{ $t('errors.notFoundTitle') }}</h1>
+        <p class="text-2xl mt-2">{{ $t('errors.notFoundLead') }}</p>
+        <p>{{ $t('errors.notFoundBody') }}</p>
+        <p>{{ $t('errors.notFoundInvite') }}</p>
+        <p>{{ $t('errors.tagline') }}</p>
       </div>
       <div v-else>
-        <p class="text-2xl">{{ error?.message }}</p>
+        <p class="text-2xl">{{ $t('errors.genericMessage') }}</p>
       </div>
-      <NuxtLinkLocale to="/" class="w-fit">Go back home</NuxtLinkLocale>
+      <NuxtLinkLocale to="/" class="w-fit">{{ $t('errors.backHome') }}</NuxtLinkLocale>
     </section>
   </NuxtLayout>
   <FilmGrain />

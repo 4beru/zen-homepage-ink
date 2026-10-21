@@ -23,12 +23,12 @@ export const albums = [
     },
     social: [
       {
-        label: 'Web app',
+        labelKey: 'pages.music.linkLabels.webApp',
         link: 'https://rythm.fm',
         icon: 'lucide:globe',
       },
       {
-        label: 'Download app',
+        labelKey: 'pages.music.linkLabels.downloadApp',
         link: 'https://rythm.fm/download',
         icon: 'lucide:app-window',
       },
@@ -77,7 +77,7 @@ export const albums = [
     releaseDate: '2025-09-14',
     recordLabel: 'unimaticwatches.com',
     meta: {
-      description: 'Velodrome is the fourth album recorded by Skizophonic.',
+      description: 'Unimatic combines minimalist Italian design with functional engineering across dive watches, chronographs, and tool watches built for durability and legibility.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -94,7 +94,7 @@ export const albums = [
       //   icon: 'simple-icons:spotify',
       // },
       {
-        label: 'Website',
+        labelKey: 'pages.music.linkLabels.website',
         link: 'https://www.unimaticwatches.com',
         icon: 'lucide:globe',
       },
@@ -145,7 +145,7 @@ export const albums = [
     releaseDate: '2025-05-01',
     recordLabel: 'penti.ai',
     meta: {
-      description: 'One is the first album recorded by Skizophonic.',
+      description: 'Penti is an AI-powered cybersecurity platform that uses autonomous agents to continuously validate application, API, and infrastructure security, exposing vulnerabilities with replayable evidence.',
     },
     player: {
       spotify: '',
@@ -207,7 +207,7 @@ export const albums = [
     releaseDate: '2026-02-28',
     recordLabel: 'miralife.app',
     meta: {
-      description: 'Gossip is the third album recorded by Skizophonic.',
+      description: 'Mira Life helps people understand their wellbeing across six dimensions by turning habits, mood, and health signals into actionable insights.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -269,7 +269,7 @@ export const albums = [
     releaseDate: '2026-09-19',
     recordLabel: 'subscrr.app',
     meta: {
-      description: 'Living Room is the second album/EP recorded by Skizophonic.',
+      description: 'Subscrr brings subscriptions, renewal reminders, and recurring expenses into one place, helping users understand their spending and avoid surprise charges.'
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -286,7 +286,7 @@ export const albums = [
         icon: 'lucide:globe',
       },
       {
-        label: 'in Appstore',
+        labelKey: 'pages.music.linkLabels.appStore',
         link: 'https://apps.apple.com/us/app/subscrr-subscription-tracker/id6757530448',
         icon: 'simple-icons:appstore',
       },

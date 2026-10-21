@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   },
   site: {
     url: appUrl,
-    name: "Skizophonic website",
+    name: "Zen Space",
   },
   i18n: {
     baseUrl: appUrl,
@@ -102,19 +102,19 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "Skizophonic",
+      title: "Zen Space — Creative Software Studio",
       meta: [
         {
           name: "description",
-          content: "Music band based in Benicasim and Castellón, Spain",
+          content: "Creative software studio designing and engineering distinctive websites and digital products.",
         },
         {
           name: "og:title",
-          content: "Skizophonic",
+          content: "Zen Space — Creative Software Studio",
         },
         {
           name: "og:description",
-          content: "Music band based in Benicasim and Castellón, Spain",
+          content: "Creative software studio designing and engineering distinctive websites and digital products.",
         },
         {
           name: "og:image",
@@ -122,7 +122,7 @@ export default defineNuxtConfig({
         },
         {
           name: "og:image:alt",
-          content: "Skizophonic logo",
+          content: "Zen Space logo",
         },
         {
           name: "og:image:width",
@@ -142,7 +142,7 @@ export default defineNuxtConfig({
         },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "author", content: "Dan Alcaide" },
-        { name: "generator", content: "Coffe and chocolate" },
+        { name: "generator", content: "Nuxt" },
         { name: "format-detection", content: "telephone=no" },
         { name: "apple-mobile-web-app-title", content: "Skizophonic" },
       ],

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="button-nav-icon-wrapper fixed top-0 right-0 z-100 m-8 mix-blend-difference">
-      <button class="button-nav-icon focus:outline-none focus:ring-0 cursor-pointer" aria-label="Open menu" @click="handleClick">
+      <button class="button-nav-icon focus:outline-none focus:ring-0 cursor-pointer" :aria-label="isOpen ? $t('components.accessibility.closeMenu') : $t('components.accessibility.openMenu')" @click="handleClick">
         <NavIcon :is-open="isOpen" />
       </button>
     </div>
@@ -10,7 +10,7 @@
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
 
       <!-- Grupo 1: Navegación principal -->
-      <nav class="main-navigation" aria-label="Main navigation">
+      <nav class="main-navigation" :aria-label="$t('components.navigation.main')">
         <ul class="relative z-90 flex flex-col gap-3 sm:gap-4 px-12 uppercase">
           <li>
             <AnimationTextShadow>
@@ -37,11 +37,11 @@
 
       <!-- Grupo 2: Call to Action + Selector de idioma -->
       <div class="relative z-90 mt-12 sm:mt-16 flex flex-col items-center gap-2 text-base leading-none">
-        <nav class="social-navigation" aria-label="Contact">
+        <nav class="social-navigation" :aria-label="$t('components.navigation.contact')">
           <ul>
             <li>
               <span class="inline-block">
-                <CalBookingButton label="Tell us your story" size="md" />
+                <CalBookingButton :label="$t('components.contact.tellStory')" size="md" />
               </span>
             </li>
           </ul>

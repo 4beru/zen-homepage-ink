@@ -77,27 +77,30 @@
   const timeZone = 'America/Argentina/Buenos_Aires';
   const clock = ref({
     time: '--:--:-- --',
-    date: 'Loading local date',
+    date: '',
     offset: 'GMT -03',
   });
 
-  const timeFormatter = new Intl.DateTimeFormat('en-US', {
+  const { locale } = useI18n();
+  const clockLocale = computed(() => locale.value === 'es' ? 'es-ES' : 'en-GB');
+
+  const timeFormatter = computed(() => new Intl.DateTimeFormat(clockLocale.value, {
     timeZone,
     hour: 'numeric',
     minute: '2-digit',
     second: '2-digit',
     hour12: true,
-  });
+  }));
 
-  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  const dateFormatter = computed(() => new Intl.DateTimeFormat(clockLocale.value, {
     timeZone,
     weekday: 'long',
     month: 'short',
     day: 'numeric',
     year: 'numeric',
-  });
+  }));
 
-  const offsetFormatter = new Intl.DateTimeFormat('en-US', {
+  const offsetFormatter = new Intl.DateTimeFormat('en-GB', {
     timeZone,
     timeZoneName: 'longOffset',
   });
@@ -112,8 +115,8 @@
     const offsetMatch = offset?.match(/^GMT([+-])(\d{2}):(\d{2})$/);
 
     clock.value = {
-      time: timeFormatter.format(now),
-      date: dateFormatter.format(now),
+      time: timeFormatter.value.format(now),
+      date: dateFormatter.value.format(now),
       offset: offsetMatch
         ? `GMT ${offsetMatch[1]}${offsetMatch[2]}${offsetMatch[3] === '00' ? '' : `:${offsetMatch[3]}`}`
         : offset?.replace('GMT', 'GMT ') ?? 'GMT -03',

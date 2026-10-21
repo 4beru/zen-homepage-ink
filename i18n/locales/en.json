@@ -7,7 +7,7 @@
   },
   "meta": {
     "title": "Zen Space",
-    "description": "Creative software studio crafting immersive websites and digital products"
+    "description": "Creative software studio designing and engineering distinctive websites and digital products."
   },
   "preloader": {
     "text": [
@@ -45,19 +45,55 @@
       "name": "References",
       "title": "References",
       "copyrightText": "All featured work belongs to its respective creators. Shared here for inspiration.",
-      "labels": {
-        "vocals": "Creative direction",
-        "guitar": "Front-end engineering",
-        "keyboards": "Motion design",
-        "bass": "Back-end architecture",
-        "trombone": "3D & WebGL",
-        "drums": "Product strategy"
-      },
       "meta": {
         "title": "References",
         "description": "A collection of websites, creative studios, digital products and interactive experiences that inspire our work."
       },
-      "intro": "We collect the websites, experiments and digital products that make us look twice. From Awwwards, Behance and Dribbble to independent studios and ambitious brands, these references fuel our curiosity, challenge our perspective and spark ideas for what we build next."
+      "intro": "We collect the websites, experiments and digital products that make us look twice. From Awwwards, Behance and Dribbble to independent studios and ambitious brands, these references fuel our curiosity, challenge our perspective and spark ideas for what we build next.",
+      "images": {
+        "zenSpaceLogo": "Zen Space logo and visual identity.",
+        "image1minus1GameStudio": "1minus1 Game Studio website and visual identity.",
+        "aiForTripPlannerApp": "AI trip planner app for organizing travel itineraries.",
+        "aiPoweredPersonalStylistApp": "AI-powered personal stylist app and fashion recommendations.",
+        "aquirinBrandDesign": "Aquirin brand identity and visual design.",
+        "beautySkincareEcommerceApp": "Beauty and skincare e-commerce shopping experience.",
+        "belgradeArborArchitectureWebsiteDesign": "Belgrade Arbor architecture website and project presentation.",
+        "cultureIndexCreativeStudio": "Culture Index creative studio website.",
+        "dashboardDeliveryDesign": "Delivery operations dashboard and data visualization.",
+        "healthcareCompanyMobileApp": "Healthcare mobile app interface and patient services.",
+        "hotelBookingMobileAppDesign": "Hotel booking mobile app and travel accommodation search.",
+        "jesperLandbergWebsiteStudio": "Jesper Landberg website studio portfolio.",
+        "junkbrandingPortfolioCh": "Junkbranding creative portfolio and visual identity work.",
+        "kyoosangChoiBrandDesign": "Kyoosang Choi brand design and art direction.",
+        "lajoyaEuropeWebsite": "LaJoya Europe website and brand presentation.",
+        "maisonAugeCreativeStudio": "Maison Auge creative studio website.",
+        "mentalHealthMobileApp": "Mental health mobile app interface and wellbeing tools.",
+        "missionPersonalInjuryLawyer": "Mission personal injury law firm website.",
+        "neuCulturedConceptDesign": "Neu Cultured concept design and visual exploration.",
+        "nflLeagueBrandDesign": "NFL league brand design and sports visual identity.",
+        "offpossibleCreativePortfolio": "Offpossible creative portfolio and studio work.",
+        "offpossibleMobilePortfolio": "Offpossible portfolio adapted for mobile screens.",
+        "onseisStudioDesign": "Onseis studio website and design portfolio.",
+        "pegassiSpotifyPlaylist": "Pegassi Spotify playlist artwork and music identity.",
+        "rapideYachtGroupWebsite": "Rapide Yacht Group website and luxury yacht presentation.",
+        "realStateBookingApp": "Real estate booking app for exploring and reserving properties.",
+        "ronnsquareArchitectureWebsite": "Ronnsquare architecture website and building portfolio.",
+        "rovaSmartRunningTrackerApp": "Rova smart running tracker app and activity metrics.",
+        "secondRideBrandDesign": "Second Ride brand identity and visual design.",
+        "shipmentTrackingFleetManagementDesign": "Shipment tracking and fleet management interface.",
+        "smartFinancialManagementApp": "Personal financial management app and account overview.",
+        "solarEnergyMonitoringMobileApp": "Solar energy monitoring mobile app and energy metrics.",
+        "sonyaPesselevPortfoliioDesign": "Sonya Pesselev creative portfolio and design presentation.",
+        "storeyArchitectureWebsite": "Storey architecture website and architectural projects.",
+        "structureConsultingEngineers": "Structure consulting engineers website and professional services.",
+        "sweetTapeWebsite": "Sweet Tape website and product presentation.",
+        "swimtopiaBusinessWebsite": "Swimtopia business website and swimming program services.",
+        "theobromaChocolatWebsiteDesign": "Theobroma Chocolat website and chocolate product presentation.",
+        "thinkBigStudioBrandDesign": "Think Big Studio brand identity and creative direction.",
+        "trustGussInjuryLawyers": "Trust Guss injury lawyers website and legal services.",
+        "unipayMobileAppDesignUiUx": "Unipay mobile payment app and user interface design.",
+        "webDesignForManageAndAutomatePayments": "Payment management and automation platform website."
+      }
     },
     "music": {
       "name": "Works",
@@ -68,7 +104,6 @@
         "info": "Info",
         "tracklist": "Deliverables",
         "recordLabel": "Client",
-        "socialLinks": "Open",
         "expandArtwork": "Expand preview",
         "collapseArtwork": "Collapse preview",
         "deliverables": "Deliverables"
@@ -80,6 +115,12 @@
       "preloader": {
         "text1": "loading works",
         "text2": "syncing code"
+      },
+      "linkLabels": {
+        "webApp": "Open web app",
+        "downloadApp": "Download app",
+        "website": "Visit website",
+        "appStore": "Open in the App Store"
       }
     },
     "merch": {
@@ -87,7 +128,6 @@
       "title": "Services",
       "eyebrow": "What we do",
       "intro": "From the first idea to the final interaction, we bring creative direction, product thinking and engineering together to build digital experiences with purpose.",
-      "serviceLabel": "Service",
       "services": {
         "webDevelopment": {
           "title": "Creative web development",
@@ -98,7 +138,7 @@
           "secondaryTitle": "Immersive web interactions",
           "secondaryDescription": "Scroll-led sequences and precise micro-interactions bring a brand's identity into the experience without compromising clarity or performance."
         },
-        "productArchitecture": {
+        "webApps": {
           "title": "Web apps built to last",
           "navTitle": "Web Apps",
           "description": "We design and build web applications and SaaS platforms—from user flows and data structure to frontend, backend and integrations—so the product stays fast, maintainable and coherent as it grows.",
@@ -107,18 +147,18 @@
           "secondaryTitle": "Connected product experiences",
           "secondaryDescription": "We bring interfaces, backend services and integrations together in a coherent system that can evolve as features, teams and data grow."
         },
-        "motion3d": {
+        "mobileApps": {
           "title": "Mobile app development",
-          "navTitle": "Mobile",
+          "navTitle": "Mobile Apps",
           "description": "We build mobile apps that feel fast and native, turning complex flows into simple, intuitive screens—with solid architecture and room to grow.",
           "alt": "Mobile app interface illustrating mobile app development.",
           "secondaryAlt": "Additional mobile app visual highlighting fluid interactions.",
           "secondaryTitle": "Fluid mobile interactions",
           "secondaryDescription": "Gestures, transitions and subtle motion give every tap clear feedback, keeping the experience smooth, responsive and easy to use on any screen."
         },
-        "mobileSaas": {
+        "productDesign": {
           "title": "Interface & product design",
-          "navTitle": "Design",
+          "navTitle": "Product Design",
           "description": "We design interfaces and visual systems that make products clear and memorable—from first wireframes to polished screens, ready to be built.",
           "alt": "Interface design visual showing a polished product screen.",
           "secondaryAlt": "Additional UX and interface design visual for digital workflows.",
@@ -156,31 +196,15 @@
           }
         }
       },
-      "sections": {
-        "tshirts": {
-          "title": "Creative web development"
-        },
-        "buttonBadges": {
-          "title": "Digital product architecture"
-        },
-        "stickers": {
-          "title": "Motion & 3D experiences"
-        },
-        "posters": {
-          "title": "Mobile & SaaS apps"
-        }
-      },
-      "labels": {
-        "noStock": "Currently unavailable"
-      }
+      "navigationLabel": "Services navigation"
     },
     "privacy": {
       "name": "Privacy",
       "title": "Privacy policy & cookies",
-      "p1": "We care about your (and our) privacy. That’s why we don’t use cookies on this website, and we’re not planning to. We’re not interested in tracking visitors or collecting data about you, that’s just not what we do.",
+      "p1": "Your privacy matters to us. This site uses a small preference cookie to remember your language choice. We don't use advertising or analytics cookies to track your browsing activity.",
       "p2": "Our only goal is to share our work with you. Nothing more, nothing less.",
       "p3": "That said, our website is hosted by a third-party provider, and they might use their own cookies for things like security or basic site performance. That part is outside of our control, but from our side, we keep things as cookie-free as possible.",
-      "p4": "We don't sell food either, but our advice is to eat more vegetables to stay healthy. We also encourage you to support local producers; Argentine yerba mate and malbec are among the wonders of the world.",
+      "p4": "We believe thoughtful work needs curiosity, collaboration, and time away from the screen. Support local makers, stay curious, and leave room for good ideas to grow.",
       "p5": "Today, imagine it. Tomorrow, ship it.",
       "meta": {
         "title": "Privacy policy & cookies",
@@ -199,6 +223,23 @@
     },
     "albumArtwork": {
       "moreInfo": "Tap the preview or “+”"
+    },
+    "navigation": {
+      "main": "Main navigation",
+      "contact": "Contact",
+      "album": "Project navigation"
+    },
+    "accessibility": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "videoUnsupported": "Your browser does not support video playback.",
+      "youtubePlayer": "YouTube video player",
+      "albumCover": "{title} cover",
+      "albumBackCover": "{title} back cover",
+      "albumDisc": "{title} disc"
+    },
+    "contact": {
+      "tellStory": "Tell us your story"
     }
   },
   "footer": {
@@ -241,10 +282,21 @@
           "answer": "The investment depends on the scope, complexity, timeline and level of collaboration involved. After an initial conversation, we can define a realistic scope and provide a tailored estimate."
         }
       ],
-      "aside": "Would like to know if we'd be a good fit?",
+      "aside": "Want to know if we'd be a good fit?",
       "headshotAlt": "Portrait of Aberu",
-      "bookCall": "Book a call with Abel",
+      "bookCall": "Book a call with Aberu",
       "bookingSoon": "Booking link coming soon"
     }
+  },
+  "errors": {
+    "status": "Error {statusCode}",
+    "notFoundTitle": "Page not found",
+    "notFoundLead": "Looks like this page took a wrong turn.",
+    "notFoundBody": "The page you're looking for doesn't exist or may have moved.",
+    "notFoundInvite": "While you're here, explore the digital experiences we build.",
+    "tagline": "Today, imagine it. Tomorrow, ship it.",
+    "genericMessage": "Something went wrong while loading this page. Please try again.",
+    "projectNotFound": "Project not found.",
+    "backHome": "Back home"
   }
 }

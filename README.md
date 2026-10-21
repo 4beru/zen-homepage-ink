@@ -1,14 +1,10 @@
-# Skizophonic website
+# Zen Space website
 
-Music band based in Benicasim and Castellón, Spain.
-_Banda de música formada entre Benicàssim y Castellón, España._
+Creative software studio designing and engineering distinctive websites and digital products.
 
-[www.skizophonic.com](https://www.skizophonic.com)
 
-Made with Nuxt, Tailwind, GSAP, CSS/SVG animations, chocolate and coffee.
-_Hecho con Nuxt, Tailwind, GSAP, animaciones CSS/SVG, chorizo y paella._
+Built with Nuxt, Tailwind CSS, GSAP, and custom motion design.
 
-This website has received an **Honorable Mention** on [Awwwards](https://www.awwwards.com/sites/skizophonic).
 
 ## License
 

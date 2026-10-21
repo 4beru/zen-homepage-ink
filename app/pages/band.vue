@@ -10,9 +10,9 @@
           <DynamicColumns :min="5" :max="6" />
         </div>
         <div class="relative">
-          <NuxtImg class="max-lg:h-auto h-[50dvh] w-full object-cover transition-all duration-500 ease-in-out cursor-pointer will-change-transform lg:scale-105 hover:scale-110" sizes="400px md:640px xl:1920px" :alt="image.alt" :src="`/images/band/${image.src}`" @click="handleClick" @mousemove="handleMouseMove" />
+          <NuxtImg class="max-lg:h-auto h-[50dvh] w-full object-cover transition-all duration-500 ease-in-out cursor-pointer will-change-transform lg:scale-105 hover:scale-110" sizes="400px md:640px xl:1920px" :alt="$t(image.textKey)" :src="`/images/band/${image.src}`" @click="handleClick" @mousemove="handleMouseMove" />
         </div>
-        <figcaption class="relative z-10 h-full text-white bg-black">{{ image.alt }}</figcaption>
+        <figcaption class="relative z-10 h-full text-white bg-black">{{ $t(image.textKey) }}</figcaption>
       </figure>
     </div>
     <p class="p-6 text-pretty">&copy; {{ $t('pages.band.copyrightText') }}</p>

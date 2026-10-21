@@ -7,13 +7,13 @@
         <aside
           ref="filterRef"
           class="merch-filter-wrapper hidden lg:block fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
-          aria-label="Services navigation"
+          :aria-label="$t('pages.merch.navigationLabel')"
           role="complementary"
         >
     
           <nav
             class="lg:sticky lg:top-[60px] lg:h-[calc(100dvh-60px)]"
-            aria-label="Services navigation"
+            :aria-label="$t('pages.merch.navigationLabel')"
           >
             <ul
               class="merch-filter m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:absolute lg:bottom-8 lg:left-0 lg:items-end lg:gap-2 lg:overflow-visible lg:px-0 lg:py-0 xl:gap-3 2xl:bottom-12"

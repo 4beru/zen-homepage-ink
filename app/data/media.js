@@ -1,170 +1,170 @@
 export const images = [
   {
     src: 'zen-space-logo.png',
-    alt: 'Zen Space logo and visual identity.',
+    textKey: 'pages.band.images.zenSpaceLogo',
   },
   {
     src: '1minus1-game-studio.png',
-    alt: '1minus1 Game Studio website and visual identity.',
+    textKey: 'pages.band.images.image1minus1GameStudio',
   },
   {
     src: 'ai-for-trip-planner-app.png',
-    alt: 'AI trip planner app for organizing travel itineraries.',
+    textKey: 'pages.band.images.aiForTripPlannerApp',
   },
   {
     src: 'ai-powered-personal-stylist-app.png',
-    alt: 'AI-powered personal stylist app and fashion recommendations.',
+    textKey: 'pages.band.images.aiPoweredPersonalStylistApp',
   },
   {
     src: 'aquirin-brand-design.png',
-    alt: 'Aquirin brand identity and visual design.',
+    textKey: 'pages.band.images.aquirinBrandDesign',
   },
   {
     src: 'beauty-skincare-ecommerce-app.png',
-    alt: 'Beauty and skincare e-commerce shopping experience.',
+    textKey: 'pages.band.images.beautySkincareEcommerceApp',
   },
   {
     src: 'belgrade-arbor-architecture-website-design.png',
-    alt: 'Belgrade Arbor architecture website and project presentation.',
+    textKey: 'pages.band.images.belgradeArborArchitectureWebsiteDesign',
   },
   {
     src: 'culture-index-creative-studio.png',
-    alt: 'Culture Index creative studio website.',
+    textKey: 'pages.band.images.cultureIndexCreativeStudio',
   },
   {
     src: 'dashboard-delivery-design.png',
-    alt: 'Delivery operations dashboard and data visualization.',
+    textKey: 'pages.band.images.dashboardDeliveryDesign',
   },
   {
     src: 'healthcare-company-mobile-app.png',
-    alt: 'Healthcare mobile app interface and patient services.',
+    textKey: 'pages.band.images.healthcareCompanyMobileApp',
   },
   {
     src: 'hotel-booking-mobile-app-design.png',
-    alt: 'Hotel booking mobile app and travel accommodation search.',
+    textKey: 'pages.band.images.hotelBookingMobileAppDesign',
   },
   {
     src: 'jesper-landberg-website-studio.png',
-    alt: 'Jesper Landberg website studio portfolio.',
+    textKey: 'pages.band.images.jesperLandbergWebsiteStudio',
   },
   {
     src: 'junkbranding-portfolio-ch.png',
-    alt: 'Junkbranding creative portfolio and visual identity work.',
+    textKey: 'pages.band.images.junkbrandingPortfolioCh',
   },
   {
     src: 'kyoosang-choi-brand-design.png',
-    alt: 'Kyoosang Choi brand design and art direction.',
+    textKey: 'pages.band.images.kyoosangChoiBrandDesign',
   },
   {
     src: 'lajoya-europe-website.png',
-    alt: 'LaJoya Europe website and brand presentation.',
+    textKey: 'pages.band.images.lajoyaEuropeWebsite',
   },
   {
     src: 'maison-auge-creative-studio.png',
-    alt: 'Maison Auge creative studio website.',
+    textKey: 'pages.band.images.maisonAugeCreativeStudio',
   },
   {
     src: 'mental-health-mobile-app.png',
-    alt: 'Mental health mobile app interface and wellbeing tools.',
+    textKey: 'pages.band.images.mentalHealthMobileApp',
   },
   {
     src: 'mission-personal-injury-lawyer.png',
-    alt: 'Mission personal injury law firm website.',
+    textKey: 'pages.band.images.missionPersonalInjuryLawyer',
   },
   {
     src: 'neu-cultured-concept-design.png',
-    alt: 'Neu Cultured concept design and visual exploration.',
+    textKey: 'pages.band.images.neuCulturedConceptDesign',
   },
   {
     src: 'nfl-league-brand-design.png',
-    alt: 'NFL league brand design and sports visual identity.',
+    textKey: 'pages.band.images.nflLeagueBrandDesign',
   },
   {
     src: 'offpossible-creative-portfolio.png',
-    alt: 'Offpossible creative portfolio and studio work.',
+    textKey: 'pages.band.images.offpossibleCreativePortfolio',
   },
   {
     src: 'offpossible-mobile-portfolio.png',
-    alt: 'Offpossible portfolio adapted for mobile screens.',
+    textKey: 'pages.band.images.offpossibleMobilePortfolio',
   },
   {
     src: 'onseis-studio-design.png',
-    alt: 'Onseis studio website and design portfolio.',
+    textKey: 'pages.band.images.onseisStudioDesign',
   },
   {
     src: 'pegassi-spotify-playlist.png',
-    alt: 'Pegassi Spotify playlist artwork and music identity.',
+    textKey: 'pages.band.images.pegassiSpotifyPlaylist',
   },
   {
     src: 'rapide-yacht-group-website.png',
-    alt: 'Rapide Yacht Group website and luxury yacht presentation.',
+    textKey: 'pages.band.images.rapideYachtGroupWebsite',
   },
   {
     src: 'real-state-booking-app.png',
-    alt: 'Real estate booking app for exploring and reserving properties.',
+    textKey: 'pages.band.images.realStateBookingApp',
   },
   {
     src: 'ronnsquare-architecture-website.png',
-    alt: 'Ronnsquare architecture website and building portfolio.',
+    textKey: 'pages.band.images.ronnsquareArchitectureWebsite',
   },
   {
     src: 'rova-smart-running-tracker-app.png',
-    alt: 'Rova smart running tracker app and activity metrics.',
+    textKey: 'pages.band.images.rovaSmartRunningTrackerApp',
   },
   {
     src: 'second-ride-brand-design.png',
-    alt: 'Second Ride brand identity and visual design.',
+    textKey: 'pages.band.images.secondRideBrandDesign',
   },
   {
     src: 'shipment-tracking-fleet-management-design.png',
-    alt: 'Shipment tracking and fleet management interface.',
+    textKey: 'pages.band.images.shipmentTrackingFleetManagementDesign',
   },
   {
     src: 'smart-financial-management-app.png',
-    alt: 'Personal financial management app and account overview.',
+    textKey: 'pages.band.images.smartFinancialManagementApp',
   },
   {
     src: 'solar-energy-monitoring-mobile-app.png',
-    alt: 'Solar energy monitoring mobile app and energy metrics.',
+    textKey: 'pages.band.images.solarEnergyMonitoringMobileApp',
   },
   {
     src: 'sonya-pesselev-portfoliio-design.png',
-    alt: 'Sonya Pesselev creative portfolio and design presentation.',
+    textKey: 'pages.band.images.sonyaPesselevPortfoliioDesign',
   },
   {
     src: 'storey-architecture-website.png',
-    alt: 'Storey architecture website and architectural projects.',
+    textKey: 'pages.band.images.storeyArchitectureWebsite',
   },
   {
     src: 'structure-consulting-engineers.png',
-    alt: 'Structure consulting engineers website and professional services.',
+    textKey: 'pages.band.images.structureConsultingEngineers',
   },
   {
     src: 'sweet-tape-website.png',
-    alt: 'Sweet Tape website and product presentation.',
+    textKey: 'pages.band.images.sweetTapeWebsite',
   },
   {
     src: 'swimtopia-business-website.png',
-    alt: 'Swimtopia business website and swimming program services.',
+    textKey: 'pages.band.images.swimtopiaBusinessWebsite',
   },
   {
     src: 'theobroma-chocolat-website-design.png',
-    alt: 'Theobroma Chocolat website and chocolate product presentation.',
+    textKey: 'pages.band.images.theobromaChocolatWebsiteDesign',
   },
   {
     src: 'think-big-studio-brand-design.png',
-    alt: 'Think Big Studio brand identity and creative direction.',
+    textKey: 'pages.band.images.thinkBigStudioBrandDesign',
   },
   {
     src: 'trust-guss-injury-lawyers.png',
-    alt: 'Trust Guss injury lawyers website and legal services.',
+    textKey: 'pages.band.images.trustGussInjuryLawyers',
   },
   {
     src: 'unipay-mobile-app-design-ui-ux.png',
-    alt: 'Unipay mobile payment app and user interface design.',
+    textKey: 'pages.band.images.unipayMobileAppDesignUiUx',
   },
   {
     src: 'web-design-for-manage-and-automate-payments.png',
-    alt: 'Payment management and automation platform website.',
+    textKey: 'pages.band.images.webDesignForManageAndAutomatePayments',
   },
 ]
