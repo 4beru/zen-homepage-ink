@@ -17,7 +17,7 @@
           aria-live="off"
         >
           <p class="flex flex-col gap-0.5">
-            <span class="block">Buenos Aires {{ clock.time }}</span>
+            <span class="block">{{ $t('footer.location') }} {{ clock.time }}</span>
             <span class="block text-white/75">{{ clock.date }} ({{ clock.offset }})</span>
           </p>
         </div>
@@ -48,7 +48,7 @@
           <a
             data-hover-highlight="link"
             data-track="email"
-            href="mailto:hello@zenspace.lat?subject=Coming%20from%20your%20website%3A%20%5BSubject%5D"
+            :href="'mailto:hello@zenspace.lat?subject=' + encodeURIComponent($t('footer.emailSubject'))"
             class="footer_middle_email group relative isolate inline-flex items-center pl-0 pr-4 py-1 text-base md:text-lg font-medium leading-snug tracking-[-0.02em] transition-colors ease-out focus-visible:outline-none text-white duration-300 hover:text-black hover:duration-150 focus-visible:text-black focus-visible:duration-150 motion-reduce:transition-none"
           >
             <!-- Fondo blanco con entrada rápida (150ms) y salida desvanecida (500ms) -->
@@ -82,14 +82,18 @@
   });
 
   const { locale } = useI18n();
-  const clockLocale = computed(() => locale.value === 'es' ? 'es-ES' : 'en-GB');
+  const clockLocale = computed(() => {
+    if (locale.value === 'es') return 'es-ES';
+    if (locale.value === 'zh-CN') return 'zh-CN';
+    return 'en-GB';
+  });
 
   const timeFormatter = computed(() => new Intl.DateTimeFormat(clockLocale.value, {
     timeZone,
     hour: 'numeric',
     minute: '2-digit',
     second: '2-digit',
-    hour12: true,
+    hour12: locale.value !== 'zh-CN',
   }));
 
   const dateFormatter = computed(() => new Intl.DateTimeFormat(clockLocale.value, {

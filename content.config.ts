@@ -23,6 +23,10 @@ export default defineContentConfig({
             if (url.loc.startsWith("/es/music/")) {
               url.loc = url.loc.replace("/music/", "/musica/");
             }
+            // Map Simplified Chinese path
+            if (url.loc.startsWith("/zh-CN/music/")) {
+              url.loc = url.loc.replace("/music/", "/作品/");
+            }
           },
         },
       ),
