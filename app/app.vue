@@ -7,6 +7,7 @@
       <NuxtPage :page-key="route => route.fullPath" />
     </VueLenis>
   </NuxtLayout>
+  <FilmGrain />
   <PageTransitionOverlay />
   <div class="film-grain-overlay" aria-hidden="true"></div>
 </template>
