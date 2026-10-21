@@ -149,7 +149,7 @@
         },
         "mobileApps": {
           "title": "Mobile app development",
-          "navTitle": "Mobile Apps",
+          "navTitle": "Mobile Dev",
           "description": "We build mobile apps that feel fast and native, turning complex flows into simple, intuitive screens—with solid architecture and room to grow.",
           "alt": "Mobile app interface illustrating mobile app development.",
           "secondaryAlt": "Additional mobile app visual highlighting fluid interactions.",
@@ -158,7 +158,7 @@
         },
         "productDesign": {
           "title": "Interface & product design",
-          "navTitle": "Product Design",
+          "navTitle": "Design +++",
           "description": "We design interfaces and visual systems that make products clear and memorable—from first wireframes to polished screens, ready to be built.",
           "alt": "Interface design visual showing a polished product screen.",
           "secondaryAlt": "Additional UX and interface design visual for digital workflows.",
