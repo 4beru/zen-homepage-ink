@@ -8,7 +8,6 @@ onMounted(() => {
   // Esto separa el montaje del cambio de opacidad, sin bloquear la carga de medios.
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
       isReady.value = true
     })
   })
