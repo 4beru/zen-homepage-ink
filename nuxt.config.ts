@@ -1,15 +1,18 @@
 import tailwindcss from "@tailwindcss/vite";
 
-const appUrl = process.env.APP_URL || "http://localhost:3000";
+const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const vercelHost = isVercelPreview
+  ? process.env.VERCEL_URL
+  : process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+const inferredAppUrl = vercelHost ? `https://${vercelHost}` : "http://localhost:3000";
+const appUrl = (isVercelPreview ? inferredAppUrl : process.env.APP_URL || inferredAppUrl)
+  .replace(/\/+$/, "");
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false, // Need to disable server-side rendering to prevent error 500 (still working on this).
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  nitro: {
-    preset: "node-server",
-  },
   devServer: {
     port: 3000,
     host: "0.0.0.0",
@@ -121,36 +124,36 @@ export default defineNuxtConfig({
           content: "Creative software studio designing and engineering distinctive websites and digital products.",
         },
         {
-          name: "og:title",
+          property: "og:title",
           content: "Zen Space — Creative Software Studio",
         },
         {
-          name: "og:description",
+          property: "og:description",
           content: "Creative software studio designing and engineering distinctive websites and digital products.",
         },
         {
-          name: "og:image",
+          property: "og:image",
           content: `${appUrl}/images/logo_circles.png`,
         },
         {
-          name: "og:image:alt",
+          property: "og:image:alt",
           content: "Zen Space logo",
         },
         {
-          name: "og:image:width",
+          property: "og:image:width",
           content: "512",
         },
         {
-          name: "og:image:height",
+          property: "og:image:height",
           content: "512",
         },
         {
-          name: "og:url",
-          content: appUrl,
-        },
-        {
-          name: "og:type",
+          property: "og:type",
           content: "website",
+        },
+        {
+          name: "twitter:card",
+          content: "summary_large_image",
         },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "author", content: "Abel" },
@@ -211,6 +214,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appUrl,
+      isPreviewDeployment: isVercelPreview,
     },
   },
 });
