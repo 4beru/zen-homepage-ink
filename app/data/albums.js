@@ -1,7 +1,9 @@
 export const albums = [
   {
     id: 1,
-    slug: 'video-rock',
+    slug: 'rythm',
+    contentSlug: 'video-rock',
+    assetDirectory: 'video-rock',
     title: 'Rythm',
     images: {
       cover: 'rythm-cover.webp',
@@ -66,7 +68,9 @@ export const albums = [
   },
   {
     id: 2,
-    slug: 'velodrome',
+    slug: 'unimatic',
+    contentSlug: 'velodrome',
+    assetDirectory: 'velodrome',
     title: 'Unimatic',
     images: {
       cover: 'unimatic-cover.webp',
@@ -134,7 +138,9 @@ export const albums = [
   },
   {
     id: 3,
-    slug: 'one',
+    slug: 'penti-ai',
+    contentSlug: 'one',
+    assetDirectory: 'one',
     title: 'Penti AI',
     images: {
       cover: 'penti-cover.webp',
@@ -196,7 +202,9 @@ export const albums = [
   },
   {
     id: 4,
-    slug: 'gossip',
+    slug: 'mira-life',
+    contentSlug: 'gossip',
+    assetDirectory: 'gossip',
     title: 'Mira Life',
     images: {
       cover: 'miralife-cover.webp',
@@ -258,7 +266,9 @@ export const albums = [
   },
   {
     id: 5,
-    slug: 'living-room',
+    slug: 'subscrr',
+    contentSlug: 'living-room',
+    assetDirectory: 'living-room',
     title: 'Subscrr',
     images: {
       cover: 'subscrr-cover.webp',
