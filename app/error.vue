@@ -25,6 +25,12 @@
   gsap.registerPlugin(SplitText);
 
   const error = useError();
+  const { t } = useI18n();
+
+  useHead(() => ({
+    title: `${t(error.value?.statusCode === 404 ? "errors.notFoundTitle" : "errors.genericMessage")} | ${t("siteName")}`,
+    meta: [{ name: "robots", content: "noindex, nofollow" }],
+  }));
 
   onMounted(() => {
     const contents = document.querySelectorAll('.error-page');
