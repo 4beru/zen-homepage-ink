@@ -199,6 +199,13 @@ export default defineNuxtConfig({
         weights: [600, 700, 800, 900],
         display: "swap",
       },
+      {
+        name: "Noto Sans SC",
+        provider: "google",
+        weights: ["100 900"],
+        subsets: ["chinese-simplified", "latin", "latin-ext"],
+        display: "swap",
+      },
     ],
   },
   runtimeConfig: {
