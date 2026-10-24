@@ -34,8 +34,8 @@
       "block3": "Ya sea que estés lanzando un producto o renovando tu marca en internet, si valoras el trabajo bien hecho y una mirada cuidadosa, hablemos.",
       "buttonHypnotic": "Ver proyectos",
       "meta": {
-        "title": "Inicio",
-        "description": "Estudio de software creativo que diseña y desarrolla sitios web y productos digitales inmersivos."
+        "title": "Estudio de software creativo",
+        "description": "Zen Space diseña y desarrolla sitios web, productos digitales y experiencias interactivas para marcas con ambición."
       },
       "preloader": {
         "text1": "cargando movimiento",
@@ -47,8 +47,8 @@
       "title": "Referencias",
       "copyrightText": "Todos los trabajos que aparecen pertenecen a sus respectivos creadores. Los compartimos como inspiración.",
       "meta": {
-        "title": "Referencias e inspiración",
-        "description": "Una selección de sitios web, estudios creativos, productos digitales y experiencias interactivas que inspiran nuestro trabajo."
+        "title": "Referencias creativas e inspiración",
+        "description": "Una selección de sitios web, productos digitales, estudios creativos y experiencias interactivas que inspiran nuestro trabajo."
       },
       "intro": "Reunimos sitios web, experimentos y productos digitales que nos hacen detenernos a mirar. Desde Awwwards, Behance y Dribbble hasta estudios independientes y marcas ambiciosas, estas referencias alimentan nuestra curiosidad, desafían nuestra perspectiva e inspiran lo que construiremos después.",
       "images": {
@@ -110,8 +110,8 @@
         "deliverables": "Entregables"
       },
       "meta": {
-        "title": "Proyectos",
-        "description": "Una selección de proyectos digitales y casos de estudio."
+        "title": "Proyectos digitales seleccionados",
+        "description": "Explora sitios web, productos digitales y experiencias creativas desarrolladas por Zen Space."
       },
       "preloader": {
         "text1": "cargando proyectos",
@@ -192,8 +192,8 @@
         }
       },
       "meta": {
-        "title": "Servicios",
-        "description": "Desarrollo web creativo, aplicaciones web y móviles, y diseño de productos e interfaces digitales."
+        "title": "Desarrollo web y productos digitales",
+        "description": "Desarrollo web creativo, arquitectura de productos digitales, experiencias de motion y 3D, y aplicaciones móviles y SaaS."
       },
       "journey": {
         "eyebrow": "De la primera idea a la experiencia final",
