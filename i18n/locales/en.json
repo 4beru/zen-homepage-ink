@@ -34,8 +34,8 @@
       "block3": "Whether you are launching a product or reinventing your brand online, if you value craft and a discerning eye, we should talk.",
       "buttonHypnotic": "See our work",
       "meta": {
-        "title": "Home",
-        "description": "Creative software studio crafting immersive websites and digital products"
+        "title": "Creative Software Studio",
+        "description": "Zen Space is a creative software studio building distinctive websites, digital products, and interactive experiences."
       },
       "preloader": {
         "text1": "loading motion",
@@ -47,8 +47,8 @@
       "title": "References",
       "copyrightText": "All featured work belongs to its respective creators. Shared here for inspiration.",
       "meta": {
-        "title": "References",
-        "description": "A collection of websites, creative studios, digital products and interactive experiences that inspire our work."
+        "title": "Creative References & Inspiration",
+        "description": "A curated collection of websites, digital products, creative studios, and interactive experiences that inspire our work."
       },
       "intro": "We collect the websites, experiments and digital products that make us look twice. From Awwwards, Behance and Dribbble to independent studios and ambitious brands, these references fuel our curiosity, challenge our perspective and spark ideas for what we build next.",
       "images": {
@@ -110,8 +110,8 @@
         "deliverables": "Deliverables"
       },
       "meta": {
-        "title": "Works",
-        "description": "Selected projects and case studies"
+        "title": "Selected Digital Projects",
+        "description": "Explore selected websites, digital products, and creative technology projects by Zen Space."
       },
       "preloader": {
         "text1": "loading works",
@@ -192,7 +192,7 @@
         }
       },
       "meta": {
-        "title": "Services",
+        "title": "Web Development & Digital Product Services",
         "description": "Creative web development, digital product architecture, motion and 3D experiences, and mobile and SaaS applications."
       },
       "journey": {
