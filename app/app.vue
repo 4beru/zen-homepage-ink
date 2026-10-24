@@ -3,7 +3,6 @@
   <NuxtLoadingIndicator color="repeating-linear-gradient(to right,#ff0047 0%,#ffffff 50%,#00ffc7 100%)" />
   <NuxtLayout>
     <VueLenis ref="lenisRef" :auto-raf="false" root>
-      <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" />
       <NuxtPage :page-key="route => route.fullPath" />
     </VueLenis>
   </NuxtLayout>
@@ -23,8 +22,32 @@
     ScrollTrigger.clearScrollMemory("manual");
   }
 
-  const lenisRef = ref()
-  const head = useLocaleHead();
+  const lenisRef = ref();
+  const localeHead = useLocaleHead();
+  const runtimeConfig = useRuntimeConfig();
+
+  const canonicalUrl = computed(
+    () => localeHead.value.link?.find((link) => link.rel === "canonical")?.href
+  );
+
+  // Apply the full locale-aware SEO head, not just the document language.
+  // This registers canonical URLs, hreflang alternatives, and Open Graph locale tags.
+  useHead(() => ({
+    htmlAttrs: {
+      lang: localeHead.value.htmlAttrs.lang,
+      dir: localeHead.value.htmlAttrs.dir,
+    },
+    link: [...(localeHead.value.link || [])],
+    meta: [
+      ...(localeHead.value.meta || []),
+      ...(canonicalUrl.value
+        ? [{ property: "og:url", content: canonicalUrl.value }]
+        : []),
+      ...(runtimeConfig.public.isPreviewDeployment
+        ? [{ name: "robots", content: "noindex, nofollow" }]
+        : []),
+    ],
+  }));
 
   onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
