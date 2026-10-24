@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "Poppins", "sans-serif";
+  --font-sans: "Poppins", "Noto Sans SC", sans-serif;
 
   --color-primary: #ff0047;
   --color-secondary: #00ffc7;
@@ -42,6 +42,9 @@
     @slot;
   }
 }
+
+/* Simplified Chinese: apply weight adjustments only to elements using zh:* utilities. */
+@custom-variant zh (&:lang(zh-CN));
 
 @utility container {
   margin-inline: auto;
@@ -212,11 +215,7 @@ html.lenis body {
 }
 
 
-/* Simplified Chinese: prefer native CJK fonts and avoid Latin-style tracking. */
-html[lang="zh-CN"] body {
-  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
-}
-
+/* Simplified Chinese: keep the Latin font where available, and avoid Latin-style tracking. */
 html[lang="zh-CN"] body :is(h1, h2, h3, h4, h5, h6, p, button, a, figcaption, span) {
   letter-spacing: normal;
 }
