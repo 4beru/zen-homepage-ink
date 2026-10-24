@@ -61,11 +61,16 @@
   });
 
   const config = useRuntimeConfig()
+  const route = useRoute()
   const { locale, t } = useI18n()
-  const slug = useRoute().params.slug
-  const { data: post } = await useAsyncData(`${locale.value}:${slug}`, () => {
-    return queryCollection('music').path(`/${locale.value}/music/${slug}`).first()
-  })
+  const slug = String(route.params.slug ?? '')
+  const postKey = computed(() => `music-content:${locale.value}:${slug}`)
+
+  const { data: post } = await useAsyncData(
+    postKey,
+    () => queryCollection('music').path(`/${locale.value.toLowerCase()}/music/${slug}`).first(),
+    { watch: [locale] },
+  )
 
   const content = albums.find(album => album.slug === slug)
   if (!content) {
