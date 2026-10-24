@@ -1,9 +1,9 @@
 <template>
   <nav ref="albumNavRef" class="album-navigation my-4 text-xl lg:text-2xl [&_a]:hover:text-black [&_a]:hover:no-underline" :aria-label="$t('components.navigation.album')">
     <ul class="flex gap-4 [&_.active]:text-black">
-      <li><a href="#music" class="active" @click.prevent="handleClick">{{ $t('pages.music.labels.music') }}</a></li>
-      <li><a href="#info" @click.prevent="handleClick">{{ $t('pages.music.labels.info') }}</a></li>
-      <li><a href="#tracklist" @click.prevent="handleClick">{{ $t('pages.music.labels.tracklist') }}</a></li>
+      <li><a href="#music" class="active" @click.prevent="handleClick">{{ $t('pages.projects.labels.music') }}</a></li>
+      <li><a href="#info" @click.prevent="handleClick">{{ $t('pages.projects.labels.info') }}</a></li>
+      <li><a href="#tracklist" @click.prevent="handleClick">{{ $t('pages.projects.labels.tracklist') }}</a></li>
     </ul>
   </nav>
 </template>

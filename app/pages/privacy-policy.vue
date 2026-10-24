@@ -1,11 +1,11 @@
 <template>
   <section ref="privacyPageRef" class="privacy-page container place-content-center min-h-dvh prose-lg prose-h1:text-[clamp(3rem,_10vw,_4.6rem)] prose-h1:mb-0 md:text-balance">
-    <h1>{{ t('pages.privacy.title') }}</h1>
-    <p>{{ t('pages.privacy.p1') }}</p>
-    <p>{{ t('pages.privacy.p2') }}</p>
-    <p>{{ t('pages.privacy.p3') }}</p>
-    <p>{{ t('pages.privacy.p4') }}</p>
-    <p>{{ t('pages.privacy.p5') }}</p>
+    <h1>{{ t('pages.privacyPolicy.title') }}</h1>
+    <p>{{ t('pages.privacyPolicy.p1') }}</p>
+    <p>{{ t('pages.privacyPolicy.p2') }}</p>
+    <p>{{ t('pages.privacyPolicy.p3') }}</p>
+    <p>{{ t('pages.privacyPolicy.p4') }}</p>
+    <p>{{ t('pages.privacyPolicy.p5') }}</p>
   </section>
 </template>
 
@@ -25,10 +25,10 @@
   let ctx;
 
   useSeoMeta({
-    title: `${t('pages.privacy.meta.title')} | ${t('siteName')}`,
-    description: t('pages.privacy.meta.description'),
-    ogTitle: `${t('pages.privacy.meta.title')} | ${t('siteName')}`,
-    ogDescription: t('pages.privacy.meta.description'),
+    title: `${t('pages.privacyPolicy.meta.title')} | ${t('siteName')}`,
+    description: t('pages.privacyPolicy.meta.description'),
+    ogTitle: `${t('pages.privacyPolicy.meta.title')} | ${t('siteName')}`,
+    ogDescription: t('pages.privacyPolicy.meta.description'),
   })
 
   onMounted(() => {

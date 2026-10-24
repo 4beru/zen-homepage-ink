@@ -42,7 +42,7 @@
         "text2": "正在同步像素"
       }
     },
-    "band": {
+    "references": {
       "name": "灵感参考",
       "title": "灵感参考",
       "copyrightText": "所有展示作品均属于各自的创作者，仅在此分享以供灵感参考。",
@@ -96,7 +96,7 @@
         "webDesignForManageAndAutomatePayments": "用于支付管理与自动化的平台网站。"
       }
     },
-    "music": {
+    "projects": {
       "name": "作品",
       "title": "作品",
       "labels": {
@@ -148,7 +148,7 @@
         "subscrrAiSavings": "借助 AI 节省订阅开支"
       }
     },
-    "merch": {
+    "services": {
       "name": "服务",
       "title": "服务",
       "eyebrow": "我们提供什么",
@@ -223,7 +223,7 @@
       },
       "navigationLabel": "服务导航"
     },
-    "privacy": {
+    "privacyPolicy": {
       "name": "隐私",
       "title": "隐私政策与 Cookie",
       "p1": "您的隐私对我们很重要。本网站仅使用一项偏好设置 Cookie，用于记住您选择的语言。我们不会使用广告或分析 Cookie 跟踪您的浏览行为。",

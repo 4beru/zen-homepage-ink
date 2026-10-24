@@ -48,7 +48,7 @@
   const zoomedGalleta = ref(false);
   const buttonDisabled = ref(false);
   const isAnimationRevealDone = ref(false)
-  const buttonExpand = ref({ preffix: '+', text: t('pages.music.labels.expandArtwork'), eventMethod: () => handleExpandArtwork() })
+  const buttonExpand = ref({ preffix: '+', text: t('pages.projects.labels.expandArtwork'), eventMethod: () => handleExpandArtwork() })
 
   onMounted(() => {
     gsap.set(galleta.value, {
@@ -71,10 +71,10 @@
 
     watchEffect(() => {
       if (expandedArtwork.value) {
-        buttonExpand.value = { preffix: '-', text: t('pages.music.labels.collapseArtwork'), eventMethod: () => handleCollapseArtwork() }
+        buttonExpand.value = { preffix: '-', text: t('pages.projects.labels.collapseArtwork'), eventMethod: () => handleCollapseArtwork() }
       }
       else {
-        buttonExpand.value = { preffix: '+', text: t('pages.music.labels.expandArtwork'), eventMethod: () => handleExpandArtwork() }
+        buttonExpand.value = { preffix: '+', text: t('pages.projects.labels.expandArtwork'), eventMethod: () => handleExpandArtwork() }
       }
     })
   })

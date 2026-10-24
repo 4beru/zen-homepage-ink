@@ -11,7 +11,7 @@ export const albums = [
     year: 2024,
     recordLabel: 'rythm.fm',
     meta: {
-      descriptionKey: 'pages.music.projectMeta.rythm',
+      descriptionKey: 'pages.projects.projectMeta.rythm',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -23,12 +23,12 @@ export const albums = [
     },
     social: [
       {
-        labelKey: 'pages.music.linkLabels.webApp',
+        labelKey: 'pages.projects.linkLabels.webApp',
         link: 'https://rythm.fm',
         icon: 'lucide:globe',
       },
       {
-        labelKey: 'pages.music.linkLabels.downloadApp',
+        labelKey: 'pages.projects.linkLabels.downloadApp',
         link: 'https://rythm.fm/download',
         icon: 'lucide:app-window',
       },
@@ -37,15 +37,15 @@ export const albums = [
       youtube: [
         {
           id: 'ZxYlp1WF0zc',
-          titleKey: 'pages.music.videoTitles.rythmDiscordMusicBack',
+          titleKey: 'pages.projects.videoTitles.rythmDiscordMusicBack',
         },
         {
           id: '9IW5RNSBhIU',
-          titleKey: 'pages.music.videoTitles.rythmSetupGuide',
+          titleKey: 'pages.projects.videoTitles.rythmSetupGuide',
         },
         {
           id: 'LLnnkEvCTLA',
-          titleKey: 'pages.music.videoTitles.rythmInviteConfigure',
+          titleKey: 'pages.projects.videoTitles.rythmInviteConfigure',
         },
       ],
     },
@@ -77,7 +77,7 @@ export const albums = [
     releaseDate: '2025-09-14',
     recordLabel: 'unimaticwatches.com',
     meta: {
-      descriptionKey: 'pages.music.projectMeta.unimatic',
+      descriptionKey: 'pages.projects.projectMeta.unimatic',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -94,7 +94,7 @@ export const albums = [
       //   icon: 'simple-icons:spotify',
       // },
       {
-        labelKey: 'pages.music.linkLabels.website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://www.unimaticwatches.com',
         icon: 'lucide:globe',
       },
@@ -103,15 +103,15 @@ export const albums = [
       youtube: [
         {
           id: '6uWonLQeJ9k',
-          titleKey: 'pages.music.videoTitles.unimaticFieldWatch',
+          titleKey: 'pages.projects.videoTitles.unimaticFieldWatch',
         },
         {
           id: '84QOEV89mhQ',
-          titleKey: 'pages.music.videoTitles.unimaticDialDetails',
+          titleKey: 'pages.projects.videoTitles.unimaticDialDetails',
         },
         {
           id: 'RQq4cGLNcbg',
-          titleKey: 'pages.music.videoTitles.unimaticToolwatches',
+          titleKey: 'pages.projects.videoTitles.unimaticToolwatches',
         },
       ],
     },
@@ -145,7 +145,7 @@ export const albums = [
     releaseDate: '2025-05-01',
     recordLabel: 'penti.ai',
     meta: {
-      descriptionKey: 'pages.music.projectMeta.penti',
+      descriptionKey: 'pages.projects.projectMeta.penti',
     },
     player: {
       spotify: '',
@@ -157,7 +157,7 @@ export const albums = [
     },
     social: [
       {
-        labelKey: 'pages.music.linkLabels.website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://penti.ai/',
         icon: 'lucide:globe'
       }
@@ -166,15 +166,15 @@ export const albums = [
       youtube: [
         {
           id: '2Z-9EOyb6HE',
-          titleKey: 'pages.music.videoTitles.pentiHackingAi',
+          titleKey: 'pages.projects.videoTitles.pentiHackingAi',
         },
         {
           id: 'xOQW_qMZdlc',
-          titleKey: 'pages.music.videoTitles.pentiThinkSeries',
+          titleKey: 'pages.projects.videoTitles.pentiThinkSeries',
         },
         {
           id: 'W-lgskJTXO8',
-          titleKey: 'pages.music.videoTitles.pentiSecurityAssessment',
+          titleKey: 'pages.projects.videoTitles.pentiSecurityAssessment',
         },
       ],
     },
@@ -207,7 +207,7 @@ export const albums = [
     releaseDate: '2026-02-28',
     recordLabel: 'miralife.app',
     meta: {
-      descriptionKey: 'pages.music.projectMeta.miraLife',
+      descriptionKey: 'pages.projects.projectMeta.miraLife',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -219,7 +219,7 @@ export const albums = [
     },
     social: [
       {
-        labelKey: 'pages.music.linkLabels.website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://miralife.app/en/',
         icon: 'lucide:globe',
       },
@@ -228,15 +228,15 @@ export const albums = [
       youtube: [
         {
           id: 'ispHUvvdXZQ',
-          titleKey: 'pages.music.videoTitles.miraStartWithin',
+          titleKey: 'pages.projects.videoTitles.miraStartWithin',
         },
         {
           id: 'PBxiO7zCYQM',
-          titleKey: 'pages.music.videoTitles.miraSixDimensions',
+          titleKey: 'pages.projects.videoTitles.miraSixDimensions',
         },
         {
           id: 'mZQpmY6fAcw',
-          titleKey: 'pages.music.videoTitles.miraRecoverySignals',
+          titleKey: 'pages.projects.videoTitles.miraRecoverySignals',
         },
       ],
     },
@@ -269,7 +269,7 @@ export const albums = [
     releaseDate: '2026-09-19',
     recordLabel: 'subscrr.app',
     meta: {
-      descriptionKey: 'pages.music.projectMeta.subscrr'
+      descriptionKey: 'pages.projects.projectMeta.subscrr'
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -281,12 +281,12 @@ export const albums = [
     },
     social: [
       {
-        labelKey: 'pages.music.linkLabels.website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://subscrr.app/',
         icon: 'lucide:globe',
       },
       {
-        labelKey: 'pages.music.linkLabels.appStore',
+        labelKey: 'pages.projects.linkLabels.appStore',
         link: 'https://apps.apple.com/us/app/subscrr-subscription-tracker/id6757530448',
         icon: 'simple-icons:appstore',
       },
@@ -295,15 +295,15 @@ export const albums = [
       youtube: [
         {
           id: 'EbeH_yAOMQQ',
-          titleKey: 'pages.music.videoTitles.subscrrTracking',
+          titleKey: 'pages.projects.videoTitles.subscrrTracking',
         },
         {
           id: 'wLiOGDug7Is',
-          titleKey: 'pages.music.videoTitles.subscrrRecurringExpenses',
+          titleKey: 'pages.projects.videoTitles.subscrrRecurringExpenses',
         },
         {
           id: 'dfNV_ios4HU',
-          titleKey: 'pages.music.videoTitles.subscrrAiSavings',
+          titleKey: 'pages.projects.videoTitles.subscrrAiSavings',
         },
       ],
     },

@@ -7,13 +7,13 @@
         <aside
           ref="filterRef"
           class="merch-filter-wrapper hidden lg:block fixed inset-x-0 top-0 z-40 border-b border-black/10 bg-white/[0.82] pt-[env(safe-area-inset-top)] backdrop-blur-xl backdrop-saturate-150 lg:static lg:min-w-0 lg:flex-1 lg:border-0 lg:bg-transparent lg:pt-0 lg:backdrop-filter-none"
-          :aria-label="$t('pages.merch.navigationLabel')"
+          :aria-label="$t('pages.services.navigationLabel')"
           role="complementary"
         >
     
           <nav
             class="lg:sticky lg:top-[60px] lg:h-[calc(100dvh-60px)]"
-            :aria-label="$t('pages.merch.navigationLabel')"
+            :aria-label="$t('pages.services.navigationLabel')"
           >
             <ul
               class="merch-filter m-0 flex list-none items-center gap-[1.15rem] overflow-x-auto px-4 py-3 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:absolute lg:bottom-8 lg:left-0 lg:items-end lg:gap-2 lg:overflow-visible lg:px-0 lg:py-0 xl:gap-3 2xl:bottom-12"
@@ -37,7 +37,7 @@
           <header class="flex justify-center pt-12 sm:pt-14 lg:pt-22">
             <AnimationReveal class="max-w-full">
               <p class="block whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-black text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(2rem,4vw,3.75rem)] xl:text-[clamp(2.25rem,4vw,4.25rem)] 2xl:text-[clamp(2.5rem,4vw,4.75rem)]">
-                  {{ $t('pages.merch.eyebrow') }}
+                  {{ $t('pages.services.eyebrow') }}
               </p>
             </AnimationReveal>
           </header>
@@ -84,7 +84,7 @@
 </template>
 
 <script setup>
-  import { services } from "~/data/merch";
+  import { services } from "~/data/services";
   import { pageTransitionConfig } from "~/helpers/transitionConfig";
 
   import gsap from "gsap";
@@ -119,10 +119,10 @@
   let navigationTween;
 
   useSeoMeta({
-    title: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
-    description: t("pages.merch.meta.description"),
-    ogTitle: `${t("pages.merch.meta.title")} | ${t("siteName")}`,
-    ogDescription: t("pages.merch.meta.description"),
+    title: `${t("pages.services.meta.title")} | ${t("siteName")}`,
+    description: t("pages.services.meta.description"),
+    ogTitle: `${t("pages.services.meta.title")} | ${t("siteName")}`,
+    ogDescription: t("pages.services.meta.description"),
   });
 
   onMounted(async () => {

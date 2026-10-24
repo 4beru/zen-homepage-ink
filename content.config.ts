@@ -15,17 +15,13 @@ export default defineContentConfig({
         {
           name: "music",
           onUrl: (url) => {
-            // Map English path
-            if (url.loc.startsWith("/en/")) {
-              url.loc = url.loc.replace("/en/", "/");
-            }
-            // Map Spanish path
-            if (url.loc.startsWith("/es/music/")) {
-              url.loc = url.loc.replace("/music/", "/musica/");
-            }
-            // Map Simplified Chinese path
-            if (url.loc.startsWith("/zh-CN/music/")) {
-              url.loc = url.loc.replace("/music/", "/作品/");
+            // Map each locale's internal Markdown path to the public projects route.
+            if (url.loc.startsWith("/en/music/")) {
+              url.loc = url.loc.replace("/en/music/", "/projects/");
+            } else if (url.loc.startsWith("/es/music/")) {
+              url.loc = url.loc.replace("/es/music/", "/proyectos/");
+            } else if (url.loc.startsWith("/zh-CN/music/")) {
+              url.loc = url.loc.replace("/zh-CN/music/", "/作品/");
             }
           },
         },

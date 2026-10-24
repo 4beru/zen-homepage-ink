@@ -42,7 +42,7 @@
         "text2": "sincronizando píxeles"
       }
     },
-    "band": {
+    "references": {
       "name": "Referencias",
       "title": "Referencias",
       "copyrightText": "Todos los trabajos que aparecen pertenecen a sus respectivos creadores. Los compartimos como inspiración.",
@@ -96,7 +96,7 @@
         "webDesignForManageAndAutomatePayments": "Sitio web de una plataforma para gestionar y automatizar pagos."
       }
     },
-    "music": {
+    "projects": {
       "name": "Proyectos",
       "title": "Proyectos",
       "labels": {
@@ -148,7 +148,7 @@
         "subscrrAiSavings": "Ahorra en suscripciones con ayuda de la IA"
       }
     },
-    "merch": {
+    "services": {
       "name": "Servicios",
       "title": "Servicios",
       "eyebrow": "Qué hacemos",
@@ -223,7 +223,7 @@
       },
       "navigationLabel": "Navegación de servicios"
     },
-    "privacy": {
+    "privacyPolicy": {
       "name": "Privacidad",
       "title": "Política de privacidad y cookies",
       "p1": "Tu privacidad nos importa. Este sitio utiliza una pequeña cookie de preferencia para recordar el idioma que elegiste. No utilizamos cookies publicitarias ni de analítica para rastrear tu actividad de navegación.",

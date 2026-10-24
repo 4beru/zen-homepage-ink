@@ -1,170 +1,170 @@
 export const images = [
   {
     src: 'zen-space-logo.webp',
-    textKey: 'pages.band.images.zenSpaceLogo',
+    textKey: 'pages.references.images.zenSpaceLogo',
   },
   {
     src: '1minus1-game-studio.webp',
-    textKey: 'pages.band.images.image1minus1GameStudio',
+    textKey: 'pages.references.images.image1minus1GameStudio',
   },
   {
     src: 'ai-for-trip-planner-app.webp',
-    textKey: 'pages.band.images.aiForTripPlannerApp',
+    textKey: 'pages.references.images.aiForTripPlannerApp',
   },
   {
     src: 'ai-powered-personal-stylist-app.webp',
-    textKey: 'pages.band.images.aiPoweredPersonalStylistApp',
+    textKey: 'pages.references.images.aiPoweredPersonalStylistApp',
   },
   {
     src: 'aquirin-brand-design.webp',
-    textKey: 'pages.band.images.aquirinBrandDesign',
+    textKey: 'pages.references.images.aquirinBrandDesign',
   },
   {
     src: 'beauty-skincare-ecommerce-app.webp',
-    textKey: 'pages.band.images.beautySkincareEcommerceApp',
+    textKey: 'pages.references.images.beautySkincareEcommerceApp',
   },
   {
     src: 'belgrade-arbor-architecture-website-design.webp',
-    textKey: 'pages.band.images.belgradeArborArchitectureWebsiteDesign',
+    textKey: 'pages.references.images.belgradeArborArchitectureWebsiteDesign',
   },
   {
     src: 'culture-index-creative-studio.webp',
-    textKey: 'pages.band.images.cultureIndexCreativeStudio',
+    textKey: 'pages.references.images.cultureIndexCreativeStudio',
   },
   {
     src: 'dashboard-delivery-design.webp',
-    textKey: 'pages.band.images.dashboardDeliveryDesign',
+    textKey: 'pages.references.images.dashboardDeliveryDesign',
   },
   {
     src: 'healthcare-company-mobile-app.webp',
-    textKey: 'pages.band.images.healthcareCompanyMobileApp',
+    textKey: 'pages.references.images.healthcareCompanyMobileApp',
   },
   {
     src: 'hotel-booking-mobile-app-design.webp',
-    textKey: 'pages.band.images.hotelBookingMobileAppDesign',
+    textKey: 'pages.references.images.hotelBookingMobileAppDesign',
   },
   {
     src: 'jesper-landberg-website-studio.webp',
-    textKey: 'pages.band.images.jesperLandbergWebsiteStudio',
+    textKey: 'pages.references.images.jesperLandbergWebsiteStudio',
   },
   {
     src: 'junkbranding-portfolio-ch.webp',
-    textKey: 'pages.band.images.junkbrandingPortfolioCh',
+    textKey: 'pages.references.images.junkbrandingPortfolioCh',
   },
   {
     src: 'kyoosang-choi-brand-design.webp',
-    textKey: 'pages.band.images.kyoosangChoiBrandDesign',
+    textKey: 'pages.references.images.kyoosangChoiBrandDesign',
   },
   {
     src: 'lajoya-europe-website.webp',
-    textKey: 'pages.band.images.lajoyaEuropeWebsite',
+    textKey: 'pages.references.images.lajoyaEuropeWebsite',
   },
   {
     src: 'maison-auge-creative-studio.webp',
-    textKey: 'pages.band.images.maisonAugeCreativeStudio',
+    textKey: 'pages.references.images.maisonAugeCreativeStudio',
   },
   {
     src: 'mental-health-mobile-app.webp',
-    textKey: 'pages.band.images.mentalHealthMobileApp',
+    textKey: 'pages.references.images.mentalHealthMobileApp',
   },
   {
     src: 'mission-personal-injury-lawyer.webp',
-    textKey: 'pages.band.images.missionPersonalInjuryLawyer',
+    textKey: 'pages.references.images.missionPersonalInjuryLawyer',
   },
   {
     src: 'neu-cultured-concept-design.webp',
-    textKey: 'pages.band.images.neuCulturedConceptDesign',
+    textKey: 'pages.references.images.neuCulturedConceptDesign',
   },
   {
     src: 'nfl-league-brand-design.webp',
-    textKey: 'pages.band.images.nflLeagueBrandDesign',
+    textKey: 'pages.references.images.nflLeagueBrandDesign',
   },
   {
     src: 'offpossible-creative-portfolio.webp',
-    textKey: 'pages.band.images.offpossibleCreativePortfolio',
+    textKey: 'pages.references.images.offpossibleCreativePortfolio',
   },
   {
     src: 'offpossible-mobile-portfolio.webp',
-    textKey: 'pages.band.images.offpossibleMobilePortfolio',
+    textKey: 'pages.references.images.offpossibleMobilePortfolio',
   },
   {
     src: 'onseis-studio-design.webp',
-    textKey: 'pages.band.images.onseisStudioDesign',
+    textKey: 'pages.references.images.onseisStudioDesign',
   },
   {
     src: 'pegassi-spotify-playlist.webp',
-    textKey: 'pages.band.images.pegassiSpotifyPlaylist',
+    textKey: 'pages.references.images.pegassiSpotifyPlaylist',
   },
   {
     src: 'rapide-yacht-group-website.webp',
-    textKey: 'pages.band.images.rapideYachtGroupWebsite',
+    textKey: 'pages.references.images.rapideYachtGroupWebsite',
   },
   {
     src: 'real-state-booking-app.webp',
-    textKey: 'pages.band.images.realStateBookingApp',
+    textKey: 'pages.references.images.realStateBookingApp',
   },
   {
     src: 'ronnsquare-architecture-website.webp',
-    textKey: 'pages.band.images.ronnsquareArchitectureWebsite',
+    textKey: 'pages.references.images.ronnsquareArchitectureWebsite',
   },
   {
     src: 'rova-smart-running-tracker-app.webp',
-    textKey: 'pages.band.images.rovaSmartRunningTrackerApp',
+    textKey: 'pages.references.images.rovaSmartRunningTrackerApp',
   },
   {
     src: 'second-ride-brand-design.webp',
-    textKey: 'pages.band.images.secondRideBrandDesign',
+    textKey: 'pages.references.images.secondRideBrandDesign',
   },
   {
     src: 'shipment-tracking-fleet-management-design.webp',
-    textKey: 'pages.band.images.shipmentTrackingFleetManagementDesign',
+    textKey: 'pages.references.images.shipmentTrackingFleetManagementDesign',
   },
   {
     src: 'smart-financial-management-app.webp',
-    textKey: 'pages.band.images.smartFinancialManagementApp',
+    textKey: 'pages.references.images.smartFinancialManagementApp',
   },
   {
     src: 'solar-energy-monitoring-mobile-app.webp',
-    textKey: 'pages.band.images.solarEnergyMonitoringMobileApp',
+    textKey: 'pages.references.images.solarEnergyMonitoringMobileApp',
   },
   {
     src: 'sonya-pesselev-portfoliio-design.webp',
-    textKey: 'pages.band.images.sonyaPesselevPortfoliioDesign',
+    textKey: 'pages.references.images.sonyaPesselevPortfoliioDesign',
   },
   {
     src: 'storey-architecture-website.webp',
-    textKey: 'pages.band.images.storeyArchitectureWebsite',
+    textKey: 'pages.references.images.storeyArchitectureWebsite',
   },
   {
     src: 'structure-consulting-engineers.webp',
-    textKey: 'pages.band.images.structureConsultingEngineers',
+    textKey: 'pages.references.images.structureConsultingEngineers',
   },
   {
     src: 'sweet-tape-website.webp',
-    textKey: 'pages.band.images.sweetTapeWebsite',
+    textKey: 'pages.references.images.sweetTapeWebsite',
   },
   {
     src: 'swimtopia-business-website.webp',
-    textKey: 'pages.band.images.swimtopiaBusinessWebsite',
+    textKey: 'pages.references.images.swimtopiaBusinessWebsite',
   },
   {
     src: 'theobroma-chocolat-website-design.webp',
-    textKey: 'pages.band.images.theobromaChocolatWebsiteDesign',
+    textKey: 'pages.references.images.theobromaChocolatWebsiteDesign',
   },
   {
     src: 'think-big-studio-brand-design.webp',
-    textKey: 'pages.band.images.thinkBigStudioBrandDesign',
+    textKey: 'pages.references.images.thinkBigStudioBrandDesign',
   },
   {
     src: 'trust-guss-injury-lawyers.webp',
-    textKey: 'pages.band.images.trustGussInjuryLawyers',
+    textKey: 'pages.references.images.trustGussInjuryLawyers',
   },
   {
     src: 'unipay-mobile-app-design-ui-ux.webp',
-    textKey: 'pages.band.images.unipayMobileAppDesignUiUx',
+    textKey: 'pages.references.images.unipayMobileAppDesignUiUx',
   },
   {
     src: 'web-design-for-manage-and-automate-payments.webp',
-    textKey: 'pages.band.images.webDesignForManageAndAutomatePayments',
+    textKey: 'pages.references.images.webDesignForManageAndAutomatePayments',
   },
 ]

@@ -19,17 +19,17 @@
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="band">{{ $t('pages.band.name') }}</NuxtLinkLocale>
+              <NuxtLinkLocale to="references">{{ $t('pages.references.name') }}</NuxtLinkLocale>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="music">{{ $t('pages.music.name') }}</NuxtLinkLocale>
+              <NuxtLinkLocale to="projects">{{ $t('pages.projects.name') }}</NuxtLinkLocale>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="merch">{{ $t('pages.merch.name') }}</NuxtLinkLocale>
+              <NuxtLinkLocale to="services">{{ $t('pages.services.name') }}</NuxtLinkLocale>
             </AnimationTextShadow>
           </li>
         </ul>

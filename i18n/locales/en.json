@@ -42,7 +42,7 @@
         "text2": "syncing pixels"
       }
     },
-    "band": {
+    "references": {
       "name": "References",
       "title": "References",
       "copyrightText": "All featured work belongs to its respective creators. Shared here for inspiration.",
@@ -96,7 +96,7 @@
         "webDesignForManageAndAutomatePayments": "Payment management and automation platform website."
       }
     },
-    "music": {
+    "projects": {
       "name": "Works",
       "title": "Works",
       "labels": {
@@ -148,7 +148,7 @@
         "subscrrAiSavings": "Let AI Help You Save on Subscriptions"
       }
     },
-    "merch": {
+    "services": {
       "name": "Services",
       "title": "Services",
       "eyebrow": "What we do",
@@ -223,7 +223,7 @@
       },
       "navigationLabel": "Services navigation"
     },
-    "privacy": {
+    "privacyPolicy": {
       "name": "Privacy",
       "title": "Privacy policy & cookies",
       "p1": "Your privacy matters to us. This site uses a small preference cookie to remember your language choice. We don't use advertising or analytics cookies to track your browsing activity.",

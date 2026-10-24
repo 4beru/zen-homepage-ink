@@ -33,7 +33,7 @@
             <p class="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1">
               <span>&copy; {{ currentYear }} ZEN SPACE Studio</span>
               <span class="inline-flex items-center gap-1">
-                &pi; <NuxtLinkLocale to="/privacy">{{ $t('footer.privacy') }}</NuxtLinkLocale>
+                &pi; <NuxtLinkLocale :to="{ name: 'privacy-policy' }">{{ $t('footer.privacy') }}</NuxtLinkLocale>
               </span>
             </p>
 

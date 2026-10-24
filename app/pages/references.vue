@@ -1,9 +1,9 @@
 <template>
   <section ref="sectionBandRef" class="section-band">
-    <h1 class="sr-only">{{ $t('pages.band.title') }}</h1>
+    <h1 class="sr-only">{{ $t('pages.references.title') }}</h1>
     <div class="flex flex-col lg:flex-row lg:flex-wrap gap-x-4 bg-black text-white border-t-16 border-t-black">
       <div class="flex-auto min-w-0 max-w-2xl">
-        <p ref="introRef" class="p-6 text-pretty text-[clamp(1.05rem,2.4vw,1.35rem)] leading-relaxed max-w-2xl">{{ $t('pages.band.intro') }}</p>
+        <p ref="introRef" class="p-6 text-pretty text-[clamp(1.05rem,2.4vw,1.35rem)] leading-relaxed max-w-2xl">{{ $t('pages.references.intro') }}</p>
       </div>
       <figure v-for="(image, index) in images" :key="image.src" :class="`figure-${index}`" class="relative flex-auto overflow-hidden">
         <div class="reveal-columns absolute z-90 inset-0 w-full h-full">
@@ -15,7 +15,7 @@
         <figcaption class="relative z-10 h-full text-white bg-black">{{ $t(image.textKey) }}</figcaption>
       </figure>
     </div>
-    <p class="p-6 text-pretty">&copy; {{ $t('pages.band.copyrightText') }}</p>
+    <p class="p-6 text-pretty">&copy; {{ $t('pages.references.copyrightText') }}</p>
   </section>
 </template>
 
@@ -42,10 +42,10 @@
   let ctx;
 
   useSeoMeta({
-    title: `${t('pages.band.meta.title')} | ${t('siteName')}`,
-    description: t('pages.band.meta.description'),
-    ogTitle: `${t('pages.band.meta.title')} | ${t('siteName')}`,
-    ogDescription: t('pages.band.meta.description'),
+    title: `${t('pages.references.meta.title')} | ${t('siteName')}`,
+    description: t('pages.references.meta.description'),
+    ogTitle: `${t('pages.references.meta.title')} | ${t('siteName')}`,
+    ogDescription: t('pages.references.meta.description'),
   })
 
   const handleClick = (e) => {

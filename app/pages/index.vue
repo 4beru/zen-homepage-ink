@@ -59,7 +59,7 @@
         </div>
 
         <div ref="buttonHypnoticRef" class="button-hypnotic absolute top-0 left-0 flex items-center justify-center w-full h-full p-4 sm:px-16">
-          <ButtonHypnotic to="music">{{ $t('pages.home.buttonHypnotic') }}</ButtonHypnotic>
+          <ButtonHypnotic to="projects">{{ $t('pages.home.buttonHypnotic') }}</ButtonHypnotic>
         </div>
       </section>
 

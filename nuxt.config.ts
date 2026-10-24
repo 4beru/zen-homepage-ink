@@ -85,29 +85,29 @@ export default defineNuxtConfig({
         es: "/",
         "zh-CN": "/首页",
       },
-      band: {
-        en: "/band",
-        es: "/banda",
-        "zh-CN": "/灵感",
+      references: {
+        en: "/references",
+        es: "/referencias",
+        "zh-CN": "/灵感参考",
       },
-      merch: {
-        en: "/merch",
-        es: "/merch",
+      services: {
+        en: "/services",
+        es: "/servicios",
         "zh-CN": "/服务",
       },
-      music: {
-        en: "/music",
-        es: "/musica",
+      projects: {
+        en: "/projects",
+        es: "/proyectos",
         "zh-CN": "/作品",
       },
-      "music-slug": {
-        en: "/music/[slug]",
-        es: "/musica/[slug]",
+      "projects-slug": {
+        en: "/projects/[slug]",
+        es: "/proyectos/[slug]",
         "zh-CN": "/作品/[slug]",
       },
-      privacy: {
-        en: "/privacy",
-        es: "/privacidad",
+      "privacy-policy": {
+        en: "/privacy-policy",
+        es: "/politica-de-privacidad",
         "zh-CN": "/隐私政策",
       },
     },

@@ -6,7 +6,7 @@
     <section>
       <header>
         <AnimationReveal>
-          <NuxtLinkLocale to="music" class="inline-block lowercase">{{ $t('pages.music.labels.back') }}</NuxtLinkLocale>
+          <NuxtLinkLocale to="projects" class="inline-block lowercase">{{ $t('pages.projects.labels.back') }}</NuxtLinkLocale>
         </AnimationReveal>
         <AnimationReveal>
           <h1>{{ content.title }}</h1>
@@ -20,7 +20,7 @@
         <section class="flex flex-col gap-5">
           <AnimationReveal v-if="content.recordLabel">
             <div class="flex items-baseline gap-2 text-base">
-              <span class="opacity-60">{{ $t('pages.music.labels.recordLabel') }}</span>
+              <span class="opacity-60">{{ $t('pages.projects.labels.recordLabel') }}</span>
               <span>{{ content.recordLabel }}</span>
             </div>
           </AnimationReveal>
