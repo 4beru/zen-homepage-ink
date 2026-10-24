@@ -6,6 +6,10 @@ export default defineEventHandler((event) => {
 
   setResponseHeader(event, "content-type", "text/plain; charset=utf-8");
 
+  if (config.public.isPreviewDeployment) {
+    return ["User-agent: *", "Disallow: /", ""].join("\n");
+  }
+
   return [
     "User-agent: *",
     "Allow: /",
