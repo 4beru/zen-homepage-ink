@@ -58,20 +58,27 @@
 
   definePageMeta({
     pageTransition: pageTransitionFadeConfig,
+    middleware: "project-slug-redirect",
   });
 
   const config = useRuntimeConfig()
   const route = useRoute()
   const { locale, t } = useI18n()
   const slug = String(route.params.slug ?? '')
-  const postKey = computed(() => `music-content:${locale.value}:${slug}`)
+  const content = albums.find(album => album.slug === slug)
+
+  if (!content) {
+    throw createError({ statusCode: 404, statusMessage: t('errors.projectNotFound') })
+  }
+
+  const postKey = computed(() => `music-content:${locale.value}:${content.contentSlug}`)
 
   const { data: post } = await useAsyncData(
     postKey,
     async () => {
       const paths = new Set([
-        `/${locale.value}/music/${slug}`,
-        `/${locale.value.toLowerCase()}/music/${slug}`,
+        `/${locale.value}/music/${content.contentSlug}`,
+        `/${locale.value.toLowerCase()}/music/${content.contentSlug}`,
       ])
 
       for (const path of paths) {
@@ -83,18 +90,13 @@
     },
   )
 
-  const content = albums.find(album => album.slug === slug)
-  if (!content) {
-    throw createError({ statusCode: 404, statusMessage: t('errors.projectNotFound') })
-  }
-
   useSeoMeta({
     title: `${content.title} | ${t('siteName')}`,
     description: t(content.meta.descriptionKey),
     ogTitle: `${content.title} | ${t('siteName')}`,
     ogDescription: t(content.meta.descriptionKey),
     ogType: 'website',
-    ogImage: `${config.public.appUrl}/albums/${slug}/${content.images.cover}`,
+    ogImage: `${config.public.appUrl}/albums/${content.assetDirectory}/${content.images.cover}`,
     ogImageAlt: t('components.accessibility.albumCover', { title: content.title }),
     ogImageWidth: 1000,
     ogImageHeight: 900,
