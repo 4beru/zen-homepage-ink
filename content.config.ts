@@ -1,4 +1,4 @@
-import { defineCollection, defineContentConfig, z } from "@nuxt/content";
+import { defineCollection, defineContentConfig } from "@nuxt/content";
 import { asSitemapCollection } from "@nuxtjs/sitemap/content";
 
 export default defineContentConfig({
@@ -8,9 +8,6 @@ export default defineContentConfig({
         {
           type: "page",
           source: "**/music/*.md",
-          schema: z.object({
-            date: z.string(),
-          }),
         },
         {
           name: "music",
