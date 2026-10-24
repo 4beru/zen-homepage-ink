@@ -7,26 +7,26 @@ export const socials = [
   {
     name: 'Facebook',
     icon: 'simple-icons:facebook',
-    url: 'https://www.facebook.com/skizophonic'
+    url: 'https://www.facebook.com/aberu'
   },
   {
     name: 'Youtube',
     icon: 'simple-icons:youtube',
-    url: 'https://www.youtube.com/user/Skizophonic2009'
+    url: 'https://www.youtube.com/user/aberu'
   },
   {
     name: 'Bandcamp',
     icon: 'simple-icons:bandcamp',
-    url: 'https://skizophonic.bandcamp.com'
+    url: 'https://aberu.bandcamp.com'
   },
   {
     name: 'Instagram',
     icon: 'simple-icons:instagram',
-    url: 'https://www.instagram.com/skizophonic_official'
+    url: 'https://www.instagram.com/aberu'
   },
   // {
   //   name: 'X',
   //   icon: 'simple-icons:x',
-  //   url: 'https://x.com/skizophonic'
+  //   url: 'https://x.com/aberu'
   // },
 ]
