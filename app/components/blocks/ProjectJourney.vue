@@ -13,7 +13,7 @@
           class="mx-auto block w-full whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(1.5rem,10vw,7rem)] xl:text-[clamp(1.5rem,10vw,8.8rem)] 2xl:text-[clamp(1.5rem,10vw,10.5rem)] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none"
           :class="isTitleRevealed ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-6 opacity-0 blur-[6px]'"
         >
-          {{ $t("pages.merch.journey.title") }}
+          {{ $t("pages.services.journey.title") }}
         </h2>
       </header>
 
@@ -85,30 +85,30 @@
   const steps = [
     {
       id: "discover",
-      numberKey: "pages.merch.journey.steps.discover.number",
-      titleKey: "pages.merch.journey.steps.discover.title",
-      descriptionKey: "pages.merch.journey.steps.discover.description",
+      numberKey: "pages.services.journey.steps.discover.number",
+      titleKey: "pages.services.journey.steps.discover.title",
+      descriptionKey: "pages.services.journey.steps.discover.description",
       video: "/videos/pj-step-1.webm",
       poster: "/albums/video-rock/rythm-desktop.webp",
-      altKey: "pages.merch.journey.steps.discover.alt",
+      altKey: "pages.services.journey.steps.discover.alt",
     },
     {
       id: "shape",
-      numberKey: "pages.merch.journey.steps.shape.number",
-      titleKey: "pages.merch.journey.steps.shape.title",
-      descriptionKey: "pages.merch.journey.steps.shape.description",
+      numberKey: "pages.services.journey.steps.shape.number",
+      titleKey: "pages.services.journey.steps.shape.title",
+      descriptionKey: "pages.services.journey.steps.shape.description",
       video: "/videos/pj-step-2.webm",
       poster: "/albums/one/penti-desktop.webp",
-      altKey: "pages.merch.journey.steps.shape.alt",
+      altKey: "pages.services.journey.steps.shape.alt",
     },
     {
       id: "launch",
-      numberKey: "pages.merch.journey.steps.launch.number",
-      titleKey: "pages.merch.journey.steps.launch.title",
-      descriptionKey: "pages.merch.journey.steps.launch.description",
+      numberKey: "pages.services.journey.steps.launch.number",
+      titleKey: "pages.services.journey.steps.launch.title",
+      descriptionKey: "pages.services.journey.steps.launch.description",
       video: "/videos/pj-step-3.webm",
       poster: "/albums/velodrome/unimatic-desktop.webp",
-      altKey: "pages.merch.journey.steps.launch.alt",
+      altKey: "pages.services.journey.steps.launch.alt",
     },
   ];
 
