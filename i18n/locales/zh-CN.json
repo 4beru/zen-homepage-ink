@@ -98,7 +98,7 @@
     },
     "projects": {
       "name": "作品",
-      "title": "作品",
+      "title": "精选数字项目",
       "labels": {
         "back": "返回作品集",
         "music": "作品",
@@ -233,7 +233,7 @@
       "p5": "今天，构想未来。明天，让它成为现实。",
       "meta": {
         "title": "隐私政策与 Cookie",
-        "description": "了解 Zen Space 的隐私政策与 Cookie 使用方式。"
+        "description": "了解 Zen Space 如何处理个人信息，以及如何使用偏好 Cookie 记住您的语言选择。"
       }
     }
   },
