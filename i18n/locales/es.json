@@ -98,7 +98,7 @@
     },
     "projects": {
       "name": "Proyectos",
-      "title": "Proyectos",
+      "title": "Proyectos digitales seleccionados",
       "labels": {
         "back": "Volver a proyectos",
         "music": "Proyectos",
@@ -233,7 +233,7 @@
       "p5": "Hoy, imagínalo. Mañana, hazlo realidad.",
       "meta": {
         "title": "Política de privacidad y cookies",
-        "description": "Información sobre la política de privacidad y el uso de cookies."
+        "description": "Conoce cómo Zen Space trata la información personal y utiliza una cookie de preferencia para recordar el idioma elegido."
       }
     }
   },
