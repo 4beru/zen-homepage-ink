@@ -1,6 +1,14 @@
 import { defineCollection, defineContentConfig } from "@nuxt/content";
 import { asSitemapCollection } from "@nuxtjs/sitemap/content";
 
+const projectSlugByContentSlug: Record<string, string> = {
+  "video-rock": "rythm",
+  velodrome: "unimatic",
+  one: "penti-ai",
+  gossip: "mira-life",
+  "living-room": "subscrr",
+};
+
 export default defineContentConfig({
   collections: {
     music: defineCollection(
@@ -12,13 +20,26 @@ export default defineContentConfig({
         {
           name: "music",
           onUrl: (url) => {
-            // Map each locale's internal Markdown path to the public projects route.
-            if (url.loc.startsWith("/en/music/")) {
-              url.loc = url.loc.replace("/en/music/", "/projects/");
-            } else if (url.loc.startsWith("/es/music/")) {
-              url.loc = url.loc.replace("/es/music/", "/proyectos/");
-            } else if (url.loc.startsWith("/zh-CN/music/")) {
-              url.loc = url.loc.replace("/zh-CN/music/", "/作品/");
+            // Keep locale prefixes while mapping internal Markdown paths to public project routes.
+            const routePrefixes = [
+              { source: "/en/music/", target: "/projects/" },
+              { source: "/es/music/", target: "/es/proyectos/" },
+              { source: "/zh-CN/music/", target: "/zh-CN/作品/" },
+            ];
+
+            for (const prefix of routePrefixes) {
+              if (url.loc.startsWith(prefix.source)) {
+                url.loc = url.loc.replace(prefix.source, prefix.target);
+                break;
+              }
+            }
+
+            const lastSlash = url.loc.lastIndexOf("/");
+            const contentSlug = url.loc.slice(lastSlash + 1);
+            const publicSlug = projectSlugByContentSlug[contentSlug];
+
+            if (publicSlug) {
+              url.loc = `${url.loc.slice(0, lastSlash + 1)}${publicSlug}`;
             }
           },
         },
