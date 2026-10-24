@@ -65,13 +65,13 @@ export default defineNuxtConfig({
       {
         code: "en",
         name: "English",
-        language: "en-GB",
+        language: "en",
         file: "en.json",
       },
       {
         code: "es",
         name: "Spanish",
-        language: "es-ES",
+        language: "es",
         file: "es.json",
       },
       {
