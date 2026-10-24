@@ -1,5 +1,6 @@
 <template>
   <div class="w-full">
+    <h1 class="sr-only">{{ $t('pages.services.title') }}</h1>
     <section
         ref="merchRef"
         class="container relative flex gap-16 justify-end pt-[calc(3.5rem+env(safe-area-inset-top))] lg:pt-[60px]"
