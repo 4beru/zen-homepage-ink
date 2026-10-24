@@ -132,7 +132,8 @@
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-    const splitType = locale.value === 'zh-CN' ? 'lines, chars' : 'lines, words';
+    const splitUnit = locale.value === 'zh-CN' ? 'chars' : 'words';
+    const splitType = `lines, ${splitUnit}`;
 
     ctx = gsap.context(() => {
       block1Split = SplitText.create(".block1 p", {
@@ -236,12 +237,12 @@
           autoAlpha: 0,
           ease: 'power4.in',
         }, '<-=1%')
-        .from(block1Split.words, {
+        .from(block1Split[splitUnit], {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
           ease: 'power4.out',
-          stagger: 0.015,
+          stagger: locale.value === 'zh-CN' ? 0.006 : 0.015,
         }, '<0.3')
         .to('.circle0', {
           clipPath: 'circle(64% at 50% 50%)',
@@ -296,7 +297,7 @@
           duration: 0.7,
           ease: 'power4.in',
         }, '<0.3')
-        .from(locale.value === 'zh-CN' ? block2Split.chars : block2Split.words, {
+        .from(block2Split[splitUnit], {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
@@ -346,7 +347,7 @@
             })
           },
         })
-        .from(locale.value === 'zh-CN' ? block3Split.chars : block3Split.words, {
+        .from(block3Split[splitUnit], {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
