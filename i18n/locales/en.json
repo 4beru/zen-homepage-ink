@@ -98,7 +98,7 @@
     },
     "projects": {
       "name": "Works",
-      "title": "Works",
+      "title": "Selected Digital Projects",
       "labels": {
         "back": "Back to works",
         "music": "Works",
@@ -233,7 +233,7 @@
       "p5": "Today, imagine it. Tomorrow, ship it.",
       "meta": {
         "title": "Privacy policy & cookies",
-        "description": "Privacy policy & cookies information"
+        "description": "Read how Zen Space handles personal information and uses a preference cookie to remember your language choice."
       }
     }
   },
