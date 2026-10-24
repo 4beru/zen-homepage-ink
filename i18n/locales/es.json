@@ -4,7 +4,7 @@
     "code": "es",
     "es": "Español",
     "en": "Inglés",
-    "zh-CN": "Chino simplificado"
+    "zh-CN": "Chino"
   },
   "meta": {
     "title": "Zen Space",
@@ -309,7 +309,7 @@
         }
       ],
       "aside": "¿Te gustaría saber si encajariamos bien?",
-      "headshotAlt": "Retrato de Aberu",
+      "headshotAlt": "Retrato de Abel",
       "bookCall": "Contacta a Abel",
       "bookingSoon": "El enlace para reservar estará disponible pronto."
     },

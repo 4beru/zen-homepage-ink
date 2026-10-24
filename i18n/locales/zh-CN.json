@@ -156,7 +156,7 @@
       "services": {
         "webDevelopment": {
           "title": "创意网站开发",
-          "navTitle": "网站",
+          "navTitle": "网站设计开发",
           "description": "我们设计并开发具有鲜明个性的网站，以清晰的艺术指导、审慎的交互设计和可靠的前端工程为基础，让每个细节都服务于品牌叙事与使用体验。",
           "alt": "展现创意网站开发的网页视觉设计。",
           "secondaryAlt": "突出沉浸式交互体验的另一组网页视觉。",
@@ -165,7 +165,7 @@
         },
         "webApps": {
           "title": "为长期发展而打造的 Web 应用",
-          "navTitle": "Web 应用",
+          "navTitle": "Web 应用开发",
           "description": "我们设计并构建 Web 应用与 SaaS 平台，覆盖用户流程、数据结构、前后端开发及系统集成，让产品在持续增长的同时依然快速、易维护且体验一致。",
           "alt": "展示产品设计与架构的 Web 应用界面。",
           "secondaryAlt": "展示互联产品体验的另一组 Web 应用视觉。",
@@ -174,7 +174,7 @@
         },
         "mobileApps": {
           "title": "移动应用开发",
-          "navTitle": "移动应用",
+          "navTitle": "移动应用开发",
           "description": "我们打造流畅、贴近原生体验的移动应用，将复杂流程转化为直观易用的界面，并以扎实的架构为未来增长留足空间。",
           "alt": "展现移动应用开发的应用界面。",
           "secondaryAlt": "强调流畅交互体验的另一组移动应用视觉。",
@@ -183,7 +183,7 @@
         },
         "productDesign": {
           "title": "界面与产品设计",
-          "navTitle": "产品设计",
+          "navTitle": "产品设计 +++",
           "description": "我们设计清晰而令人印象深刻的界面与视觉系统，从最初的线框稿到精细完善、可供开发落地的界面，每一步都兼顾实用与表达。",
           "alt": "展现精致产品界面的界面设计视觉。",
           "secondaryAlt": "用于数字工作流程的另一组用户体验与界面设计视觉。",
@@ -309,8 +309,8 @@
         }
       ],
       "aside": "想了解我们是否适合与您合作？",
-      "headshotAlt": "Aberu 的肖像",
-      "bookCall": "预约与 Aberu 沟通",
+      "headshotAlt": "Abel 的肖像",
+      "bookCall": "预约与 Abel 沟通",
       "bookingSoon": "预约链接即将开放"
     },
     "location": "布宜诺斯艾利斯",
