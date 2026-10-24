@@ -68,8 +68,19 @@
 
   const { data: post } = await useAsyncData(
     postKey,
-    () => queryCollection('music').path(`/${locale.value.toLowerCase()}/music/${slug}`).first(),
-    { watch: [locale] },
+    async () => {
+      const paths = new Set([
+        `/${locale.value}/music/${slug}`,
+        `/${locale.value.toLowerCase()}/music/${slug}`,
+      ])
+
+      for (const path of paths) {
+        const result = await queryCollection('music').path(path).first()
+        if (result) return result
+      }
+
+      return null
+    },
   )
 
   const content = albums.find(album => album.slug === slug)
