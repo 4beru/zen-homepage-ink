@@ -1,0 +1,79 @@
+{
+  "redirects": [
+    {
+      "source": "/projects/video-rock",
+      "destination": "/projects/rythm",
+      "permanent": true
+    },
+    {
+      "source": "/projects/velodrome",
+      "destination": "/projects/unimatic",
+      "permanent": true
+    },
+    {
+      "source": "/projects/one",
+      "destination": "/projects/penti-ai",
+      "permanent": true
+    },
+    {
+      "source": "/projects/gossip",
+      "destination": "/projects/mira-life",
+      "permanent": true
+    },
+    {
+      "source": "/projects/living-room",
+      "destination": "/projects/subscrr",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/video-rock",
+      "destination": "/es/proyectos/rythm",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/velodrome",
+      "destination": "/es/proyectos/unimatic",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/one",
+      "destination": "/es/proyectos/penti-ai",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/gossip",
+      "destination": "/es/proyectos/mira-life",
+      "permanent": true
+    },
+    {
+      "source": "/es/proyectos/living-room",
+      "destination": "/es/proyectos/subscrr",
+      "permanent": true
+    },
+    {
+      "source": "/zh-CN/作品/video-rock",
+      "destination": "/zh-CN/作品/rythm",
+      "permanent": true
+    },
+    {
+      "source": "/zh-CN/作品/velodrome",
+      "destination": "/zh-CN/作品/unimatic",
+      "permanent": true
+    },
+    {
+      "source": "/zh-CN/作品/one",
+      "destination": "/zh-CN/作品/penti-ai",
+      "permanent": true
+    },
+    {
+      "source": "/zh-CN/作品/gossip",
+      "destination": "/zh-CN/作品/mira-life",
+      "permanent": true
+    },
+    {
+      "source": "/zh-CN/作品/living-room",
+      "destination": "/zh-CN/作品/subscrr",
+      "permanent": true
+    }
+  ]
+}
