@@ -20,7 +20,7 @@
       playsinline
       :src="videoUrl"
     >
-      Tu navegador no soporta el elemento de video.
+      {{ $t('components.accessibility.videoUnsupported') }}
     </video>
   </div>
 </template>

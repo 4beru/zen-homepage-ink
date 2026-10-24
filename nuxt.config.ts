@@ -1,15 +1,18 @@
 import tailwindcss from "@tailwindcss/vite";
 
-const appUrl = process.env.APP_URL || "http://localhost:3000";
+const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const vercelHost = isVercelPreview
+  ? process.env.VERCEL_URL
+  : process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+const inferredAppUrl = vercelHost ? `https://${vercelHost}` : "http://localhost:3000";
+const appUrl = (isVercelPreview ? inferredAppUrl : process.env.APP_URL || inferredAppUrl)
+  .replace(/\/+$/, "");
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false, // Need to disable server-side rendering to prevent error 500 (still working on this).
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  nitro: {
-    preset: "node-server",
-  },
   devServer: {
     port: 3000,
     host: "0.0.0.0",
@@ -47,7 +50,7 @@ export default defineNuxtConfig({
   },
   site: {
     url: appUrl,
-    name: "Skizophonic website",
+    name: "Zen Space",
   },
   i18n: {
     baseUrl: appUrl,
@@ -62,89 +65,101 @@ export default defineNuxtConfig({
       {
         code: "en",
         name: "English",
-        language: "en-GB",
+        language: "en",
         file: "en.json",
       },
       {
         code: "es",
         name: "Spanish",
-        language: "es-ES",
+        language: "es",
         file: "es.json",
+      },
+      {
+        code: "zh-CN",
+        name: "简体中文",
+        language: "zh-CN",
+        file: "zh-CN.json",
       },
     ],
     customRoutes: "config", // disable custom route with page components
     pages: {
-      home: {
-        en: "/home",
-        es: "/home",
+      index: {
+        en: "/",
+        es: "/",
+        "zh-CN": "/首页",
       },
-      band: {
-        en: "/band",
-        es: "/banda",
+      references: {
+        en: "/references",
+        es: "/referencias",
+        "zh-CN": "/灵感参考",
       },
-      merch: {
-        en: "/merch",
-        es: "/merch",
+      services: {
+        en: "/services",
+        es: "/servicios",
+        "zh-CN": "/服务",
       },
-      music: {
-        en: "/music",
-        es: "/musica",
+      projects: {
+        en: "/projects",
+        es: "/proyectos",
+        "zh-CN": "/作品",
       },
-      "music-slug": {
-        en: "/music/[slug]",
-        es: "/musica/[slug]",
+      "projects-slug": {
+        en: "/projects/[slug]",
+        es: "/proyectos/[slug]",
+        "zh-CN": "/作品/[slug]",
       },
-      privacy: {
-        en: "/privacy",
-        es: "/privacidad",
+      "privacy-policy": {
+        en: "/privacy-policy",
+        es: "/politica-de-privacidad",
+        "zh-CN": "/隐私政策",
       },
     },
   },
   app: {
     head: {
-      title: "Skizophonic",
+      title: "Zen Space — Creative Software Studio",
       meta: [
         {
           name: "description",
-          content: "Music band based in Benicasim and Castellón, Spain",
+          content: "Creative software studio designing and engineering distinctive websites and digital products.",
         },
         {
-          name: "og:title",
-          content: "Skizophonic",
+          property: "og:title",
+          content: "Zen Space — Creative Software Studio",
         },
         {
-          name: "og:description",
-          content: "Music band based in Benicasim and Castellón, Spain",
+          property: "og:description",
+          content: "Creative software studio designing and engineering distinctive websites and digital products.",
         },
         {
-          name: "og:image",
+          property: "og:image",
           content: `${appUrl}/images/logo_circles.png`,
         },
         {
-          name: "og:image:alt",
-          content: "Skizophonic logo",
+          property: "og:image:alt",
+          content: "Zen Space logo",
         },
         {
-          name: "og:image:width",
+          property: "og:image:width",
           content: "512",
         },
         {
-          name: "og:image:height",
+          property: "og:image:height",
           content: "512",
         },
         {
-          name: "og:url",
-          content: appUrl,
-        },
-        {
-          name: "og:type",
+          property: "og:type",
           content: "website",
         },
+        {
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "author", content: "Dan Alcaide" },
-        { name: "generator", content: "Coffe and chocolate" },
+        { name: "author", content: "Abel" },
+        { name: "generator", content: "Nuxt" },
         { name: "format-detection", content: "telephone=no" },
-        { name: "apple-mobile-web-app-title", content: "Skizophonic" },
+        { name: "apple-mobile-web-app-title", content: "Zen Space" },
       ],
       link: [
         {
@@ -187,11 +202,19 @@ export default defineNuxtConfig({
         weights: [600, 700, 800, 900],
         display: "swap",
       },
+      {
+        name: "Noto Sans SC",
+        provider: "google",
+        weights: ["100 900"],
+        subsets: ["chinese-simplified", "latin", "latin-ext"],
+        display: "swap",
+      },
     ],
   },
   runtimeConfig: {
     public: {
       appUrl,
+      isPreviewDeployment: isVercelPreview,
     },
   },
 });

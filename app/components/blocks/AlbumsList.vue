@@ -11,26 +11,26 @@
         <Icon class="icon-swipe" name="mdi:gesture-swipe-vertical" />
       </button>
     </div>
-    <div v-for="album in albums" :key="album.name" class="slide album invisible fixed w-screen h-screen top-0 will-change-transform [&_a]:before:h-0">
+    <div v-for="album in albums" :key="album.slug" class="slide album invisible fixed w-screen h-screen top-0 will-change-transform [&_a]:before:h-0">
       <div class="outer-wrapper w-full h-full overflow-y-hidden will-change-transform">
         <div class="inner-wrapper w-full h-full overflow-y-hidden will-change-transform">
-          <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="`background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url(/albums/${album.slug}/${album.images.cover});`">
+          <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="`background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url(/albums/${album.assetDirectory}/${album.images.cover});`">
             <div class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="$t('components.cursor.scroll')">
-              <video class="w-full h-full object-cover" preload="auto" autoplay muted loop playsinline disableremoteplayback>
+              <video class="w-full h-full object-cover rotate-180" preload="auto" autoplay muted loop playsinline disableremoteplayback>
                 <source :src="`/videos/${album.bgVideo.fhd}`" type="video/mp4" media="(min-width: 1920px)">
                 <source :src="`/videos/${album.bgVideo.hd}`" type="video/mp4">
               </video>
             </div>
             <div class="w-2/3 relative">
-              <NuxtLinkLocale :to="{ name: 'music-slug', params: { slug: album.slug } }">
-                <img :src="`/albums/${album.slug}/${album.images.cover}`" :alt="album.title" width="1000" height="900">
+              <NuxtLinkLocale :to="{ name: 'projects-slug', params: { slug: album.slug } }">
+                <img :src="`/albums/${album.assetDirectory}/${album.images.cover}`" :alt="album.title" width="1000" height="900">
               </NuxtLinkLocale>
               <span class="album-year absolute bottom-0 right-0 inline-block text-lg lg:text-xl xl:text-2xl p-2 lg:p-3 font-bold text-white mix-blend-difference">{{ album.year }}</span>
             </div>
             <div class="1/3">
               <h2 class="slide-heading text-8xl">
                 <AnimationTextShadow>
-                  <NuxtLinkLocale class="text-white" :to="{ name: 'music-slug', params: { slug: album.slug } }">
+                  <NuxtLinkLocale class="text-white" :to="{ name: 'projects-slug', params: { slug: album.slug } }">
                     {{ album.title }}
                   </NuxtLinkLocale>
                 </AnimationTextShadow>

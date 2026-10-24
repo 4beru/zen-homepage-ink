@@ -1,31 +1,12 @@
 ---
-title: Living Room
+title: Subscrr
 ---
 
-Grabado, mezclado y masterizado en los estudios APK de Valencia (España) en agosto de 2009.
+Subscrr reúne todas tus suscripciones en un solo lugar seguro, con recordatorios, información útil y un resumen claro de tus gastos. Te ayuda a llevar el control de tus pagos, entender en qué se va tu dinero y evitar cargos inesperados en tus dispositivos Apple.
 
-Productor: Octavio Hidalgo<br>
-Fotografía: Iván Dabón<br>
-Diseño gráfico: [Dan Alcaide](https://www.danalcaide.com)<br>
+## Entregables
 
-## Reconocimientos
-
-- Top 10 demos/EP 2009 - Mondosonoro Valencia: [Living Room EP en Mondosonoro](https://issuu.com/mondosonoroval/docs/mondoissuuene10)
-
-## Instrumentos utilizados
-
-- Guitarra Fender Telecaster
-- Guitarra Epiphone Casino
-- Bajo Epiphone Thunderbird
-- Teclado Korg CX3
-- Teclado Moog Little Phatty Stage II
-- Batería Pearl
-
-## Amplificadores
-
-- Orange Rocker 30C
-
-## Pedales de efectos
-
-- Phaser Electro Harmonix Small Stone
-- Wah-Wah Cry Baby
+- **Seguimiento y recordatorios** — Consulta cuánto gastas realmente y recibe un aviso el día anterior al vencimiento de un pago.
+- **Importación inteligente y escaneo con IA** — Agrega suscripciones al instante al subir una captura de App Store o escanear un recibo.
+- **Información de Subscrr AI** — Detecta suscripciones duplicadas, aumentos de precio y planes costosos para identificar oportunidades de ahorro.
+- **Plan financiero** — Organiza tus gastos mes a mes, evalúa futuras compras y consulta cuánto dinero te queda.
