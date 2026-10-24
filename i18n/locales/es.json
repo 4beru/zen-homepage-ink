@@ -34,7 +34,7 @@
       "block3": "Ya sea que estés lanzando un producto o renovando tu marca en internet, si valoras el trabajo bien hecho y una mirada cuidadosa, hablemos.",
       "buttonHypnotic": "Ver proyectos",
       "meta": {
-        "title": "Estudio de software creativo",
+        "title": "Inicio",
         "description": "Zen Space diseña y desarrolla sitios web, productos digitales y experiencias interactivas para marcas con ambición."
       },
       "preloader": {
@@ -47,7 +47,7 @@
       "title": "Referencias",
       "copyrightText": "Todos los trabajos que aparecen pertenecen a sus respectivos creadores. Los compartimos como inspiración.",
       "meta": {
-        "title": "Referencias creativas e inspiración",
+        "title": "Referencias",
         "description": "Una selección de sitios web, productos digitales, estudios creativos y experiencias interactivas que inspiran nuestro trabajo."
       },
       "intro": "Reunimos sitios web, experimentos y productos digitales que nos hacen detenernos a mirar. Desde Awwwards, Behance y Dribbble hasta estudios independientes y marcas ambiciosas, estas referencias alimentan nuestra curiosidad, desafían nuestra perspectiva e inspiran lo que construiremos después.",
@@ -98,7 +98,7 @@
     },
     "projects": {
       "name": "Proyectos",
-      "title": "Proyectos digitales seleccionados",
+      "title": "Proyectos",
       "labels": {
         "back": "Volver a proyectos",
         "music": "Proyectos",
@@ -110,7 +110,7 @@
         "deliverables": "Entregables"
       },
       "meta": {
-        "title": "Proyectos digitales seleccionados",
+        "title": "Proyectos",
         "description": "Explora sitios web, productos digitales y experiencias creativas desarrolladas por Zen Space."
       },
       "preloader": {
@@ -192,7 +192,7 @@
         }
       },
       "meta": {
-        "title": "Desarrollo web y productos digitales",
+        "title": "Servicios",
         "description": "Desarrollo web creativo, arquitectura de productos digitales, experiencias de motion y 3D, y aplicaciones móviles y SaaS."
       },
       "journey": {
