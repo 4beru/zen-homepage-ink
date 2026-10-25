@@ -79,16 +79,19 @@
   }
 
   function activateSlideVideo(index) {
-    const slideVideos = getSlideVideos();
+    const activeVideo = getSlideVideos()[index];
 
-    slideVideos.forEach((video, videoIndex) => {
-      if (videoIndex !== index) video.pause();
-    });
-
-    const activeVideo = slideVideos[index];
+    // Start the incoming video's playback before the transition, but keep the
+    // outgoing video running so both remain animated during the visual overlap.
     if (activeVideo) {
       void loadDeferredVideo(activeVideo, { play: true, preload: "auto" });
     }
+  }
+
+  function pauseInactiveSlideVideos(activeIndex) {
+    getSlideVideos().forEach((video, videoIndex) => {
+      if (videoIndex !== activeIndex) video.pause();
+    });
   }
 
   function handlePrevSlide() {
@@ -125,6 +128,9 @@
           buttonDisabled.value = true;
         },
         onComplete: () => {
+          // Pause outgoing slides only after GSAP has finished the transition,
+          // preserving the original effect of both videos moving while slides overlap.
+          pauseInactiveSlideVideos(index);
           isAnimating = false;
           buttonDisabled.value = false;
           currentIndex.value = index;
