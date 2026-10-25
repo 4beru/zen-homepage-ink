@@ -2,9 +2,9 @@
   <div ref="heroHypnoticRef" class="hero-hypnotic relative z-40 w-screen h-lvh overflow-hidden">
     <div class="bg-wrapper absolute top-0 left-0 w-full h-full">
       <video ref="videoRef" class="w-full h-full object-cover" poster="/images/logo_circles.png" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-        <source src="/videos/spiral_large.mp4" type="video/mp4" media="(min-width: 2560px)">
-        <source src="/videos/spiral_medium.mp4" type="video/mp4" media="(min-width: 1920px)">
-        <source src="/videos/spiral_small.mp4" type="video/mp4">
+        <source :src="videoUrl('spiral_large.mp4', '/videos/spiral_large.mp4')" type="video/mp4" media="(min-width: 2560px)">
+        <source :src="videoUrl('spiral_medium.mp4', '/videos/spiral_medium.mp4')" type="video/mp4" media="(min-width: 1920px)">
+        <source :src="videoUrl('spiral_small.mp4', '/videos/spiral_small.mp4')" type="video/mp4">
       </video>
     </div>
     <div ref="slotRef" class="relative z-10 flex justify-center items-center w-full h-full overflow-hidden bg-black text-white mix-blend-difference">
@@ -33,6 +33,7 @@
 
   const heroHypnoticRef = useTemplateRef('heroHypnoticRef');
   const videoRef = useTemplateRef('videoRef');
+  const { videoUrl } = useMediaUrls();
   const slotRef = useTemplateRef('slotRef');
   const scrollDownRef = useTemplateRef('scrollDownRef');
   let ctx;
