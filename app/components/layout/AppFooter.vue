@@ -73,7 +73,7 @@
 
 
 <script setup>
-  const currentYear = new Date().getFullYear();
+  const currentYear = useState('footer-current-year', () => new Date().getFullYear());
   const timeZone = 'America/Argentina/Buenos_Aires';
   const clock = ref({
     time: '--:--:-- --',
