@@ -26,9 +26,9 @@
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" data-defer-media data-home-sequence-video preload="none" :data-poster="video.poster" muted loop playsinline disableremoteplayback>
-            <source :data-src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
-            <source :data-src="`/videos/${video.small}`" type="video/mp4">
+          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" data-defer-media data-home-sequence-video preload="none" :data-poster="imageUrl(video.poster, video.poster)" muted loop playsinline disableremoteplayback>
+            <source :data-src="videoUrl(video.large, '/videos/' + video.large)" type="video/mp4" media="(min-width: 1280px)">
+            <source :data-src="videoUrl(video.small, '/videos/' + video.small)" type="video/mp4">
           </video>
         </div>
         <div class="container text-[clamp(1.5rem,_3.5vw,_3.5rem)] prose-black prose-p:leading-normal text-pretty">
@@ -39,7 +39,7 @@
       <section ref="block2Ref" class="block2 absolute z-20 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div class="absolute z-10 top-0 left-0 w-full h-full">
           <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" data-defer-media preload="none" data-poster="/images/logo_circles.png" muted loop playsinline disableremoteplayback>
-            <source data-src="/videos/gsap-showreel.mp4" type="video/mp4">
+            <source :data-src="videoUrl('gsap-showreel.mp4', '/videos/gsap-showreel.mp4')" type="video/mp4">
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
@@ -75,6 +75,8 @@
   import { loadDeferredVideo } from '~/utils/deferred-video.js';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  const { imageUrl, videoUrl } = useMediaUrls();
 
   definePageMeta({
     pageTransition: pageTransitionConfig,
