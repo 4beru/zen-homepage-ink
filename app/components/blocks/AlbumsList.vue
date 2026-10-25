@@ -14,17 +14,17 @@
     <div v-for="album in albums" :key="album.slug" class="slide album invisible fixed w-screen h-screen top-0 will-change-transform [&_a]:before:h-0">
       <div class="outer-wrapper w-full h-full overflow-y-hidden will-change-transform">
         <div class="inner-wrapper w-full h-full overflow-y-hidden will-change-transform">
-          <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="`background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url(/albums/${album.assetDirectory}/${album.images.cover});`">
+          <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="albumBackgroundStyle(album)">
             <div class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="$t('components.cursor.scroll')">
-              <video class="w-full h-full object-cover rotate-180" :poster="`/albums/${album.assetDirectory}/${album.images.cover}`" data-defer-media data-album-video preload="none" muted loop playsinline disableremoteplayback>
-                <source :data-src="`/videos/${album.bgVideo.fhd}`" type="video/mp4" media="(min-width: 2560px)">
-                <source :data-src="`/videos/${album.bgVideo.hd}`" type="video/mp4" media="(min-width: 768px)">
-                <source :data-src="`/videos/${album.bgVideo.sd}`" type="video/mp4">
+              <video class="w-full h-full object-cover rotate-180" :poster="albumCoverUrl(album)" data-defer-media data-album-video preload="none" muted loop playsinline disableremoteplayback>
+                <source :data-src="albumVideoUrl(album.bgVideo.fhd)" type="video/mp4" media="(min-width: 2560px)">
+                <source :data-src="albumVideoUrl(album.bgVideo.hd)" type="video/mp4" media="(min-width: 768px)">
+                <source :data-src="albumVideoUrl(album.bgVideo.sd)" type="video/mp4">
               </video>
             </div>
             <div class="w-2/3 relative">
               <NuxtLinkLocale :to="{ name: 'projects-slug', params: { slug: album.slug } }">
-                <img :src="`/albums/${album.assetDirectory}/${album.images.cover}`" :alt="album.title" width="1000" height="900">
+                <img :src="albumCoverUrl(album)" :alt="album.title" width="1000" height="900">
               </NuxtLinkLocale>
               <span class="album-year absolute bottom-0 right-0 inline-block text-lg lg:text-xl xl:text-2xl p-2 lg:p-3 font-bold text-white mix-blend-difference">{{ album.year }}</span>
             </div>
@@ -48,6 +48,20 @@
   import { albums } from "~/data/albums";
   import { isSafari } from "#imports";
   import { loadDeferredVideo } from "~/utils/deferred-video.js";
+
+  const { imageUrl, videoUrl } = useMediaUrls();
+
+  function albumCoverUrl(album) {
+    return imageUrl(album.images.cover, `/albums/${album.assetDirectory}/${album.images.cover}`);
+  }
+
+  function albumVideoUrl(filename) {
+    return videoUrl(filename, `/videos/${filename}`);
+  }
+
+  function albumBackgroundStyle(album) {
+    return `background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url("${albumCoverUrl(album)}");`;
+  }
 
   import gsap from "gsap";
   import { SplitText } from "gsap/SplitText";
