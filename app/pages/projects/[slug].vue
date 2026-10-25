@@ -62,6 +62,7 @@
   });
 
   const config = useRuntimeConfig()
+  const { imageUrl } = useMediaUrls()
   const route = useRoute()
   const { locale, t } = useI18n()
   const slug = String(route.params.slug ?? '')
@@ -96,7 +97,7 @@
     ogTitle: `${content.title} | ${t('siteName')}`,
     ogDescription: t(content.meta.descriptionKey),
     ogType: 'website',
-    ogImage: `${config.public.appUrl}/albums/${content.assetDirectory}/${content.images.cover}`,
+    ogImage: imageUrl(content.images.cover, config.public.appUrl + '/albums/' + content.assetDirectory + '/' + content.images.cover),
     ogImageAlt: t('components.accessibility.albumCover', { title: content.title }),
     ogImageWidth: 1000,
     ogImageHeight: 900,
