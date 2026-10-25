@@ -9,7 +9,7 @@
  * @returns {Promise} A promise that resolves when all media elements have finished loading.
  */
 export async function useWaitForMediaLoad(container, timeoutMs = 1000) {
-  const mediaElements = container.querySelectorAll('img, video');
+  const mediaElements = container.querySelectorAll('img, video:not([data-defer-media])');
 
   const mediaPromises = Array.from(mediaElements).map(el => {
     return new Promise(resolve => {
@@ -26,8 +26,8 @@ export async function useWaitForMediaLoad(container, timeoutMs = 1000) {
         }, { once: true });
 
       } else if (el.tagName === 'VIDEO') {
-        // Already loaded, HAVE_ENOUGH_DATA
-        if (el.readyState >= 4) {
+        // A decoded current frame is enough for the first paint.
+        if (el.readyState >= 2) {
           return resolve();
         }
         el.addEventListener('loadeddata', resolve, { once: true });

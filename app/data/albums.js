@@ -54,6 +54,7 @@ export const albums = [
     bgVideo: {
       fhd: 'rythm_1080p.mp4',
       hd: 'rythm_720p.mp4',
+      sd: 'rythm_540p.mp4',
     },
     tracklist: [
       'Me aburrís todos con la misma mierda',
@@ -122,6 +123,7 @@ export const albums = [
     bgVideo: {
       fhd: 'unimatic_1080p.mp4',
       hd: 'unimatic_720p.mp4',
+      sd: 'unimatic_540p.mp4',
     },
     tracklist: [
       'How Would You Say I Love You?',
@@ -187,6 +189,7 @@ export const albums = [
     bgVideo: {
       fhd: 'pentiai_1080p.mp4',
       hd: 'pentiai_720p.mp4',
+      sd: 'pentiai_540p.mp4',
     },
     tracklist: [
       'Exhibitionist',
@@ -251,6 +254,7 @@ export const albums = [
     bgVideo: {
       fhd: 'woman_finger_1080p.mp4',
       hd: 'woman_finger_720p.mp4',
+      sd: 'woman_finger_640p.mp4',
     },
     tracklist: [
       'I Must Doubt',
@@ -320,6 +324,7 @@ export const albums = [
     bgVideo: {
       fhd: 'subscrr_1080p.mp4',
       hd: 'subscrr_720p.mp4',
+      sd: 'subscrr_540p.mp4',
     },
     tracklist: [
       'Shut Up',

@@ -26,9 +26,9 @@
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-            <source :src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
-            <source :src="`/videos/${video.small}`" type="video/mp4">
+          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" data-defer-media data-home-sequence-video preload="none" :data-poster="video.poster" muted loop playsinline disableremoteplayback>
+            <source :data-src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
+            <source :data-src="`/videos/${video.small}`" type="video/mp4">
           </video>
         </div>
         <div class="container text-[clamp(1.5rem,_3.5vw,_3.5rem)] prose-black prose-p:leading-normal text-pretty">
@@ -38,10 +38,8 @@
 
       <section ref="block2Ref" class="block2 absolute z-20 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div class="absolute z-10 top-0 left-0 w-full h-full">
-          <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-            <!-- <source src="/videos/gsap-showreel.mp4" type="video/mp4" media="(min-width: 1280px)"> -->
-            <!-- <source src="/videos/gsap-showreel.mp4" type="video/mp4" media="(min-width: 640px)"> -->
-            <source src="/videos/gsap-showreel.mp4" type="video/mp4">
+          <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" data-defer-media preload="none" data-poster="/images/logo_circles.png" muted loop playsinline disableremoteplayback>
+            <source data-src="/videos/gsap-showreel.mp4" type="video/mp4">
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
@@ -74,6 +72,7 @@
   import gsap from "gsap";
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   import { SplitText } from "gsap/SplitText";
+  import { loadDeferredVideo } from '~/utils/deferred-video.js';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -85,22 +84,27 @@
     0: {
       'small': 'unimatic_540p.mp4',
       'large': 'unimatic_720p.mp4',
+      'poster': '/albums/velodrome/unimatic-cover.webp',
     },
     1: {
       'small': 'rythm_540p.mp4',
       'large': 'rythm_720p.mp4',
+      'poster': '/albums/video-rock/rythm-cover.webp',
     },
     2: {
       'small': 'pentiai_540p.mp4',
       'large': 'pentiai_720p.mp4',
+      'poster': '/albums/one/penti-cover.webp',
     },
     3: {
       'small': 'woman_finger_640p.mp4',
       'large': 'woman_finger_720p.mp4',
+      'poster': '/albums/gossip/miralife-cover.webp',
     },
     4: {
       'small': 'subscrr_540p.mp4',
       'large': 'subscrr_720p.mp4',
+      'poster': '/albums/living-room/subscrr-cover.webp',
     },
   }
   const { t, locale } = useI18n();
@@ -112,6 +116,52 @@
   const showreelRef = useTemplateRef('showreelRef');
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
   let block1Split, block2Split, block3Split;
+
+  function getSequenceVideos() {
+    return block1Ref.value?.querySelectorAll('[data-home-sequence-video]') ?? [];
+  }
+
+  function prepareSequenceVideos() {
+    for (const video of getSequenceVideos()) {
+      void loadDeferredVideo(video, { preload: 'auto' });
+    }
+  }
+
+  function playSequenceVideos() {
+    for (const video of getSequenceVideos()) {
+      void loadDeferredVideo(video, { play: true, preload: 'auto' });
+    }
+  }
+
+  function pauseSequenceVideos() {
+    for (const video of getSequenceVideos()) {
+      video.pause();
+    }
+  }
+
+  function prepareShowreelVideo() {
+    if (showreelRef.value) {
+      void loadDeferredVideo(showreelRef.value, { preload: 'auto' });
+    }
+  }
+
+  function playShowreelVideo() {
+    if (showreelRef.value) {
+      void loadDeferredVideo(showreelRef.value, { play: true, preload: 'auto' });
+    }
+  }
+
+  function pauseShowreelVideo() {
+    showreelRef.value?.pause();
+  }
+
+  watch(isPageLoaded, (loaded) => {
+    if (loaded) {
+      prepareSequenceVideos();
+    } else {
+      pauseSequenceVideos();
+    }
+  }, { flush: 'post' });
   let ctx;
 
   useSeoMeta({
@@ -247,6 +297,14 @@
         .to('.circle0', {
           clipPath: 'circle(64% at 50% 50%)',
           ease: "back.out(1)",
+          onStart: () => {
+            playSequenceVideos();
+            prepareShowreelVideo();
+          },
+          onReverseComplete: () => {
+            pauseSequenceVideos();
+            pauseShowreelVideo();
+          },
         }, '<0.6')
         .to(block1Ref.value, {
           color: '#ffffff',
@@ -278,11 +336,15 @@
         .to('.circle0, .circle1, .circle2, .circle3, .circle4', {
           clipPath: 'circle(0% at 50% 50%)',
           ease: "power4.inOut",
+          onComplete: pauseSequenceVideos,
+          onReverseComplete: playSequenceVideos,
         }, '<0.3')
         .to(showreelRef.value, {
           autoAlpha: 1,
           maskSize: '30% 30%',
           ease: 'power3.inOut',
+          onStart: playShowreelVideo,
+          onReverseComplete: pauseShowreelVideo,
         }, '<')
         .to(showreelRef.value, {
           maskSize: '200% 200%',
@@ -313,6 +375,8 @@
         }, '<.8')
         .to(block2Ref.value, {
           autoAlpha: 0,
+          onComplete: pauseShowreelVideo,
+          onReverseComplete: playShowreelVideo,
         })
         .to('.animation-circles', {
           scale: isPortrait ? 3 : 1.5,
@@ -383,6 +447,9 @@
   })
 
   onBeforeRouteLeave(() => {
+    pauseSequenceVideos();
+    pauseShowreelVideo();
+
     // GSAP timeline "goes blank" and nothing shows on screen when you click a link.
     // Scrolling the document makes a trick and keeps the timeline while the page transition is running (hacky?).
     window.scrollTo(0, 0);

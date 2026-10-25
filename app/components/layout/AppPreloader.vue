@@ -7,7 +7,7 @@
     <div ref="dot1Ref" class="dot1 fixed z-20 w-screen h-dvh bg-black will-change-[clip-path]" />
     <div ref="dot2Ref" class="dot2 fixed z-30 w-screen h-dvh bg-white will-change-[clip-path]" />
     <div ref="preloaderTextRef" class="preloader-text fixed z-20 inset-0 flex items-center justify-center w-screen h-dvh text-[clamp(1.2rem,5vw,2.8rem)] text-white font-bold uppercase mix-blend-difference">
-      {{ $t(`preloader.text[${Math.floor(Math.random() * 6)}]`) }}
+      {{ $t(`preloader.text[${randomIndex}]`) }}
     </div>
   </div>
 </template>
@@ -22,6 +22,7 @@
   const router = useRouter()
   const { locale } = useI18n();
   const showPreloader = ref(true);
+  const randomIndex = ref(0);
   const preloaderRef = useTemplateRef('preloaderRef');
   const logoCirclesRef = useTemplateRef('logoCirclesRef');
   const dot1Ref = useTemplateRef('dot1Ref');
@@ -31,6 +32,9 @@
   let ctx = gsap.context(() => { });
 
   onMounted(async () => {
+    // Keep SSR markup stable; choose the decorative message after hydration.
+    randomIndex.value = Math.floor(Math.random() * 6);
+
     // Only show preloader on root path.
     if (!isRootPath.value) {
       showPreloader.value = false;

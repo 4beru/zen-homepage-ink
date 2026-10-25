@@ -6,7 +6,7 @@
       </button>
     </div>
 
-    <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
+    <div ref="navWrapperRef" class="nav-wrapper [clip-path:inset(0%_0%_100%_0%)] fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
 
       <!-- Grupo 1: Navegación principal -->
