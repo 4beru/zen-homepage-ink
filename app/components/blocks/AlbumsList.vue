@@ -16,9 +16,9 @@
         <div class="inner-wrapper w-full h-full overflow-y-hidden will-change-transform">
           <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="`background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url(/albums/${album.assetDirectory}/${album.images.cover});`">
             <div class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="$t('components.cursor.scroll')">
-              <video class="w-full h-full object-cover rotate-180" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-                <source :src="`/videos/${album.bgVideo.fhd}`" type="video/mp4" media="(min-width: 1920px)">
-                <source :src="`/videos/${album.bgVideo.hd}`" type="video/mp4">
+              <video class="w-full h-full object-cover rotate-180" :poster="`/albums/${album.assetDirectory}/${album.images.cover}`" data-defer-media data-album-video preload="none" muted loop playsinline disableremoteplayback>
+                <source :data-src="`/videos/${album.bgVideo.fhd}`" type="video/mp4" media="(min-width: 2560px)">
+                <source :data-src="`/videos/${album.bgVideo.hd}`" type="video/mp4">
               </video>
             </div>
             <div class="w-2/3 relative">
@@ -46,6 +46,7 @@
 <script setup>
   import { albums } from "~/data/albums";
   import { isSafari } from "#imports";
+  import { loadDeferredVideo } from "~/utils/deferred-video.js";
 
   import gsap from "gsap";
   import { SplitText } from "gsap/SplitText";
@@ -72,6 +73,23 @@
   const startIndex = currentIndex.value === undefined ? 0 : currentIndex.value;
   currentIndex.value = undefined;
 
+  function getSlideVideos() {
+    return albumsListRef.value?.querySelectorAll("[data-album-video]") ?? [];
+  }
+
+  function activateSlideVideo(index) {
+    const slideVideos = getSlideVideos();
+
+    slideVideos.forEach((video, videoIndex) => {
+      if (videoIndex !== index) video.pause();
+    });
+
+    const activeVideo = slideVideos[index];
+    if (activeVideo) {
+      void loadDeferredVideo(activeVideo, { play: true, preload: "auto" });
+    }
+  }
+
   function handlePrevSlide() {
     if (isAnimating) return;
     goToSlide(currentIndex.value - 1, -1)
@@ -92,6 +110,7 @@
     // Ensure the index is always in range.
     index = wrap(index);
 
+    activateSlideVideo(index);
     gsap.set(splitHeadings[index].lines, { clipPath: "inset(0% 0% 0% 0%)" });
     const tl = gsap
       .timeline({
