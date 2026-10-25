@@ -49,6 +49,12 @@
   import { isSafari } from "#imports";
   import { loadDeferredVideo } from "~/utils/deferred-video.js";
 
+  import gsap from "gsap";
+  import { SplitText } from "gsap/SplitText";
+  import { Observer } from "gsap/Observer";
+
+  gsap.registerPlugin(SplitText, Observer);
+
   const { imageUrl, videoUrl } = useMediaUrls();
 
   function albumCoverUrl(album) {
@@ -62,12 +68,6 @@
   function albumBackgroundStyle(album) {
     return `background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url("${albumCoverUrl(album)}");`;
   }
-
-  import gsap from "gsap";
-  import { SplitText } from "gsap/SplitText";
-  import { Observer } from "gsap/Observer";
-
-  gsap.registerPlugin(SplitText, Observer);
 
   const props = defineProps({
     play: {
