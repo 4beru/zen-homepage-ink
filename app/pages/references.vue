@@ -21,7 +21,6 @@
 
 <script setup>
   import { images } from "~/data/media";
-  const { imageUrl } = useMediaUrls();
   import { pageTransitionConfig } from '~/helpers/transitionConfig';
 
   import gsap from "gsap";
@@ -29,6 +28,8 @@
   import { SplitText } from "gsap/SplitText";
 
   gsap.registerPlugin(SplitText, ScrollTrigger);
+
+  const { imageUrl } = useMediaUrls();
 
   definePageMeta({
     pageTransition: pageTransitionConfig,
