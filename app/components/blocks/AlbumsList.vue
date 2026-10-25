@@ -18,7 +18,8 @@
             <div class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="$t('components.cursor.scroll')">
               <video class="w-full h-full object-cover rotate-180" :poster="`/albums/${album.assetDirectory}/${album.images.cover}`" data-defer-media data-album-video preload="none" muted loop playsinline disableremoteplayback>
                 <source :data-src="`/videos/${album.bgVideo.fhd}`" type="video/mp4" media="(min-width: 2560px)">
-                <source :data-src="`/videos/${album.bgVideo.hd}`" type="video/mp4">
+                <source :data-src="`/videos/${album.bgVideo.hd}`" type="video/mp4" media="(min-width: 768px)">
+                <source :data-src="`/videos/${album.bgVideo.sd}`" type="video/mp4">
               </video>
             </div>
             <div class="w-2/3 relative">
@@ -242,6 +243,7 @@
 
   onBeforeUnmount(() => {
     isAlbumsListActive = false;
+    getSlideVideos().forEach((video) => video.pause());
   });
 
   onUnmounted(() => {
