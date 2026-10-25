@@ -10,22 +10,24 @@
         <h2
           id="project-journey-title"
           ref="journeyTitleRef"
-          class="max-w-full text-[clamp(3.15rem,10.4vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.075em] [text-wrap:balance] lg:whitespace-nowrap"
+          class="mx-auto block w-full whitespace-nowrap text-center font-black uppercase leading-[0.82] tracking-[-0.075em] text-[clamp(1.5rem,10.4vw,10.5rem)] sm:text-[clamp(1.5rem,10.4vw,4.5rem)] md:text-[clamp(1.5rem,10.4vw,5.4rem)] lg:text-[clamp(1.5rem,10vw,7rem)] xl:text-[clamp(1.5rem,10vw,8.8rem)] 2xl:text-[clamp(1.5rem,10vw,10.5rem)] transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none"
+          :class="isTitleRevealed ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-6 opacity-0 blur-[6px]'"
         >
-          {{ $t("pages.merch.journey.title") }}
+          {{ $t("pages.services.journey.title") }}
         </h2>
       </header>
 
       <div class="border-t border-white/15">
         <article
-          v-for="(step, index) in steps"
+          v-for="step in steps"
           :key="step.id"
-          data-journey-step
-          class="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-4 border-b border-white/15 py-7 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-x-6 sm:py-9 lg:grid-cols-[minmax(4.5rem,0.52fr)_minmax(15rem,1.05fr)_minmax(0,2.15fr)] lg:gap-x-7 lg:py-0 xl:grid-cols-[minmax(5rem,0.55fr)_minmax(16rem,1fr)_minmax(0,2.2fr)] xl:gap-x-10"
+          :data-journey-step="step.id"
+          class="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-3 border-b border-white/15 py-7 sm:gap-x-6 sm:py-9 lg:grid-cols-[minmax(4.5rem,0.52fr)_minmax(15rem,1.05fr)_minmax(0,2.15fr)] lg:gap-x-7 lg:py-0 xl:grid-cols-[minmax(5rem,0.55fr)_minmax(16rem,1fr)_minmax(0,2.2fr)] xl:gap-x-10"
         >
           <p
             data-journey-copy
-            class="pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 sm:text-[0.625rem] lg:pt-8 xl:pt-10"
+            class="whitespace-nowrap pt-1 text-[0.5625rem] font-bold uppercase tracking-[0.12em] text-white/50 transition-[opacity,transform,filter] duration-700 ease-out motion-reduce:transition-none sm:text-[0.625rem] lg:pt-8 xl:pt-10"
+            :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
           >
             {{ $t(step.numberKey) }}
           </p>
@@ -33,13 +35,15 @@
           <div class="min-w-0 lg:py-8 xl:py-10">
             <h3
               data-journey-copy
-              class="max-w-[22ch] text-xl font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] sm:text-2xl xl:text-[1.65rem]"
+              class="max-w-[22ch] text-lg font-bold leading-[1.12] tracking-[-0.035em] text-[#f0efe9] transition-[opacity,transform,filter] delay-75 duration-700 ease-out motion-reduce:transition-none sm:text-[1.375rem] xl:text-[1.5rem]"
+              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.titleKey) }}
             </h3>
             <p
               data-journey-copy
-              class="mt-3 max-w-[34ch] text-sm font-medium leading-[1.65] text-white/60 sm:mt-4 sm:text-base"
+              class="mt-3 max-w-[34ch] text-[0.8125rem] font-medium leading-[1.65] text-white/60 transition-[opacity,transform,filter] delay-150 duration-700 ease-out motion-reduce:transition-none sm:mt-4 sm:text-[0.9375rem]"
+              :class="isStepRevealed(step.id) ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[5px]'"
             >
               {{ $t(step.descriptionKey) }}
             </p>
@@ -47,18 +51,19 @@
 
           <figure
             data-journey-image
-            class="group relative isolate col-span-2 mt-6 aspect-[16/10] overflow-hidden bg-white/[0.04] sm:mt-7 lg:col-span-1 lg:mt-0 lg:aspect-[16/10] xl:aspect-[16/9]"
+            class="group relative isolate col-span-2 mt-6 aspect-[16/10] overflow-hidden bg-white/[0.04] transition-[clip-path] duration-1000 ease-in-out motion-reduce:transition-none sm:mt-7 lg:col-span-1 lg:mt-0 lg:aspect-[16/10] xl:aspect-[16/9]"
+            :class="isStepRevealed(step.id) ? '[clip-path:inset(0_0_0%_0)]' : '[clip-path:inset(0_0_100%_0)]'"
           >
             <video
+              data-journey-video
               :src="step.video"
               :poster="step.poster"
               :aria-label="$t(step.altKey)"
               aria-roledescription="video"
-              autoplay
               loop
               muted
               playsinline
-              preload="metadata"
+              preload="none"
               tabindex="-1"
               class="absolute inset-0 block h-full w-full object-cover transition-transform duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none group-hover:scale-[1.02]"
             />
@@ -74,117 +79,220 @@
 </template>
 
 <script setup>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { SplitText } from "gsap/SplitText";
-
-  gsap.registerPlugin(ScrollTrigger, SplitText);
-
   const journeyRef = useTemplateRef("journeyRef");
   const journeyTitleRef = useTemplateRef("journeyTitleRef");
 
   const steps = [
     {
       id: "discover",
-      numberKey: "pages.merch.journey.steps.discover.number",
-      titleKey: "pages.merch.journey.steps.discover.title",
-      descriptionKey: "pages.merch.journey.steps.discover.description",
+      numberKey: "pages.services.journey.steps.discover.number",
+      titleKey: "pages.services.journey.steps.discover.title",
+      descriptionKey: "pages.services.journey.steps.discover.description",
       video: "/videos/pj-step-1.webm",
-      poster: "/albums/video-rock/rythm-desktop.png",
-      altKey: "pages.merch.journey.steps.discover.alt",
+      poster: "/albums/video-rock/rythm-desktop.webp",
+      altKey: "pages.services.journey.steps.discover.alt",
     },
     {
       id: "shape",
-      numberKey: "pages.merch.journey.steps.shape.number",
-      titleKey: "pages.merch.journey.steps.shape.title",
-      descriptionKey: "pages.merch.journey.steps.shape.description",
+      numberKey: "pages.services.journey.steps.shape.number",
+      titleKey: "pages.services.journey.steps.shape.title",
+      descriptionKey: "pages.services.journey.steps.shape.description",
       video: "/videos/pj-step-2.webm",
-      poster: "/albums/one/penti-desktop.png",
-      altKey: "pages.merch.journey.steps.shape.alt",
+      poster: "/albums/one/penti-desktop.webp",
+      altKey: "pages.services.journey.steps.shape.alt",
     },
     {
       id: "launch",
-      numberKey: "pages.merch.journey.steps.launch.number",
-      titleKey: "pages.merch.journey.steps.launch.title",
-      descriptionKey: "pages.merch.journey.steps.launch.description",
+      numberKey: "pages.services.journey.steps.launch.number",
+      titleKey: "pages.services.journey.steps.launch.title",
+      descriptionKey: "pages.services.journey.steps.launch.description",
       video: "/videos/pj-step-3.webm",
-      poster: "/albums/velodrome/unimatic-desktop.jpg",
-      altKey: "pages.merch.journey.steps.launch.alt",
+      poster: "/albums/velodrome/unimatic-desktop.webp",
+      altKey: "pages.services.journey.steps.launch.alt",
     },
   ];
 
-  let ctx;
-  let titleSplit;
+  const isTitleRevealed = ref(false);
+  const revealedStepIds = ref([]);
+  const activeVideos = new Set();
 
-  onMounted(async () => {
-    await nextTick();
-    await document.fonts.ready;
+  let isActive = false;
+  let revealObserver;
+  let videoObserver;
+  let motionPreferenceQuery;
 
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+  const isStepRevealed = (id) => revealedStepIds.value.includes(id);
 
-    ctx = gsap.context(() => {
-      titleSplit = SplitText.create(journeyTitleRef.value, {
-        type: "chars",
-        charsClass: "journey-title-char",
-      });
+  function revealAllContent() {
+    isTitleRevealed.value = true;
+    revealedStepIds.value = steps.map((step) => step.id);
+    revealObserver?.disconnect();
+    revealObserver = undefined;
+  }
 
-      gsap.from(titleSplit.chars, {
-        yPercent: 115,
-        autoAlpha: 0,
-        filter: "blur(8px)",
-        duration: 0.9,
-        stagger: 0.018,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: journeyTitleRef.value,
-          start: "top 84%",
-          once: true,
-        },
-      });
+  function videosShouldPause() {
+    return !isActive || document.hidden || motionPreferenceQuery?.matches;
+  }
 
-      const stepElements = gsap.utils.toArray("[data-journey-step]", journeyRef.value);
+  function pauseVideo(video, reset = true) {
+    video.pause();
 
-      stepElements.forEach((step) => {
-        const copy = step.querySelectorAll("[data-journey-copy]");
-        const image = step.querySelector("[data-journey-image]");
+    if (reset && video.readyState > 0) {
+      video.currentTime = 0;
+    }
+  }
 
-        gsap.from(copy, {
-          y: 22,
-          autoAlpha: 0,
-          filter: "blur(5px)",
-          duration: 0.72,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: step,
-            start: "top 82%",
-            once: true,
-          },
-        });
+  async function playVideo(video) {
+    if (videosShouldPause() || !activeVideos.has(video)) return;
 
-        gsap.fromTo(
-          image,
-          { clipPath: "inset(0 0 100% 0)" },
-          {
-            clipPath: "inset(0 0 0% 0)",
-            duration: 1,
-            ease: "power3.inOut",
-            scrollTrigger: {
-              trigger: step,
-              start: "top 82%",
-              once: true,
-            },
+    try {
+      await video.play();
+
+      // Visibility or motion preferences may change while play() is pending.
+      if (videosShouldPause() || !activeVideos.has(video)) {
+        pauseVideo(video);
+      }
+    } catch {
+      // Keep the poster visible if playback is unavailable or denied.
+    }
+  }
+
+  function setupRevealObserver() {
+    if (!journeyRef.value || !("IntersectionObserver" in window)) {
+      revealAllContent();
+      return;
+    }
+
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          if (entry.target === journeyTitleRef.value) {
+            isTitleRevealed.value = true;
+          } else {
+            const stepId = entry.target.dataset.journeyStep;
+
+            if (stepId && !isStepRevealed(stepId)) {
+              revealedStepIds.value = [...revealedStepIds.value, stepId];
+            }
           }
-        );
-      });
 
-      ScrollTrigger.refresh();
-    }, journeyRef.value);
+          revealObserver?.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px 0px -80px 0px",
+        threshold: 0.05,
+      }
+    );
+
+    if (journeyTitleRef.value) revealObserver.observe(journeyTitleRef.value);
+    journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
+      revealObserver.observe(step);
+    });
+  }
+
+  function setupVideoPlayback() {
+    if (!journeyRef.value || !("IntersectionObserver" in window)) return;
+
+    videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          // Observe each step, not the clipped video itself. This lets the
+          // browser prepare playback before the image reveal has completed.
+          const video = target.querySelector("[data-journey-video]");
+          if (!video) return;
+
+          if (isIntersecting) {
+            activeVideos.add(video);
+            playVideo(video);
+          } else {
+            activeVideos.delete(video);
+            pauseVideo(video);
+          }
+        });
+      },
+      {
+        rootMargin: "160px 0px",
+        threshold: 0.05,
+      }
+    );
+
+    journeyRef.value.querySelectorAll("[data-journey-step]").forEach((step) => {
+      const video = step.querySelector("[data-journey-video]");
+      if (video) video.muted = true;
+      videoObserver.observe(step);
+    });
+  }
+
+  function handleVisibilityChange() {
+    if (document.hidden) {
+      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+        video.pause();
+      });
+      return;
+    }
+
+    activeVideos.forEach((video) => playVideo(video));
+  }
+
+  function handleMotionPreferenceChange() {
+    if (motionPreferenceQuery.matches) {
+      revealAllContent();
+      journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+        pauseVideo(video);
+      });
+      return;
+    }
+
+    if (!document.hidden) {
+      activeVideos.forEach((video) => playVideo(video));
+    }
+  }
+
+  function addMotionPreferenceListener() {
+    if (motionPreferenceQuery.addEventListener) {
+      motionPreferenceQuery.addEventListener("change", handleMotionPreferenceChange);
+    } else {
+      motionPreferenceQuery.addListener(handleMotionPreferenceChange);
+    }
+  }
+
+  function removeMotionPreferenceListener() {
+    if (!motionPreferenceQuery) return;
+
+    if (motionPreferenceQuery.removeEventListener) {
+      motionPreferenceQuery.removeEventListener("change", handleMotionPreferenceChange);
+    } else {
+      motionPreferenceQuery.removeListener(handleMotionPreferenceChange);
+    }
+  }
+
+  onMounted(() => {
+    isActive = true;
+    motionPreferenceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (motionPreferenceQuery.matches) {
+      revealAllContent();
+    } else {
+      setupRevealObserver();
+    }
+
+    setupVideoPlayback();
+    addMotionPreferenceListener();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
   });
 
-  onUnmounted(() => {
-    ctx?.revert();
-    titleSplit?.revert();
+  onBeforeUnmount(() => {
+    isActive = false;
+    revealObserver?.disconnect();
+    videoObserver?.disconnect();
+    removeMotionPreferenceListener();
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+    journeyRef.value?.querySelectorAll("[data-journey-video]").forEach((video) => {
+      pauseVideo(video);
+    });
+    activeVideos.clear();
   });
 </script>

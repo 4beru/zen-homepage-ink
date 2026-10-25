@@ -1,17 +1,19 @@
 export const albums = [
   {
     id: 1,
-    slug: 'video-rock',
+    slug: 'rythm',
+    contentSlug: 'video-rock',
+    assetDirectory: 'video-rock',
     title: 'Rythm',
     images: {
-      cover: 'rythm-cover.png',
-      back: 'rythm-desktop.png',
-      galleta: 'rythm.png',
+      cover: 'rythm-cover.webp',
+      back: 'rythm-desktop.webp',
+      galleta: 'rythm.webp',
     },
     year: 2024,
     recordLabel: 'rythm.fm',
     meta: {
-      description: 'A connected music streaming experience for discovery, playlists, and listening together.',
+      descriptionKey: 'pages.projects.projectMeta.rythm',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -23,12 +25,12 @@ export const albums = [
     },
     social: [
       {
-        label: 'Web app',
+        labelKey: 'pages.projects.linkLabels.webApp',
         link: 'https://rythm.fm',
         icon: 'lucide:globe',
       },
       {
-        label: 'Download app',
+        labelKey: 'pages.projects.linkLabels.downloadApp',
         link: 'https://rythm.fm/download',
         icon: 'lucide:app-window',
       },
@@ -37,21 +39,22 @@ export const albums = [
       youtube: [
         {
           id: 'ZxYlp1WF0zc',
-          title: 'Finally, Good Music Is Back on Discord',
+          titleKey: 'pages.projects.videoTitles.rythmDiscordMusicBack',
         },
         {
           id: '9IW5RNSBhIU',
-          title: 'Step-by-Step Setup Guide',
+          titleKey: 'pages.projects.videoTitles.rythmSetupGuide',
         },
         {
           id: 'LLnnkEvCTLA',
-          title: 'How to Invite and Configure It for Your Server',
+          titleKey: 'pages.projects.videoTitles.rythmInviteConfigure',
         },
       ],
     },
     bgVideo: {
       fhd: 'rythm_1080p.mp4',
       hd: 'rythm_720p.mp4',
+      sd: 'rythm_540p.mp4',
     },
     tracklist: [
       'Me aburrís todos con la misma mierda',
@@ -66,18 +69,20 @@ export const albums = [
   },
   {
     id: 2,
-    slug: 'velodrome',
+    slug: 'unimatic',
+    contentSlug: 'velodrome',
+    assetDirectory: 'velodrome',
     title: 'Unimatic',
     images: {
-      cover: 'unimatic-cover.jpg',
-      back: 'unimatic-desktop.jpg',
-      galleta: 'unimatic.png',
+      cover: 'unimatic-cover.webp',
+      back: 'unimatic-desktop.webp',
+      galleta: 'unimatic.webp',
     },
     year: 2025,
     releaseDate: '2025-09-14',
     recordLabel: 'unimaticwatches.com',
     meta: {
-      description: 'Velodrome is the fourth album recorded by Skizophonic.',
+      descriptionKey: 'pages.projects.projectMeta.unimatic',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -94,7 +99,7 @@ export const albums = [
       //   icon: 'simple-icons:spotify',
       // },
       {
-        label: 'Website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://www.unimaticwatches.com',
         icon: 'lucide:globe',
       },
@@ -103,21 +108,22 @@ export const albums = [
       youtube: [
         {
           id: '6uWonLQeJ9k',
-          title: 'Field Watch Review & Hands-On',
+          titleKey: 'pages.projects.videoTitles.unimaticFieldWatch',
         },
         {
           id: '84QOEV89mhQ',
-          title: 'Minimalist Italian Design: Unimatic Dial & Details',
+          titleKey: 'pages.projects.videoTitles.unimaticDialDetails',
         },
         {
           id: 'RQq4cGLNcbg',
-          title: 'Inside the World of Unimatic Toolwatches',
+          titleKey: 'pages.projects.videoTitles.unimaticToolwatches',
         },
       ],
     },
     bgVideo: {
       fhd: 'unimatic_1080p.mp4',
       hd: 'unimatic_720p.mp4',
+      sd: 'unimatic_540p.mp4',
     },
     tracklist: [
       'How Would You Say I Love You?',
@@ -134,18 +140,20 @@ export const albums = [
   },
   {
     id: 3,
-    slug: 'one',
+    slug: 'penti-ai',
+    contentSlug: 'one',
+    assetDirectory: 'one',
     title: 'Penti AI',
     images: {
-      cover: 'penti-cover.png',
-      back: 'penti-desktop.png',
-      galleta: 'penti.png',
+      cover: 'penti-cover.webp',
+      back: 'penti-desktop.webp',
+      galleta: 'penti.webp',
     },
     year: 2025,
     releaseDate: '2025-05-01',
     recordLabel: 'penti.ai',
     meta: {
-      description: 'One is the first album recorded by Skizophonic.',
+      descriptionKey: 'pages.projects.projectMeta.penti',
     },
     player: {
       spotify: '',
@@ -157,7 +165,7 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://penti.ai/',
         icon: 'lucide:globe'
       }
@@ -166,21 +174,22 @@ export const albums = [
       youtube: [
         {
           id: '2Z-9EOyb6HE',
-          title: 'The New Methodology for Hacking AI',
+          titleKey: 'pages.projects.videoTitles.pentiHackingAi',
         },
         {
           id: 'xOQW_qMZdlc',
-          title: 'Hacking AI Models: Think Series',
+          titleKey: 'pages.projects.videoTitles.pentiThinkSeries',
         },
         {
           id: 'W-lgskJTXO8',
-          title: 'AI Security & Vulnerability Assessment',
+          titleKey: 'pages.projects.videoTitles.pentiSecurityAssessment',
         },
       ],
     },
     bgVideo: {
       fhd: 'pentiai_1080p.mp4',
       hd: 'pentiai_720p.mp4',
+      sd: 'pentiai_540p.mp4',
     },
     tracklist: [
       'Exhibitionist',
@@ -196,18 +205,20 @@ export const albums = [
   },
   {
     id: 4,
-    slug: 'gossip',
+    slug: 'mira-life',
+    contentSlug: 'gossip',
+    assetDirectory: 'gossip',
     title: 'Mira Life',
     images: {
-      cover: 'miralife-cover.png',
-      back: 'miralife-desktop.png',
-      galleta: 'miralife.png',
+      cover: 'miralife-cover.webp',
+      back: 'miralife-desktop.webp',
+      galleta: 'miralife.webp',
     },
     year: 2026,
     releaseDate: '2026-02-28',
     recordLabel: 'miralife.app',
     meta: {
-      description: 'Gossip is the third album recorded by Skizophonic.',
+      descriptionKey: 'pages.projects.projectMeta.miraLife',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -219,7 +230,7 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://miralife.app/en/',
         icon: 'lucide:globe',
       },
@@ -228,21 +239,22 @@ export const albums = [
       youtube: [
         {
           id: 'ispHUvvdXZQ',
-          title: 'Mira Life: Start From Within',
+          titleKey: 'pages.projects.videoTitles.miraStartWithin',
         },
         {
           id: 'PBxiO7zCYQM',
-          title: 'Your Six Dimensions of Life Potential',
+          titleKey: 'pages.projects.videoTitles.miraSixDimensions',
         },
         {
           id: 'mZQpmY6fAcw',
-          title: 'The Art of Recovery and Body Signals',
+          titleKey: 'pages.projects.videoTitles.miraRecoverySignals',
         },
       ],
     },
     bgVideo: {
       fhd: 'woman_finger_1080p.mp4',
       hd: 'woman_finger_720p.mp4',
+      sd: 'woman_finger_640p.mp4',
     },
     tracklist: [
       'I Must Doubt',
@@ -258,18 +270,20 @@ export const albums = [
   },
   {
     id: 5,
-    slug: 'living-room',
+    slug: 'subscrr',
+    contentSlug: 'living-room',
+    assetDirectory: 'living-room',
     title: 'Subscrr',
     images: {
-      cover: 'subscrr-cover.png',
-      back: 'subscrr-desktop.png',
-      galleta: 'subscrr.png',
+      cover: 'subscrr-cover.webp',
+      back: 'subscrr-desktop.webp',
+      galleta: 'subscrr.webp',
     },
     year: 2026,
     releaseDate: '2026-09-19',
     recordLabel: 'subscrr.app',
     meta: {
-      description: 'Living Room is the second album/EP recorded by Skizophonic.',
+      descriptionKey: 'pages.projects.projectMeta.subscrr'
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -281,12 +295,12 @@ export const albums = [
     },
     social: [
       {
-        label: 'Website',
+        labelKey: 'pages.projects.linkLabels.website',
         link: 'https://subscrr.app/',
         icon: 'lucide:globe',
       },
       {
-        label: 'in Appstore',
+        labelKey: 'pages.projects.linkLabels.appStore',
         link: 'https://apps.apple.com/us/app/subscrr-subscription-tracker/id6757530448',
         icon: 'simple-icons:appstore',
       },
@@ -295,21 +309,22 @@ export const albums = [
       youtube: [
         {
           id: 'EbeH_yAOMQQ',
-          title: 'Track Every Subscription at a Glance',
+          titleKey: 'pages.projects.videoTitles.subscrrTracking',
         },
         {
           id: 'wLiOGDug7Is',
-          title: 'All Your Recurring Expenses in One Place',
+          titleKey: 'pages.projects.videoTitles.subscrrRecurringExpenses',
         },
         {
           id: 'dfNV_ios4HU',
-          title: 'Let AI Help You Save on Subscriptions',
+          titleKey: 'pages.projects.videoTitles.subscrrAiSavings',
         },
       ],
     },
     bgVideo: {
       fhd: 'subscrr_1080p.mp4',
       hd: 'subscrr_720p.mp4',
+      sd: 'subscrr_540p.mp4',
     },
     tracklist: [
       'Shut Up',

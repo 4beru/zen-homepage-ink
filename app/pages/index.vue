@@ -18,12 +18,6 @@
             <p class="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.16em] sm:tracking-[0.24em] uppercase text-white leading-tight">
               {{ $t('pages.home.heroHeadline') }}
             </p>
-            <!-- Text 2 -->
-            <p class="text-[10px] sm:text-xs md:text-sm tracking-[0.14em] sm:tracking-[0.2em] uppercase font-mono text-white/80 leading-normal flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3">
-              <span>{{ $t('pages.home.heroSubPart1') }}</span>
-              <span class="opacity-40 select-none">//</span>
-              <span>{{ $t('pages.home.heroSubPart2') }}</span>
-            </p>
           </div>
         </div>
       </HeroHypnotic>
@@ -32,9 +26,9 @@
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-            <source :src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
-            <source :src="`/videos/${video.small}`" type="video/mp4">
+          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" data-defer-media data-home-sequence-video preload="none" :data-poster="video.poster" muted loop playsinline disableremoteplayback>
+            <source :data-src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
+            <source :data-src="`/videos/${video.small}`" type="video/mp4">
           </video>
         </div>
         <div class="container text-[clamp(1.5rem,_3.5vw,_3.5rem)] prose-black prose-p:leading-normal text-pretty">
@@ -44,10 +38,8 @@
 
       <section ref="block2Ref" class="block2 absolute z-20 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div class="absolute z-10 top-0 left-0 w-full h-full">
-          <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-            <!-- <source src="/videos/gsap-showreel.mp4" type="video/mp4" media="(min-width: 1280px)"> -->
-            <!-- <source src="/videos/gsap-showreel.mp4" type="video/mp4" media="(min-width: 640px)"> -->
-            <source src="/videos/gsap-showreel.mp4" type="video/mp4">
+          <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" data-defer-media preload="none" data-poster="/images/logo_circles.png" muted loop playsinline disableremoteplayback>
+            <source data-src="/videos/gsap-showreel.mp4" type="video/mp4">
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
@@ -65,7 +57,7 @@
         </div>
 
         <div ref="buttonHypnoticRef" class="button-hypnotic absolute top-0 left-0 flex items-center justify-center w-full h-full p-4 sm:px-16">
-          <ButtonHypnotic to="music">{{ $t('pages.home.buttonHypnotic') }}</ButtonHypnotic>
+          <ButtonHypnotic to="projects">{{ $t('pages.home.buttonHypnotic') }}</ButtonHypnotic>
         </div>
       </section>
 
@@ -80,6 +72,7 @@
   import gsap from "gsap";
   import { ScrollTrigger } from 'gsap/ScrollTrigger'
   import { SplitText } from "gsap/SplitText";
+  import { loadDeferredVideo } from '~/utils/deferred-video.js';
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -91,25 +84,30 @@
     0: {
       'small': 'unimatic_540p.mp4',
       'large': 'unimatic_720p.mp4',
+      'poster': '/albums/velodrome/unimatic-cover.webp',
     },
     1: {
       'small': 'rythm_540p.mp4',
       'large': 'rythm_720p.mp4',
+      'poster': '/albums/video-rock/rythm-cover.webp',
     },
     2: {
       'small': 'pentiai_540p.mp4',
       'large': 'pentiai_720p.mp4',
+      'poster': '/albums/one/penti-cover.webp',
     },
     3: {
       'small': 'woman_finger_640p.mp4',
       'large': 'woman_finger_720p.mp4',
+      'poster': '/albums/gossip/miralife-cover.webp',
     },
     4: {
       'small': 'subscrr_540p.mp4',
       'large': 'subscrr_720p.mp4',
+      'poster': '/albums/living-room/subscrr-cover.webp',
     },
   }
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const isPageLoaded = ref(false);
   const homeTimelineRef = useTemplateRef('homeTimelineRef');
   const timelineRef = useTemplateRef('timelineRef');
@@ -118,6 +116,52 @@
   const showreelRef = useTemplateRef('showreelRef');
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
   let block1Split, block2Split, block3Split;
+
+  function getSequenceVideos() {
+    return block1Ref.value?.querySelectorAll('[data-home-sequence-video]') ?? [];
+  }
+
+  function prepareSequenceVideos() {
+    for (const video of getSequenceVideos()) {
+      void loadDeferredVideo(video, { preload: 'auto' });
+    }
+  }
+
+  function playSequenceVideos() {
+    for (const video of getSequenceVideos()) {
+      void loadDeferredVideo(video, { play: true, preload: 'auto' });
+    }
+  }
+
+  function pauseSequenceVideos() {
+    for (const video of getSequenceVideos()) {
+      video.pause();
+    }
+  }
+
+  function prepareShowreelVideo() {
+    if (showreelRef.value) {
+      void loadDeferredVideo(showreelRef.value, { preload: 'auto' });
+    }
+  }
+
+  function playShowreelVideo() {
+    if (showreelRef.value) {
+      void loadDeferredVideo(showreelRef.value, { play: true, preload: 'auto' });
+    }
+  }
+
+  function pauseShowreelVideo() {
+    showreelRef.value?.pause();
+  }
+
+  watch(isPageLoaded, (loaded) => {
+    if (loaded) {
+      prepareSequenceVideos();
+    } else {
+      pauseSequenceVideos();
+    }
+  }, { flush: 'post' });
   let ctx;
 
   useSeoMeta({
@@ -128,19 +172,28 @@
   })
 
   onMounted(async () => {
+    // Start the Home timeline from its first frame after a full page reload.
+    window.scrollTo(0, 0);
+
     await document.fonts.ready;
+
+    // Font loading can defer ScrollTrigger setup; don't carry a restored offset into it.
+    window.scrollTo(0, 0);
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
+    const splitUnit = locale.value === 'zh-CN' ? 'chars' : 'words';
+    const splitType = `lines, ${splitUnit}`;
+
     ctx = gsap.context(() => {
       block1Split = SplitText.create(".block1 p", {
-        type: 'lines, words',
+        type: splitType,
       });
       block2Split = SplitText.create(".block2 p", {
-        type: 'lines, words',
+        type: splitType,
       });
       block3Split = SplitText.create(".block3 p", {
-        type: 'lines, words',
+        type: splitType,
       });
 
       gsap.set('.circle0, .circle1, .circle2, .circle3, .circle4', {
@@ -234,16 +287,24 @@
           autoAlpha: 0,
           ease: 'power4.in',
         }, '<-=1%')
-        .from(block1Split.words, {
+        .from(block1Split[splitUnit], {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
           ease: 'power4.out',
-          stagger: 0.015,
+          stagger: locale.value === 'zh-CN' ? 0.006 : 0.015,
         }, '<0.3')
         .to('.circle0', {
           clipPath: 'circle(64% at 50% 50%)',
           ease: "back.out(1)",
+          onStart: () => {
+            playSequenceVideos();
+            prepareShowreelVideo();
+          },
+          onReverseComplete: () => {
+            pauseSequenceVideos();
+            pauseShowreelVideo();
+          },
         }, '<0.6')
         .to(block1Ref.value, {
           color: '#ffffff',
@@ -275,11 +336,15 @@
         .to('.circle0, .circle1, .circle2, .circle3, .circle4', {
           clipPath: 'circle(0% at 50% 50%)',
           ease: "power4.inOut",
+          onComplete: pauseSequenceVideos,
+          onReverseComplete: playSequenceVideos,
         }, '<0.3')
         .to(showreelRef.value, {
           autoAlpha: 1,
           maskSize: '30% 30%',
           ease: 'power3.inOut',
+          onStart: playShowreelVideo,
+          onReverseComplete: pauseShowreelVideo,
         }, '<')
         .to(showreelRef.value, {
           maskSize: '200% 200%',
@@ -294,7 +359,7 @@
           duration: 0.7,
           ease: 'power4.in',
         }, '<0.3')
-        .from(block2Split.words, {
+        .from(block2Split[splitUnit], {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
@@ -310,6 +375,8 @@
         }, '<.8')
         .to(block2Ref.value, {
           autoAlpha: 0,
+          onComplete: pauseShowreelVideo,
+          onReverseComplete: playShowreelVideo,
         })
         .to('.animation-circles', {
           scale: isPortrait ? 3 : 1.5,
@@ -344,7 +411,7 @@
             })
           },
         })
-        .from(block3Split.words, {
+        .from(block3Split[splitUnit], {
           yPercent: 100,
           autoAlpha: 0,
           filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(4px)',
@@ -380,6 +447,9 @@
   })
 
   onBeforeRouteLeave(() => {
+    pauseSequenceVideos();
+    pauseShowreelVideo();
+
     // GSAP timeline "goes blank" and nothing shows on screen when you click a link.
     // Scrolling the document makes a trick and keeps the timeline while the page transition is running (hacky?).
     window.scrollTo(0, 0);

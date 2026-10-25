@@ -1,21 +1,12 @@
 ---
-title: Velodrome
+title: Unimatic
 ---
 
-Grabado y mezclado en Rockaway Studios. Castellón, España - Junio y Julio, 2013<br>
-Masterizado en Sage Audio. Nashville, EEUU - Julio, 2013
+Unimatic combina el diseño italiano minimalista con una ingeniería funcional rigurosa para crear relojes de buceo y relojes-herramienta de alto rendimiento. Diseñados para durar y con resistencia al agua de hasta 300 metros, estos relojes van más allá de la utilidad gracias a una estética distintiva y cuidadosamente trabajada.
 
-Productor: [Alberto Lucendo](https://www.albertolucendo.com)<br>
-Fotografía: Pablo Serrano<br>
-Diseño gráfico: [Dan Alcaide](https://www.danalcaide.com)<br>
+## Entregables
 
-Voz en ‘Love Soldier’ y ‘No-light men’: Sara Ledesma<br>
-Trompeta en ‘Love Soldier’, ‘Nadie te quiere ya’ y ‘How would you say I love you?’: Victor Montoro ‘Tonet’<br>
-Coros de niños en ‘1 2 3 4, School Revolution!’: Abril, Joel, Alba, Mar y Valentina<br>
-Coro en ‘Oh Oh Oh (Do Not Skip Any Detail)’: Nuria Pallarés, Sol González y Sofía Royo<br>
-
-## Reconocimientos
-
-- Mejor álbum 2013 - Benicassim.pop
-- Mejor canción ‘Love Soldier’ 2013 - Benicassim.pop
-- Top 10 álbumes 2013 - NMPNU
+- **Relojes clásicos** — Modelos icónicos de buceo y cronógrafos, con esferas de alto contraste y movimientos robustos.
+- **Relojes-herramienta** — Relojes resistentes, diseñados con criterios de especificación militar para ofrecer máxima legibilidad y protección.
+- **Ediciones limitadas y colaboraciones** — Lanzamientos exclusivos y numerados individualmente, desarrollados junto a colaboradores seleccionados.
+- **Personalización y accesorios** — Configuraciones de reloj a medida, grabados personalizados y correas prémium.

@@ -6,7 +6,7 @@
         <path d="M8 5v14l11-7z" />
       </svg>
     </div>
-    <iframe v-if="videoLoaded" class="w-full h-full" :src="`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+    <iframe v-if="videoLoaded" class="w-full h-full" :src="`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`" :title="$t('components.accessibility.youtubePlayer')" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
   </div>
 </template>
 

@@ -3,11 +3,12 @@
   "languages": {
     "code": "en",
     "es": "Spanish",
-    "en": "English"
+    "en": "English",
+    "zh-CN": "简体中文"
   },
   "meta": {
     "title": "Zen Space",
-    "description": "Creative software studio crafting immersive websites and digital products"
+    "description": "Creative software studio designing and engineering distinctive websites and digital products."
   },
   "preloader": {
     "text": [
@@ -29,100 +30,165 @@
       "heroSubheadline": "Creative software studio // Digital product architecture",
       "heading": "What is Zen Space?",
       "block1": "Zen Space is a creative software studio that designs and engineers websites and digital products where clean architecture meets bold visual ideas.",
-      "block2": "Obsessed with motion and detail, we combine GSAP animation, 3D, particles, and effects with solid engineering to build experiences that feel alive without sacrificing performance.",
+      "block2": "We bring thoughtful design, expressive motion and solid engineering together to create digital experiences that feel distinctive, intuitive and effortless to use.",
       "block3": "Whether you are launching a product or reinventing your brand online, if you value craft and a discerning eye, we should talk.",
       "buttonHypnotic": "See our work",
       "meta": {
         "title": "Home",
-        "description": "Creative software studio crafting immersive websites and digital products"
+        "description": "Zen Space is a creative software studio building distinctive websites, digital products, and interactive experiences."
       },
       "preloader": {
         "text1": "loading motion",
         "text2": "syncing pixels"
       }
     },
-    "band": {
-      "name": "Team",
-      "title": "Team",
-      "copyrightText": "All images are copyright to their respective owners.",
-      "labels": {
-        "vocals": "Creative direction",
-        "guitar": "Front-end engineering",
-        "keyboards": "Motion design",
-        "bass": "Back-end architecture",
-        "trombone": "3D & WebGL",
-        "drums": "Product strategy"
-      },
+    "references": {
+      "name": "References",
+      "title": "References",
+      "copyrightText": "All featured work belongs to its respective creators. Shared here for inspiration.",
       "meta": {
-        "title": "Team",
-        "description": "Who we are and how we work"
+        "title": "References",
+        "description": "A curated collection of websites, digital products, creative studios, and interactive experiences that inspire our work."
+      },
+      "intro": "We collect the websites, experiments and digital products that make us look twice. From Awwwards, Behance and Dribbble to independent studios and ambitious brands, these references fuel our curiosity, challenge our perspective and spark ideas for what we build next.",
+      "images": {
+        "zenSpaceLogo": "Zen Space logo and visual identity.",
+        "image1minus1GameStudio": "1minus1 Game Studio website and visual identity.",
+        "aiForTripPlannerApp": "AI trip planner app for organizing travel itineraries.",
+        "aiPoweredPersonalStylistApp": "AI-powered personal stylist app and fashion recommendations.",
+        "aquirinBrandDesign": "Aquirin brand identity and visual design.",
+        "beautySkincareEcommerceApp": "Beauty and skincare e-commerce shopping experience.",
+        "belgradeArborArchitectureWebsiteDesign": "Belgrade Arbor architecture website and project presentation.",
+        "cultureIndexCreativeStudio": "Culture Index creative studio website.",
+        "dashboardDeliveryDesign": "Delivery operations dashboard and data visualization.",
+        "healthcareCompanyMobileApp": "Healthcare mobile app interface and patient services.",
+        "hotelBookingMobileAppDesign": "Hotel booking mobile app and travel accommodation search.",
+        "jesperLandbergWebsiteStudio": "Jesper Landberg website studio portfolio.",
+        "junkbrandingPortfolioCh": "Junkbranding creative portfolio and visual identity work.",
+        "kyoosangChoiBrandDesign": "Kyoosang Choi brand design and art direction.",
+        "lajoyaEuropeWebsite": "LaJoya Europe website and brand presentation.",
+        "maisonAugeCreativeStudio": "Maison Auge creative studio website.",
+        "mentalHealthMobileApp": "Mental health mobile app interface and wellbeing tools.",
+        "missionPersonalInjuryLawyer": "Mission personal injury law firm website.",
+        "neuCulturedConceptDesign": "Neu Cultured concept design and visual exploration.",
+        "nflLeagueBrandDesign": "NFL league brand design and sports visual identity.",
+        "offpossibleCreativePortfolio": "Offpossible creative portfolio and studio work.",
+        "offpossibleMobilePortfolio": "Offpossible portfolio adapted for mobile screens.",
+        "onseisStudioDesign": "Onseis studio website and design portfolio.",
+        "pegassiSpotifyPlaylist": "Pegassi Spotify playlist artwork and music identity.",
+        "rapideYachtGroupWebsite": "Rapide Yacht Group website and luxury yacht presentation.",
+        "realStateBookingApp": "Real estate booking app for exploring and reserving properties.",
+        "ronnsquareArchitectureWebsite": "Ronnsquare architecture website and building portfolio.",
+        "rovaSmartRunningTrackerApp": "Rova smart running tracker app and activity metrics.",
+        "secondRideBrandDesign": "Second Ride brand identity and visual design.",
+        "shipmentTrackingFleetManagementDesign": "Shipment tracking and fleet management interface.",
+        "smartFinancialManagementApp": "Personal financial management app and account overview.",
+        "solarEnergyMonitoringMobileApp": "Solar energy monitoring mobile app and energy metrics.",
+        "sonyaPesselevPortfoliioDesign": "Sonya Pesselev creative portfolio and design presentation.",
+        "storeyArchitectureWebsite": "Storey architecture website and architectural projects.",
+        "structureConsultingEngineers": "Structure consulting engineers website and professional services.",
+        "sweetTapeWebsite": "Sweet Tape website and product presentation.",
+        "swimtopiaBusinessWebsite": "Swimtopia business website and swimming program services.",
+        "theobromaChocolatWebsiteDesign": "Theobroma Chocolat website and chocolate product presentation.",
+        "thinkBigStudioBrandDesign": "Think Big Studio brand identity and creative direction.",
+        "trustGussInjuryLawyers": "Trust Guss injury lawyers website and legal services.",
+        "unipayMobileAppDesignUiUx": "Unipay mobile payment app and user interface design.",
+        "webDesignForManageAndAutomatePayments": "Payment management and automation platform website."
       }
     },
-    "music": {
+    "projects": {
       "name": "Works",
-      "title": "Works",
+      "title": "Projects",
       "labels": {
         "back": "Back to works",
         "music": "Works",
         "info": "Info",
         "tracklist": "Deliverables",
         "recordLabel": "Client",
-        "socialLinks": "Open",
         "expandArtwork": "Expand preview",
         "collapseArtwork": "Collapse preview",
         "deliverables": "Deliverables"
       },
       "meta": {
-        "title": "Works",
-        "description": "Selected projects and case studies"
+        "title": "Projects",
+        "description": "Explore selected websites, digital products, and creative technology projects by Zen Space."
       },
       "preloader": {
         "text1": "loading works",
         "text2": "syncing code"
+      },
+      "linkLabels": {
+        "webApp": "Open web app",
+        "downloadApp": "Download app",
+        "website": "Visit website",
+        "appStore": "Open in the App Store"
+      },
+      "projectMeta": {
+        "rythm": "Rythm brings music discovery and shared listening into one connected experience. Explore a personalized feed, manage playlists, and listen with friends in real time across supported platforms.",
+        "unimatic": "Unimatic blends minimalist Italian design with rigorous functional engineering to create high-performance dive and toolwatches. Built for durability with 300m water resistance, these timepieces transcend simple utility through iconic, meticulously crafted aesthetics.",
+        "penti": "Penti is an agentic AI cybersecurity platform that provides continuous security validation. It simulates real-world attacks across your applications, APIs, and infrastructure to expose vulnerabilities and prove exactly what an attacker can reach.",
+        "miraLife": "Mira Life measures your personal capacity across six key dimensions to help you understand your true potential. By analyzing your daily habits, mood, and health metrics, it provides scientific, actionable insights to manage your energy without overwhelming you.",
+        "subscrr": "Subscrr keeps all your subscriptions in one secure place with reminders, insights, and honest totals. It helps you track your expenses, discover where your money goes, and avoid surprise charges across your Apple devices."
+      },
+      "videoTitles": {
+        "rythmDiscordMusicBack": "Finally, Good Music Is Back on Discord",
+        "rythmSetupGuide": "Step-by-Step Setup Guide",
+        "rythmInviteConfigure": "How to Invite and Configure It for Your Server",
+        "unimaticFieldWatch": "Field Watch Review & Hands-On",
+        "unimaticDialDetails": "Minimalist Italian Design: Unimatic Dial & Details",
+        "unimaticToolwatches": "Inside the World of Unimatic Toolwatches",
+        "pentiHackingAi": "The New Methodology for Hacking AI",
+        "pentiThinkSeries": "Hacking AI Models: Think Series",
+        "pentiSecurityAssessment": "AI Security & Vulnerability Assessment",
+        "miraStartWithin": "Mira Life: Start From Within",
+        "miraSixDimensions": "Your Six Dimensions of Life Potential",
+        "miraRecoverySignals": "The Art of Recovery and Body Signals",
+        "subscrrTracking": "Track Every Subscription at a Glance",
+        "subscrrRecurringExpenses": "All Your Recurring Expenses in One Place",
+        "subscrrAiSavings": "Let AI Help You Save on Subscriptions"
       }
     },
-    "merch": {
+    "services": {
       "name": "Services",
       "title": "Services",
       "eyebrow": "What we do",
       "intro": "From the first idea to the final interaction, we bring creative direction, product thinking and engineering together to build digital experiences with purpose.",
-      "serviceLabel": "Service",
       "services": {
         "webDevelopment": {
           "title": "Creative web development",
           "navTitle": "Websites",
           "description": "We design and build distinctive websites with clear art direction, considered interaction and dependable frontend engineering. Every detail serves the story and the experience.",
-          "alt": "Rythm project visual illustrating creative web development.",
-          "secondaryAlt": "Additional Rythm project visual.",
+          "alt": "Website visual illustrating creative web development.",
+          "secondaryAlt": "Additional website visual highlighting immersive interactions.",
           "secondaryTitle": "Immersive web interactions",
           "secondaryDescription": "Scroll-led sequences and precise micro-interactions bring a brand's identity into the experience without compromising clarity or performance."
         },
-        "productArchitecture": {
-          "title": "Digital product architecture",
+        "webApps": {
+          "title": "Web apps built to last",
           "navTitle": "Web Apps",
-          "description": "We shape the foundations behind digital products—from user flows and system structure to frontend, backend and integrations—so the experience stays coherent as the product grows.",
-          "alt": "Penti AI project visual illustrating digital product architecture.",
-          "secondaryAlt": "Additional Penti AI project visual.",
+          "description": "We design and build web applications and SaaS platforms—from user flows and data structure to frontend, backend and integrations—so the product stays fast, maintainable and coherent as it grows.",
+          "alt": "Web application interface illustrating product design and architecture.",
+          "secondaryAlt": "Additional web application visual showing connected product experiences.",
           "secondaryTitle": "Connected product experiences",
           "secondaryDescription": "We bring interfaces, backend services and integrations together in a coherent system that can evolve as features, teams and data grow."
         },
-        "motion3d": {
-          "title": "Motion & 3D experiences",
-          "navTitle": "Mobile",
-          "description": "We bring interfaces to life with purposeful motion, 3D and immersive visual techniques, balancing a memorable feel with responsive interaction and performance.",
-          "alt": "Unimatic project visual from the studio's portfolio.",
-          "secondaryAlt": "Additional Unimatic project visual.",
-          "secondaryTitle": "Motion with a clear purpose",
-          "secondaryDescription": "From subtle transitions to expressive 3D scenes, every movement supports feedback, hierarchy and the rhythm of the experience."
+        "mobileApps": {
+          "title": "Mobile app development",
+          "navTitle": "Mobile Dev",
+          "description": "We build mobile apps that feel fast and native, turning complex flows into simple, intuitive screens—with solid architecture and room to grow.",
+          "alt": "Mobile app interface illustrating mobile app development.",
+          "secondaryAlt": "Additional mobile app visual highlighting fluid interactions.",
+          "secondaryTitle": "Fluid mobile interactions",
+          "secondaryDescription": "Gestures, transitions and subtle motion give every tap clear feedback, keeping the experience smooth, responsive and easy to use on any screen."
         },
-        "mobileSaas": {
-          "title": "Mobile & SaaS apps",
-          "navTitle": "Design",
-          "description": "We create focused mobile and SaaS experiences that turn complex workflows into intuitive products, with practical UX, maintainable architecture and room to evolve.",
-          "alt": "Subscrr project visual illustrating a digital product experience.",
-          "secondaryAlt": "Additional Subscrr project visual.",
+        "productDesign": {
+          "title": "Interface & product design",
+          "navTitle": "Design +++",
+          "description": "We design interfaces and visual systems that make products clear and memorable—from first wireframes to polished screens, ready to be built.",
+          "alt": "Interface design visual showing a polished product screen.",
+          "secondaryAlt": "Additional UX and interface design visual for digital workflows.",
           "secondaryTitle": "UX for everyday workflows",
-          "secondaryDescription": "We turn complex tasks into clear screens and reusable patterns, helping mobile and SaaS products stay intuitive as they grow."
+          "secondaryDescription": "We turn complex tasks into clear screens and reusable patterns, helping digital products stay intuitive as they grow."
         }
       },
       "meta": {
@@ -155,35 +221,19 @@
           }
         }
       },
-      "sections": {
-        "tshirts": {
-          "title": "Creative web development"
-        },
-        "buttonBadges": {
-          "title": "Digital product architecture"
-        },
-        "stickers": {
-          "title": "Motion & 3D experiences"
-        },
-        "posters": {
-          "title": "Mobile & SaaS apps"
-        }
-      },
-      "labels": {
-        "noStock": "Currently unavailable"
-      }
+      "navigationLabel": "Services navigation"
     },
-    "privacy": {
+    "privacyPolicy": {
       "name": "Privacy",
       "title": "Privacy policy & cookies",
-      "p1": "We care about your (and our) privacy. That’s why we don’t use cookies on this website, and we’re not planning to. We’re not interested in tracking visitors or collecting data about you, that’s just not what we do.",
+      "p1": "Your privacy matters to us. This site uses a small preference cookie to remember your language choice. We don't use advertising or analytics cookies to track your browsing activity.",
       "p2": "Our only goal is to share our work with you. Nothing more, nothing less.",
       "p3": "That said, our website is hosted by a third-party provider, and they might use their own cookies for things like security or basic site performance. That part is outside of our control, but from our side, we keep things as cookie-free as possible.",
-      "p4": "We don't sell food either, but our advice is to eat more vegetables to stay healthy. We also encourage you to support local producers; Argentine yerba mate and malbec are among the wonders of the world.",
+      "p4": "We believe thoughtful work needs curiosity, collaboration, and time away from the screen. Support local makers, stay curious, and leave room for good ideas to grow.",
       "p5": "Today, imagine it. Tomorrow, ship it.",
       "meta": {
         "title": "Privacy policy & cookies",
-        "description": "Privacy policy & cookies information"
+        "description": "Read how Zen Space handles personal information and uses a preference cookie to remember your language choice."
       }
     }
   },
@@ -198,10 +248,28 @@
     },
     "albumArtwork": {
       "moreInfo": "Tap the preview or “+”"
+    },
+    "navigation": {
+      "main": "Main navigation",
+      "contact": "Contact",
+      "album": "Project navigation",
+      "language": "Language navigation"
+    },
+    "accessibility": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "videoUnsupported": "Your browser does not support video playback.",
+      "youtubePlayer": "YouTube video player",
+      "albumCover": "{title} cover",
+      "albumBackCover": "{title} back cover",
+      "albumDisc": "{title} disc"
+    },
+    "contact": {
+      "tellStory": "Tell us your story"
     }
   },
   "footer": {
-    "siteBy": "Site by",
+    "siteBy": "Developed by",
     "privacy": "Privacy policy",
     "faq": {
       "eyebrow": "FAQs",
@@ -240,10 +308,23 @@
           "answer": "The investment depends on the scope, complexity, timeline and level of collaboration involved. After an initial conversation, we can define a realistic scope and provide a tailored estimate."
         }
       ],
-      "aside": "Clear answers before we get started.",
-      "headshotAlt": "Portrait of a creative professional",
-      "bookCall": "Book a call",
+      "aside": "Want to know if we'd be a good fit?",
+      "headshotAlt": "Portrait of Abel",
+      "bookCall": "Book a call with Abel",
       "bookingSoon": "Booking link coming soon"
-    }
+    },
+    "location": "Buenos Aires",
+    "emailSubject": "Message from the Zen Space website"
+  },
+  "errors": {
+    "status": "Error {statusCode}",
+    "notFoundTitle": "Page not found",
+    "notFoundLead": "Looks like this page took a wrong turn.",
+    "notFoundBody": "The page you're looking for doesn't exist or may have moved.",
+    "notFoundInvite": "While you're here, explore the digital experiences we build.",
+    "tagline": "Today, imagine it. Tomorrow, ship it.",
+    "genericMessage": "Something went wrong while loading this page. Please try again.",
+    "projectNotFound": "Project not found.",
+    "backHome": "Back home"
   }
 }

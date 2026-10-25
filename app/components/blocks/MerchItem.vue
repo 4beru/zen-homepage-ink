@@ -1,66 +1,206 @@
 <template>
-  <div class="merch-items grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-18">
-    <div v-for="item in items" :key="item.id" class="merch-item flex flex-col items-center justify-end">
-      <AnimationReveal class="w-full" @start="isAnimationRevealStarted = true">
-        <div class="item relative overflow-hiddenx">
-          <div class="mask relative z-30 transition-all duration-400 ease-in-out rounded-xl">
-            <NuxtImg class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]" :src="`/images/merch/${item.image}`" :alt="`Merch item - ${item.name}`" />
-          </div>
-          <video ref="videoRef" class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken" preload="auto" autoplay muted loop playsinline disableremoteplayback aria-hidden="true">
-            <!-- <source src="/videos/spiral2_large.mp4" type="video/mp4" media="(min-width: 1920px)"> -->
-            <source src="/videos/spiral2_medium.mp4" type="video/mp4" media="(min-width: 1280px)">
-            <source src="/videos/spiral2_small.mp4" type="video/mp4">
-          </video>
-        </div>
+  <article
+    data-service-item
+    :data-service-index="props.serviceIndex"
+    class="service-item w-full"
+    :aria-labelledby="`service-title-${props.item.id}`"
+  >
+    <div class="grid grid-cols-1 items-center gap-5 sm:gap-6 lg:grid-cols-12 lg:gap-y-8 lg:gap-x-6 xl:gap-x-7 2xl:gap-x-8">
+      <AnimationReveal class="w-full lg:col-span-7 xl:col-span-8">
+        <figure class="relative isolate aspect-[4/3] w-full overflow-hidden rounded-none bg-gray-100">
+          <NuxtImg
+            :src="props.item.image"
+            :alt="$t(props.item.altKey)"
+            :loading="props.index === 0 ? 'eager' : 'lazy'"
+            class="absolute inset-0 h-full w-full object-cover"
+            sizes="100vw md:100vw xl:1920px"
+          />
+          <video
+            ref="previewVideoRef"
+            :src="props.item.video"
+            aria-hidden="true"
+            tabindex="-1"
+            muted
+            loop
+            playsinline
+            preload="none"
+            class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 ease-out motion-reduce:transition-none"
+            :class="{ 'opacity-100': isPreviewPlaying }"
+            @transitionend="handlePreviewTransitionEnd"
+          />
+        </figure>
       </AnimationReveal>
-      <AnimationReveal>
-        <h3 class="mt-3 will-change-[filter, text-shadow]">{{ item.name }}</h3>
-      </AnimationReveal>
-      <AnimationReveal>
-        <span class="block text-gray-500 will-change-[filter, text-shadow]">{{ $t('pages.merch.labels.noStock') }}</span>
-      </AnimationReveal>
+
+      <div class="flex min-w-0 flex-col justify-center lg:col-span-5 xl:col-span-4">
+        <AnimationReveal class="w-full">
+          <h3
+            :id="`service-title-${props.item.id}`"
+            class="w-full text-[clamp(1.4rem,2.1vw,2.5rem)] leading-[1.04] tracking-[-0.035em] text-black"
+          >
+            {{ $t(props.item.titleKey) }}
+          </h3>
+        </AnimationReveal>
+
+        <AnimationReveal class="mt-3 w-full sm:mt-4">
+          <p class="max-w-prose text-sm font-bold leading-[1.7] sm:text-lg lg:text-[1.0625rem] xl:text-lg">
+            {{ $t(props.item.descriptionKey) }}
+          </p>
+        </AnimationReveal>
+      </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script setup>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  defineProps({
-    items: {
+  const props = defineProps({
+    item: {
       type: Object,
-      required: true
+      required: true,
     },
-  })
+    index: {
+      type: Number,
+      required: true,
+    },
+    serviceIndex: {
+      type: Number,
+      required: true,
+    },
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
+  });
 
-  const isAnimationRevealStarted = ref(false);
+  const PREVIEW_FADE_DURATION_MS = 300;
+  const PREVIEW_PAUSE_FALLBACK_MS = PREVIEW_FADE_DURATION_MS + 100;
 
+  const previewVideoRef = useTemplateRef("previewVideoRef");
+  const isPreviewPlaying = ref(false);
+
+  // The focused item is the only one without blur, on both desktop and mobile.
+  // Keep video playback synchronized with that shared focus state.
   watch(
-    isAnimationRevealStarted,
-    (newValue) => {
-      if (newValue) {
-        // Sometimes elements loose their scroll position, so we have to refresh it.
-        ScrollTrigger.refresh();
+    () => props.isActive,
+    (isActive) => {
+      if (isActive) playPreview();
+      else stopPreview();
+    }
+  );
+
+  onMounted(() => {
+    if (props.isActive) playPreview();
+  });
+  let previewRequestId = 0;
+  let previewPauseTimeoutId;
+  let isPreviewRequested = false;
+
+  function clearPreviewPauseTimeout() {
+    if (previewPauseTimeoutId === undefined) return;
+
+    window.clearTimeout(previewPauseTimeoutId);
+    previewPauseTimeoutId = undefined;
+  }
+
+  function pauseAndResetPreview() {
+    clearPreviewPauseTimeout();
+
+    const video = previewVideoRef.value;
+    if (!video || isPreviewPlaying.value) return;
+
+    video.pause();
+
+    // Reset after the fade so the video remains visible while it fades out.
+    if (video.readyState > 0) {
+      video.currentTime = 0;
+    }
+  }
+
+  async function playPreview() {
+    const video = previewVideoRef.value;
+
+    if (!video || !props.item.video) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Track hover intent separately so a pending play() can reverse the fade.
+    isPreviewRequested = true;
+    clearPreviewPauseTimeout();
+    const requestId = ++previewRequestId;
+
+    try {
+      await video.play();
+
+      if (requestId !== previewRequestId) {
+        video.pause();
+
+        if (video.readyState > 0) {
+          video.currentTime = 0;
+        }
+
+        return;
       }
-    })
+
+      isPreviewPlaying.value = true;
+    } catch {
+      // Autoplay can be denied by the browser; keep the still image visible.
+      if (requestId === previewRequestId) {
+        isPreviewPlaying.value = false;
+        pauseAndResetPreview();
+      }
+    }
+  }
+
+  function handlePreviewTransitionEnd(event) {
+    if (event.propertyName !== "opacity") return;
+    if (isPreviewPlaying.value || isPreviewRequested) return;
+
+    pauseAndResetPreview();
+  }
+
+  function stopPreview() {
+    previewRequestId += 1;
+    isPreviewRequested = false;
+
+    const wasVisible = isPreviewPlaying.value;
+    isPreviewPlaying.value = false;
+
+    const video = previewVideoRef.value;
+    if (!video) return;
+
+    clearPreviewPauseTimeout();
+
+    // If the video never became visible, there is no fade to wait for.
+    if (!wasVisible) {
+      video.pause();
+
+      if (video.readyState > 0) {
+        video.currentTime = 0;
+      }
+
+      return;
+    }
+
+    // transitionend normally pauses it; this timeout is a safety net in case
+    // the browser skips the transition event.
+    previewPauseTimeoutId = window.setTimeout(() => {
+      pauseAndResetPreview();
+    }, PREVIEW_PAUSE_FALLBACK_MS);
+  }
+
+  function disposePreview() {
+    previewRequestId += 1;
+    isPreviewRequested = false;
+    isPreviewPlaying.value = false;
+    clearPreviewPauseTimeout();
+
+    const video = previewVideoRef.value;
+    if (!video) return;
+
+    video.pause();
+
+    if (video.readyState > 0) {
+      video.currentTime = 0;
+    }
+  }
+
+  onBeforeUnmount(disposePreview);
 </script>
-
-<style scoped>
-  .item:hover .mask {
-    transform: scale(1.04);
-  }
-
-  .mask + .item-bg-video {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all .4s ease;
-  }
-
-  .mask:hover + .item-bg-video {
-    opacity: 1;
-    transform: scale(1);
-  }
-</style>
