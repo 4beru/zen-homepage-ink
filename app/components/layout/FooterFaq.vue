@@ -109,7 +109,7 @@
       <div class="mt-4 flex flex-col justify-end lg:col-span-3 lg:row-start-2 lg:mt-0">
         <div class="flex flex-col items-start gap-4">
           <img
-            src="/images/abel_ortega_huaraca_profile.webp"
+            :src="imageUrl('abel_ortega_huaraca_profile.webp', '/images/abel_ortega_huaraca_profile.webp')"
             :alt="$t('footer.faq.headshotAlt')"
             class="size-28 aspect-square object-cover sm:size-32 md:size-36 lg:size-[182px]"
             width="182"
@@ -134,6 +134,8 @@
 </template>
 
 <script setup>
+  const { imageUrl } = useMediaUrls();
+
   const openIndex = ref(-1);
 
   function toggleQuestion(index) {
