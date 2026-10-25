@@ -9,15 +9,15 @@
       <div ref="caseRef" class="case relative z-10 w-[80%] perspective-[1000px]" :class="{ 'cursor-pointer': !expandedArtwork }">
         <div ref="caseInnerRef" class="relative w-full h-full transform-3d" :data-cursor-text="$t('components.cursor.flip')" @click="handleClickCase">
           <div ref="coverRef" class="cover relative w-full top-0 left-0 backface-hidden overflow-hidden will-change-transform [box-shadow:_5px_3px_10px_-3px_rgba(0,_0,_0,_.7)]" :aria-label="$t('components.accessibility.albumCover', { title: content.title })">
-            <img class="object-cover" :src="`/albums/${content.assetDirectory}/${content.images.cover}`" :alt="$t('components.accessibility.albumCover', { title: content.title })">
+            <img class="object-cover" :src="imageUrl(content.images.cover, '/albums/' + content.assetDirectory + '/' + content.images.cover)" :alt="$t('components.accessibility.albumCover', { title: content.title })">
           </div>
           <div ref="backRef" class="back absolute w-full top-0 left-0 rotate-y-180 backface-hidden will-change-transform [box-shadow:_5px_3px_10px_-3px_rgba(0,_0,_0,_.7)]" :aria-label="$t('components.accessibility.albumBackCover', { title: content.title })">
-            <img class="object-cover" :src="`/albums/${content.assetDirectory}/${content.images.back}`" :alt="$t('components.accessibility.albumBackCover', { title: content.title })">
+            <img class="object-cover" :src="imageUrl(content.images.back, '/albums/' + content.assetDirectory + '/' + content.images.back)" :alt="$t('components.accessibility.albumBackCover', { title: content.title })">
           </div>
         </div>
       </div>
       <div ref="discRef" class="disc z-5 absolute top-1/2 -translate-y-1/2 right-0 w-[65%] drop-shadow-md/50 will-change-transform" :aria-label="$t('components.accessibility.albumDisc', { title: content.title })">
-        <img ref="galletaRef" class="galleta [clip-path:_circle(50%_at_50%_50%)]" :class="{ 'cursor-pointer': !expandedArtwork }" :src="`/albums/${content.assetDirectory}/${content.images.galleta}`" :alt="$t('components.accessibility.albumDisc', { title: content.title })" :data-cursor-text="$t('components.cursor.zoom')" @click="handleClickGalleta">
+        <img ref="galletaRef" class="galleta [clip-path:_circle(50%_at_50%_50%)]" :class="{ 'cursor-pointer': !expandedArtwork }" :src="imageUrl(content.images.galleta, '/albums/' + content.assetDirectory + '/' + content.images.galleta)" :alt="$t('components.accessibility.albumDisc', { title: content.title })" :data-cursor-text="$t('components.cursor.zoom')" @click="handleClickGalleta">
       </div>
     </section>
   </AnimationReveal>
@@ -37,6 +37,7 @@
   })
 
   const { t } = useI18n()
+  const { imageUrl } = useMediaUrls()
   const caseRef = useTemplateRef('caseRef')
   const back = useTemplateRef('backRef')
   const disc = useTemplateRef('discRef')
