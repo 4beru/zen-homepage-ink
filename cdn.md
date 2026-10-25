@@ -108,3 +108,22 @@ https://cdn.aberu.site/unimatic_720p.mp4
 https://cdn.aberu.site/woman_finger_1080p.mp4
 https://cdn.aberu.site/woman_finger_640p.mp4
 https://cdn.aberu.site/woman_finger_720p.mp4
+
+## Uso desde la aplicación
+
+Los objetos de ambos buckets se publican en la raíz de cada origen y el código resuelve cada recurso por nombre de archivo. Por eso, el inventario de esta página debe mantenerse sincronizado con los nombres utilizados en `app/data` y en los componentes.
+
+La aplicación admite estos valores públicos de runtime config:
+
+```dotenv
+NUXT_PUBLIC_CDN_IMAGES_BASE_URL=https://cdn.zenspace.lat
+NUXT_PUBLIC_CDN_VIDEOS_BASE_URL=https://cdn.aberu.site
+```
+
+- En local, deja estas variables vacías para usar los archivos de `public/`.
+- En Vercel Preview, configura ambas variables cuando hayas verificado que los objetos del CDN responden correctamente por HTTPS.
+- Usa los mismos orígenes en Production. Los valores de Preview y Production se configuran por separado en el proyecto de Vercel.
+- Configura `APP_URL=https://zenspace.lat` en Production para generar metadatos, canonical y sitemap con el dominio público correcto.
+- No elimines los archivos locales de `public/` hasta que las pruebas de Preview confirmen que todos los recursos remotos funcionan, incluidos los posters, los rangos de video y las imágenes optimizadas por Nuxt Image.
+
+Estas variables no contienen credenciales: solo indican orígenes públicos. Los cambios de variables de entorno requieren una nueva deployment para surtir efecto.
