@@ -10,7 +10,7 @@ const appUrl = (isVercelPreview ? inferredAppUrl : process.env.APP_URL || inferr
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false, // Need to disable server-side rendering to prevent error 500 (still working on this).
+  ssr: true,
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   devServer: {
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   ],
   content: {
     experimental: {
-      nativeSqlite: true,
+      sqliteConnector: "native",
     },
     renderer: {
       anchorLinks: { h2: false, h3: false, h4: false },
