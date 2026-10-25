@@ -56,8 +56,8 @@
           >
             <video
               data-journey-video
-              :src="step.video"
-              :poster="step.poster"
+              :src="videoUrl(step.video, step.video)"
+              :poster="imageUrl(step.poster, step.poster)"
               :aria-label="$t(step.altKey)"
               aria-roledescription="video"
               loop
@@ -81,6 +81,7 @@
 <script setup>
   const journeyRef = useTemplateRef("journeyRef");
   const journeyTitleRef = useTemplateRef("journeyTitleRef");
+  const { imageUrl, videoUrl } = useMediaUrls();
 
   const steps = [
     {
