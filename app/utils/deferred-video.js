@@ -7,6 +7,12 @@ export async function loadDeferredVideo(video, { play = false, preload = "auto" 
 
   video.preload = preload;
 
+  const deferredPoster = video.getAttribute("data-poster");
+  if (deferredPoster && !video.getAttribute("poster")) {
+    video.setAttribute("poster", deferredPoster);
+    video.removeAttribute("data-poster");
+  }
+
   let sourcesChanged = false;
   for (const source of video.querySelectorAll("source[data-src]")) {
     const deferredSrc = source.getAttribute("data-src");
