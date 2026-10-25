@@ -9,7 +9,7 @@
       <AnimationReveal class="w-full lg:col-span-7 xl:col-span-8">
         <figure class="relative isolate aspect-[4/3] w-full overflow-hidden rounded-none bg-gray-100">
           <NuxtImg
-            :src="props.item.image"
+            :src="imageUrl(props.item.image, props.item.image)"
             :alt="$t(props.item.altKey)"
             :loading="props.index === 0 ? 'eager' : 'lazy'"
             class="absolute inset-0 h-full w-full object-cover"
@@ -17,7 +17,7 @@
           />
           <video
             ref="previewVideoRef"
-            :src="props.item.video"
+            :src="videoUrl(props.item.video, props.item.video)"
             aria-hidden="true"
             tabindex="-1"
             muted
@@ -52,6 +52,8 @@
 </template>
 
 <script setup>
+  const { imageUrl, videoUrl } = useMediaUrls();
+
   const props = defineProps({
     item: {
       type: Object,
