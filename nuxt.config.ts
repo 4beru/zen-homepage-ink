@@ -32,6 +32,10 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxt/content",
   ],
+  image: {
+    // Permit Nuxt Image/IPX to optimize the externally hosted portfolio images.
+    domains: ["cdn.zenspace.lat"],
+  },
   components: [
     {
       path: "~/components",
@@ -215,6 +219,10 @@ export default defineNuxtConfig({
     public: {
       appUrl,
       isPreviewDeployment: isVercelPreview,
+      // Empty by default: local and preview builds keep using public/ until the
+      // corresponding CDN origin has been verified and configured per environment.
+      cdnImagesBaseUrl: "",
+      cdnVideosBaseUrl: "",
     },
   },
 });
