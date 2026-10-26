@@ -1,23 +1,14 @@
-# Skizophonic website
+# Zen Space website
 
-Music band based in Benicasim and Castellón, Spain.
-_Banda de música formada entre Benicàssim y Castellón, España._
+Creative software studio designing and engineering distinctive websites and digital products.
 
-[www.skizophonic.com](https://www.skizophonic.com)
 
-Made with Nuxt, Tailwind, GSAP, CSS/SVG animations, chocolate and coffee.
-_Hecho con Nuxt, Tailwind, GSAP, animaciones CSS/SVG, chorizo y paella._
+Built with Nuxt, Tailwind CSS, GSAP, and custom motion design.
 
-This website has received an **Honorable Mention** on [Awwwards](https://www.awwwards.com/sites/skizophonic).
 
-## License
+## Licensing
 
-- **Code:** Licensed under the [MIT License](./LICENSE). See `LICENSE` file.
-  You’re free to use, modify, and distribute the source code.
-
-- **Design, content, and branding:** Licensed under the [Creative Commons
-  Attribution–NonCommercial–NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](./LICENSE-DESIGN). See `LICENSE-DESIGN` file.
-  These materials may not be used commercially or modified without permission.
+This repository does not currently include a project-level license file. Do not assume that the source code, content, visual design, branding, or media may be reused or redistributed. Third-party assets may have their own license terms; obtain permission from the relevant rights holder before reuse.
 
 ## Overview
 
@@ -94,3 +85,11 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Vercel and SEO
+
+Set `APP_URL` in the Vercel **Production** environment to the canonical public origin, for example `https://your-domain.example` (replace the example with the real domain and omit the trailing slash). The Nuxt configuration can fall back to Vercel's deployment URL variables, but the configured custom domain should be the canonical origin for production SEO.
+
+Vercel Preview deployments use their own deployment URL and are marked `noindex, nofollow`. The `/robots.txt` endpoint includes the sitemap URL; after deployment, verify both `/robots.txt` and `/sitemap.xml`.
+
+Before launch, run `npm run build` and verify that each localized route returns the expected title, description, canonical URL, `hreflang` links, and project-specific social image.

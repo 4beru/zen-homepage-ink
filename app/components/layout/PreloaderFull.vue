@@ -53,10 +53,12 @@
   const preloaderSubliminalTextRef = useTemplateRef('preloaderSubliminalTextRef');
   const route = useRoute()
   const routesAreLoaded = useState('routesAreLoadedFull', () => []);
-  const randomIndex = import.meta.client ? Math.floor(Math.random() * 6) : 0;
+  const randomIndex = ref(0);
   let ctx = gsap.context(() => { });
 
   onMounted(async () => {
+    // Keep server markup and the first client render deterministic for hydration.
+    randomIndex.value = Math.floor(Math.random() * 6);
     await nextTick();
     disableScroll();
     await document.fonts.ready;

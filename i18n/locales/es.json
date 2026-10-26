@@ -3,126 +3,192 @@
   "languages": {
     "code": "es",
     "es": "Español",
-    "en": "Inglés"
+    "en": "Inglés",
+    "zh-CN": "Chino"
   },
   "meta": {
-    "title": "Skizophonic",
-    "description": "Banda de música formada entre Benicasim y Castellón, España"
+    "title": "Zen Space",
+    "description": "Estudio de software creativo que diseña y desarrolla sitios web y productos digitales distintivos."
   },
   "preloader": {
     "text": [
-      "Espiral de subliminal cadencia",
-      "Ascenso mecánico del ruido",
-      "Sinestesia por hipermúsica",
-      "Caleidoscopio de supersonidos",
+      "Espiral de interfaces vivas",
+      "Ascenso mecánico de píxeles",
+      "Sinestesia en hipermovimiento",
+      "Caleidoscopio de código",
       "Laberinto eléctrico de ondas",
-      "Tangente de un ciudadano sónico"
+      "Tangente de un ciudadano digital"
     ]
   },
   "pages": {
     "home": {
-      "name": "Home",
-      "title": "Home",
-      "heroHeadline": "Diseñamos. Construimos. Transformamos.",
+      "name": "Inicio",
+      "title": "Inicio",
+      "heroHeadline": "Diseñamos. Desarrollamos. Transformamos.",
       "heroSubPart1": "Estudio de software creativo",
       "heroSubPart2": "Arquitectura de productos digitales",
       "heroSubheadline": "Estudio de software creativo // Arquitectura de productos digitales",
-      "heading": "¿Qué es Skizophonic?",
-      "block1": "La banda más lenta de la historia se formó en España entre Benicàssim y Castellón a finales del 2003 practicando una especie de rock alternativo con influencias de otros estilos del rock más clásico.",
-      "block2": "No obstante, en la búsqueda inquieta de ideas eclécticas, los miembros de Skizophonic dieron un giro a sonidos más garageros, soul y especialmente ácidos, con un toque de espíritu mod y pinceladas de electrónica.",
-      "block3": "Actualmente sobreviven como soldados de fortuna. Si tiene buen gusto y los escucha, quizá pueda apreciarlos.",
-      "buttonHypnotic": "Escucha su música",
+      "heading": "¿Qué es Zen Space?",
+      "block1": "Zen Space es un estudio de software creativo que diseña y desarrolla sitios web y productos digitales donde una arquitectura sólida se encuentra con ideas visuales audaces.",
+      "block2": "Unimos diseño cuidado, movimiento expresivo e ingeniería sólida para crear experiencias digitales con carácter, intuitivas y naturales de usar.",
+      "block3": "Ya sea que estés lanzando un producto o renovando tu marca en internet, si valoras el trabajo bien hecho y una mirada cuidadosa, hablemos.",
+      "buttonHypnotic": "Ver proyectos",
       "meta": {
-        "title": "Home",
-        "description": "Banda de música formada entre Benicasim y Castellón, España"
+        "title": "Inicio",
+        "description": "Zen Space diseña y desarrolla sitios web, productos digitales y experiencias interactivas para marcas con ambición."
       },
       "preloader": {
-        "text1": "cargando ondas",
-        "text2": "sincroniza espiral"
+        "text1": "cargando movimiento",
+        "text2": "sincronizando píxeles"
       }
     },
-    "band": {
-      "name": "Banda",
-      "title": "Banda",
-      "copyrightText": "Todos los derechos de las imágenes pertenecen a sus respectivos autores.",
-      "labels": {
-        "vocals": "Voz",
-        "guitar": "Guitarra",
-        "keyboards": "Teclados",
-        "bass": "Bajo",
-        "trombone": "Trombón",
-        "drums": "Batería"
-      },
+    "references": {
+      "name": "Referencias",
+      "title": "Referencias",
+      "copyrightText": "Todos los trabajos que aparecen pertenecen a sus respectivos creadores. Los compartimos como inspiración.",
       "meta": {
-        "title": "Banda",
-        "description": "Quiénes somos y cómo somos"
+        "title": "Referencias",
+        "description": "Una selección de sitios web, productos digitales, estudios creativos y experiencias interactivas que inspiran nuestro trabajo."
+      },
+      "intro": "Reunimos sitios web, experimentos y productos digitales que nos hacen detenernos a mirar. Desde Awwwards, Behance y Dribbble hasta estudios independientes y marcas ambiciosas, estas referencias alimentan nuestra curiosidad, desafían nuestra perspectiva e inspiran lo que construiremos después.",
+      "images": {
+        "zenSpaceLogo": "Logotipo e identidad visual de Zen Space.",
+        "image1minus1GameStudio": "Sitio web e identidad visual de 1minus1 Game Studio.",
+        "aiForTripPlannerApp": "Aplicación de planificación de viajes con IA para organizar itinerarios.",
+        "aiPoweredPersonalStylistApp": "Aplicación de estilista personal con IA y recomendaciones de moda.",
+        "aquirinBrandDesign": "Identidad de marca y diseño visual de Aquirin.",
+        "beautySkincareEcommerceApp": "Experiencia de compra online de belleza y cuidado de la piel.",
+        "belgradeArborArchitectureWebsiteDesign": "Sitio web de arquitectura de Belgrade Arbor y presentación de proyectos.",
+        "cultureIndexCreativeStudio": "Sitio web del estudio creativo Culture Index.",
+        "dashboardDeliveryDesign": "Panel de operaciones de reparto y visualización de datos.",
+        "healthcareCompanyMobileApp": "Interfaz de una aplicación móvil sanitaria y servicios para pacientes.",
+        "hotelBookingMobileAppDesign": "Aplicación móvil para reservar hoteles y buscar alojamiento.",
+        "jesperLandbergWebsiteStudio": "Portfolio del estudio web de Jesper Landberg.",
+        "junkbrandingPortfolioCh": "Portfolio creativo de Junkbranding y trabajos de identidad visual.",
+        "kyoosangChoiBrandDesign": "Diseño de marca y dirección de arte de Kyoosang Choi.",
+        "lajoyaEuropeWebsite": "Sitio web de LaJoya Europe y presentación de marca.",
+        "maisonAugeCreativeStudio": "Sitio web del estudio creativo Maison Auge.",
+        "mentalHealthMobileApp": "Interfaz de una aplicación móvil de salud mental y herramientas de bienestar.",
+        "missionPersonalInjuryLawyer": "Sitio web del bufete Mission, especializado en lesiones personales.",
+        "neuCulturedConceptDesign": "Diseño conceptual y exploración visual de Neu Cultured.",
+        "nflLeagueBrandDesign": "Identidad visual de la NFL y diseño de marca deportiva.",
+        "offpossibleCreativePortfolio": "Portfolio creativo de Offpossible y trabajos del estudio.",
+        "offpossibleMobilePortfolio": "Portfolio de Offpossible adaptado a pantallas móviles.",
+        "onseisStudioDesign": "Sitio web y portfolio de diseño del estudio Onseis.",
+        "pegassiSpotifyPlaylist": "Arte de playlist de Spotify e identidad musical de Pegassi.",
+        "rapideYachtGroupWebsite": "Sitio web de Rapide Yacht Group y presentación de yates.",
+        "realStateBookingApp": "Aplicación para explorar y reservar propiedades inmobiliarias.",
+        "ronnsquareArchitectureWebsite": "Sitio web de arquitectura Ronnsquare y portfolio de edificios.",
+        "rovaSmartRunningTrackerApp": "Aplicación de seguimiento de running de Rova y métricas de actividad.",
+        "secondRideBrandDesign": "Identidad de marca y diseño visual de Second Ride.",
+        "shipmentTrackingFleetManagementDesign": "Interfaz de seguimiento de envíos y gestión de flotas.",
+        "smartFinancialManagementApp": "Aplicación de finanzas personales y resumen de cuentas.",
+        "solarEnergyMonitoringMobileApp": "Aplicación móvil de monitorización de energía solar y métricas de consumo.",
+        "sonyaPesselevPortfoliioDesign": "Portfolio creativo y presentación de diseño de Sonya Pesselev.",
+        "storeyArchitectureWebsite": "Sitio web de Storey Architecture y proyectos arquitectónicos.",
+        "structureConsultingEngineers": "Sitio web de Structure Consulting Engineers y servicios profesionales.",
+        "sweetTapeWebsite": "Sitio web de Sweet Tape y presentación de productos.",
+        "swimtopiaBusinessWebsite": "Sitio web de Swimtopia y servicios de programas de natación.",
+        "theobromaChocolatWebsiteDesign": "Sitio web de Theobroma Chocolat y presentación de productos de chocolate.",
+        "thinkBigStudioBrandDesign": "Identidad de marca y dirección creativa de Think Big Studio.",
+        "trustGussInjuryLawyers": "Sitio web de Trust Guss Injury Lawyers y servicios legales.",
+        "unipayMobileAppDesignUiUx": "Aplicación móvil de pagos Unipay y diseño de interfaz.",
+        "webDesignForManageAndAutomatePayments": "Sitio web de una plataforma para gestionar y automatizar pagos."
       }
     },
-    "music": {
-      "name": "Trabajos",
-      "title": "Trabajos",
+    "projects": {
+      "name": "Proyectos",
+      "title": "Proyectos",
       "labels": {
-        "back": "Volver a trabajos",
-        "music": "Trabajos",
-        "info": "Info",
+        "back": "Volver a proyectos",
+        "music": "Proyectos",
+        "info": "Información",
         "tracklist": "Entregables",
         "recordLabel": "Cliente",
-        "socialLinks": "Abrir",
-        "expandArtwork": "Expandir álbum",
-        "collapseArtwork": "Colapsar álbum",
+        "expandArtwork": "Ampliar vista previa",
+        "collapseArtwork": "Contraer vista previa",
         "deliverables": "Entregables"
       },
       "meta": {
-        "title": "Trabajos",
-        "description": "Proyectos seleccionados y casos de estudio"
+        "title": "Proyectos",
+        "description": "Explora sitios web, productos digitales y experiencias creativas desarrolladas por Zen Space."
       },
       "preloader": {
-        "text1": "cargando música",
-        "text2": "sincroniza ruido"
+        "text1": "cargando proyectos",
+        "text2": "preparando experiencias"
+      },
+      "linkLabels": {
+        "webApp": "Abrir aplicación web",
+        "downloadApp": "Descargar aplicación",
+        "website": "Visitar sitio web",
+        "appStore": "Abrir en App Store"
+      },
+      "projectMeta": {
+        "rythm": "Rythm conecta el descubrimiento musical y la escucha compartida en una sola experiencia. Permite explorar recomendaciones personalizadas, organizar listas de reproducción y escuchar música con amigos en tiempo real en las plataformas compatibles.",
+        "unimatic": "Unimatic combina el diseño italiano minimalista con una ingeniería funcional rigurosa para crear relojes de buceo y relojes-herramienta de alto rendimiento. Diseñados para durar, ofrecen resistencia al agua de hasta 300 metros y una estética cuidada que va más allá de la utilidad.",
+        "penti": "Penti es una plataforma de ciberseguridad basada en agentes de IA que valida continuamente la seguridad. Simula ataques reales contra aplicaciones, API e infraestructura para detectar vulnerabilidades y demostrar hasta dónde podría llegar un atacante.",
+        "miraLife": "Mira Life te ayuda a comprender tu bienestar a través de seis dimensiones. Analiza hábitos diarios, estado de ánimo y métricas de salud para ofrecerte información práctica que te permita gestionar tu energía sin sentirte abrumado.",
+        "subscrr": "Subscrr reúne tus suscripciones, recordatorios de renovación y gastos recurrentes en un solo lugar. Te ayuda a entender en qué gastas, controlar los pagos y evitar cargos inesperados en tus dispositivos Apple."
+      },
+      "videoTitles": {
+        "rythmDiscordMusicBack": "La buena música vuelve a Discord",
+        "rythmSetupGuide": "Guía de configuración paso a paso",
+        "rythmInviteConfigure": "Cómo invitarlo y configurarlo en tu servidor",
+        "unimaticFieldWatch": "Reseña y prueba de un reloj de campo",
+        "unimaticDialDetails": "Diseño italiano minimalista: esfera y detalles de Unimatic",
+        "unimaticToolwatches": "Dentro del mundo de los relojes-herramienta de Unimatic",
+        "pentiHackingAi": "La nueva metodología para poner a prueba la seguridad de la IA",
+        "pentiThinkSeries": "Cómo poner a prueba modelos de IA: serie Think",
+        "pentiSecurityAssessment": "Seguridad de IA y evaluación de vulnerabilidades",
+        "miraStartWithin": "Mira Life: empieza desde dentro",
+        "miraSixDimensions": "Las seis dimensiones de tu potencial vital",
+        "miraRecoverySignals": "El arte de la recuperación y las señales del cuerpo",
+        "subscrrTracking": "Controla todas tus suscripciones de un vistazo",
+        "subscrrRecurringExpenses": "Todos tus gastos recurrentes en un solo lugar",
+        "subscrrAiSavings": "Ahorra en suscripciones con ayuda de la IA"
       }
     },
-    "merch": {
+    "services": {
       "name": "Servicios",
       "title": "Servicios",
       "eyebrow": "Qué hacemos",
-      "intro": "Desde la primera idea hasta la interacción final, conectamos dirección creativa, visión de producto e ingeniería para construir experiencias digitales con propósito.",
-      "serviceLabel": "Servicio",
+      "intro": "Desde la primera idea hasta la interacción final, unimos dirección creativa, visión de producto e ingeniería para crear experiencias digitales con propósito.",
       "services": {
         "webDevelopment": {
           "title": "Desarrollo web creativo",
-          "navTitle": "Sitios Web",
-          "description": "Diseñamos y desarrollamos sitios web con una dirección visual distintiva, interacciones cuidadas e ingeniería frontend sólida. Cada detalle contribuye a la historia y a la experiencia.",
-          "alt": "Imagen del proyecto Rythm que ilustra el desarrollo web creativo.",
-          "secondaryAlt": "Imagen adicional del proyecto Rythm.",
+          "navTitle": "Sitios web",
+          "description": "Diseñamos y desarrollamos sitios web distintivos, con una dirección de arte clara, interacciones cuidadas y una implementación frontend sólida. Cada detalle contribuye a la historia y a la experiencia.",
+          "alt": "Vista de un sitio web que ilustra el desarrollo web creativo.",
+          "secondaryAlt": "Vista adicional de un sitio web que destaca sus interacciones inmersivas.",
           "secondaryTitle": "Interacciones web inmersivas",
-          "secondaryDescription": "Las secuencias vinculadas al scroll y las microinteracciones precisas integran la identidad de marca en la experiencia sin sacrificar claridad ni rendimiento."
+          "secondaryDescription": "Las secuencias guiadas por el desplazamiento y las microinteracciones precisas integran la identidad de marca en la experiencia sin comprometer la claridad ni el rendimiento."
         },
-        "productArchitecture": {
-          "title": "Arquitectura de productos digitales",
-          "navTitle": "Productos Digitales",
-          "description": "Diseñamos las bases de productos digitales: desde los flujos de usuario y la estructura del sistema hasta el frontend, el backend y las integraciones, para que la experiencia pueda crecer de forma coherente.",
-          "alt": "Imagen del proyecto Penti AI que ilustra la arquitectura de productos digitales.",
-          "secondaryAlt": "Imagen adicional del proyecto Penti AI.",
+        "webApps": {
+          "title": "Aplicaciones web escalables",
+          "navTitle": "Apps web",
+          "description": "Diseñamos y desarrollamos aplicaciones web y plataformas SaaS, desde los flujos de usuario y la estructura de datos hasta el frontend, el backend y las integraciones. Así, el producto se mantiene rápido, coherente y fácil de mantener a medida que crece.",
+          "alt": "Interfaz de una aplicación web que representa el diseño y la arquitectura de un producto digital.",
+          "secondaryAlt": "Vista adicional de una aplicación web que muestra distintas partes de un producto conectado.",
           "secondaryTitle": "Experiencias de producto conectadas",
-          "secondaryDescription": "Conectamos interfaces, servicios de backend e integraciones en un sistema coherente que puede evolucionar a medida que crecen las funciones, los equipos y los datos."
+          "secondaryDescription": "Conectamos interfaces, servicios de backend e integraciones en un sistema coherente que puede evolucionar a medida que crecen las funcionalidades, los equipos y los datos."
         },
-        "motion3d": {
-          "title": "Experiencias de motion y 3D",
-          "navTitle": "Motion 3D",
-          "description": "Damos vida a las interfaces mediante motion, 3D y recursos visuales inmersivos, equilibrando una experiencia memorable con interacciones fluidas y buen rendimiento.",
-          "alt": "Imagen del proyecto Unimatic perteneciente al portfolio del estudio.",
-          "secondaryAlt": "Imagen adicional del proyecto Unimatic.",
-          "secondaryTitle": "Motion con propósito",
-          "secondaryDescription": "Desde transiciones sutiles hasta escenas 3D expresivas, cada movimiento refuerza la respuesta de la interfaz, la jerarquía y el ritmo de la experiencia."
+        "mobileApps": {
+          "title": "Desarrollo de aplicaciones móviles",
+          "navTitle": "Apps Mov",
+          "description": "Desarrollamos aplicaciones móviles rápidas y con una experiencia natural. Convertimos flujos complejos en pantallas simples e intuitivas, con una arquitectura sólida y capacidad para crecer.",
+          "alt": "Interfaz de una aplicación móvil que ilustra el desarrollo de apps móviles.",
+          "secondaryAlt": "Vista adicional de una aplicación móvil con interacciones fluidas.",
+          "secondaryTitle": "Interacciones móviles fluidas",
+          "secondaryDescription": "Los gestos, las transiciones y las animaciones sutiles ofrecen una respuesta clara a cada toque y mantienen una experiencia fluida, adaptable y fácil de usar en cualquier pantalla."
         },
-        "mobileSaas": {
-          "title": "Aplicaciones móviles y SaaS",
-          "navTitle": "Apps SaaS",
-          "description": "Creamos experiencias móviles y SaaS que convierten flujos complejos en productos intuitivos, con UX práctica, una arquitectura mantenible y capacidad para evolucionar.",
-          "alt": "Imagen del proyecto Subscrr que ilustra una experiencia de producto digital.",
-          "secondaryAlt": "Imagen adicional del proyecto Subscrr.",
-          "secondaryTitle": "UX para flujos cotidianos",
-          "secondaryDescription": "Convertimos tareas complejas en pantallas claras y patrones reutilizables para que los productos móviles y SaaS sigan siendo intuitivos mientras evolucionan."
+        "productDesign": {
+          "title": "Diseño de producto e interfaces",
+          "navTitle": "Diseño +++",
+          "description": "Diseñamos interfaces y sistemas visuales que hacen que los productos sean claros y memorables, desde los primeros esquemas hasta pantallas pulidas listas para desarrollarse.",
+          "alt": "Vista de diseño de interfaz con una pantalla de producto pulida.",
+          "secondaryAlt": "Vista adicional de diseño UX e interfaz para flujos de trabajo digitales.",
+          "secondaryTitle": "Experiencias intuitivas para el día a día",
+          "secondaryDescription": "Convertimos tareas complejas en pantallas claras y patrones reutilizables para que los productos digitales sigan siendo intuitivos a medida que crecen."
         }
       },
       "meta": {
@@ -133,100 +199,132 @@
         "eyebrow": "De la primera idea a la experiencia final",
         "title": "Nuestro proceso",
         "footerLeft": "Estrategia · Diseño · Ingeniería",
-        "footerRight": "Diseñado para evolucionar",
+        "footerRight": "Creado para evolucionar",
         "steps": {
           "discover": {
             "number": "PASO · 01",
-            "title": "Descubrimos lo que te hace diferente",
-            "description": "Nos acercamos a tu producto, tu público y tu visión; después convertimos aquello que te distingue en una dirección digital clara.",
-            "alt": "Sitio web del proyecto Rythm que muestra su dirección visual y experiencia digital."
+            "title": "Descubrimos qué te hace diferente",
+            "description": "Conocemos tu producto, tu público y tu perspectiva. Después, transformamos lo que te distingue en una dirección digital clara.",
+            "alt": "Sitio web del proyecto Rythm que muestra su dirección visual y su experiencia digital."
           },
           "shape": {
             "number": "PASO · 02",
             "title": "Damos forma a la experiencia",
-            "description": "Con la dirección definida, conectamos identidad, interfaz e ingeniería en una experiencia distintiva que capta la atención y facilita el siguiente paso.",
-            "alt": "Interfaz del proyecto Penti AI que ilustra el diseño y la arquitectura de un producto digital."
+            "description": "Con la dirección definida, conectamos identidad, interfaz e ingeniería para crear una experiencia distintiva que capte la atención y haga evidente el siguiente paso.",
+            "alt": "Interfaz de Penti AI que ilustra el diseño y la arquitectura de un producto digital."
           },
           "launch": {
             "number": "PASO · 03",
             "title": "Lanzamos con intención",
-            "description": "Pulimos los detalles, damos claridad a cada interacción y preparamos el producto para salir al mundo con una base lista para evolucionar.",
-            "alt": "Interfaz del proyecto Unimatic que muestra dirección de arte con motion y un producto digital."
+            "description": "Pulimos los detalles, afinamos cada interacción y preparamos el producto para salir al mundo con una base sólida y preparada para evolucionar.",
+            "alt": "Interfaz del proyecto Unimatic que muestra dirección de arte con movimiento y un producto digital."
           }
         }
-      }
+      },
+      "navigationLabel": "Navegación de servicios"
     },
-    "privacy": {
+    "privacyPolicy": {
       "name": "Privacidad",
       "title": "Política de privacidad y cookies",
-      "p1": "Nos importa tu privacidad (y la nuestra). Por eso no utilizamos cookies en este sitio web, ni tenemos intención de hacerlo. No nos interesa rastrear a los visitantes ni recopilar datos sobre ti, simplemente no queremos hacerlo.",
-      "p2": "Nuestro único propósito es compartir nuestra música contigo. Nada más, nada menos.",
-      "p3": "Dicho esto, nuestro sitio web está alojado por un proveedor externo y puede que ellos utilicen sus propias cookies para cosas como la seguridad o el rendimiento básico del sitio. Esa parte está fuera de nuestro control pero por nuestra parte mantenemos todo lo más libre de cookies posible.",
-      "p4": "Tampoco vendemos comida pero nuestro consejo es que comas más verduras para mantenerte sano. También te animamos a que apoyes los productos españoles; nuestro jamón ibérico y aceite de oliva forman parte de las maravillas del mundo.",
-      "p5": "Hoy, salva tu fin de semana. Mañana, salva tu alma.",
+      "p1": "Tu privacidad nos importa. Este sitio utiliza una pequeña cookie de preferencia para recordar el idioma que elegiste. No utilizamos cookies publicitarias ni de analítica para rastrear tu actividad de navegación.",
+      "p2": "Nuestro único objetivo es compartir nuestro trabajo contigo. Nada más, nada menos.",
+      "p3": "El sitio está alojado en un proveedor externo que puede utilizar sus propias cookies para funciones de seguridad o rendimiento básico. Esas cookies dependen del proveedor y quedan fuera de nuestro control.",
+      "p4": "Creemos que el trabajo bien hecho necesita curiosidad, colaboración y tiempo lejos de la pantalla. Apoya a los creadores locales, mantén la curiosidad y deja espacio para que las buenas ideas crezcan.",
+      "p5": "Hoy, imagínalo. Mañana, hazlo realidad.",
       "meta": {
         "title": "Política de privacidad y cookies",
-        "description": "Política de privacidad e información sobre cookies"
+        "description": "Conoce cómo Zen Space trata la información personal y utiliza una cookie de preferencia para recordar el idioma elegido."
       }
     }
   },
   "components": {
     "cursor": {
-      "scroll": "Scroll",
-      "flip": "Girar",
-      "zoom": "Zoom"
+      "scroll": "Desplázate",
+      "flip": "Voltear",
+      "zoom": "Ampliar"
     },
     "bandcampEmbed": {
-      "noPlayer": "Álbum descatalogado. No disponible para descarga o escucha."
+      "noPlayer": "La vista previa de este proyecto no está disponible."
     },
     "albumArtwork": {
-      "moreInfo": "Pulsa sobre el álbum o “+”"
+      "moreInfo": "Selecciona la vista previa o el símbolo «+»."
+    },
+    "navigation": {
+      "main": "Navegación principal",
+      "contact": "Contacto",
+      "album": "Navegación del proyecto",
+      "language": "Navegación de idiomas"
+    },
+    "accessibility": {
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú",
+      "videoUnsupported": "Tu navegador no admite la reproducción de vídeo.",
+      "youtubePlayer": "Reproductor de vídeo de YouTube",
+      "albumCover": "Carátula de {title}",
+      "albumBackCover": "Contraportada de {title}",
+      "albumDisc": "Disco de {title}"
+    },
+    "contact": {
+      "tellStory": "Cuéntanos tu proyecto"
     }
   },
   "footer": {
-    "siteBy": "Sitio por",
-    "privacy": "Política privacidad",
+    "siteBy": "Desarrollado por",
+    "privacy": "Política de privacidad",
     "faq": {
-      "eyebrow": "FAQs",
+      "eyebrow": "Preguntas frecuentes",
       "title": "Lo que conviene saber antes de trabajar juntos.",
       "questions": [
         {
-          "question": "¿Qué tipo de proyectos realizan?",
-          "answer": "Trabajamos en sitios web distintivos, productos digitales, aplicaciones móviles y SaaS, y experiencias que integran motion. Encajamos especialmente bien cuando el diseño cuidado y la ingeniería sólida importan por igual."
+          "question": "¿Qué tipo de proyectos desarrollan?",
+          "answer": "Trabajamos en sitios web distintivos, productos digitales, aplicaciones móviles y SaaS, además de experiencias que integran movimiento y animación. Somos una buena opción para proyectos donde el diseño cuidadoso y la ingeniería sólida importan por igual."
         },
         {
-          "question": "¿Quién trabajará realmente en mi proyecto?",
-          "answer": "Trabajarás directamente con las personas que definen y construyen tu proyecto. Mantenemos una comunicación cercana e incorporamos especialistas cuando el proyecto lo requiere."
+          "question": "¿Quién trabajará en mi proyecto?",
+          "answer": "Trabajarás directamente con las personas que definen y desarrollan tu proyecto. Mantenemos una comunicación cercana y sumamos especialistas cuando el proyecto lo necesita."
         },
         {
           "question": "¿Cuánto suele durar un proyecto?",
           "answer": "Depende del alcance y la complejidad. Un sitio web acotado puede llevar varias semanas, mientras que un producto digital más amplio puede necesitar algunos meses. Acordamos las etapas y prioridades antes de empezar."
         },
         {
-          "question": "¿Cómo organizan la comunicación y las revisiones?",
-          "answer": "Definimos un contacto principal, reuniones periódicas e hitos compartidos. Concentramos las revisiones en momentos concretos para mantener las decisiones claras y avanzar con continuidad."
+          "question": "¿Cómo organizamos la comunicación y las revisiones?",
+          "answer": "Definimos un contacto principal, reuniones periódicas e hitos compartidos. Concentramos los comentarios y las revisiones en momentos concretos para mantener las decisiones claras y avanzar con continuidad."
         },
         {
-          "question": "¿Qué necesitan para empezar?",
-          "answer": "Basta con conversar sobre tus objetivos, tu público, las limitaciones y qué significaría tener éxito. La identidad visual, las referencias o los requisitos técnicos existentes ayudan, pero no hace falta tenerlo todo resuelto."
+          "question": "¿Qué necesitamos para empezar?",
+          "answer": "Basta con conversar sobre tus objetivos, tu público, las limitaciones y qué significa tener éxito para ti. La identidad de marca, las referencias o los requisitos técnicos existentes ayudan, pero no hace falta tenerlo todo resuelto."
         },
         {
-          "question": "¿Pueden trabajar sobre una marca o producto existente?",
-          "answer": "Por supuesto. Podemos aprovechar lo que ya funciona, refinar la dirección visual, rediseñar un sitio web o mejorar un producto sin imponer un cambio completo de marca."
+          "question": "¿Pueden trabajar con una marca o un producto existente?",
+          "answer": "Sí. Podemos aprovechar lo que ya funciona, refinar la dirección visual, rediseñar un sitio web o mejorar un producto sin imponer un cambio completo de marca."
         },
         {
-          "question": "¿Qué sucede después del lanzamiento?",
-          "answer": "Podemos acompañar la entrega, resolver ajustes y acordar mejoras posteriores. El soporte continuo se define según tus necesidades y la evolución prevista del producto."
+          "question": "¿Qué ocurre después del lanzamiento?",
+          "answer": "Podemos ayudarte con la entrega, resolver ajustes y acordar mejoras posteriores. El soporte continuo se define según tus necesidades y la evolución prevista del producto."
         },
         {
-          "question": "¿Cómo se determina la inversión del proyecto?",
-          "answer": "La inversión depende del alcance, la complejidad, los plazos y el nivel de colaboración necesario. Tras una primera conversación, podemos definir un alcance realista y preparar una estimación a medida."
+          "question": "¿Cómo se define la inversión del proyecto?",
+          "answer": "La inversión depende del alcance, la complejidad, los plazos y el nivel de colaboración necesario. Después de una primera conversación, definimos un alcance realista y preparamos una estimación a medida."
         }
       ],
-      "aside": "Respuestas claras antes de empezar.",
-      "headshotAlt": "Retrato de un profesional creativo",
-      "bookCall": "Reservar una llamada",
-      "bookingSoon": "El enlace de reservas estará disponible pronto"
-    }
+      "aside": "¿Te gustaría saber si encajariamos bien?",
+      "headshotAlt": "Retrato de Abel",
+      "bookCall": "Contacta a Abel",
+      "bookingSoon": "El enlace para reservar estará disponible pronto."
+    },
+    "location": "Buenos Aires",
+    "emailSubject": "Mensaje desde el sitio web de Zen Space"
+  },
+  "errors": {
+    "status": "Error {statusCode}",
+    "notFoundTitle": "No se encontró la página",
+    "notFoundLead": "Parece que esta página se ha desviado del camino.",
+    "notFoundBody": "La página que buscas no existe o puede haberse trasladado.",
+    "notFoundInvite": "Mientras tanto, descubre las experiencias digitales que creamos.",
+    "tagline": "Hoy, imagínalo. Mañana, hazlo realidad.",
+    "genericMessage": "Se produjo un error al cargar esta página. Inténtalo de nuevo.",
+    "projectNotFound": "No se encontró el proyecto.",
+    "backHome": "Volver al inicio"
   }
 }

@@ -1,15 +1,17 @@
 <template>
   <div>
     <div class="button-nav-icon-wrapper fixed top-0 right-0 z-100 m-8 mix-blend-difference">
-      <button class="button-nav-icon focus:outline-none focus:ring-0 cursor-pointer" aria-label="Open menu" @click="handleClick">
+      <button class="button-nav-icon focus:outline-none focus:ring-0 cursor-pointer" :aria-label="isOpen ? $t('components.accessibility.closeMenu') : $t('components.accessibility.openMenu')" @click="handleClick">
         <NavIcon :is-open="isOpen" />
       </button>
     </div>
 
-    <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
+    <div ref="navWrapperRef" class="nav-wrapper [clip-path:inset(0%_0%_100%_0%)] fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
-      <nav class="main-navigation" aria-label="Main navigation">
-        <ul class="relative z-90 flex flex-col gap-4 p-12 uppercase">
+
+      <!-- Grupo 1: Navegación principal -->
+      <nav class="main-navigation" :aria-label="$t('components.navigation.main')">
+        <ul class="relative z-90 flex flex-col gap-3 sm:gap-4 px-12 uppercase">
           <li>
             <AnimationTextShadow>
               <NuxtLinkLocale to="/">{{ $t('pages.home.name') }}</NuxtLinkLocale>
@@ -17,25 +19,36 @@
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="band">{{ $t('pages.band.name') }}</NuxtLinkLocale>
+              <NuxtLinkLocale to="references">{{ $t('pages.references.name') }}</NuxtLinkLocale>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="music">{{ $t('pages.music.name') }}</NuxtLinkLocale>
+              <NuxtLinkLocale to="projects">{{ $t('pages.projects.name') }}</NuxtLinkLocale>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="merch">{{ $t('pages.merch.name') }}</NuxtLinkLocale>
+              <NuxtLinkLocale to="services">{{ $t('pages.services.name') }}</NuxtLinkLocale>
             </AnimationTextShadow>
           </li>
         </ul>
       </nav>
-      <nav class="social-navigation" aria-label="Social navigation">
-        <SocialLinks class="text-3xl sm:text-5xl" />
-      </nav>
-      <NavLang />
+
+      <!-- Grupo 2: Call to Action + Selector de idioma -->
+      <div class="relative z-90 mt-12 sm:mt-16 flex flex-col items-center gap-2 text-base leading-none">
+        <nav class="social-navigation" :aria-label="$t('components.navigation.contact')">
+          <ul>
+            <li>
+              <span class="inline-block">
+                <CalBookingButton :label="$t('components.contact.tellStory')" size="md" />
+              </span>
+            </li>
+          </ul>
+        </nav>
+
+        <NavLang class="!mt-0 !pt-0" />
+      </div>
     </div>
   </div>
 </template>
@@ -56,7 +69,7 @@
   }
 
   onMounted(() => {
-    let isFirstPageLoad = true;
+    let isFirstPageLoad = true
 
     gsap.set(navWrapperRef.value, { clipPath: 'inset(0% 0% 100% 0%)', })
 
@@ -111,7 +124,6 @@
         ease: 'power4.inOut'
       }, '<0.25')
 
-
     watchEffect(() => {
       if (isOpen.value) {
         tlOpen.play(0)
@@ -127,7 +139,6 @@
       isFirstPageLoad = false
     })
   })
-
 </script>
 
 <style scoped>

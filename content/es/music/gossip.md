@@ -1,38 +1,12 @@
 ---
-title: Gossip
+title: Mira Life
 ---
 
-Grabado, mezclado y masterizado en los estudios APK de Valencia (España) en enero y febrero de 2011.
+Mira Life te ayuda a comprender tu bienestar a través de seis dimensiones. Analiza tus hábitos diarios, estado de ánimo y métricas de salud para ofrecerte información práctica y basada en datos que te ayude a gestionar tu energía sin sentirte abrumado.
 
-Productor: Octavio Hidalgo<br>
-Fotografía: Pablo Serrano<br>
-Diseño gráfico: [Dan Alcaide](https://www.danalcaide.com)<br>
+## Entregables
 
-## Reconocimientos
-
-- Top 10 álbumes 2011 - Mondosonoro Valencia
-
-## Instrumentos utilizados
-
-- Guitarra Rickenbacker 330
-- Guitarra Fender Stratocaster
-- Guitarra acústica Takamine
-- Bajo Epiphone Thunderbird
-- Batería Ludwig
-- Teclado Korg CX3
-- Teclado Moog Little Phatty Stage II
-- Teclado Nord Electro 3
-- Teclado Arp Solina
-
-## Amplificadores
-
-- Orange Rocker 30C
-- Marshall JCM900
-- Cabezal Ampeg en pantalla SBL
-
-## Pedales de efectos
-
-- Wah-Wah Cry Baby
-- Delay Danelectro Pork Chop
-- Phaser Electro Harmonix Small Stone
-- Fuzz Electro Harmonix Bass Big Muff Pi
+- **Seguimiento de seis dimensiones** — Observa tu resiliencia emocional, concentración intelectual, recuperación, conexiones, regulación física y motivación interior.
+- **Análisis inteligente de métricas** — Convierte datos complejos sobre el sueño, el estrés y la frecuencia cardíaca en información clara sobre tu estado diario.
+- **Registros adaptativos** — Usa reflexiones breves por la mañana y por la noche para ajustar tu plan de bienestar según cómo te sientes.
+- **Integraciones de salud** — Sincroniza tus datos con Apple Health y Google Fit, o mide tu frecuencia cardíaca directamente con la cámara del teléfono.
