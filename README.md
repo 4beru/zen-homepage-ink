@@ -6,14 +6,9 @@ Creative software studio designing and engineering distinctive websites and digi
 Built with Nuxt, Tailwind CSS, GSAP, and custom motion design.
 
 
-## License
+## Licensing
 
-- **Code:** Licensed under the [MIT License](./LICENSE). See `LICENSE` file.
-  You’re free to use, modify, and distribute the source code.
-
-- **Design, content, and branding:** Licensed under the [Creative Commons
-  Attribution–NonCommercial–NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](./LICENSE-DESIGN). See `LICENSE-DESIGN` file.
-  These materials may not be used commercially or modified without permission.
+This repository does not currently include a project-level license file. Do not assume that the source code, content, visual design, branding, or media may be reused or redistributed. Third-party assets may have their own license terms; obtain permission from the relevant rights holder before reuse.
 
 ## Overview
 
