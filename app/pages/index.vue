@@ -9,13 +9,13 @@
         <div class="hero-content relative z-10 flex flex-col items-center justify-center w-full h-full px-5 sm:px-8 md:px-12 pointer-events-none select-none text-center">
           <!-- Logo zen space con ancho optimizado para dispositivos móviles -->
           <div class="flex items-center justify-center w-full">
-            <AppLogo class="logo w-[76%] sm:w-[84%] md:w-[90%] lg:w-full max-w-[85vw] lg:max-w-4xl xl:max-w-5xl h-auto fill-white" />
+            <AppLogo class="logo w-[88%] sm:w-[92%] md:w-[96%] lg:w-full max-w-[94vw] lg:max-w-5xl xl:max-w-6xl h-auto fill-white" />
           </div>
 
           <!-- Textos debajo del logo -->
           <div class="hero-text hero-text-bottom mt-5 sm:mt-7 md:mt-8 flex flex-col items-center justify-center text-center gap-2 sm:gap-2.5 max-w-[340px] sm:max-w-lg md:max-w-2xl">
             <!-- Text 1 -->
-            <p class="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.16em] sm:tracking-[0.24em] uppercase text-white leading-tight">
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl font-bold tracking-[0.12em] sm:tracking-[0.2em] uppercase text-white leading-tight">
               {{ $t('pages.home.heroHeadline') }}
             </p>
           </div>
