@@ -7,9 +7,8 @@
 
       <HeroHypnotic :play="isPageLoaded" class="hero">
         <div class="hero-content relative z-10 flex flex-col items-center justify-center w-full h-full px-5 sm:px-8 md:px-12 pointer-events-none select-none text-center">
-          <!-- Logo zen space con ancho optimizado para dispositivos móviles -->
           <div class="flex items-center justify-center w-full">
-            <AppLogo class="logo w-[88%] sm:w-[92%] md:w-[96%] lg:w-full max-w-[94vw] lg:max-w-5xl xl:max-w-6xl h-auto fill-white" />
+            <AppLogo class="logo w-[94%] sm:w-[96%] md:w-full max-w-[98vw] lg:max-w-7xl xl:max-w-[90rem] 2xl:max-w-[110rem] h-auto fill-white" />
           </div>
 
           <!-- Textos debajo del logo -->
