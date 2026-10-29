@@ -13,6 +13,7 @@
   definePageMeta({
     // layout: 'full-screen',
     pageTransition: pageTransitionConfig,
+    hasPreloader: true,
     hideFooter: true,
   });
 

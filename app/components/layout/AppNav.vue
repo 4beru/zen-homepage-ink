@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="button-nav-icon-wrapper fixed top-0 right-0 z-100 m-8 mix-blend-difference">
+    <div class="button-nav-icon-wrapper fixed top-0 right-0 z-100 m-8 mix-blend-difference" :class="{ 'invisible pointer-events-none': navIconPending }">
       <button class="button-nav-icon focus:outline-none focus:ring-0 cursor-pointer" :aria-label="isOpen ? $t('components.accessibility.closeMenu') : $t('components.accessibility.openMenu')" @click="handleClick">
         <NavIcon :is-open="isOpen" />
       </button>
@@ -57,6 +57,7 @@
   import gsap from "gsap"
 
   const isOpen = ref(false)
+  const navIconPending = useNavIconPending()
   const navWrapperRef = useTemplateRef('navWrapperRef')
   const route = useRoute()
 

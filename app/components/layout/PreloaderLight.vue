@@ -36,6 +36,7 @@
   const preloaderTextRef = useTemplateRef('preloaderTextRef');
   const preloaderDotRef = useTemplateRef('preloaderDotRef');
   const route = useRoute()
+  const navIconPending = useNavIconPending();
   const routesAreLoaded = useState('routesAreLoadedLight', () => []);
   let ctx = gsap.context(() => { });
 
@@ -45,6 +46,7 @@
     // await document.fonts.ready;
 
     if (routesAreLoaded.value.includes(route.path)) {
+      navIconPending.value = false;
       emit('done');
       isPageLoaded.value = true;
       return;
@@ -59,6 +61,8 @@
 
     ctx = gsap.context(() => {
       gsap.set(buttonNavIconWrapper, { scaleX: 0, pointerEvents: 'none' });
+      // Release the SSR visibility guard only after GSAP has hidden the icon.
+      navIconPending.value = false;
 
       gsap
         .timeline({
@@ -119,6 +123,7 @@
   onUnmounted(() => {
     ctx.revert();
     enableScroll();
+    navIconPending.value = false;
     emit('destroyed');
   });
 </script>

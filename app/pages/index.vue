@@ -77,6 +77,7 @@
 
   definePageMeta({
     pageTransition: pageTransitionConfig,
+    hasPreloader: true,
   });
 
   const videos = {
