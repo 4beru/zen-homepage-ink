@@ -36,8 +36,8 @@
   const preloaderTextRef = useTemplateRef('preloaderTextRef');
   const preloaderDotRef = useTemplateRef('preloaderDotRef');
   const route = useRoute()
-  const navIconPending = useNavIconPending();
   const routesAreLoaded = useState('routesAreLoadedLight', () => []);
+  const { hold, release } = usePreloader();
   let ctx = gsap.context(() => { });
 
   onMounted(async () => {
@@ -46,7 +46,7 @@
     // await document.fonts.ready;
 
     if (routesAreLoaded.value.includes(route.path)) {
-      navIconPending.value = false;
+      release();
       emit('done');
       isPageLoaded.value = true;
       return;
@@ -57,12 +57,8 @@
       mask: 'words'
     });
 
-    const buttonNavIconWrapper = document.querySelector('.button-nav-icon-wrapper');
-
     ctx = gsap.context(() => {
-      gsap.set(buttonNavIconWrapper, { scaleX: 0, pointerEvents: 'none' });
-      // Release the SSR visibility guard only after GSAP has hidden the icon.
-      navIconPending.value = false;
+      hold();
 
       gsap
         .timeline({
@@ -105,12 +101,7 @@
                     routesAreLoaded.value.push(route.path);
                   }
                 })
-                .to(buttonNavIconWrapper, {
-                  scaleX: 1,
-                  pointerEvents: 'auto',
-                  duration: 0.6,
-                  ease: 'power4.out'
-                }, '<0.4');
+                .call(() => release(), null, '<0.4');
 
             }
           }
@@ -123,7 +114,7 @@
   onUnmounted(() => {
     ctx.revert();
     enableScroll();
-    navIconPending.value = false;
+    release();
     emit('destroyed');
   });
 </script>

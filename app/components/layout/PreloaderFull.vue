@@ -52,9 +52,9 @@
   const dot2Ref = useTemplateRef('dot2Ref');
   const preloaderSubliminalTextRef = useTemplateRef('preloaderSubliminalTextRef');
   const route = useRoute()
-  const navIconPending = useNavIconPending();
   const routesAreLoaded = useState('routesAreLoadedFull', () => []);
   const randomIndex = ref(0);
+  const { hold, release } = usePreloader();
   let ctx = gsap.context(() => { });
 
   onMounted(async () => {
@@ -65,7 +65,7 @@
     await document.fonts.ready;
 
     if (routesAreLoaded.value.includes(route.path)) {
-      navIconPending.value = false;
+      release();
       emit('done');
       isPageLoaded.value = true;
       return;
@@ -77,14 +77,11 @@
     });
 
     const isLargeDevice = window.matchMedia("(min-width: 1280px)").matches;
-    const buttonNavIconWrapper = document.querySelector('.button-nav-icon-wrapper');
 
     ctx = gsap.context(() => {
       gsap.set([dot1Ref.value, dot2Ref.value], { clipPath: 'circle(0% at 50% 50%)' })
       gsap.set(preloaderSubliminalTextRef.value, { opacity: 0, scale: 1.1 })
-      gsap.set(buttonNavIconWrapper, { scaleX: 0, pointerEvents: 'none' });
-      // Release the SSR visibility guard only after GSAP has hidden the icon.
-      navIconPending.value = false;
+      hold();
 
       const tlLoadingPage = gsap
         .timeline({
@@ -203,12 +200,7 @@
           clipPath: 'circle(100% at 50% 50%)',
           ease: "power4.inOut",
         }, '<')
-        .to(buttonNavIconWrapper, {
-          scaleX: 1,
-          pointerEvents: 'auto',
-          duration: 0.6,
-          ease: 'power4.out',
-        }, '<0.4')
+        .call(() => release(), null, '<0.4')
 
     }, preloaderFullRef.value);
   });
@@ -216,6 +208,6 @@
   onUnmounted(() => {
     ctx.revert();
     enableScroll();
-    navIconPending.value = false;
+    release();
   });
 </script>

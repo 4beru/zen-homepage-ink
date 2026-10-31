@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="button-nav-icon-wrapper fixed top-0 right-0 z-100 m-8 mix-blend-difference" :class="{ 'invisible pointer-events-none': navIconPending }">
+    <div ref="navIconRef" class="button-nav-icon-wrapper fixed top-0 right-0 z-100 m-8 mix-blend-difference" :class="{ invisible: !released }">
       <button class="button-nav-icon focus:outline-none focus:ring-0 cursor-pointer" :aria-label="isOpen ? $t('components.accessibility.closeMenu') : $t('components.accessibility.openMenu')" @click="handleClick">
         <NavIcon :is-open="isOpen" />
       </button>
@@ -57,9 +57,24 @@
   import gsap from "gsap"
 
   const isOpen = ref(false)
-  const navIconPending = useNavIconPending()
+  const { released } = usePreloader()
+  const navIconRef = useTemplateRef('navIconRef')
   const navWrapperRef = useTemplateRef('navWrapperRef')
   const route = useRoute()
+  let revealTween
+
+  // The preloader decides when to reveal; the navicon owns its animation.
+  watch(released, (isReleased) => {
+    if (!isReleased || !navIconRef.value) return
+    revealTween?.kill()
+    revealTween = gsap.fromTo(
+      navIconRef.value,
+      { scaleX: 0 },
+      { scaleX: 1, duration: 0.6, ease: 'power4.out', clearProps: 'transform' }
+    )
+  })
+
+  onBeforeUnmount(() => revealTween?.kill())
 
   watch(route, () => {
     isOpen.value = false
